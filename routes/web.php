@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+Route::get('/', 'FrontendController@index')->name('index');
 Auth::routes();
 
 // ..................Category..............................//
@@ -40,6 +39,21 @@ Route::post('/key/store', 'KeyController@store')->name('key.store');
 Route::get('/key/edit/{id}', 'KeyController@edit')->name('key.edit');
 Route::post('/key/update/{id}', 'KeyController@update')->name('key.update');
 Route::delete('/key/destroy/', 'KeyController@destroy')->name('key.destroy');
+
+
+
+// ..................Rbac..............................//
+
+Route::resource('roles','RoleController');
+Route::resource('users','UserController');
+
+// ..................SEO..............................//
+Route::get('/seo/index', 'SeoController@index')->name('seo.index');
+Route::post('/seo/store', 'SeoController@store')->name('seo.store');
+Route::get('/seo/edit/{id}', 'SeoController@edit')->name('seo.edit');
+Route::post('/seo/update/{id}', 'SeoController@update')->name('seo.update');
+Route::delete('/seo/destroy/', 'SeoController@destroy')->name('seo.destroy');
+Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.photo.destroy');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

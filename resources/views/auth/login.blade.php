@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.authlayout')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +69,55 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="m24_language_box m24_cover">
+                        <h1>Login / Sign In</h1>
+                        <p>for unlimited music streaming & a personalised experience</p>
+                    </div>
+                    <div class="login_form_wrapper">
+
+                        <div class="icon_form comments_form">
+
+                            <input type="text" class="form-control" name="full_name" placeholder="Enter Email Address*">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="icon_form comments_form">
+
+                            <input type="password" class="form-control" placeholder="Enter Password *">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="login_remember_box">
+                            <label class="control control--checkbox">keep me signed in
+                                <input type="checkbox">
+                                <span class="control__indicator"></span>
+                            </label>
+                            <a href="#" class="forget_password">
+									Forgot Password ?
+								</a>
+                        </div>
+
+                    </div>
+                    <div class="lang_apply_btn_wrapper m24_cover">
+                        <div class="lang_apply_btn">
+
+                            <a href="#">login now</a>
+
+                        </div>
+                        <div class="cancel_wrapper">
+                            <a href="#" class="" data-dismiss="modal">cancel</a>
+                        </div>
+                        <div class="dont_have_account m24_cover">
+                            <p>Don’t have an acount ? <a href="#register_modal" data-toggle="modal">register here</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
 @endsection

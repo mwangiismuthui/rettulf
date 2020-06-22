@@ -8,6 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Request;
+use Response;
+use Auth;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -69,5 +73,91 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+
+    public function register(Request $request)
+    {
+        //validate the fields...
+        $credentials = [
+            'email' => $request->email,
+            'designation' => $request->designation,
+            'username' => $request->username,
+            'profile_photo' => $request->profile_photo,
+            'location_id' => $request->location_id,
+            'name' => $request->name,
+            'password' => $request->password
+        ];
+
+
+        $rules = [
+            'email'    => 'required|email|unique:users,email',
+            'name'    => 'required',
+            'designation'    => 'required',
+            'username'    => 'required',
+            'location_id'    => 'required',
+            'profile_photo'    => 'required',
+            // 'adress'    => 'required',
+            'password' => [
+                'required',
+                'string',
+                'min:4',
+            ],
+        ];
+
+        $error = Validator::make($credentials, $rules);
+
+
+        if ($error->fails()) {
+            return Response::json(['errors' => $error->errors()->all()]);
+        }
+        $imgdestination = '/ProfilePics';
+        $gallerarray = [];
+        // return $request->hasfile('profile_photo');
+        if ($request->hasfile('profile_photo')) {
+            $profile_photo = $request->file('profile_photo');
+            $imgname = $this->generateUniqueFileName($profile_photo, $imgdestination);
+        }
+        $password = Hash::make($request->password);
+        $user = new User;
+        $user->name = $request->name;
+        $user->location_id = $request->location_id;
+        $user->username = $request->username;
+        $user->profile_photo = $imgname;
+        $user->email = $request->email;
+        $user->password = $password; //hashed password.
+        if ($user->save()) {
+            $designation = $request->designation;
+            $role = DB::table('roles')->where('name', $designation)->pluck('id')->first();
+
+            DB::table('model_has_roles')->insert([
+                'role_id' => $role,
+                'model_type' => 'App\User',
+                'model_id' => $user->id,
+            ]);
+
+            Auth::login($user, true);
+            $user = Auth::user();
+
+            if ($user->hasRole('Super-Admin')) {
+
+                // dd($user);
+
+                return redirect()->intended('dashboard');
+            } else {
+
+                return redirect()->intended('home');
+            }
+        }
+    }
+    public function generateUniqueFileName($image, $destinationPath)
+    {
+        $initial = "ProfilePics ";
+        $name = $initial  . time() . '.' . $image->getClientOriginalExtension();
+        if ($image->move(public_path() . $destinationPath, $name)) {
+            return $name;
+        } else {
+            return null;
+        }
     }
 }

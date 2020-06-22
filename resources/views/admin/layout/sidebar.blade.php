@@ -35,7 +35,7 @@
       </a>
 
     </li>
-    <li>
+    {{-- <li>
     <a href="{{route('category.index')}}" class="waves-effect">
         <i class="ti-shopping-cart"></i>
         <span>Product Management</span>
@@ -63,19 +63,20 @@
         <span>Order Management</span>
       </a>
 
-    </li>
+    </li> --}}
  
 
-    {{-- <li>
+    
+    <li>
       <a href="javaScript:void();" class="waves-effect">
-        <i class="ti-user"></i>
+        <i class="icon-briefcase"></i>
         <span>User Management</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="sidebar-submenu">
-        <li><a href=""><i class="fa fa-circle-o"></i>User Management</a></li>
-        <li><a href=""><i class="fa fa-circle-o"></i>Role Management</a></li>
+        <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i>User Management</a></li>
+        <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i>Role Management</a></li>
       </ul>
-    </li> --}}
+    </li>
    
 
 

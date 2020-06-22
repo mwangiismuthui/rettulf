@@ -8,9 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\UsesUUID;
 use App\Music;
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
     use Notifiable;
+use HasRoles;
 
     use SoftDeletes;
     use UsesUUID;
