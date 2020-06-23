@@ -7044,3 +7044,22 @@ span.ovrly_text2 {
 .index4_top_songs_wrapper  .various_artist_text a{
 	color:rgba(255, 255, 255, 0.7) !important;
 }
+
+#overlay-load {
+    background: #ffffff;
+    color: #666666;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    float: left;
+    text-align: center;
+    padding-top: 25%;
+    opacity: .80;
+    position: absolute;
+}
+#overlay-load img{
+	width: 100px;
+}

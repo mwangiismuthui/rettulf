@@ -1,215 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<div class="m24_navi_main_wrapper m24_cover">
-    <div class="container-fluid">
-        <div class="m24_logo_wrapper">
-            <div class="m24_logo_div">
-                <a href="index.html">
-                    <img src="/frontend/images/logo.png" alt="logo">
-                </a>
-            </div>
-            <div id="toggle">
-                <a href="#"><i class="flaticon-menu-1"></i></a>
-            </div>
-        </div>
 
-        <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
-            <div class="m24_signin_wrapper">
-                <a href="#" data-toggle="modal" data-target="#login_modal"><img src="/frontend/images/pf.png" alt="img">
-                    <div class="login_top_wrapper">
-                        <p>login/register</p>
 
-                    </div>
-                </a>
-            </div>
-            <div class="crm_message_dropbox_wrapper">
-                <div class="nice-select budge_noti_wrapper" tabindex="0"> <span class="current budge_noti"><i class="flaticon-bell"></i></span>
-
-                    <ul class="list pullDown">
-                        <li><a href="#">3 New notifications</a>
-                        </li>
-                        <li>
-                            <div class="crm_mess_main_box_wrapper">
-                                <div class="crm_mess_img_wrapper">
-                                    <img src="/frontend/images/nt1.jpg" alt="img">
-                                </div>
-                                <div class="crm_mess_img_cont_wrapper">
-                                    <h4>Walking Promises <span>01:30PM</span></h4>
-                                    <p>Ava Cornish</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="crm_mess_main_box_wrapper">
-                                <div class="crm_mess_img_wrapper">
-                                    <img src="/frontend/images/nt2.jpg" alt="img">
-                                </div>
-                                <div class="crm_mess_img_cont_wrapper">
-                                    <h4>Until I Met You <span>01:30PM</span></h4>
-                                    <p>diu pokal</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="crm_mess_main_box_wrapper">
-                                <div class="crm_mess_img_wrapper">
-                                    <img src="/frontend/images/nt3.jpg" alt="img">
-                                </div>
-                                <div class="crm_mess_img_cont_wrapper">
-                                    <h4>merry with you<span>01:30PM</span></h4>
-                                    <p>love song</p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="crm_mess_all_main_box_wrapper">
-                                <p><a href="#">See All</a>
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="m24_navigation_wrapper">
-            <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
-                <ul class="main_nav_ul">
-
-                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">browse <i class="flaticon-down-arrow"></i></a>
-                        <ul class="navi_2_dropdown">
-                            <li class="parent">
-                                <a href="add_playlist.html"><i class="fas fa-caret-right"></i>featured playlist</a>
-                            </li>
-                            <li class="parent">
-                                <a href="artist.html"><i class="fas fa-caret-right"></i>top artists</a>
-                            </li>
-                            <li class="parent">
-                                <a href="genres.html"><i class="fas fa-caret-right"></i>new genres</a>
-                            </li>
-                            <li class="parent">
-                                <a href="album.html"><i class="fas fa-caret-right"></i>all albums</a>
-                            </li>
-                            <li class="parent">
-                                <a href="album_list.html"><i class="fas fa-caret-right"></i>weekly tops</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="stations.html" class="gc_main_navigation">radio</a></li>
-                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">more <i class="flaticon-down-arrow"></i></a>
-                        <ul class="navi_2_dropdown">
-                            <li class="parent">
-                                <a href="contact_us.html"><i class="fas fa-caret-right"></i>contact</a>
-                            </li>
-                            <li class="parent">
-                                <a href="pricing_plan.html"><i class="fas fa-caret-right"></i> pricing plan </a>
-                            </li>
-                            <li class="parent">
-                                <a href="error_page.html"><i class="fas fa-caret-right"></i> error page </a>
-                            </li>
-                            <li class="parent">
-                                <a href="favourite.html"><i class="fas fa-caret-right"></i> favourite song </a>
-                            </li>                              
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- mainmenu end -->
-            <div class="navi_searchbar_wrapper">
-                <i class="flaticon-magnifying-glass"></i>
-
-                <input type="text" id="justAnotherInputBox" placeholder="Search for Songs, Artists, Playlists and More.." />
-            </div>
-            <div class="d-block d-sm-block d-md-block d-lg-block d-xl-none">
-                <div class="search_bar">
-                    <div class="res_search_bar" id="search_button"> <i class="fa fa-ellipsis-v"></i>
-                    </div>
-                    <div id="search_open" class="res_search_box">
-
-                        <div class="lang_list_wrapper responsive_search_toggle">
-                            <a href="#" data-toggle="modal" data-target="#myModal">languages <i class="fas fa-language"></i></a>
-                        </div>                         
-                        <div class="m24_signin_wrapper responsive_search_toggle">
-
-                            <a href="#" data-toggle="modal" data-target="#login_modal"><img src=/frontend/"images/pf.png" alt="img">
-                                <div class="login_top_wrapper">
-                                    <p>login/register</p>
-
-                                </div>
-                            </a>
-                        </div>
-                        <div class="crm_message_dropbox_wrapper responsive_search_toggle">
-                            <div class="nice-select budge_noti_wrapper" tabindex="0"> <span class="current budge_noti"><i class="flaticon-bell"></i></span>
-                                <p class="notify_para">notifications</p>
-
-                                <ul class="list">
-                                    <li><a href="#">3 New notifications </a>
-                                    </li>
-                                    <li>
-                                        <div class="crm_mess_main_box_wrapper">
-                                            <div class="crm_mess_img_wrapper">
-                                                <img src="/frontend/images/nt1.jpg" alt="img">
-                                            </div>
-                                            <div class="crm_mess_img_cont_wrapper">
-                                                <h4>Walking Promises <span>01:30PM</span></h4>
-                                                <p>Ava Cornish</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="crm_mess_main_box_wrapper">
-                                            <div class="crm_mess_img_wrapper">
-                                                <img src="/frontend/images/nt2.jpg" alt="img">
-                                            </div>
-                                            <div class="crm_mess_img_cont_wrapper">
-                                                <h4>Until I Met You <span>01:30PM</span></h4>
-                                                <p>diu pokal</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="crm_mess_main_box_wrapper">
-                                            <div class="crm_mess_img_wrapper">
-                                                <img src="/frontend/images/nt3.jpg" alt="img">
-                                            </div>
-                                            <div class="crm_mess_img_cont_wrapper">
-                                                <h4>merry with you<span>01:30PM</span></h4>
-                                                <p>love song</p>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="crm_mess_all_main_box_wrapper">
-                                            <p><a href="#">See All</a>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="m24_navi_langauage_box">      
-                <div class="theme-switch-wrapper">
-                       <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />							
-                        <span class="slider round"></span>
-                      </label>						
-                  </div>  
-                    <div class="lang_list_wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
-                        <a href="#" data-toggle="modal" data-target="#myModal">languages <i class="fas fa-language"></i></a>
-                    </div>   					  
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- navi wrapper End -->
 <!-- slider wrapper start -->
 <div class="main_slider_wrapper slider-area">
     <div class="slider_side_width"></div>
@@ -228,7 +20,8 @@
                                     <h1 data-animation="animated fadeInUp">sound,</h1>
 
                                     <h2 data-animation="animated fadeInUp">your world</h2>
-                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say “Olivia”
+                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say
+                                        “Olivia”
                                         <br> to interact with Olivia. </p>
                                     <div class="slider_btn m24_cover">
                                         <div class="lang_apply_btn">
@@ -263,7 +56,8 @@
                                     <h1 data-animation="animated fadeInUp">sound,</h1>
 
                                     <h2 data-animation="animated fadeInUp">your world</h2>
-                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say “Olivia”
+                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say
+                                        “Olivia”
                                         <br> to interact with Olivia. </p>
                                     <div class="slider_btn m24_cover">
                                         <div class="lang_apply_btn">
@@ -299,7 +93,8 @@
                                     <h1 data-animation="animated fadeInUp">sound,</h1>
 
                                     <h2 data-animation="animated fadeInUp">your world</h2>
-                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say “Olivia”
+                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say
+                                        “Olivia”
                                         <br> to interact with Olivia. </p>
                                     <div class="slider_btn m24_cover">
                                         <div class="lang_apply_btn">
@@ -325,7 +120,8 @@
                 </div>
             </div>
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span class="number"></span>
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span
+                        class="number"></span>
                 </li>
                 <li data-target="#carousel-example-generic" data-slide-to="1" class=""><span class="number"></span>
                 </li>
@@ -333,9 +129,11 @@
                 </li>
             </ol>
             <div class="carousel-nevigation">
-                <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev"> <span> prev</span> <i class="flaticon-arrow-1"></i>
+                <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev"> <span> prev</span> <i
+                        class="flaticon-arrow-1"></i>
                 </a>
-                <a class="next" href="#carousel-example-generic" role="button" data-slide="next"> <span> next</span> <i class="flaticon-arrow"></i>
+                <a class="next" href="#carousel-example-generic" role="button" data-slide="next"> <span> next</span> <i
+                        class="flaticon-arrow"></i>
                 </a>
             </div>
         </div>
@@ -365,11 +163,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a href="#">
@@ -389,11 +193,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a href="#">
@@ -413,11 +223,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a href="#">
@@ -437,11 +253,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a href="#">
@@ -461,11 +283,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a href="#">
@@ -485,11 +313,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a href="#">
@@ -556,11 +390,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -583,11 +424,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -610,11 +458,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -637,11 +492,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -664,11 +526,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -691,11 +560,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -718,11 +594,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -745,11 +628,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -777,11 +667,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -804,11 +701,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -831,11 +735,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -858,11 +769,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -886,11 +804,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -913,11 +838,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -940,11 +872,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -968,11 +907,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1000,11 +946,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1027,11 +980,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1054,11 +1014,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1081,11 +1048,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1109,11 +1083,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1136,11 +1117,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1163,11 +1151,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1191,11 +1186,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1223,11 +1225,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1250,11 +1259,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1278,11 +1294,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1305,11 +1328,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1332,11 +1362,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1360,11 +1397,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1388,11 +1432,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1416,11 +1467,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1447,11 +1505,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1474,11 +1539,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1501,11 +1573,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1529,11 +1608,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1556,11 +1642,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1583,11 +1676,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1611,11 +1711,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1639,11 +1746,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1670,11 +1784,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1697,11 +1818,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1725,11 +1853,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1752,11 +1887,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1779,11 +1921,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1807,11 +1956,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1835,11 +1991,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1863,11 +2026,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                         <div class="tranding_play_icon">
                                             <a href="#">
@@ -1886,20 +2056,6 @@
     </div>
 </div>
 
-<!-- release album wrapper end -->
-<!-- addvertisment wrapper start -->
-{{-- <div class="add_banner_wrapper m24_cover">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="add_banner_img_wrapper m24_cover">
-                    <a href="#"><img src="/frontend/images/add2.png" class="img-responsive" alt="img"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-<!-- addvertisment wrapper end -->
 <!-- top songs wrapper start -->
 <div class="top_songs_wrapper m24_cover">
     <div class="container">
@@ -1946,11 +2102,16 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add
+                                            To playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-star"></i></span>favourite</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>share</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1972,7 +2133,7 @@
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
                                     <p><a href="#">
-                            Until I Met You</a></p>
+                                            Until I Met You</a></p>
                                     <p class="various_artist_text"><a href="#">Henry Moore</a></p>
                                 </div>
 
@@ -1990,11 +2151,16 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add
+                                            To playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-star"></i></span>favourite</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>share</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2033,11 +2199,16 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add
+                                            To playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-star"></i></span>favourite</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>share</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2076,11 +2247,16 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add
+                                            To playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-star"></i></span>favourite</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>share</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2119,11 +2295,16 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add
+                                            To playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-star"></i></span>favourite</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>share</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2162,11 +2343,16 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add
+                                            To playlist</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-star"></i></span>favourite</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>share</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
+                                    <li><a href="#"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>delete</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2201,11 +2387,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2229,11 +2422,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2257,11 +2457,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2287,11 +2494,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2315,11 +2529,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2343,11 +2564,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2373,11 +2601,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2401,11 +2636,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2429,11 +2671,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2459,11 +2708,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2487,11 +2743,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2515,11 +2778,18 @@
                                             <i class="flaticon-menu"></i>
                                         </div>
                                         <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
+                                            </li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-star"></i></span>favourite</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-share"></i></span>share</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="#"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>delete</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2672,7 +2942,8 @@
 
     </div>
     <div class="concert_video_wrapper">
-        <a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="fa fa-play"></i></a>
+        <a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0'
+            title='title'><i class="fa fa-play"></i></a>
         <div class="concert_content_wrap">
             <h1>Live Concert in </h1>
             <p>Avril Lavigne at California, 6:22pm</p>
@@ -2705,11 +2976,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2734,11 +3011,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2763,11 +3046,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2792,11 +3081,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2821,11 +3116,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2850,11 +3151,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2901,11 +3208,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2930,11 +3243,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2959,11 +3278,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -2988,11 +3313,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3017,11 +3348,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3046,11 +3383,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3096,11 +3439,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3125,11 +3474,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3154,11 +3509,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3183,11 +3544,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3212,11 +3579,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">
@@ -3241,11 +3614,17 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i class="flaticon-trash"></i></span>delete</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-star"></i></span>favourite</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>share</a></li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="#"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>delete</a></li>
                                     </ul>
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="#">

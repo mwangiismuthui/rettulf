@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 class RoleTableSeeder extends Seeder
 {
     /**
@@ -20,7 +21,7 @@ class RoleTableSeeder extends Seeder
 
 
         foreach ($roles as $role) {
-             Role::create(['name' => $role]);
+             Role::create(['name' => $role,'id'=>Str::uuid()->toString()]);
         }
     }
 }

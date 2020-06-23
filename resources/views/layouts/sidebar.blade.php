@@ -74,7 +74,7 @@
             <div class="lang_apply_btn">
             <ul>
                 <li>
-                  <a href="#"> <i class="flaticon-play-button"></i>create</a>
+                  <a href="{{route('file.upload')}}"> <i class="flaticon-play-button"></i>Upload</a>
                 </li>
            </ul>
       </div>

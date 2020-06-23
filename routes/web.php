@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'FrontendController@index')->name('index');
 Auth::routes();
 
+// ..................music..............................//
+Route::get('/file/index', 'MusicController@index')->name('file.index');
+Route::get('/file-upload', 'MusicController@create')->name('file.upload');
+Route::post('/file-upload/store', 'MusicController@store')->name('file.store');
+Route::get('/file/edit/{id}', 'MusicController@edit')->name('file.edit');
+Route::post('/file/update/{id}', 'MusicController@update')->name('file.update');
+Route::delete('/file/destroy/', 'MusicController@destroy')->name('file.destroy');
+
+
 // ..................Category..............................//
 Route::get('/category/index', 'CategoryController@index')->name('category.index');
 Route::post('/category/store', 'CategoryController@store')->name('category.store');

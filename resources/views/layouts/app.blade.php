@@ -1,17 +1,7 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Tunein
-Version: 1.0.0
-Author:Webstrot 
 
--->
-<!--[if !IE]><!-->
 <html lang="zxx">
-<!--[endif]-->
-
-
-<!-- Mirrored from webstrot.com/html/tunein/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Jun 2020 12:30:04 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8" />
     <title>Music Platform </title>
@@ -20,6 +10,9 @@ Author:Webstrot
     <meta name="keywords" content="Tunein,music,song" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />
+     <!--favicon-->
+     <link rel="shortcut icon" type="/frontend/image/png" href="/frontend/images/favicon.png" />
+
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="/frontend/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/css/bootstrap.min.css" />
@@ -34,9 +27,16 @@ Author:Webstrot
     <link rel="stylesheet" type="text/css" href="/frontend/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/css/dark_theme.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/css/responsive.css" />
-    <!--favicon-->
-    <link rel="shortcut icon" type="/frontend/image/png" href="/frontend/images/favicon.png" />
-<script src='/frontend/js/google_analytics_auto.js'></script></head>
+
+    <link rel="stylesheet" type="text/css" href="/frontend/plugin/select2/select2.min.css" />
+   
+    <script src="/frontend/js/jquery-3.3.1.min.js"></script>
+    <script src="/frontend/js/ajax.js"></script>
+    <script src="/frontend/js/popper.min.js"></script>
+    <script src="/frontend/js/bootstrap.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+    <script src="/frontend/plugin/select2/select2.min.js"></script>
+</head>
 <body>
 <!-- preloader Start -->
 <div id="preloader">
@@ -47,577 +47,12 @@ Author:Webstrot
 <div class="cursor"></div>
 <!-- top navi wrapper Start -->
 <div class="m24_main_wrapper">
+  @include('layouts.header')
   @include('layouts.sidebar')
     <!-- top navi wrapper end -->
   @yield('content')
-    <!-- treanding song wrapper end -->
-    <!-- download wrapper start -->
-    {{-- <div class="download_wrapper m24_cover">
-        <div class="concert_overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                    <div class="download_app_store m24_cover">
-                        <h1>DOWNLOAD THIS APP</h1>
-
-                        <p>There are many variations of passages of Lorem Ipsum available, but passages of Lorem this is wow.</p>
-                        <div class="app_btn m24_cover">
-                            <a href="#">get the app now</a>
-
-                        </div>
-                        <ul class="download_app_logo">
-                            <li><a href="#"><i class="flaticon-android-logo"></i></a></li>
-                            <li><a href="#"><i class="flaticon-apple"></i></a></li>
-                            <li><a href="#"><i class="flaticon-windows"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                    <div class="download_mockup_design m24_cover">
-
-                        <img src="/frontend/images/mockup.png" class="img-responsive" alt="img">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> --}}
-    <!-- download wrapper end -->
-    <!-- pricing plan wrapper start-->
-    {{-- <div class="pricing_plan_wrapper m24_cover">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                    <div class="pricing_box_wrapper m24_cover">
-                        <h1>basic plan</h1>
-                        <div class="main_pdet m24_cover">
-
-                            <h2><span class="dollarr"> $ </span> 29 </h2> <span class="monthly"> / per month</span>
-                        </div>
-                        <ul class="pricing_list22">
-                            <li>10 Punjabi song
-
-                            </li>
-                            <li>50 Old song
-
-                            </li>
-                            <li>
-                                40 Trending Song
-
-                            </li>
-                            <li>10 Days Duration
-                            </li>
-
-                        </ul>
-                        <a href="#" class="price_btn">select plan</a>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                    <div class="pricing_box_wrapper m24_cover">
-                        <h1>premium plan</h1>
-                        <div class="main_pdet m24_cover">
-
-                            <h2><span class="dollarr"> $ </span> 49 </h2><span class="monthly"> / per month</span>
-                        </div>
-                        <ul class="pricing_list22">
-                            <li>150 Punjabi song
-
-                            </li>
-                            <li>100 Old song
-
-                            </li>
-                            <li>
-                                100 Trending Song
-
-                            </li>
-                            <li>60 Days Duration
-                            </li>
-
-                        </ul>
-                        <a href="#" class="price_btn">select plan</a>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                    <div class="pricing_box_wrapper m24_cover">
-                        <h1>advanced plan</h1>
-                        <div class="main_pdet m24_cover">
-
-                            <h2><span class="dollarr"> $ </span> 69 </h2> <span class="monthly"> / per month</span>
-                        </div>
-                        <ul class="pricing_list22">
-                            <li>250 Punjabi song
-
-                            </li>
-                            <li>250 Old song
-
-                            </li>
-                            <li>
-                                250 Trending Song
-
-                            </li>
-                            <li>6 months Duration
-                            </li>
-
-                        </ul>
-                        <a href="#" class="price_btn">select plan</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- pricing plan wrapper end-->
-
-    <!-- addvertisment wrapper start -->
-    {{-- <div class="add_banner_wrapper m24_cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="add_banner_img_wrapper m24_cover">
-                        <a href="#"><img src="/frontend/images/add7.png" class="img-responsive" alt="img"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- addvertisment wrapper end -->
-    <!-- blog wrapper start -->
-    {{-- <div class="blog_wrapper m24_cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="m24_heading_wrapper">
-                        <h1>latest from blog
-                        </h1>
-                    </div>
-                    <div class="relaese_viewall_wrapper">
-                        <a href="#"> view all <i class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="featured_artist_list blog_img_content m24_cover">
-                        <img src="/frontend/images/blog1.png" class="img-responsive" alt="img">
-                        <div class="featured_artist_detail blog_content_box">
-                            <span> <i class="flaticon-calendar"></i>3 May, 2019</span>
-                            <p><a href="#">Celebrating Winter Holidays
-                             </a></p>
-                            <p>Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do this dolor sit..</p>
-
-                            <a href="#"> read more</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="featured_artist_list blog_img_content m24_cover">
-                        <img src="/frontend/images/blog2.png" class="img-responsive" alt="img">
-                        <div class="featured_artist_detail blog_content_box">
-                            <span> <i class="flaticon-calendar"></i>3 May, 2019</span>
-                            <p><a href="#">
-                            Dance with DJ Nowan
-                            </a></p>
-                            <p>Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do this dolor sit..</p>
-
-                            <a href="#"> read more</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="featured_artist_list blog_img_content m24_cover">
-                        <img src="/frontend/images/blog3.png" class="img-responsive" alt="img">
-                        <div class="featured_artist_detail blog_content_box">
-                            <span> <i class="flaticon-calendar"></i>3 May, 2019</span>
-                            <p><a href="#">Celebrating Winter Holidays
-                            </a></p>
-                            <p>Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do this dolor sit..</p>
-
-                            <a href="#"> read more</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="featured_artist_list blog_img_content m24_cover">
-                        <img src="/frontend/images/blog4.png" class="img-responsive" alt="img">
-                        <div class="featured_artist_detail blog_content_box">
-                            <span> <i class="flaticon-calendar"></i>3 May, 2019</span>
-                            <p><a href="#">electus dolorum facere illo 
-                            </a></p>
-                            <p>Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do this dolor sit..</p>
-
-                            <a href="#"> read more</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- blog wrapper end -->
-    {{-- <div class="add_banner_wrapper m24_cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="add_banner_img_wrapper m24_cover">
-                        <a href="#"><img src="/frontend/images/add1.png" class="img-responsive" alt="img"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- partners slider  wrapper Start-->
-    {{-- <div class="partners_Section m24_cover">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="partner_slider_wraper">
-                        <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="lr_prt_img_wrapper">
-                                    <img src="/frontend/images/prt1.png" alt="partner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="lr_prt_img_wrapper">
-                                    <img src="/frontend/images/prt2.png" alt="partner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="lr_prt_img_wrapper">
-                                    <img src="/frontend/images/prt3.png" alt="partner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="lr_prt_img_wrapper">
-                                    <img src="/frontend/images/prt4.png" alt="partner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="lr_prt_img_wrapper">
-                                    <img src="/frontend/images/prt2.png" alt="partner_img">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="lr_prt_img_wrapper">
-                                    <img src="/frontend/images/prt1.png" alt="partner_img">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- partners slider  wrapper end-->
-    <!-- quick link wrapper start-->
-    {{-- <div class="quick_link_wrapper m24_cover">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div id="accordion" role="tablist">
-
-                        <div class="card">
-
-                            <!-- Card Title -->
-                            <div class="card_pagee" role="tab" id="headingOne">
-                                <h5 class="h5-md">
-								       		<a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
-								         		  QUICK LINKS <span>Help us make a difference. </span>
-								        	</a>
-								    	 </h5>
-                            </div>
-
-                            <!-- Card Content -->
-                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>albums</h1>
-                                                <ul>
-                                                    <li><a href="#">Hindi Songs</a></li>
-                                                    <li><a href="#">
-                                                    English Songs
-                                                    </a></li>
-                                                    <li><a href="#">Tamil Songs
-                                                        </a></li>
-                                                    <li><a href="#">Telugu Songs
-                                                    </a></li>
-                                                    <li><a href="#">Punjabi Songs</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>old songs</h1>
-                                                <ul>
-                                                    <li><a href="#">Old English Songs
-
-                                                    </a></li>
-                                                    <li><a href="#">
-                                            Old Rajasthani Songs
-
-                                                    </a></li>
-                                                    <li><a href="#">Old Kannada Songs
-
-                                                            </a></li>
-                                                    <li><a href="#">Old Hindi Songs
-
-                                                        </a></li>
-                                                    <li><a href="#">Old Haryanvi Songs</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>new release</h1>
-                                                <ul>
-                                                    <li><a href="#">Punjabi Songs 
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Hindi Songs 
-
-                                                        </a></li>
-                                                    <li><a href="#">English Songs
-
-                                                    </a></li>
-                                                    <li><a href="#">Telugu Songs
-
-                                                        </a></li>
-                                                    <li><a href="#">Kannada Songs</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>trending songs</h1>
-                                                <ul>
-                                                    <li><a href="#">Vaaste
-
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Despacito
-
-                                                            </a></li>
-                                                    <li><a href="#">First Class
-
-                                                            </a></li>
-                                                    <li><a href="#">my love song
-
-                                                    </a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>trending albums</h1>
-                                                <ul>
-                                                    <li><a href="#">Happy Birthday
-
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Sad Songs
-
-                                                                </a></li>
-                                                    <li><a href="#">Taki Taki
-
-                                                        </a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>lyrics</h1>
-                                                <ul>
-                                                    <li><a href="#">Duniyaa
-
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                        Leja Re
-
-                                                            </a></li>
-                                                    <li><a href="#">Nazm Nazm
-
-                                                                    </a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>radio</h1>
-                                                <ul>
-                                                    <li><a href="#">Hindi Radio </a>
-
-                                                    </li>
-                                                    <li><a href="#">
-                                            English Radio
-
-                                                        </a></li>
-                                                    <li><a href="#">Tamil Radio
-
-                                                        </a></li>
-                                                    <li><a href="#">Punjabi Radio
-
-                                                                </a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                                            <div class="quick_list_songs m24_cover">
-                                                <h1>artists</h1>
-                                                <ul>
-                                                    <li><a href="#">Arijit Singh
-                                                    </a></li>
-                                                    <li><a href="#">
-                                                            Neha Kakkar
-
-                                                        </a></li>
-                                                    <li><a href="#">Justin Bieber
-
-                                                    </a></li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="more_playlist_wrapper m24_cover">
-                                                <h1>Do you have what it takes? Show us your skills at <a href="#">Tunein@example.com</a> </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- quick link wrapper end-->
-    <!-- footer Wrapper start -->
-
-   {{-- @include('layouts.footer') --}}
-
-    <!--footer wrapper end-->
-    <!-- language modal section -->
-</div>
-{{-- <div class="modal fade lang_m24_banner" id="myModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                    <div class="m24_language_box m24_cover">
-                        <h1>Language Selection</h1>
-                        <p>Please select the language(s) of the music you listen to.</p>
-                    </div>
-                    <div class="lang_list_checkbox">
-                        <ul>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c1" name="cb">
-                                    <label for="c1">हिंदी <span>Hindi</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c2" name="cb">
-                                    <label for="c2">English <span>English</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c3" name="cb">
-                                    <label for="c3">पंजाबी <span>Punjabi</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c4" name="cb">
-                                    <label for="c4">தமிழ் <span>tamil</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c5" name="cb">
-                                    <label for="c5">राजस्थानी <span>Rajasthani</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c6" name="cb">
-                                    <label for="c6">हरयाणवी <span>Haryanvi</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c7" name="cb">
-                                    <label for="c7">ગુજરાતી <span>Gujarati</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c8" name="cb">
-                                    <label for="c8">भोजपुरी <span>Bhojpuri</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c9" name="cb">
-                                    <label for="c9">മലയാളം <span>Malayalam</span>
-                                    </label>
-                                </p>
-                            </li>
-                            <li>
-                                <p class="music_field_box">
-                                    <input type="checkbox" id="c10" name="cb">
-                                    <label for="c10">मराठी <span>marathi</span>
-                                    </label>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="lang_apply_btn_wrapper m24_cover">
-                        <div class="lang_apply_btn">
-
-                            <a href="#">apply</a>
-
-                        </div>
-                        <div class="cancel_wrapper">
-                            <a href="#" class="" data-dismiss="modal">cancel</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-<!-- login register  modal section -->
-{{-- @include('layouts.login')
-@include('layouts.register') --}}
-
-<!-- login register  modal end -->
+   
+  @include('layouts.footer')
 <!-- playllist wrapper start -->
     <div class="adonis-player-wrap">
         <div id="adonis_jp_container" class="master-container-holder" role="application" aria-label="media player">
@@ -762,8 +197,8 @@ Author:Webstrot
     </div>
 <!-- playlist wrapper end -->
 <!--custom js files-->
-<script src="/frontend/js/jquery-3.3.1.min.js"></script>
-<script src="/frontend/js/bootstrap.min.js"></script>
+
+
 <script src="/frontend/js/modernizr.js"></script>
 <script src="/frontend/js/plugin.js"></script>
 <script src="/frontend/js/jquery.nice-select.min.js"></script>
@@ -778,6 +213,16 @@ Author:Webstrot
 <script src="/frontend/js/custom.js"></script>
 <!-- custom js-->
 
+<!--Data Tables js-->
+    <script src="/frontend/plugin/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/jszip.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/pdfmake.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/vfs_fonts.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.html5.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.print.min.js"></script>
+    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.colVis.min.js"></script>
 </body>
 
 </html>
