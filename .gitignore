@@ -1,6 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+/public/uploadedFiles
+/public/Genre_Images
+/public/ProfilePics
+/public/uploadedCoverArts
 /storage/*.key
 /vendor
 .env
