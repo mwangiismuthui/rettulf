@@ -120,7 +120,7 @@
                                 <div class=" comments_form">
                                     <select name="location_id" class="form-control">
                                         <option value="">Select Location</option>
-                                        @foreach ($locations ?? '' as $location)
+                                        @foreach ($locations as $location)
                                     <option value="{{$location->id}}">{{$location->location}}</option>
                                         @endforeach
                                     </select>

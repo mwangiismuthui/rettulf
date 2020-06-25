@@ -70,8 +70,8 @@ class MusicController extends Controller
             'tempo.required' => 'The Tempo of beat is required.',
             'cover_art.required' => 'The Cover art is required.',
             'music.required' => 'The music file is required.',
-            'description.required' => 'The Vehicle Description is required.',
-            'price.required' => 'The Vehicle Price is required.',
+            'description.required' => 'The music Description is required.',
+            'price.required' => 'The music Price is required.',
         ];
 
         $error = Validator::make($request->all(), $rules, $messages);
