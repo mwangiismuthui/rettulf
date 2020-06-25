@@ -51,12 +51,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="genre_add" method="POST">
+                <form id="genre_add" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="title">Genre Name</label>
                         <input type="text" class="form-control form-control-rounded" id="title"
                             placeholder="Enter Genre Name" name="genre">
+                        <label for="image">Genre Image</label>
+                        <input type="file" class="form-control form-control-rounded" id="image"
+                            placeholder="Enter Genre Name" name="genre_image">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary shadow-primary btn-round px-5"><i

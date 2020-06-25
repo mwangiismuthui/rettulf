@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
-                <a href="index.html">
+            <a href="{{route('home')}}">
                     <img src="/frontend/images/logo.png" alt="logo">
                 </a>
             </div>
@@ -13,12 +13,21 @@
 
         <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
             <div class="m24_signin_wrapper">
-                <a href="#" data-toggle="modal" data-target="#login_modal"><img src="/frontend/images/pf.png" alt="img">
-                    <div class="login_top_wrapper">
-                        <p>login/register</p>
 
-                    </div>
-                </a>
+                
+                @if (Auth::check())
+<a href="{{route('login')}}" >
+    
+    <p>{{Auth::user()->name}}</p>
+
+</a>
+@else
+<a href="{{route('login')}}" >
+        <p>login/register</p>
+
+</a> 
+@endif
+              
             </div>
 
         </div>
@@ -31,38 +40,30 @@
                                 class="flaticon-down-arrow"></i></a>
                         <ul class="navi_2_dropdown">
                             <li class="parent">
-                                <a href="add_playlist.html"><i class="fas fa-caret-right"></i>featured playlist</a>
+                                <a href="add_playlist.html"><i class="fas fa-caret-right"></i>New Music</a>
                             </li>
                             <li class="parent">
-                                <a href="artist.html"><i class="fas fa-caret-right"></i>top artists</a>
+                                <a href="artist.html"><i class="fas fa-caret-right"></i>Trending Music</a>
                             </li>
                             <li class="parent">
-                                <a href="genres.html"><i class="fas fa-caret-right"></i>new genres</a>
+                                <a href="genres.html"><i class="fas fa-caret-right"></i>Top Artist</a>
                             </li>
                             <li class="parent">
-                                <a href="album.html"><i class="fas fa-caret-right"></i>all albums</a>
+                                <a href="album.html"><i class="fas fa-caret-right"></i>Top Producers</a>
                             </li>
-                            <li class="parent">
-                                <a href="album_list.html"><i class="fas fa-caret-right"></i>weekly tops</a>
-                            </li>
+                     
                         </ul>
                     </li>
-                    <li><a href="stations.html" class="gc_main_navigation">radio</a></li>
                     <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">more <i
                                 class="flaticon-down-arrow"></i></a>
                         <ul class="navi_2_dropdown">
                             <li class="parent">
-                                <a href="contact_us.html"><i class="fas fa-caret-right"></i>contact</a>
+                                <a href="{{route('contact')}}"><i class="fas fa-caret-right"></i>contact</a>
                             </li>
                             <li class="parent">
-                                <a href="pricing_plan.html"><i class="fas fa-caret-right"></i> pricing plan </a>
+                                <a href="{{route('pricing')}}"><i class="fas fa-caret-right"></i> pricing plan </a>
                             </li>
-                            <li class="parent">
-                                <a href="error_page.html"><i class="fas fa-caret-right"></i> error page </a>
-                            </li>
-                            <li class="parent">
-                                <a href="favourite.html"><i class="fas fa-caret-right"></i> favourite song </a>
-                            </li>
+                          
                         </ul>
                     </li>
 
@@ -82,14 +83,22 @@
                     <div id="search_open" class="res_search_box">
 
                         <div class="m24_signin_wrapper responsive_search_toggle">
+@if (Auth::check())
+<a href="{{route('login')}}" >
+    <div class="login_top_wrapper">
+    <p>{{Auth::user()->name}}</p>
 
-                            <a href="#" data-toggle="modal" data-target="#login_modal"><img
-                                    src="/frontend/images/pf.png" alt="img">
-                                <div class="login_top_wrapper">
-                                    <p>login/register</p>
+    </div>
+</a>
+@else
+<a href="{{route('login')}}" >
+    <div class="login_top_wrapper">
+        <p>login/register</p>
 
-                                </div>
-                            </a>
+    </div>
+</a> 
+@endif
+                       
                         </div>
                     </div>
                 </div>

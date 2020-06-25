@@ -12,6 +12,9 @@
         <label for="title">genre Name</label>
         <input type="text" class="form-control form-control-rounded" id="title"
     placeholder="Enter genre Name" name="genre" value="{{$genre->genre}}">
+    <label for="image">Genre Image</label>
+    <input type="file" class="form-control form-control-rounded" id="image"
+        placeholder="Enter Genre Name" name="genre_image">
     </div>
 
 
@@ -20,12 +23,26 @@
                 class="icon-checkbox3"></i> Save</button>
     </div>
 </form>
-@endforeach
 
     </div>
+    <div class="col-md-6">
+        <p>Current Image</p>
+      
+        <div class="list_image_gallery">
+            <div class="icon-remove blue delete" id="imgwrapper{{$genre->id}}">
+                <img class="thumbnail"
+                    src="{{url('/Genre_Images').'/'.$genre->genre_image }}"
+                    alt="image" height="100" width="100" />
+              
+            </div>
+        </div>
+
+</div>
 
 </div>
 </div>
+@endforeach
+
 <script>
 
 function deletepic(photo_id) {

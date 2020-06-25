@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\UsesUUID;
 use App\Music;
+use App\Location;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -46,5 +47,9 @@ use HasRoles;
     public function music()
     {
         return $this->hasMany(Music::class);
+    }
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 }

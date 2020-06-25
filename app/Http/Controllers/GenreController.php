@@ -54,8 +54,15 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         if($request->ajax()){
+            if($request->hasFile('genre_image')){
+                $fileDestination = 'Genre_Images';
+                $genrefile = $request->file('genre_image');
+                $filename = $this->generateUniqueFileName($genrefile, $fileDestination);
+                
+            }
             $genre = new Genre();
-            $genre->Genre = $request->genre;
+            $genre->genre = $request->genre;
+            $genre->genre_image = $filename;
             if ($genre->save()) {
                 return response([
                     'success'=>True,
@@ -105,9 +112,16 @@ class GenreController extends Controller
      */
     public function update(Request $request,$id)
     {
+        if($request->hasFile('genre_image')){
+            $fileDestination = 'Genre_Images';
+            $genrefile = $request->file('genre_image');
+            $filename = $this->generateUniqueFileName($genrefile, $fileDestination);
+            
+        }
         Genre::where('id',$id)
                     ->update([
-                        'genre'=> $request->genre
+                        'genre'=> $request->genre,
+                        'genre_image'=> $filename
                     ]);
 
                     return redirect()->route('genre.index');
@@ -138,6 +152,17 @@ class GenreController extends Controller
         }
         }
     
+    }
+    public function generateUniqueFileName($genrefile, $destinationPath)
+    {
+        $initial = "Genre";
+        $name = $initial . str_random() . time() . '.' . $genrefile->getClientOriginalExtension();
+        if ($genrefile->move(public_path() . $destinationPath, $name)) {
+            return $name;
+            
+        } else {
+            return null;
+        }
     }
 
 }

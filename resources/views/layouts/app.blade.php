@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <title>Music Platform </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Tunein,music,song" />
-    <meta name="keywords" content="Tunein,music,song" />
+    <meta name="description" content="Music,music,song" />
+    <meta name="keywords" content="Music,music,song" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />
      <!--favicon-->

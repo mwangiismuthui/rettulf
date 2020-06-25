@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::get('/', 'FrontendController@index')->name('index');
 Auth::routes();
+// ........................Frontend....................//
+Route::get('/', 'FrontendController@index')->name('index');
+Route::get('/single/genre/{id}', 'FrontendController@singleGenre')->name('singleGenre');
+Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('singleArtist');
+Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
+Route::get('/contact-us', 'FrontendController@contact')->name('contact');
+Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
 
 // ..................music..............................//
 Route::get('/file/index', 'MusicController@index')->name('file.index');

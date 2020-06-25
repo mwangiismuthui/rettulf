@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- 
-Template Name: Tunein
+Template Name: Music
 Version: 1.0.0
 Author:Webstrot 
 
@@ -10,14 +10,14 @@ Author:Webstrot
 <!--[endif]-->
 
 
-<!-- Mirrored from webstrot.com/html/tunein/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Jun 2020 12:30:04 GMT -->
+<!-- Mirrored from webstrot.com/html/Music/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Jun 2020 12:30:04 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8" />
     <title>Music Platform </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Tunein,music,song" />
-    <meta name="keywords" content="Tunein,music,song" />
+    <meta name="description" content="Music,music,song" />
+    <meta name="keywords" content="Music,music,song" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />
     <!--Template style -->
@@ -491,7 +491,7 @@ Author:Webstrot
                                         </div>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="more_playlist_wrapper m24_cover">
-                                                <h1>Do you have what it takes? Show us your skills at <a href="#">Tunein@example.com</a> </h1>
+                                                <h1>Do you have what it takes? Show us your skills at <a href="#">Music@example.com</a> </h1>
                                             </div>
                                         </div>
                                     </div>

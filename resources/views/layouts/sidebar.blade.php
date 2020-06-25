@@ -3,73 +3,30 @@
     <div id='cssmenu'>
         <a href="index.html"><img src="/frontend/images/logo.png" alt="logo"></a>
         <ul class="sidebb">
-            <li class='has-sub'><a href='#'><i class="flaticon-home"></i>index</a>
-                <ul>
-                    <li>
-                        <a href="index.html"> <i class="flaticon-home"></i>index I</a>
-                    </li>
-                    <li><a href="index2.html"><i class="flaticon-home"></i>index II</a></li>
-                    <li><a href="index3.html"><i class="flaticon-home"></i>index III</a></li>
-                    <li><a href="index4.html"><i class="flaticon-home"></i>index IV</a></li>
-
-                </ul>
+        <li><a href='{{route('index')}}'><i class="flaticon-home"></i>Home</a>
+              
             </li>
-            <li class='has-sub'><a href='#'><i class="flaticon-album"></i>albums</a>
-                <ul>
-                    <li>
-                        <a href="album.html"> <i class="flaticon-vinyl"></i>album</a>
-                    </li>
-                    <li><a href="album_list.html"><i class="flaticon-playlist-1"></i>album list</a></li>
-                    <li><a href="artist.html"><i class="flaticon-headphones"></i>artist</a></li>
-                    <li><a href="artist_single.html"><i class="flaticon-speaker"></i>artist single</a></li>
-                   
-                </ul>
-            </li>               
+                  
             <li class='has-sub'><a href='#'><i class="flaticon-playlist-3"></i>browse music</a>
                 <ul>
-                    <li><a href="add_playlist.html"><i class="flaticon-music"></i>add playlist</a></li>
                     <li><a href="free_music.html"><i class="flaticon-music-1"></i>free music</a></li>
                     <li><a href="genres.html"><i class="flaticon-files-and-folders"></i>genres</a></li>
-                    <li><a href="genres_single.html"><i class="flaticon-smartphone"></i>genres single</a></li>
-                    <li><a href="stations.html"><i class="flaticon-radio"></i>stations</a></li>
                 </ul>
             </li>
-             <li class='has-sub'><a href='#'><i class="flaticon-clock"></i>music events</a>
-                <ul>
-                    <li><a href="events.html"><i class="flaticon-calendar"></i>events</a></li>
-                    <li><a href="event_single.html"><i class="flaticon-files-and-folders"></i>event single</a></li> 
-                </ul>
-            </li>
+        
              <li class='has-sub'><a href='#'><i class="flaticon-playlist-1"></i>your music</a>
                 <ul>
-                    <li><a href="download.html"><i class="flaticon-download"></i>download</a></li>
-                    <li><a href="favourite.html"><i class="flaticon-heart"></i>favourite</a></li>
-                    <li><a href="history.html"><i class="flaticon-clock"></i>history</a></li> 						
-                    <li><a href="free_music.html"><i class="flaticon-music-1"></i>free_music</a></li> 						
+                    <li><a href="{{route('myMusic')}}"><i class="flaticon-upload"></i>Uploaded</a></li>
+                    <li><a href="download.html"><i class="flaticon-download"></i>downloaded</a></li>
+                    {{-- <li><a href="favourite.html"><i class="flaticon-heart"></i>favourite</a></li> --}}
+                    {{-- <li><a href="history.html"><i class="flaticon-clock"></i>history</a></li> 						
+                    <li><a href="free_music.html"><i class="flaticon-music-1"></i>free_music</a></li> 						 --}}
                 </ul>
             </li>
-            <li class='has-sub'><a href='#'><i class="flaticon-shopping-bag"></i> shop</a>
-                <ul>
-                    <li><a href="shop_sidebar.html"><i class="flaticon-smartphone"></i>shop sidebar</a></li>
-                    <li>
-                        <a href="shop_single.html"> <i class="flaticon-info"></i>shop single</a>
-                    </li>                    
-                </ul>
-            </li>
-             <li class='has-sub'><a href='#'><i class="flaticon-playlist"></i> music blog</a>
-                <ul>
-                    <li><a href="blog_categories.html"><i class="flaticon-vinyl"></i>blog category I</a></li>
-                    <li>
-                        <a href="blog_category2.html"> <i class="flaticon-album"></i>blog category II</a>
-                    </li>
-                    <li>
-                        <a href="blog_single.html"> <i class="flaticon-globe"></i>blog single</a>
-                    </li> 						
-                </ul>
-            </li>
-            <li><a href='contact_us.html'><i class="flaticon-internet"></i>contact us</a></li>
-            <li><a href='pricing_plan.html'><i class="flaticon-bell"></i>pricing plan</a></li>
-            <li><a href='error_page.html'><i class="flaticon-trash"></i>error 404</a></li>
+           
+         
+            <li><a href='{{route('contact')}}'><i class="flaticon-internet"></i>contact us</a></li>
+            <li><a href='{{route('pricing')}}'><i class="flaticon-bell"></i>pricing plan</a></li>
         </ul>
             <div class="lang_apply_btn">
             <ul>

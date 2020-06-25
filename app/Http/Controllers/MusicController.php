@@ -38,8 +38,8 @@ class MusicController extends Controller
     {
         $genres = Genre::all();
         $keys = Key::all();
-        $categories= Category::all();
-        return view('frontend.upload',compact('genres','keys','categories'));
+        $categories = Category::all();
+        return view('frontend.upload', compact('genres', 'keys', 'categories'));
     }
 
     /**
@@ -81,34 +81,40 @@ class MusicController extends Controller
                 'errors' =>  $error->errors()->all(),
             ], Response::HTTP_OK);
         }
-
+        $user = Auth::user();
+        if ($user->hasRole('Producer')) {
+            $type = "beats";
+        } elseif ($user->hasRole('Artist')) {
+            $type = "music";
+        }else {
+            $type = '';
+        }
         $music = new Music();
+        $music->user_id = Auth::user()->id;
         // $music->user_id =Auth::user()->id;
-        $music->user_id ="13f21bb7-f46b-472e-ab03-af1cbfef0e28";
-        $music->genre_id =$request->genre_id;
-        $music->key_id =$request->key_id;
-        $music->title =$request->title;
-        $music->type ='music';
-        $music->tempo_of_beat =$request->tempo;
-        $music->description =$request->description;        
-        $music->price =$request->price;        
-        
+        $music->genre_id = $request->genre_id;
+        $music->key_id = $request->key_id;
+        $music->title = $request->title;
+        $music->type = $type;
+        $music->tempo_of_beat = $request->tempo;
+        $music->description = $request->description;
+        $music->price = $request->price;
 
-        if($request->hasFile('music')){
+
+        if ($request->hasFile('music')) {
             $fileDestination = 'uploadedFiles';
             $musicfiile = $request->file('music');
             $filename = $this->generateUniqueFileName($musicfiile, $fileDestination);
-            $music->music =$filename;
+            $music->music = $filename;
         }
 
-        if($request->hasFile('cover_art')){
+        if ($request->hasFile('cover_art')) {
             $coverfileDestination = 'uploadedCoverArts';
             $coverart = $request->file('cover_art');
             $filename = $this->generateUniqueFileName($coverart, $coverfileDestination);
             $music->cover_art = $filename;
         }
-        if($music->save())
-        {
+        if ($music->save()) {
             return response([
                 'success' =>  'Files uploaded successfully',
             ], Response::HTTP_OK);
@@ -128,7 +134,6 @@ class MusicController extends Controller
      */
     public function show(Music $music)
     {
-        
     }
 
     /**
@@ -165,11 +170,21 @@ class MusicController extends Controller
         //
     }
 
-    public function generateUniqueFileName($musicfiile, $destinationPath)
+    // public function generateUniqueFileName($musicfiile, $destinationPath)
+    // {
+    //     $initial = "musicfile";
+    //     $name = $initial . str_random() . time() . '.' . $musicfiile->getClientOriginalExtension();
+    //     if ($musicfiile->move(public_path() . $destinationPath, $name)) {
+    //         return $name;
+    //     } else {
+    //         return null;
+    //     }
+    // }
+    public function generateUniqueFileName($image, $destinationPath)
     {
-        $initial = "musicfile";
-        $name = $initial . str_random() . time() . '.' . $musicfiile->getClientOriginalExtension();
-        if ($musicfiile->move(public_path() . $destinationPath, $name)) {
+        $initial = "musicfile ";
+        $name = $initial  . time() . '.' . $image->getClientOriginalExtension();
+        if ($image->move(public_path() . $destinationPath, $name)) {
             return $name;
         } else {
             return null;

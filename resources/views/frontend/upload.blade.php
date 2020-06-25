@@ -39,13 +39,17 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-
-                                    <select class="form-control require key" name="key_id" required="">
-                                        <option value="" disabled selected>Select Beat Key *</option>
-                                        @foreach ($keys as $key)
-                                        <option value="{{$key->id}}">{{$key->key}}</option>
-                                        @endforeach
-                                    </select>
+                        @hasrole ('Producer')
+                        <select class="form-control require key" name="key_id" required="">
+                            <option value="" disabled selected>Select Beat Key *</option>
+                            @foreach ($keys as $key)
+                            <option value="{{$key->id}}">{{$key->key}}</option>
+                            @endforeach
+                        </select>
+                        @else
+                            
+                        @endif
+                                                            
 
                                 </div>
                             </div>
@@ -56,6 +60,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
 
+                                    <label for="cover">Title</label>
                                     <input type="text" class="form-control require" name="title" required=""
                                         placeholder="title*">
 
@@ -63,14 +68,28 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
+                            @hasrole('Producer')
                             <div class="form-pos">
                                 <div class="form-group i-name">
 
+                                    <label for="cover">Tempo</label>
                                     <input type="text" class="form-control require" name="tempo" required=""
                                         placeholder="beat tempo *">
 
                                 </div>
                             </div>
+                            @else
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+
+                                    <label for="cover">Choose Lyrics</label>
+                                    <input type="file" class="form-control require" name="lyrics" required=""
+                                        placeholder="Lyrics *">
+
+                                </div>
+                            </div>
+                            @endif
+                         
                         </div>
                     </div>
                     <div class="row">
@@ -100,6 +119,7 @@
                             <div class="form-m">
                                 <div class="form-group i-message">
 
+                                    <label for="music">Description of Beat/Music</label>
                                     <textarea class="form-control require" name="description" required="" rows="5"
                                         id="description" placeholder=" description"></textarea>
 
@@ -109,9 +129,15 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
+                        @hasrole ('Producer')
 
-                                    <input type="text" class="form-control require" name="price" required=""
-                                        placeholder="price*">
+                        <label for="music">Price range between $10 to $100</label>
+                        <input type="text" class="form-control require" name="price" required=""
+                        placeholder="price*">
+                        @else
+                            
+                        @endif
+                                    
 
                                 </div>
                             </div>

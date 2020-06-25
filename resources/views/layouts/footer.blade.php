@@ -12,8 +12,8 @@
                     </div>
                     <ul class="footer_about_link_wrapper m24_cover">
                         <li> <i class="fa fa-phone"></i>808 - 111 - 9999</li>
-                        <li> <a href="#"><i class="fa fa-envelope"></i>Tunein@example.com</a></li>
-                        <li> <a href="#"><i class="fas fa-user-alt"></i>Tunein@support.com</a></li>
+                        <li> <a href="#"><i class="fa fa-envelope"></i>Music@example.com</a></li>
+                        <li> <a href="#"><i class="fas fa-user-alt"></i>Music@support.com</a></li>
                     </ul>
 
                 </div>
@@ -75,7 +75,7 @@
         </div>
     </div>
 </div>
-<div class="foter_top_wrapper m24_cover">
+{{-- <div class="foter_top_wrapper m24_cover">
     <div class="container">
         <ul>
             <li><a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -97,7 +97,7 @@
             <li> <a href="#"><i class="fab fa-whatsapp"></i></a> </li>
         </ul>
     </div>
-</div>
+</div> --}}
 <div class="section2_bottom_wrapper m24_cover">
     <div class="container">
         <div class="row">
@@ -105,9 +105,9 @@
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                 <div class="btm_foter_box">
 
-                    <p>Copyright © 2019 <a href="index.html"> Tunein </a> Template designed by <a href="#"> Webstrot.</a></p>
+                    <p>Copyright © 2019 <a href="index.html"> Music </a> Template designed by <a href="#"> Webstrot.</a></p>
                     <div class="aboutus_social_icons">
-                        <a href="#">Get Tunein <i class="flaticon-play-button"></i></a>
+                        <a href="#">Get Music <i class="flaticon-play-button"></i></a>
                     </div>
                 </div>
             </div>
