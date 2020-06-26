@@ -17,16 +17,16 @@ use Illuminate\Session\Store;
 use Session;
 use App\TemporaryTransaction;
 use Auth;
-
+use App\PaypalPayment;
 class PaymentController extends Controller
 {
     //
 
     public function upload_payment($id)
     {
-        session()->put('music_id',$id);
+        session()->put('music_id', $id);
         // $clientIP = request()->ip();
-        
+
 
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
@@ -86,7 +86,7 @@ class PaymentController extends Controller
         // dd($payment) ;
 
         $approvalUrl = $payment->getApprovalLink();
-                // dd($approvalUrl) ;
+        // dd($approvalUrl) ;
 
         return redirect($approvalUrl);
     }
@@ -94,7 +94,7 @@ class PaymentController extends Controller
     public function execute_payment(Request $request)
     {
         $music_id = session()->get('music_id');
-       
+
 
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
@@ -128,15 +128,43 @@ class PaymentController extends Controller
         $execution->addTransaction($transaction);
 
         $result = $payment->execute($execution, $apiContext);
-       
         $music_id = session()->get('music_id');
+
+        $payment_id = request('paymentId');
+        $PayerID = request('PayerID');
+        $storage = $this->uploadedMusic($music_id,$payment_id,$PayerID);
+
+        $request->session()->flush();
+        return redirect()->route('myMusic');
+    }
+    public function uploadedMusic($music_id,$payment_id,$PayerID)
+    {
+        
+  $user_id = Auth::user()->id;
         // dd($music_id) ;
+        Music::where('id', $music_id)->update([
+            'is_paid' => 1,
+        ]);
+        $payment = new PaypalPayment();
+        $payment->paypal_id= $payment_id;
+        $payment->payer_id= $PayerID;
+        $payment->music_id= $music_id;
+        $payment->payment_type= 'uploadedMusic';
+        $payment->user_id= $user_id;
+        $payment->save();
+    }
+    public function downloadedMusic()
+    {
+        // dd($music_id) ;
+        $downloads = Music::where('id', $id)->pluck('downloads')->first();
+        $new_downloads = $downloads + 1;
 
-
-       Music::where('id',$music_id)->update([
-            'is_paid'=>1
-       ]);
-       return redirect()->route('myMusic');
-
+        Music::where('id', $music_id)->update([
+            'is_paid' => 1,
+            'downloads' => 1
+        ]);
     }
 }
+
+
+http://localhost:8000/execute_payment?paymentId=PAYID-L327CJQ3CJ40814LB714084H&token=EC-43W05223TX4025028&PayerID=ZGMYFNRFDHSB8
