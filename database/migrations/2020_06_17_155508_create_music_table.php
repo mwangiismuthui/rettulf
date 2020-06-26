@@ -32,6 +32,8 @@ class CreateMusicTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
             $table->foreign('key_id')->references('id')->on('keys')->onDelete('cascade');
+            $table->string('duration')->nullable();
+            $table->string('size')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
