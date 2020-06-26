@@ -46,8 +46,8 @@
                                 <ul class="tranding_more_option">
                                     <li><a href="#"><span class="opt_icon"><i
                                                     class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                    <li><a href="#"><span class="opt_icon"><i
-                                                    class="flaticon-trash"></i></span>download</a></li>
+                                                    <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>download</a></li>
                                 </ul>
                                 <div class="tranding_play_icon various_concert_icon">
                                     <a  id="{{$music->id}}">

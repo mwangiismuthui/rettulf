@@ -38,7 +38,7 @@
                             <div class="artist_btn m24_cover">
                                 <div class="lang_apply_btn">
 
-                                    <a href="#"><i class="flaticon-play-button"></i>$ {{number_format($music->price,2)}}
+                                    <a href="{{route('upload_payment',$music->id)}}"><i class="flaticon-play-button"></i>$ {{number_format($music->price,2)}}
                                         buy</a>
 
                                 </div>

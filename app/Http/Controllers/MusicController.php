@@ -189,6 +189,12 @@ class MusicController extends Controller
           $coverart = $music->cover_art;
           $artist = $music->user->name;
         }
+        $views = Music::where('id', $music_id)->pluck('views')->first();
+        $new_views = $views + 1;
+        Music::where('id', $music_id)->update([
+           
+            'views' => $new_views,
+        ]);
         $music = [
             'music_path'=>$music_path,
             'coverart'=>$coverart,

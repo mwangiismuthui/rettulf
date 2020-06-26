@@ -66,9 +66,10 @@
                 <div class="album_list_wrapper">
                     <ul class="album_list_name m24_cover">
                         <li>#</li>
-                        <li class="song_title_width">Song Title</li>
+                        <li class="text-center">Song Title</li>
                         <li class="text-center">Artist</li>
                         <li class="text-center">Payment Status</li>
+                        <li class="text-center">downloads</li>
                         <li class="text-center">time</li>
 
                         <li class="text-center">More</li>
@@ -84,7 +85,7 @@
                     ?>
                     <ul class="album_inner_list_padding">
                     <li><a ><span class="play_no">0{{$number}}</span><span class="play_hover"> <i class="flaticon-play-button" id="{{$music->id}}"></i></span></a></li>
-                        <li class="song_title_width">
+                        <li class="text-center">
                             <div class="top_song_artist_wrapper">
 
                                 <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}" alt="{{$music->title}}" style="height: 60px;width:60px;">
@@ -104,6 +105,7 @@
                             
                         <li class="text-center"><a href="#"><a href="">Paid</a></a></li>
                         @endif
+                    <li class="text-center"><a href="#">{{number_format($music->downloads,0)}}</a></li>
                         <li class="text-center"><a href="#">3:26</a></li>
 
                         <li class="text-center top_song_artist_playlist">

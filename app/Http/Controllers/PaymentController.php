@@ -18,13 +18,18 @@ use Session;
 use App\TemporaryTransaction;
 use Auth;
 use App\PaypalPayment;
+use Response;
 class PaymentController extends Controller
 {
     //
 
     public function upload_payment($id)
     {
+        $previousUrl = url()->previous();
+        $exacturl = substr($previousUrl, 22);
+        // dd($exacturl);
         session()->put('music_id', $id);
+        session()->put('previous_url', $exacturl);
         // $clientIP = request()->ip();
 
 
@@ -94,6 +99,7 @@ class PaymentController extends Controller
     public function execute_payment(Request $request)
     {
         $music_id = session()->get('music_id');
+        $exacturl = session()->get('previous_url');
 
 
         $apiContext = new \PayPal\Rest\ApiContext(
@@ -132,39 +138,68 @@ class PaymentController extends Controller
 
         $payment_id = request('paymentId');
         $PayerID = request('PayerID');
-        $storage = $this->uploadedMusic($music_id,$payment_id,$PayerID);
+        if ($exacturl == "mymusic") {
+
+            $storage = $this->uploadedMusic($music_id, $payment_id, $PayerID);
+            // dd($exacturl);
+        } else {
+            $pathToFile = $this->downloadedMusic($music_id, $payment_id, $PayerID);
+            return response()->download($pathToFile);
+        }
 
         $request->session()->flush();
-        return redirect()->route('myMusic');
+        // return redirect()->route('myMusic');
     }
-    public function uploadedMusic($music_id,$payment_id,$PayerID)
+    public function uploadedMusic($music_id, $payment_id, $PayerID)
     {
-        
-  $user_id = Auth::user()->id;
+
+        $user_id = Auth::user()->id;
         // dd($music_id) ;
         Music::where('id', $music_id)->update([
             'is_paid' => 1,
         ]);
         $payment = new PaypalPayment();
-        $payment->paypal_id= $payment_id;
-        $payment->payer_id= $PayerID;
-        $payment->music_id= $music_id;
-        $payment->payment_type= 'uploadedMusic';
-        $payment->user_id= $user_id;
+        $payment->paypal_id = $payment_id;
+        $payment->payer_id = $PayerID;
+        $payment->music_id = $music_id;
+        $payment->payment_type = 'uploadedMusic';
+        $payment->user_id = $user_id;
         $payment->save();
     }
-    public function downloadedMusic()
+    public function downloadedMusic($music_id, $payment_id, $PayerID)
     {
         // dd($music_id) ;
-        $downloads = Music::where('id', $id)->pluck('downloads')->first();
+        $downloads = Music::where('id', $music_id)->pluck('downloads')->first();
         $new_downloads = $downloads + 1;
 
+
+        $user_id = Auth::user()->id;
+        // dd($music_id) ;
         Music::where('id', $music_id)->update([
             'is_paid' => 1,
-            'downloads' => 1
+            'downloads' => $new_downloads,
         ]);
+        $payment = new PaypalPayment();
+        $payment->paypal_id = $payment_id;
+        $payment->payer_id = $PayerID;
+        $payment->music_id = $music_id;
+        $payment->payment_type = 'downloadedMusic';
+        $payment->user_id = $user_id;
+        if ($payment->save()) {
+          $music_path =  Music::where('id', $music_id)->pluck('music')->first();
+          $music_title =  Music::where('id', $music_id)->pluck('title')->first();
+        //   dd($music_title);
+                //PDF file is stored under project/public/downloads/brochure2020.pdf
+                $file= public_path(). "uploadedFiles/".$music_path;
+        
+                $headers = [
+                    'Content-Type: application/mp4',
+                ];
+                $pathToFile = public_path('uploadedFiles/' . $music_path);
+                return $pathToFile;
+            
+        }
+        
     }
 }
 
-
-http://localhost:8000/execute_payment?paymentId=PAYID-L327CJQ3CJ40814LB714084H&token=EC-43W05223TX4025028&PayerID=ZGMYFNRFDHSB8
