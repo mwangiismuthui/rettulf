@@ -106,6 +106,14 @@ class FrontendController extends Controller
         // return $genre_music;
         return view('frontend.artist_single',compact('user_music','user'));
     }
+    public function singleProducer($id)
+    {
+        $user = User::where('id',$id)->get();
+        $user_music = Music::where('user_id',$id)
+                        ->orderBy('created_at','DESC')->get();
+        // return $genre_music;
+        return view('frontend.artist_single',compact('user_music','user'));
+    }
 
     /**
      * Store a newly created resource in storage.

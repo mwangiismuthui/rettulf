@@ -171,8 +171,8 @@
                                                         class="flaticon-trash"></i></span>download</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
-                                    <a href="#" id="{{$music->id}}">
-                                            <i class="flaticon-play-button"></i>
+                                    <a  id="{{$music->id}}">
+                                            <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -214,8 +214,8 @@
                                         <div class="m24_tranding_box_overlay"></div>
 
                                         <div class="tranding_play_icon">
-                                        <a href="#" id="{{$music->id}}">
-                                                <i class="flaticon-play-button"></i>
+                                            <a  id="{{$music->id}}">
+                                                <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -303,7 +303,9 @@
 </div>
 <!-- top songs wrapper end -->
 <!-- top beats wrapper start -->
-<div class="top_songs_wrapper m24_cover">
+<div class="top_songs_wrapper m24_cover"> <a  id="{{$music->id}}">
+    <i class="flaticon-play-button" id="{{$music->id}}"></i>
+</a>
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
@@ -323,8 +325,8 @@
                                         <div class="m24_tranding_box_overlay"></div>
 
                                         <div class="tranding_play_icon">
-                                        <a href="#" id="{{$music->id}}">
-                                                <i class="flaticon-play-button"></i>
+                                            <a  id="{{$music->id}}">
+                                                <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -380,7 +382,7 @@
                                     <div class="lang_apply_btn">
                                         <ul>
                                             <li>
-                                                <a href="#"> <i class="flaticon-play-button"></i>play now</a>
+                                                <a href="{{route('singleProducer',$music->user->id)}}" id="{{$music->id}}"> <i class="flaticon-play-button"></i>View Playlist</a>
                                             </li>
                                         </ul>
 
@@ -389,20 +391,7 @@
                                         <div class="m24_tranding_more_icon">
                                             <i class="flaticon-menu"></i>
                                         </div>
-                                        <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-playlist"></i></span>Add To playlist</a>
-                                            </li>
-                                            <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-star"></i></span>favourite</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-share"></i></span>share</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-files-and-folders"></i></span>view
-                                                    lyrics</a></li>
-                                            <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-trash"></i></span>delete</a></li>
-                                        </ul>
+                                    
                                     </div>
                                 </div>
                             </div>

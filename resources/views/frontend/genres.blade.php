@@ -50,8 +50,8 @@
                                                     class="flaticon-trash"></i></span>download</a></li>
                                 </ul>
                                 <div class="tranding_play_icon various_concert_icon">
-                                    <a href="#">
-                                        <i class="flaticon-play-button"></i>
+                                    <a  id="{{$music->id}}">
+                                        <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                     </a>
                                 </div>
                             </div>

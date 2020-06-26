@@ -19,10 +19,13 @@ Auth::routes();
 Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/single/genre/{id}', 'FrontendController@singleGenre')->name('singleGenre');
 Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('singleArtist');
-Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
+Route::get('/single/producer/{id}', 'FrontendController@singleProducer')->name('singleProducer');
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
 Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
 
+Route::group(['middleware' => 'auth'], function () {
+
+Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
 // ..................music..............................//
 Route::get('/file/index', 'MusicController@index')->name('file.index');
 Route::get('/file-upload', 'MusicController@create')->name('file.upload');
@@ -30,6 +33,7 @@ Route::post('/file-upload/store', 'MusicController@store')->name('file.store');
 Route::get('/file/edit/{id}', 'MusicController@edit')->name('file.edit');
 Route::post('/file/update/{id}', 'MusicController@update')->name('file.update');
 Route::delete('/file/destroy/', 'MusicController@destroy')->name('file.destroy');
+Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 
 
 // ..................Category..............................//
@@ -58,8 +62,8 @@ Route::delete('/key/destroy/', 'KeyController@destroy')->name('key.destroy');
 
 // ..................Rbac..............................//
 
-Route::resource('roles','RoleController');
-Route::resource('users','UserController');
+Route::resource('roles', 'RoleController');
+Route::resource('users', 'UserController');
 
 // ..................SEO..............................//
 Route::get('/seo/index', 'SeoController@index')->name('seo.index');
@@ -72,3 +76,11 @@ Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.ph
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
+
+
+
+// ....................Paypal................................//
+Route::get('execute_payment', 'PaymentController@execute_payment')->name('execute_payment');
+Route::get('upload_payment/{id}', 'PaymentController@upload_payment')->name('upload_payment');
+Route::get('cancel_payment', 'PaymentController@cancel_payment')->name('cancel_payment');
+});

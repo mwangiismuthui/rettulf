@@ -619,8 +619,8 @@
         width: auto;
         padding-right: 0
     }
-    ..res_search_box {
-        margin-top: 12px
+    .res_search_box {
+       margin-top: 12px
     }
 }
 @media (max-width:850px) {

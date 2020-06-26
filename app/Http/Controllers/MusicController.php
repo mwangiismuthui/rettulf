@@ -16,9 +16,12 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
-
+use App\Http\Controllers\PaymentController;
 class MusicController extends Controller
 {
+
+    // $user_id= Auth::user()->id;
+    // protected $user_id 
     /**
      * Display a listing of the resource.
      *
@@ -52,26 +55,26 @@ class MusicController extends Controller
     {
         $rules = [
             'genre_id' => 'required',
-            'key_id' => 'required',
+            // 'key_id' => 'required',
             'title' => 'required',
             // 'type' => 'required',
             'description' => 'required',
-            'tempo' => 'required',
+            // 'tempo' => 'required',
             'cover_art' => 'required',
             'music' => 'required',
-            'price' => 'required',
+            // 'price' => 'required',
 
         ];
         $messages = [
             'genre_id.required' => 'The Genre is required.',
             'title.required' => 'The Title is required.',
-            'key_id.required' => 'The Key is required.',
+            // 'key_id.required' => 'The Key is required.',
             'type.required' => 'The File type is required.',
-            'tempo.required' => 'The Tempo of beat is required.',
+            // 'tempo.required' => 'The Tempo of beat is required.',
             'cover_art.required' => 'The Cover art is required.',
             'music.required' => 'The music file is required.',
             'description.required' => 'The Vehicle Description is required.',
-            'price.required' => 'The Vehicle Price is required.',
+            // 'price.required' => 'The Vehicle Price is required.',
         ];
 
         $error = Validator::make($request->all(), $rules, $messages);
@@ -89,6 +92,7 @@ class MusicController extends Controller
         }else {
             $type = '';
         }
+        $payment = new PaymentController;
         $music = new Music();
         $music->user_id = Auth::user()->id;
         // $music->user_id =Auth::user()->id;
@@ -114,6 +118,7 @@ class MusicController extends Controller
             $filename = $this->generateUniqueFileName($coverart, $coverfileDestination);
             $music->cover_art = $filename;
         }
+        // dd('me');
         if ($music->save()) {
             return response([
                 'success' =>  'Files uploaded successfully',
@@ -124,6 +129,8 @@ class MusicController extends Controller
                 'warning' => 'Files not saved',
             ], Response::HTTP_OK);
         }
+       
+        
     }
 
     /**
@@ -168,6 +175,26 @@ class MusicController extends Controller
     public function destroy(Music $music)
     {
         //
+    }
+    public function musicpath(Request $request)
+    {
+        if ($request->ajax()) {
+        $music_id = $request->id;
+        $musics = Music::where('id',$music_id)->get();
+        foreach ($musics as $music) {
+          $music_path = $music->music;
+          $coverart = $music->cover_art;
+          $artist = $music->user->name;
+        }
+        $music = [
+            'music_path'=>$music_path,
+            'coverart'=>$coverart,
+            'artist'=>$artist,
+        ];
+        
+        return $music;
+        }
+       
     }
 
     // public function generateUniqueFileName($musicfiile, $destinationPath)

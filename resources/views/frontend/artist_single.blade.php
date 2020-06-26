@@ -82,7 +82,7 @@
                     $number++;
                     ?>
                     <ul class="album_inner_list_padding">
-                    <li><a href="#"><span class="play_no">0{{$number}}</span><span class="play_hover"><i class="flaticon-play-button"></i></span></a></li>
+                    <li><a><span class="play_no">0{{$number}}</span><span class="play_hover"> <i class="flaticon-play-button" id="{{$music->id}}"></i></span></a></li>
                         <li class="song_title_width">
                             <div class="top_song_artist_wrapper">
 

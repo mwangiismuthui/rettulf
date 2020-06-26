@@ -12,7 +12,7 @@
             </div>
 
             <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-12">
-                <form id="music_add" method="POST" enctype="multipart/form-data">
+            <form id="music_add" method="POST" enctype="multipart/form-data" >
                     @csrf
                     <div id="overlay-load" style="display:none;" class="fileuploadoverlay">
                         <img src="/frontend/images/loader.gif" alt="loader">
