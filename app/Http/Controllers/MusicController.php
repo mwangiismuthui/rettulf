@@ -113,7 +113,7 @@ class MusicController extends Controller
         }
 
         if ($request->hasFile('cover_art')) {
-            $coverfileDestination = 'uploadedCoverArts';
+            $coverfileDestination = '/uploadedCoverArts';
             $coverart = $request->file('cover_art');
             $filename = $this->generateUniqueFileName($coverart, $coverfileDestination);
             $music->cover_art = $filename;
