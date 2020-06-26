@@ -22,6 +22,7 @@ Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('sing
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
 Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
+Route::get('/buy-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
 // ..................music..............................//
 Route::get('/file/index', 'MusicController@index')->name('file.index');

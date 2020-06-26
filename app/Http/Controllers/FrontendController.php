@@ -131,15 +131,12 @@ class FrontendController extends Controller
         return view('frontend.pricing');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+   
+    public function buymusic($id)
     {
-        //
+        $music = Music::find($id);
+        // dd($music);
+        return view('frontend.buymusic',compact('music'));
     }
 
     /**
