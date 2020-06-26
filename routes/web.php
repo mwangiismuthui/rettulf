@@ -22,6 +22,7 @@ Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('sing
 Route::get('/single/producer/{id}', 'FrontendController@singleProducer')->name('singleProducer');
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
 Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
+Route::get('/buy-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
 Route::group(['middleware' => 'auth'], function () {
 

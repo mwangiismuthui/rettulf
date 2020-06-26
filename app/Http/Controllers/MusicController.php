@@ -73,8 +73,8 @@ class MusicController extends Controller
             // 'tempo.required' => 'The Tempo of beat is required.',
             'cover_art.required' => 'The Cover art is required.',
             'music.required' => 'The music file is required.',
-            'description.required' => 'The Vehicle Description is required.',
-            // 'price.required' => 'The Vehicle Price is required.',
+            'description.required' => 'The music Description is required.',
+            'price.required' => 'The music Price is required.',
         ];
 
         $error = Validator::make($request->all(), $rules, $messages);
@@ -89,7 +89,7 @@ class MusicController extends Controller
             $type = "beats";
         } elseif ($user->hasRole('Artist')) {
             $type = "music";
-        }else {
+        } else {
             $type = '';
         }
         $payment = new PaymentController;
@@ -106,19 +106,22 @@ class MusicController extends Controller
 
 
         if ($request->hasFile('music')) {
-            $fileDestination = 'uploadedFiles';
+            $fileDestination = '/uploadedFiles';
             $musicfiile = $request->file('music');
             $filename = $this->generateUniqueFileName($musicfiile, $fileDestination);
             $music->music = $filename;
+            $rawfile = $this->analyzeFile(public_path() . $fileDestination .'/'. $filename);
+            $music->duration = $rawfile['playtime_string'];
+            $music->size = $rawfile['filesize'];
+
         }
 
         if ($request->hasFile('cover_art')) {
-            $coverfileDestination = 'uploadedCoverArts';
+            $coverfileDestination = '/uploadedCoverArts';
             $coverart = $request->file('cover_art');
             $filename = $this->generateUniqueFileName($coverart, $coverfileDestination);
             $music->cover_art = $filename;
         }
-        // dd('me');
         if ($music->save()) {
             return response([
                 'success' =>  'Files uploaded successfully',
@@ -209,12 +212,21 @@ class MusicController extends Controller
     // }
     public function generateUniqueFileName($image, $destinationPath)
     {
-        $initial = "musicfile ";
-        $name = $initial  . time() . '.' . $image->getClientOriginalExtension();
+        $initial = "musicfile_";
+        $name = $initial  . bin2hex(random_bytes(8)) . '.' . $image->getClientOriginalExtension();
         if ($image->move(public_path() . $destinationPath, $name)) {
             return $name;
         } else {
             return null;
         }
+    }
+
+
+
+    public function analyzeFile($full_video_path)
+    {
+        $getID3 = new \getID3;
+        $file = $getID3->analyze($full_video_path);      
+        return $file;
     }
 }
