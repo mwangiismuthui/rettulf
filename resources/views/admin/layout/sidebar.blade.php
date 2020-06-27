@@ -64,7 +64,7 @@
       </a>
       <ul class="sidebar-submenu">
         <li><a href="{{route('uploadFee.index')}}"><i class="fa fa-circle-o"></i>Upload Fee Management</a></li>
-        <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i>Payment Management</a></li>
+        <li><a href="{{route('allWithdrawalRequests')}}"><i class="fa fa-circle-o"></i>Payment Management</a></li>
       </ul>
     </li>
    

@@ -13,12 +13,20 @@ use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
+use PayPal\Api\Payee;
 use Illuminate\Session\Store;
 use Session;
 use App\TemporaryTransaction;
 use Auth;
 use App\PaypalPayment;
+use App\User;
+use App\Withdrawal;
 use Response;
+use PaypalPayoutsSDK\Core\PayPalHttpClient;
+use PaypalPayoutsSDK\Core\SandboxEnvironment;
+use PaypalPayoutsSDK\Payouts\PayoutsPostRequest;
+use App\Http\Controllers\PayPalClient;
+
 class PaymentController extends Controller
 {
     //
@@ -101,6 +109,7 @@ class PaymentController extends Controller
         $music_id = session()->get('music_id');
         $exacturl = session()->get('previous_url');
 
+        // dd($exacturl) ;
 
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
@@ -174,7 +183,7 @@ class PaymentController extends Controller
 
 
         $user_id = Auth::user()->id;
-        // dd($music_id) ;
+        dd($music_id) ;
         Music::where('id', $music_id)->update([
             'is_paid' => 1,
             'downloads' => $new_downloads,
@@ -186,20 +195,68 @@ class PaymentController extends Controller
         $payment->payment_type = 'downloadedMusic';
         $payment->user_id = $user_id;
         if ($payment->save()) {
-          $music_path =  Music::where('id', $music_id)->pluck('music')->first();
-          $music_title =  Music::where('id', $music_id)->pluck('title')->first();
-        //   dd($music_title);
-                //PDF file is stored under project/public/downloads/brochure2020.pdf
-                $file= public_path(). "uploadedFiles/".$music_path;
-        
-                $headers = [
-                    'Content-Type: application/mp4',
-                ];
-                $pathToFile = public_path('uploadedFiles/' . $music_path);
-                return $pathToFile;
-            
+            $music_path =  Music::where('id', $music_id)->pluck('music')->first();
+            $music_title =  Music::where('id', $music_id)->pluck('title')->first();
+            //   dd($music_title);
+            //PDF file is stored under project/public/downloads/brochure2020.pdf
+            $file = public_path() . "uploadedFiles/" . $music_path;
+
+            $headers = [
+                'Content-Type: application/mp4',
+            ];
+            $pathToFile = public_path('uploadedFiles/' . $music_path);
+            return $pathToFile;
         }
-        
+    }
+
+    public function payout($id)
+    {
+        // "sb-7melu1698512@personal.example.com"
+        $user_id = Withdrawal::where('id', $id)->pluck('user_id')->first();
+        $amount = Withdrawal::where('id', $id)->pluck('amount')->first();
+        $payment_email = User::where('id', $user_id)->pluck('email')->first();
+        $clientId = "Ab576qDQ2pShVNyKJms7tcBoxaq_xofpmJq2vBpMWLS2jfRkwnyzHB7QO6yH12gbQQa7OU_NJudN6n4z";
+        $clientSecret = "EDCYQBhWefKcjvS_N26czclv5CzZTC9eF9CGsedOexQDb3K5Hd-M9YtomRosuNFuqfUbry5t-r2HP7gA";
+
+        $environment = new SandboxEnvironment($clientId, $clientSecret);
+        $client = new PayPalHttpClient($environment);
+        $request = new PayoutsPostRequest();
+        $body = json_decode(
+            '{
+                "sender_batch_header":
+                {
+                  "email_subject": "SDK payouts test txn"
+                },
+                "items": [
+                {
+                  "recipient_type": "EMAIL",
+                  "receiver": "sb-7melu1698512@personal.example.com",
+                  "note": "Your 1$ payout",
+                  "sender_item_id": "Test_txn_12",
+                  "amount":
+                  {
+                    "currency": "USD",
+                    "value": "890.00"
+                  }
+                }]
+              }',
+            true
+        );
+        // return $body;
+        $request->body = $body;
+        $client = PayPalClient::client();
+        $response = $client->execute($request);
+        print "Status Code: {$response->statusCode}\n";
+        print "Status: {$response->result->batch_header->batch_status}\n";
+        print "Batch ID: {$response->result->batch_header->payout_batch_id}\n";
+        print "Links:\n";
+        foreach ($response->result->links as $link) {
+            print "\t{$link->rel}: {$link->href}\tCall Type: {$link->method}\n";
+        }
+        echo json_encode($response->result, JSON_PRETTY_PRINT), "\n";
+        Withdrawal::where('id', $id)->update([
+            'status' => 1
+        ]);
+        return redirect()->back()->with('message','Payment Successfull');
     }
 }
-

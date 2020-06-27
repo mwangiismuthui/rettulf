@@ -27,6 +27,7 @@ Route::get('/trending-music', 'FrontendController@trending')->name('trending');
 Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
+Route::get('/downloadedMusic', 'FrontendController@downloadedMusic')->name('downloadedMusic');
 Route::get('/buy-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
 // ..................music..............................//
@@ -93,6 +94,7 @@ Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
 // ....................Paypal................................//
 Route::get('execute_payment', 'PaymentController@execute_payment')->name('execute_payment');
 Route::get('upload_payment/{id}', 'PaymentController@upload_payment')->name('upload_payment');
+Route::get('createPayment/{id}', 'PaymentController@payout')->name('createPayment');
 Route::get('cancel_payment', 'PaymentController@cancel_payment')->name('cancel_payment');
 
 // ..................Slider..............................//
@@ -119,4 +121,9 @@ Route::get('/seo/edit/{id}', 'SeoController@edit')->name('seo.edit');
 Route::post('/seo/update/{id}', 'SeoController@update')->name('seo.update');
 Route::delete('/seo/destroy/', 'SeoController@destroy')->name('seo.destroy');
 Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.photo.destroy');
+
+
+// ..................SEO..............................//
+Route::get('/withdraw/{id}', 'WithdrawalController@sellerWithdrawal')->name('sellerWithdrawal');
+Route::get('/allWithdrawalRequests/', 'WithdrawalController@allWithdrawalRequests')->name('allWithdrawalRequests');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Genre;
 use App\Location;
 use App\Music;
+use App\PaypalPayment;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -28,13 +29,13 @@ class FrontendController extends Controller
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
 
-        return view('frontend.index', compact('trendingMusic', 'genres', 'latestMusic', 'topsongs','featuredArtists','featuredProducers','topbeats'));
+        return view('frontend.index', compact('trendingMusic', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats'));
     }
 
     public function latestMusic($limit)
     {
         $latest = Music::with('user')->orderBy('music.created_at', 'Desc')
-        ->where('music.type','=','music')
+            ->where('music.type', '=', 'music')
             ->limit($limit)
             ->get();
         return $latest;
@@ -44,7 +45,7 @@ class FrontendController extends Controller
 
         $number_of_days = \Carbon\Carbon::today()->subDays($duration);
         $trendingMusic = Music::with('user')->where('music.created_at', '>=', $number_of_days)
-        ->where('music.type','=','music')
+            ->where('music.type', '=', 'music')
             ->orderBy('views', 'Desc')
             ->limit($limit)
             ->get();
@@ -53,7 +54,7 @@ class FrontendController extends Controller
     public function latestBeats($limit)
     {
         $latest = Music::with('user')->orderBy('music.created_at', 'Desc')
-        ->where('music.type','=','beats')
+            ->where('music.type', '=', 'beats')
             ->limit($limit)
             ->get();
         return $latest;
@@ -63,7 +64,7 @@ class FrontendController extends Controller
 
         $number_of_days = \Carbon\Carbon::today()->subDays($duration);
         $trendingMusic = Music::with('user')->where('music.created_at', '>=', $number_of_days)
-        ->where('music.type','=','beats')
+            ->where('music.type', '=', 'beats')
             ->orderBy('views', 'Desc')
             ->limit($limit)
             ->get();
@@ -93,26 +94,26 @@ class FrontendController extends Controller
      */
     public function singleGenre($id)
     {
-        $genre = Genre::where('id',$id)->pluck('genre')->first();
-        $genre_music = Music::where('genre_id',$id)->get();
+        $genre = Genre::where('id', $id)->pluck('genre')->first();
+        $genre_music = Music::where('genre_id', $id)->get();
         // return $genre_music;
-        return view('frontend.genres',compact('genre_music','genre'));
+        return view('frontend.genres', compact('genre_music', 'genre'));
     }
     public function singleArtist($id)
     {
-        $user = User::where('id',$id)->get();
-        $user_music = Music::where('user_id',$id)
-                        ->orderBy('created_at','DESC')->get();
+        $user = User::where('id', $id)->get();
+        $user_music = Music::where('user_id', $id)
+            ->orderBy('created_at', 'DESC')->get();
         // return $genre_music;
-        return view('frontend.artist_single',compact('user_music','user'));
+        return view('frontend.artist_single', compact('user_music', 'user'));
     }
     public function singleProducer($id)
     {
-        $user = User::where('id',$id)->get();
-        $user_music = Music::where('user_id',$id)
-                        ->orderBy('created_at','DESC')->get();
+        $user = User::where('id', $id)->get();
+        $user_music = Music::where('user_id', $id)
+            ->orderBy('created_at', 'DESC')->get();
         // return $genre_music;
-        return view('frontend.artist_single',compact('user_music','user'));
+        return view('frontend.artist_single', compact('user_music', 'user'));
     }
 
     /**
@@ -124,10 +125,9 @@ class FrontendController extends Controller
     public function myMusic(Request $request)
     {
         $user_id = Auth::user()->id;
-        $user = User::with('balance')->where('id',$user_id)->get();
-        $my_music = Music::where('user_id',$user_id)->get();
-        return view('frontend.mymusic',compact('my_music','user'));
-
+        $user = User::with('balance')->where('id', $user_id)->get();
+        $my_music = Music::where('user_id', $user_id)->get();
+        return view('frontend.mymusic', compact('my_music', 'user'));
     }
     public function contact(Request $request)
     {
@@ -135,20 +135,21 @@ class FrontendController extends Controller
     }
     public function pricing(Request $request)
     {
-        
+
         return view('frontend.pricing');
     }
 
-   
+
     public function buymusic($id)
     {
         $music = Music::find($id);
         // dd($music);
-        return view('frontend.buymusic',compact('music'));
+        return view('frontend.buymusic', compact('music'));
     }
 
-    public function trending(){
-        $musics = Music::where('downloads', '>', 1)->orderBy('downloads','desc')->get();
+    public function trending()
+    {
+        $musics = Music::where('downloads', '>', 1)->orderBy('downloads', 'desc')->get();
         return view('frontend.musicshop', compact('$musics'));
     }
     /**
@@ -157,31 +158,14 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function downloadedMusic()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $downloaded_musics = PaypalPayment::where('user_id', Auth::user()->id)
+            ->get();
+            $downloaded_music= [];
+        foreach ($downloaded_musics as $music) {
+$downloaded_music = $music->music_id;
+        }
+        return $downloaded_music;
     }
 }

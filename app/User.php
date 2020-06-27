@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\UsesUUID;
 use App\Music;
 use App\Location;
+use App\Withdrawal;
 use App\Balance;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
-use HasRoles;
+    use HasRoles;
 
     use SoftDeletes;
     use UsesUUID;
@@ -56,5 +57,9 @@ use HasRoles;
     public function balance()
     {
         return $this->hasOne(Balance::class);
+    }
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
     }
 }
