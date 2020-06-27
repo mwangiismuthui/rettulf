@@ -44,6 +44,13 @@ Route::get('/category/edit/{id}', 'CategoryController@edit')->name('category.edi
 Route::post('/category/update/{id}', 'CategoryController@update')->name('category.update');
 Route::delete('/category/destroy/', 'CategoryController@destroy')->name('category.destroy');
 
+// ..................UploadFee..............................//
+Route::get('/uploadFee/index', 'UploadFeeController@index')->name('uploadFee.index');
+Route::post('/uploadFee/store', 'UploadFeeController@store')->name('uploadFee.store');
+Route::get('/uploadFee/edit/{id}', 'UploadFeeController@edit')->name('uploadFee.edit');
+Route::post('/uploadFee/update/{id}', 'UploadFeeController@update')->name('uploadFee.update');
+Route::delete('/uploadFee/destroy/', 'UploadFeeController@destroy')->name('uploadFee.destroy');
+
 
 // ..................Genre..............................//
 Route::get('/genre/index', 'GenreController@index')->name('genre.index');
@@ -84,4 +91,29 @@ Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
 Route::get('execute_payment', 'PaymentController@execute_payment')->name('execute_payment');
 Route::get('upload_payment/{id}', 'PaymentController@upload_payment')->name('upload_payment');
 Route::get('cancel_payment', 'PaymentController@cancel_payment')->name('cancel_payment');
+
+// ..................Slider..............................//
+Route::get('/slider/index', 'SliderController@index')->name('slider.index');
+Route::post('/slider/store', 'SliderController@store')->name('slider.store');
+Route::get('/slider/edit/{id}', 'SliderController@edit')->name('slider.edit');
+Route::post('/slider/update/{id}', 'SliderController@update')->name('slider.update');
+Route::delete('/slider/destroy/', 'SliderController@destroy')->name('slider.destroy');
+
+
+
+// ...............................AdminMusic..........................//
+Route::get('/music/index', 'AdminController@adminMusic')->name('adminMusic.index');
+Route::put('/music/change/status', 'AdminController@changeStatus')->name('adminMusic.changeStatus');
+Route::get('/music/update/{id}', 'AdminController@update')->name('adminMusic.update');
+Route::get('/music/edit/{id}', 'AdminController@edit')->name('adminMusic.edit');
+
+
+
+// ..................SEO..............................//
+Route::get('/seo/index', 'SeoController@index')->name('seo.index');
+Route::post('/seo/store', 'SeoController@store')->name('seo.store');
+Route::get('/seo/edit/{id}', 'SeoController@edit')->name('seo.edit');
+Route::post('/seo/update/{id}', 'SeoController@update')->name('seo.update');
+Route::delete('/seo/destroy/', 'SeoController@destroy')->name('seo.destroy');
+Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.photo.destroy');
 });
