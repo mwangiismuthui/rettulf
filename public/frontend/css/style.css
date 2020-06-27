@@ -7063,3 +7063,38 @@ span.ovrly_text2 {
 #overlay-load img{
 	width: 100px;
 }
+
+
+
+.list_image_gallery:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    /* min-height: 150px; */
+}
+
+.list_image_gallery {
+    display: inline-block;
+
+    /* float: left; */
+    /* margin-bottom: 10px;
+    padding: 10px; */
+}
+
+.list_image_gallery .delete {
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.list_image_gallery .delete .delete-button {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    background: #00C669;
+    color: #ffffff
+}

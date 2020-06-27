@@ -154,7 +154,7 @@
                 <div class="treanding_song_slider">
                     <div class="owl-carousel owl-theme">
 
-                    @foreach ($trendingMusic as $music)
+                        @foreach ($trendingMusic as $music)
                         <div class="item">
 
                             <div class="treanding_slider_main_box m24_cover">
@@ -166,12 +166,13 @@
                                     </div>
                                     <ul class="tranding_more_option">
                                         <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                                        <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                            class="flaticon-trash"></i></span>download</a></li>
+                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
+                                        </li>
+                                        <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                        class="flaticon-trash"></i></span>download</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
-                                    <a  id="{{$music->id}}">
+                                        <a id="{{$music->id}}">
                                             <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                         </a>
                                     </div>
@@ -179,8 +180,8 @@
                             </div>
 
                         </div>
-                    
-                    @endforeach
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -205,16 +206,17 @@
                     <div class="relaese_viewall_wrapper">
                     </div>
                     @foreach ($topsongs as $music)
-                         <div class="top_songs_list m24_cover">
+                    <div class="top_songs_list m24_cover">
                         <div class="top_songs_list_left">
                             <div class="treanding_slider_main_box top_lis_left_content">
                                 <div class="top_songs_list0img">
-                                    <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}" alt="{{$music->title}}" style="height: 60px;width:60px;">
+                                    <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
+                                        alt="{{$music->title}}" style="height: 60px;width:60px;">
                                     <div class="m24_treanding_box_overlay">
                                         <div class="m24_tranding_box_overlay"></div>
 
                                         <div class="tranding_play_icon">
-                                            <a  id="{{$music->id}}">
+                                            <a id="{{$music->id}}">
                                                 <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                             </a>
                                         </div>
@@ -222,7 +224,7 @@
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
                                     <p><a href="#">{{$music->title}}</a></p>
-                                <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
+                                    <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
                                 </div>
 
                             </div>
@@ -241,14 +243,14 @@
                                 <ul class="tranding_more_option">
                                     <li><a href="#"><span class="opt_icon"><i
                                                     class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                                    <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>download</a></li>
+                                    <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>download</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     @endforeach
-                   
+
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
@@ -260,18 +262,22 @@
                 <div class="featured_song_slider">
                     <div class="owl-carousel owl-theme">
                         @foreach ($featuredArtists as $artist)
-                               <div class="item">
-                                @foreach ($featuredArtists as $artist)
+                        <div class="item">
+                            @foreach ($featuredArtists as $artist)
 
                             <div class="featured_artist_list m24_cover">
-                                <img src="{{url('/ProfilePics').'/'.$artist->profile_photo }}" class="img-responsive" alt="img">
+                                <img src="{{url('/ProfilePics').'/'.$artist->profile_photo }}" class="img-responsive"
+                                    alt="img">
                                 <div class="featured_artist_detail">
                                     <p><a href="#">{{$artist->name}} </a></p>
-                                    <p class="various_artist_text"><a href="#">{{$artist->music->count()}} tracks</a></p>
+                                    <p class="various_artist_text"><a href="#">{{$artist->music->count()}} tracks</a>
+                                    </p>
                                     <div class="lang_apply_btn">
                                         <ul>
                                             <li>
-                                                <a href="{{route('singleArtist',$music->user->id)}}" id="{{$music->id}}"> <i class="flaticon-play-button"></i>View Playlist</a>
+                                                <a href="{{route('singleArtist',$music->user->id)}}"
+                                                    id="{{$music->id}}"> <i class="flaticon-play-button"></i>View
+                                                    Playlist</a>
                                             </li>
                                         </ul>
 
@@ -282,18 +288,19 @@
                                         </div>
                                         <ul class="tranding_more_option">
                                             <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                                            <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                                class="flaticon-trash"></i></span>download</a></li>
+                                                            class="flaticon-files-and-folders"></i></span>view
+                                                    lyrics</a></li>
+                                            <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                            class="flaticon-trash"></i></span>download</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                            @endforeach
                         </div>
                         @endforeach
-                     
-                      
+
+
 
                     </div>
                 </div>
@@ -304,9 +311,6 @@
 <!-- top songs wrapper end -->
 <!-- top beats wrapper start -->
 <div class="top_songs_wrapper m24_cover">
-     {{-- <a  id="{{$music->id}}">
-    <i class="flaticon-play-button" id="{{$music->id}}"></i>
-</a> --}}
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
@@ -317,16 +321,17 @@
                     <div class="relaese_viewall_wrapper">
                     </div>
                     @foreach ($topbeats as $music)
-                         <div class="top_songs_list m24_cover">
+                    <div class="top_songs_list m24_cover">
                         <div class="top_songs_list_left">
                             <div class="treanding_slider_main_box top_lis_left_content">
                                 <div class="top_songs_list0img">
-                                    <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}" alt="{{$music->title}}" style="height: 60px;width:60px;">
+                                    <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
+                                        alt="{{$music->title}}" style="height: 60px;width:60px;">
                                     <div class="m24_treanding_box_overlay">
                                         <div class="m24_tranding_box_overlay"></div>
 
                                         <div class="tranding_play_icon">
-                                            <a  id="{{$music->id}}">
+                                            <a id="{{$music->id}}">
                                                 <i class="flaticon-play-button" id="{{$music->id}}"></i>
                                             </a>
                                         </div>
@@ -334,7 +339,7 @@
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
                                     <p><a href="#">{{$music->title}}</a></p>
-                                <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
+                                    <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
                                 </div>
 
                             </div>
@@ -353,14 +358,14 @@
                                 <ul class="tranding_more_option">
                                     <li><a href="#"><span class="opt_icon"><i
                                                     class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                                    <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>download</a></li>
+                                    <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                    class="flaticon-trash"></i></span>download</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     @endforeach
-                   
+
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
@@ -372,18 +377,20 @@
                 <div class="featured_song_slider">
                     <div class="owl-carousel owl-theme">
                         @foreach ($featuredProducers as $artist)
-                               <div class="item">
-                                @foreach ($featuredProducers as $artist)
-
+                        <div class="item">
                             <div class="featured_artist_list m24_cover">
-                                <img src="{{url('/ProfilePics').'/'.$artist->profile_photo }}" class="img-responsive" alt="img">
+                                <img src="{{url('/ProfilePics').'/'.$artist->profile_photo }}" class="img-responsive"
+                                    alt="img">
                                 <div class="featured_artist_detail">
                                     <p><a href="#">{{$artist->name}} </a></p>
-                                    <p class="various_artist_text"><a href="#">{{$artist->music->count()}} tracks</a></p>
+                                    <p class="various_artist_text"><a href="#">{{$artist->music->count()}} tracks</a>
+                                    </p>
                                     <div class="lang_apply_btn">
                                         <ul>
                                             <li>
-                                                <a href="{{route('singleProducer',$music->user->id)}}" id="{{$music->id}}"> <i class="flaticon-play-button"></i>View Playlist</a>
+                                                <a href="{{route('singleProducer',$music->user->id)}}"
+                                                    id="{{$music->id}}"> <i class="flaticon-play-button"></i>View
+                                                    Playlist</a>
                                             </li>
                                         </ul>
 
@@ -392,15 +399,14 @@
                                         <div class="m24_tranding_more_icon">
                                             <i class="flaticon-menu"></i>
                                         </div>
-                                    
+
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
                         </div>
                         @endforeach
-                     
-                      
+
+
 
                     </div>
                 </div>
@@ -422,7 +428,7 @@
                 <div class="treanding_song_slider playlist_songs_list">
                     <div class="owl-carousel owl-theme">
                         @foreach ($genres as $genre)
-                             <div class="item">
+                        <div class="item">
 
                             <div class="treanding_slider_main_box m24_cover">
                                 <img src="{{url('/Genre_Images').'/'.$genre->genre_image }}" alt="{{$genre->genre}}">
@@ -432,9 +438,9 @@
                                     <div class="m24_tranding_more_icon">
                                         <i class="flaticon-menu"></i>
                                     </div>
-                                 
+
                                     <div class="tranding_play_icon various_concert_icon">
-                                    <a href="{{route('singleGenre',$genre->id)}}">
+                                        <a href="{{route('singleGenre',$genre->id)}}">
                                             <i class="flaticon-play-button"></i>
                                         </a>
                                     </div>
@@ -447,7 +453,7 @@
 
                         </div>
                         @endforeach
-                       
+
                         {{-- <div class="item">
                             <div class="treanding_slider_main_box m24_cover">
                                 <img src="/frontend/images/td8.png" alt="img">

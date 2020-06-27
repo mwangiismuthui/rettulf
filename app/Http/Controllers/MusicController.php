@@ -122,6 +122,10 @@ class MusicController extends Controller
             $filename = $this->generateUniqueFileName($coverart, $coverfileDestination);
             $music->cover_art = $filename;
         }
+
+        if($request->lyrics != ''){
+            $music->lyrics = $request->lyrics;
+        }
         if ($music->save()) {
             return response([
                 'success' =>  'Files uploaded successfully',
@@ -152,9 +156,13 @@ class MusicController extends Controller
      * @param  \App\Music  $music
      * @return \Illuminate\Http\Response
      */
-    public function edit(Music $music)
-    {
-        //
+    public function edit($id)
+    {    
+        $genres = Genre::all();
+        $keys = Key::all();
+        $categories = Category::all();
+        $music = Music::find($id);
+        return view('frontend.musicedit', compact('music','genres','keys','categories'));
     }
 
     /**
@@ -164,9 +172,39 @@ class MusicController extends Controller
      * @param  \App\Music  $music
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Music $music)
+    public function update(Request $request, $music_id)
     {
-        //
+        $music= Music::find($music_id);
+        
+        $music->genre_id = $request->genre_id;
+        $music->key_id = $request->key_id;
+        $music->title = $request->title;
+        $music->tempo_of_beat = $request->tempo;
+        $music->description = $request->description;
+        $music->price = $request->price;
+
+
+        if ($request->hasFile('cover_art')) {
+            $coverfileDestination = '/uploadedCoverArts';
+            $coverart = $request->file('cover_art');
+            $filename = $this->generateUniqueFileName($coverart, $coverfileDestination);
+            $music->cover_art = $filename;
+        }
+
+        if($request->lyrics != ''){
+            $music->lyrics = $request->lyrics;
+        }
+        if ($music->save()) {
+            return response([
+                'success' =>  'Files Updated successfully',
+            ], Response::HTTP_OK);
+        } else {
+
+            return response([
+                'warning' => 'Files not updated',
+            ], Response::HTTP_OK);
+        }
+       
     }
 
     /**
@@ -179,6 +217,24 @@ class MusicController extends Controller
     {
         //
     }
+
+    public function destroyPic($musicID)
+    {
+        $music = Music::find($musicID);
+        
+        if ($music) {
+            $music->cover_art = null;
+            $music->update();
+            return response([
+                'success' =>  "music cover Deleted Successfully!",
+            ], Response::HTTP_OK);
+        } else {
+            return response([
+                'errors' => "music cover not Deleted!",
+            ], Response::HTTP_OK);
+        }
+    }
+
     public function musicpath(Request $request)
     {
         if ($request->ajax()) {

@@ -150,6 +150,9 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a {
 .m24_logo_wrapper:after {
     background: var(--border-color)
 }
+.ck-content{
+    background: var(--box-color) !important
+}
 @media (max-width:1199px) {
     .res_search_box {
         background: var(--bg-color)

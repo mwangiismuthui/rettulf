@@ -147,6 +147,10 @@ class FrontendController extends Controller
         return view('frontend.buymusic',compact('music'));
     }
 
+    public function trending(){
+        $musics = Music::where('downloads', '>', 1)->orderBy('downloads','desc')->get();
+        return view('frontend.musicshop', compact('$musics'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
