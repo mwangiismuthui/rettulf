@@ -20,12 +20,17 @@
                         <br>
                         Uploading...
                     </div>
-                    <span id="form_result"></span>
+                    <center id="form_result" style="margin-bottom:35px"> </center>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    <label for="genre">Genre</label>
+                                    @hasrole ('Producer')
+                                    <label for="genre">Genre of Beat</label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="genre">Genre of Song</label>
+                                    @endif
                                     <select class="form-control require genre" id="genre" name="genre_id">
                                         <option value="" disabled selected>Select Music Genre *</option>
                                         @foreach ($genres as $genre)
@@ -42,7 +47,26 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     @hasrole ('Producer')
-                                    <label for="beat">Beat Key</label>
+                                    <label for="cover">Beat Title</label>
+                                    <input type="text" class="form-control require" name="title" required=""
+                                        placeholder="beat title*" value="{{$music->title}}">
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="cover">Song Title</label>
+                                    <input type="text" class="form-control require" name="title" required=""
+                                        placeholder="song title*" value="{{$music->title}}">
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @hasrole ('Producer')
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+                                    <label for="beat">Key of Beat</label>
                                     <select class="form-control require key" id="beat" name="key_id" required="">
                                         <option value="" disabled selected>Select Beat Key *</option>
                                         @foreach ($keys as $key)
@@ -50,24 +74,6 @@
                                             {{$key->key}}</option>
                                         @endforeach
                                     </select>
-                                    @else
-
-                                    @endif
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-pos">
-                                <div class="form-group i-name">
-
-                                    <label for="cover">Title</label>
-                                    <input type="text" class="form-control require" name="title" required=""
-                                        placeholder="title*" value="{{$music->title}}">
-
                                 </div>
                             </div>
                         </div>
@@ -78,7 +84,7 @@
 
                                     <label for="cover">Tempo</label>
                                     <input type="text" class="form-control require" name="tempo" required=""
-                                        placeholder="beat tempo *" value="{{$music->tempo_of_beat}}">
+                                        placeholder="title*" value="{{$music->title}}"  value="{{$music->tempo_of_beat}}">
 
                                 </div>
                             </div>
@@ -86,30 +92,47 @@
 
                         </div>
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-e">
                                 <div class="form-group i-name">
-                                    <label for="cover">Change Cover Image</label>
-                                    <input class="form-control" name="cover_art" id="cover" type="file" 
+                                    @hasrole ('Producer')
+                                    <label for="cover">Change Cover Art for Song  </label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="cover">Change Cover Art for Song </label>
+                                    @endif
+                                    <input class="form-control" name="cover_art" id="cover" type="file"
                                         accept="image/*" />
 
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <label>Current Cover Image</label><br>
-                            <div class="list_image_gallery">
-                                @if ($music->cover_art == null)
-                                    <p>No cever photo</p>
-                                @else
-                                <div class="icon-remove blue delete" id="imgwrapper{{$music->id}}">
-                                    <img class="thumbnail" src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
-                                        alt="image" height="60" width="60" />
-                                    <a href="#" onclick="deletepic(this)" class="photodelete" id="{{$music->id}}"><i
-                                            class="delete-button fa fa-trash"></i></a>
+                            <div class="form-e">
+                                <div class="form-group i-name">
+                                    @hasrole ('Producer')
+                                    <label>Current Cover Art for Song </label><br>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label>Current Cover Art for Song </label><br>
+                                    @endif
+                                    
+                                    <div class="list_image_gallery">
+                                        @if ($music->cover_art == null)
+                                            <p>No cever photo</p>
+                                        @else
+                                        <div class="icon-remove blue delete" id="imgwrapper{{$music->id}}">
+                                            <img class="thumbnail" src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
+                                                alt="image" height="60" width="60" />
+                                            <a href="#" onclick="deletepic(this)" class="photodelete" id="{{$music->id}}"><i
+                                                    class="delete-button fa fa-trash"></i></a>
+                                        </div>
+                                        @endif                               
+                                    </div>
+
                                 </div>
-                                @endif                               
                             </div>
                         </div>
                     </div>
@@ -117,16 +140,20 @@
                         <div class="col-md-12">
                             <div class="form-m">
                                 <div class="form-group i-message">
-
-                                    <label for="description">Description of Beat/Music</label>
+                                    @hasrole ('Producer')
+                                    <label for="description">Description of Beat</label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="description">Description of Song</label>
+                                    @endif
                                     <textarea class="form-control require" name="description" required="" rows="5"
-                                        id="description" placeholder=" description"
-                                        >{{$music->description}}</textarea>
+                                        id="description" placeholder=" description">{{$music->description}}</textarea>
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @hasrole ('Artist')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-m">
@@ -140,24 +167,21 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @hasrole ('Producer')
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    @hasrole ('Producer')
 
                                     <label for="music">Price range between $10 to $100</label>
                                     <input type="text" class="form-control require" name="price" required=""
                                         placeholder="price*" value="{{$music->price}}">
-                                    @else
-
-                                    @endif
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="tb_es_btn_div">
@@ -252,15 +276,28 @@
                                 "<span>" +
                                 data.errors[count] +
                                 "</span><br>";
+                                Lobibox.notify("error", {
+                                    pauseDelayOnHover: true,
+                                    continueDelayOnInactiveTab: false,
+                                    position: "top right",
+                                    icon: "fa fa-times-circle",
+                                    msg: data.errors[count],
+                                });
                         }
-                        html += "</div></div>";
-
+                        html += "</div></div>";   
                 }
                 if (data.warning) {
                     html =
                         '<div class="alert alert-warning">' +
                         data.warning +
                         "</div>";
+                        Lobibox.notify("warning", {
+                            pauseDelayOnHover: true,
+                            continueDelayOnInactiveTab: false,
+                            position: "top right",
+                            icon: "fa fa-times-circle",
+                            msg:  data.success,
+                        });
                 }
                 if (data.success) {
                     html =
@@ -277,13 +314,12 @@
                             msg: data.success,
                          });
                      $('#product_add')[0].reset();
-                    $('#productmodal').modal('hide');
-                    $('#product_table').DataTable().ajax.reload();
+                  
                 }
                      $("#form_result").html(html);
                     setTimeout(function () {
                         $("#form_result").html("");
-                    }, 3000);
+                    }, 6000);
 
 
             },

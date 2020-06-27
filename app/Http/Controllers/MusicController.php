@@ -61,20 +61,22 @@ class MusicController extends Controller
             'description' => 'required',
             // 'tempo' => 'required',
             'cover_art' => 'required',
-            'music' => 'required',
-            // 'price' => 'required',
+            'music' => 'mimes:mpga,wav',
+            // 'music' => 'mimes:MP3, AAC, M4A, wav, AIFF, FLAC, MP2, WMA, MP4,OGG',
+            'price' => 'required|integer|between:10,100',
 
         ];
         $messages = [
-            'genre_id.required' => 'The Genre is required.',
-            'title.required' => 'The Title is required.',
+            'genre_id.required' => 'Genre is required.',
+            'title.required' => 'Title is required.',
             // 'key_id.required' => 'The Key is required.',
-            'type.required' => 'The File type is required.',
             // 'tempo.required' => 'The Tempo of beat is required.',
             'cover_art.required' => 'The Cover art is required.',
-            'music.required' => 'The music file is required.',
-            'description.required' => 'The music Description is required.',
-            'price.required' => 'The music Price is required.',
+            'music.mimes' => 'File must be an audio of farmat: mpga,wav.',
+            'description.required' => 'Description is required.',
+            'price.required' => 'Price is required.',
+            'price.between' => 'Price must between $10 and $100.',
+            'price.integer' => 'Price must not contain letters.',
         ];
 
         $error = Validator::make($request->all(), $rules, $messages);
