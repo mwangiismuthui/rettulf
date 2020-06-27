@@ -29,7 +29,8 @@
     <link rel="stylesheet" type="text/css" href="/frontend/css/responsive.css" />
 
     <link rel="stylesheet" type="text/css" href="/frontend/plugin/select2/select2.min.css" />
-   
+     <!-- notifications css -->
+     <link rel="stylesheet" href="/backend/assets/plugins/notifications/css/lobibox.min.css" />
     <script src="/frontend/js/jquery-3.3.1.min.js"></script>
     <script src="/frontend/js/ajax.js"></script>
     <script src="/frontend/js/popper.min.js"></script>
@@ -223,6 +224,10 @@
     <script src="/frontend/plugin/bootstrap-datatable/js/buttons.html5.min.js"></script>
     <script src="/frontend/plugin/bootstrap-datatable/js/buttons.print.min.js"></script>
     <script src="/frontend/plugin/bootstrap-datatable/js/buttons.colVis.min.js"></script>
+    <!--notification js -->
+    <script src="/backend/assets/plugins/notifications/js/lobibox.min.js"></script>
+    <script src="/backend/assets/plugins/notifications/js/notifications.min.js"></script>
+    <script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
 
     <script>
 

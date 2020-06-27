@@ -7,8 +7,12 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
                 <div class="m24_heading_wrapper m24_cover text-center">
-
-                    <h1>UPLOAD YOUR MUSIC</h1>
+                    @hasrole ('Producer')
+                    <h1>UPLOAD YOUR BEAT</h1>
+                    @endif
+                    @hasrole ('Artist')
+                    <h1>UPLOAD YOUR Sonng</h1>
+                    @endif
                 </div>
             </div>
 
@@ -20,14 +24,19 @@
                         <br>
                         Uploading...
                     </div>
-                    <span id="form_result"></span>
+                    <center id="form_result" style="margin-bottom:35px"> </center>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    <label for="genre">Genre</label>
+                                    @hasrole ('Producer')
+                                    <label for="genre">Genre of Beat</label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="genre">Genre of Song</label>
+                                    @endif
                                     <select class="form-control require genre" id="genre" name="genre_id">
-                                        <option value="" disabled selected>Select Music Genre *</option>
+                                        <option value="" disabled selected>Select Genre *</option>
                                         @foreach ($genres as $genre)
                                         <option value="{{$genre->id}}">{{$genre->genre}}</option>
                                         @endforeach
@@ -41,31 +50,32 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     @hasrole ('Producer')
-                                    <label for="beat">Beat Key</label>
+                                    <label for="cover">Beat Title</label>
+                                    <input type="text" class="form-control require" name="title" required=""
+                                        placeholder="beat title*">
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="cover">Song Title</label>
+                                    <input type="text" class="form-control require" name="title" required=""
+                                        placeholder="song title*">
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @hasrole ('Producer')
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+                                    <label for="beat">Key of Beat</label>
                                     <select class="form-control require key" id="beat" name="key_id" required="">
                                         <option value="" disabled selected>Select Beat Key *</option>
                                         @foreach ($keys as $key)
                                         <option value="{{$key->id}}">{{$key->key}}</option>
                                         @endforeach
                                     </select>
-                                    @else
-
-                                    @endif
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-pos">
-                                <div class="form-group i-name">
-
-                                    <label for="cover">Title</label>
-                                    <input type="text" class="form-control require" name="title" required=""
-                                        placeholder="title*">
-
                                 </div>
                             </div>
                         </div>
@@ -84,11 +94,18 @@
 
                         </div>
                     </div>
+                    @endif
+
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-e">
                                 <div class="form-group i-name">
-                                    <label for="cover">Choose Cover Image</label>
+                                    @hasrole ('Producer')
+                                    <label for="cover">Choose Cover Art for Beat </label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="cover">Choose Cover Art for Song </label>
+                                    @endif
                                     <input class="form-control require" name="cover_art" id="cover" type="file" required
                                         accept="image/*" required="" />
 
@@ -98,7 +115,13 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-e">
                                 <div class="form-group i-name">
-                                    <label for="music">Choose Music File</label>
+                                    @hasrole ('Producer')
+                                    <label for="music">Choose Beat File</label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="music">Choose Song File</label>
+                                    @endif
+
                                     <input class="form-control require" name="music" id="music" type="file" required
                                         accept="video/*" required="" />
 
@@ -110,8 +133,12 @@
                         <div class="col-md-12">
                             <div class="form-m">
                                 <div class="form-group i-message">
-
-                                    <label for="description">Description of Beat/Music</label>
+                                    @hasrole ('Producer')
+                                    <label for="description">Description of Beat</label>
+                                    @endif
+                                    @hasrole ('Artist')
+                                    <label for="description">Description of Song</label>
+                                    @endif
                                     <textarea class="form-control require" name="description" required="" rows="5"
                                         id="description" placeholder=" description"></textarea>
 
@@ -119,43 +146,42 @@
                             </div>
                         </div>
                     </div>
+                    @hasrole ('Artist')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-m">
                                 <div class="form-group i-message">
 
                                     <label for="lyrics">Music Lyrics (optional)</label>
-                                    <textarea class="form-control" name="lyrics"  rows="30"
-                                        id="lyrics" placeholder=" Paste lyrics"></textarea>
+                                    <textarea class="form-control" name="lyrics" rows="30" id="lyrics"
+                                        placeholder=" Paste lyrics"></textarea>
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @hasrole ('Producer')
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    @hasrole ('Producer')
 
                                     <label for="music">Price range between $10 to $100</label>
                                     <input type="text" class="form-control require" name="price" required=""
                                         placeholder="price*">
-                                    @else
-
-                                    @endif
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="tb_es_btn_div">
                                 <div class="response"></div>
                                 <div class="tb_es_btn_wrapper">
-                                    <button type="submit"><i class="flaticon-play-button"></i> Submit
+                                    <button type="submit"><i class="flaticon-play-button"></i> Upload
                                     </button>
                                 </div>
                             </div>
@@ -217,8 +243,16 @@
                                 "<span>" +
                                 data.errors[count] +
                                 "</span><br>";
+                                Lobibox.notify("error", {
+                                    pauseDelayOnHover: true,
+                                    continueDelayOnInactiveTab: false,
+                                    position: "top right",
+                                    icon: "fa fa-times-circle",
+                                    msg: data.errors[count],
+                                });
                         }
                         html += "</div></div>";
+                        
 
                 }
                 if (data.warning) {
@@ -226,6 +260,13 @@
                         '<div class="alert alert-warning">' +
                         data.warning +
                         "</div>";
+                        Lobibox.notify("warning", {
+                            pauseDelayOnHover: true,
+                            continueDelayOnInactiveTab: false,
+                            position: "top right",
+                            icon: "fa fa-times-circle",
+                            msg:  data.success,
+                        });
                 }
                 if (data.success) {
                     html =
@@ -241,14 +282,12 @@
                             icon: "fa fa-times-circle",
                             msg: data.success,
                          });
-                     $('#product_add')[0].reset();
-                    $('#productmodal').modal('hide');
-                    $('#product_table').DataTable().ajax.reload();
+                         $('#product_add')[0].reset();
                 }
                      $("#form_result").html(html);
                     setTimeout(function () {
                         $("#form_result").html("");
-                    }, 3000);
+                    }, 6000);
 
 
             },

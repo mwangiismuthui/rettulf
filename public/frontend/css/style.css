@@ -1227,18 +1227,19 @@ span.comboTreeItemTitle{
     bottom: 12px;
 }
 .m24_signin_wrapper{
-	float:right;
-	display:inline-block;
+	/* float:right; */
+	display:inline;
 }
 .m24_signin_wrapper a img {
     float: left;
 	width:35px;
+	margin-left: 15px;
      -webkit-border-radius: 100px; 
   -moz-border-radius: 100px; 
    border-radius: 100px; 
 }
 .m24_signin_wrapper .login_top_wrapper {
-    float: left;
+    float: right;
     width: calc(100% - 50px);
     padding-left: 15px;
 	padding-top:6px;

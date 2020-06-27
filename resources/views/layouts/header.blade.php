@@ -12,17 +12,17 @@
         </div>
 
         <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
-            <div class="m24_signin_wrapper">
-
-
+            <div class="m24_signin_wrapper">                
                 @if (Auth::check())
-                <a href="{{route('login')}}">
+                <a href="{{route('login')}}"><img src="{{ Auth::user()->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}" alt="img">
+                    <div class="login_top_wrapper">
+                        <p>{{Auth::user()->name}}</p>
 
-                    <p>{{Auth::user()->name}}</p>
+                    </div>                  
 
                 </a>
                 @else
-                <a href="{{route('login')}}">
+                <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">
                     <p>login/register</p>
 
                 </a>
