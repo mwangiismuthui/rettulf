@@ -124,7 +124,7 @@ class FrontendController extends Controller
     public function myMusic(Request $request)
     {
         $user_id = Auth::user()->id;
-        $user = User::where('id',$user_id)->get();
+        $user = User::with('balance')->where('id',$user_id)->get();
         $my_music = Music::where('user_id',$user_id)->get();
         return view('frontend.mymusic',compact('my_music','user'));
 

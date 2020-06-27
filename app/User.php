@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\UsesUUID;
 use App\Music;
 use App\Location;
+use App\Balance;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -51,5 +52,9 @@ use HasRoles;
     public function location()
     {
         return $this->belongsTo(Location::class);
+    }
+    public function balance()
+    {
+        return $this->hasOne(Balance::class);
     }
 }

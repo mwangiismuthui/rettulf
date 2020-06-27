@@ -107,8 +107,8 @@ class MusicController extends Controller
 
         if ($request->hasFile('music')) {
             $fileDestination = '/uploadedFiles';
-            $musicfiile = $request->file('music');
-            $filename = $this->generateUniqueFileName($musicfiile, $fileDestination);
+            $musicfile = $request->file('music');
+            $filename = $this->generateUniqueFileName($musicfile, $fileDestination);
             $music->music = $filename;
             $rawfile = $this->analyzeFile(public_path() . $fileDestination .'/'. $filename);
             $music->duration = $rawfile['playtime_string'];
@@ -206,11 +206,11 @@ class MusicController extends Controller
        
     }
 
-    // public function generateUniqueFileName($musicfiile, $destinationPath)
+    // public function generateUniqueFileName($musicfile, $destinationPath)
     // {
     //     $initial = "musicfile";
-    //     $name = $initial . str_random() . time() . '.' . $musicfiile->getClientOriginalExtension();
-    //     if ($musicfiile->move(public_path() . $destinationPath, $name)) {
+    //     $name = $initial . str_random() . time() . '.' . $musicfile->getClientOriginalExtension();
+    //     if ($musicfile->move(public_path() . $destinationPath, $name)) {
     //         return $name;
     //     } else {
     //         return null;
@@ -233,6 +233,7 @@ class MusicController extends Controller
     {
         $getID3 = new \getID3;
         $file = $getID3->analyze($full_video_path);      
+        // dd($file);
         return $file;
     }
 }

@@ -35,6 +35,8 @@
                             <h1>{{$artist->name}}</h1>
                             <p>Artist, {{$artist->location->location}}</p>
                             <p>Renowned for his soulful singing, Indian musician Arijit Singh is also a music composer, producer, recordist and programmer. He has several blockbuster songs to his credit and has won 23 awards so far, which makes him one of the most successful sing... Full Bio</p>
+                            <p>Balance</p>
+                        <p>${{number_format($artist->balance->balance)}}</p>
                          
                         </div>
                         <div class="artist_list_icon">
@@ -106,7 +108,7 @@
                         <li class="text-center"><a href="#"><a href="">Paid</a></a></li>
                         @endif
                     <li class="text-center"><a href="#">{{number_format($music->downloads,0)}}</a></li>
-                        <li class="text-center"><a href="#">3:26</a></li>
+                        <li class="text-center"><a href="#">{{$music->duration}}</a></li>
 
                         <li class="text-center top_song_artist_playlist">
                             <div class="m24_tranding_more_icon">

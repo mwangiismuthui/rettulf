@@ -227,7 +227,7 @@
 
                             </div>
                             <div class="top_list_tract_time">
-                                <p>4:22</p>
+                                <p>{{$music->duration}}</p>
                             </div>
                         </div>
                         <div class="top_songs_list_right">
@@ -303,9 +303,10 @@
 </div>
 <!-- top songs wrapper end -->
 <!-- top beats wrapper start -->
-<div class="top_songs_wrapper m24_cover"> <a  id="{{$music->id}}">
+<div class="top_songs_wrapper m24_cover">
+     {{-- <a  id="{{$music->id}}">
     <i class="flaticon-play-button" id="{{$music->id}}"></i>
-</a>
+</a> --}}
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
@@ -338,7 +339,7 @@
 
                             </div>
                             <div class="top_list_tract_time">
-                                <p>4:22</p>
+                                <p>{{$music->duration}}</p>
                             </div>
                         </div>
                         <div class="top_songs_list_right">

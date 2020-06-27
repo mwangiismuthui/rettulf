@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Balance;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -127,6 +128,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = $password; //hashed password.
         if ($user->save()) {
+            $user_id = $user->id;
             $designation = $request->designation;
             $role = DB::table('roles')->where('name', $designation)->pluck('id')->first();
 
@@ -135,8 +137,13 @@ class RegisterController extends Controller
                 'model_type' => 'App\User',
                 'model_id' => $user->id,
             ]);
+            
+            $balances = new Balance();
+            $balances->user_id = $user_id;
+            $balances->save();
 
             Auth::login($user, true);
+            
             $user = Auth::user();
 
             if ($user->hasRole('Super-Admin')) {

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\UsesUUID;
 use App\Genre;
 use App\Category;
+use App\Balance;
 class Music extends Model
 {
     //
@@ -22,6 +23,10 @@ class Music extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function balance()
+    {
+        return $this->hasOne(Balance::class);
     }
     use SoftDeletes;
     use UsesUUID;
