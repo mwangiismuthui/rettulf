@@ -22,18 +22,21 @@ Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('sing
 Route::get('/single/producer/{id}', 'FrontendController@singleProducer')->name('singleProducer');
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
 Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
-Route::get('/buy-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+Route::get('/trending-music', 'FrontendController@trending')->name('trending');
 
 Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
+Route::get('/buy-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+
 // ..................music..............................//
 Route::get('/file/index', 'MusicController@index')->name('file.index');
 Route::get('/file-upload', 'MusicController@create')->name('file.upload');
 Route::post('/file-upload/store', 'MusicController@store')->name('file.store');
 Route::get('/file/edit/{id}', 'MusicController@edit')->name('file.edit');
 Route::post('/file/update/{id}', 'MusicController@update')->name('file.update');
-Route::delete('/file/destroy/', 'MusicController@destroy')->name('file.destroy');
+Route::get('/file/destroy/{id}', 'MusicController@destroy')->name('file.destroy');
+Route::get('/file/destroy-pic/{id}', 'MusicController@destroyPic')->name('file.destroyPic');
 Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 
 

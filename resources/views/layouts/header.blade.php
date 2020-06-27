@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
-            <a href="{{route('home')}}">
+                <a href="{{route('home')}}">
                     <img src="/frontend/images/logo.png" alt="logo">
                 </a>
             </div>
@@ -14,20 +14,20 @@
         <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
             <div class="m24_signin_wrapper">
 
-                
+
                 @if (Auth::check())
-<a href="{{route('login')}}" >
-    
-    <p>{{Auth::user()->name}}</p>
+                <a href="{{route('login')}}">
 
-</a>
-@else
-<a href="{{route('login')}}" >
-        <p>login/register</p>
+                    <p>{{Auth::user()->name}}</p>
 
-</a> 
-@endif
-              
+                </a>
+                @else
+                <a href="{{route('login')}}">
+                    <p>login/register</p>
+
+                </a>
+                @endif
+
             </div>
 
         </div>
@@ -43,7 +43,7 @@
                                 <a href="add_playlist.html"><i class="fas fa-caret-right"></i>New Music</a>
                             </li>
                             <li class="parent">
-                                <a href="artist.html"><i class="fas fa-caret-right"></i>Trending Music</a>
+                                <a href="{{route('trending')}}"><i class="fas fa-caret-right"></i>Trending Music</a>
                             </li>
                             <li class="parent">
                                 <a href="genres.html"><i class="fas fa-caret-right"></i>Top Artist</a>
@@ -51,7 +51,7 @@
                             <li class="parent">
                                 <a href="album.html"><i class="fas fa-caret-right"></i>Top Producers</a>
                             </li>
-                     
+
                         </ul>
                     </li>
                     <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">more <i
@@ -63,7 +63,7 @@
                             <li class="parent">
                                 <a href="{{route('pricing')}}"><i class="fas fa-caret-right"></i> pricing plan </a>
                             </li>
-                          
+
                         </ul>
                     </li>
 
@@ -83,22 +83,22 @@
                     <div id="search_open" class="res_search_box">
 
                         <div class="m24_signin_wrapper responsive_search_toggle">
-@if (Auth::check())
-<a href="{{route('login')}}" >
-    <div class="login_top_wrapper">
-    <p>{{Auth::user()->name}}</p>
+                            @if (Auth::check())
+                            <a href="{{route('login')}}">
+                                <div class="login_top_wrapper">
+                                    <p>{{Auth::user()->name}}</p>
 
-    </div>
-</a>
-@else
-<a href="{{route('login')}}" >
-    <div class="login_top_wrapper">
-        <p>login/register</p>
+                                </div>
+                            </a>
+                            @else
+                            <a href="{{route('login')}}">
+                                <div class="login_top_wrapper">
+                                    <p>login/register</p>
 
-    </div>
-</a> 
-@endif
-                       
+                                </div>
+                            </a>
+                            @endif
+
                         </div>
                     </div>
                 </div>

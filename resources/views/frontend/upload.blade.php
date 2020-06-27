@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <!-- contact_wrapper start -->
 <div class="contact_section m24_cover">
     <div class="container">
@@ -12,7 +13,7 @@
             </div>
 
             <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-12">
-            <form id="music_add" method="POST" enctype="multipart/form-data" >
+                <form id="music_add" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div id="overlay-load" style="display:none;" class="fileuploadoverlay">
                         <img src="/frontend/images/loader.gif" alt="loader">
@@ -24,8 +25,8 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-
-                                    <select class="form-control require genre" name="genre_id">
+                                    <label for="genre">Genre</label>
+                                    <select class="form-control require genre" id="genre" name="genre_id">
                                         <option value="" disabled selected>Select Music Genre *</option>
                                         @foreach ($genres as $genre)
                                         <option value="{{$genre->id}}">{{$genre->genre}}</option>
@@ -39,17 +40,18 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                        @hasrole ('Producer')
-                        <select class="form-control require key" name="key_id" required="">
-                            <option value="" disabled selected>Select Beat Key *</option>
-                            @foreach ($keys as $key)
-                            <option value="{{$key->id}}">{{$key->key}}</option>
-                            @endforeach
-                        </select>
-                        @else
-                            
-                        @endif
-                                                            
+                                    @hasrole ('Producer')
+                                    <label for="beat">Beat Key</label>
+                                    <select class="form-control require key" id="beat" name="key_id" required="">
+                                        <option value="" disabled selected>Select Beat Key *</option>
+                                        @foreach ($keys as $key)
+                                        <option value="{{$key->id}}">{{$key->key}}</option>
+                                        @endforeach
+                                    </select>
+                                    @else
+
+                                    @endif
+
 
                                 </div>
                             </div>
@@ -78,18 +80,8 @@
 
                                 </div>
                             </div>
-                            @else
-                            <div class="form-pos">
-                                <div class="form-group i-name">
-
-                                    <label for="cover">Choose Lyrics</label>
-                                    <input type="file" class="form-control require" name="lyrics" required=""
-                                        placeholder="Lyrics *">
-
-                                </div>
-                            </div>
                             @endif
-                         
+
                         </div>
                     </div>
                     <div class="row">
@@ -119,29 +111,46 @@
                             <div class="form-m">
                                 <div class="form-group i-message">
 
-                                    <label for="music">Description of Beat/Music</label>
+                                    <label for="description">Description of Beat/Music</label>
                                     <textarea class="form-control require" name="description" required="" rows="5"
                                         id="description" placeholder=" description"></textarea>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-pos">
-                                <div class="form-group i-name">
-                        @hasrole ('Producer')
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-m">
+                                <div class="form-group i-message">
 
-                        <label for="music">Price range between $10 to $100</label>
-                        <input type="text" class="form-control require" name="price" required=""
-                        placeholder="price*">
-                        @else
-                            
-                        @endif
-                                    
+                                    <label for="lyrics">Music Lyrics (optional)</label>
+                                    <textarea class="form-control" name="lyrics"  rows="30"
+                                        id="lyrics" placeholder=" Paste lyrics"></textarea>
 
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+                                    @hasrole ('Producer')
+
+                                    <label for="music">Price range between $10 to $100</label>
+                                    <input type="text" class="form-control require" name="price" required=""
+                                        placeholder="price*">
+                                    @else
+
+                                    @endif
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="tb_es_btn_div">
                                 <div class="response"></div>
@@ -157,10 +166,22 @@
         </div>
     </div>
 </div>
-<!-- contact_wrapper end -->
 
+<!-- contact_wrapper end -->
+<script src="/frontend/plugin/ckeditor/ckeditor.js"></script>
 
 <script type="text/javascript">
+    ClassicEditor
+		.create( document.querySelector( '#lyrics' ), {
+			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+
     $(document).ready(function() {
             $('.genre').select2();           
             $('.key').select2(); 
@@ -245,4 +266,6 @@
         });
     });
 </script>
+
+
 @endsection

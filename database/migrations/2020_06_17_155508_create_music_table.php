@@ -21,7 +21,7 @@ class CreateMusicTable extends Migration
             $table->string('title');
             $table->string('type');
             $table->string('description');
-            $table->string('cover_art');
+            $table->string('cover_art')->nullable();
             $table->string('tempo_of_beat');
             $table->string('music');
             $table->integer('is_paid')->default(0);
@@ -34,6 +34,7 @@ class CreateMusicTable extends Migration
             $table->foreign('key_id')->references('id')->on('keys')->onDelete('cascade');
             $table->string('duration')->nullable();
             $table->string('size')->nullable();
+            $table->longText('lyrics')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

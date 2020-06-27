@@ -36,6 +36,7 @@
     <script src="/frontend/js/bootstrap.min.js"></script>
     <script src="/frontend/plugin/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
     <script src="/frontend/plugin/select2/select2.min.js"></script>
+    
 </head>
 <body>
 <!-- preloader Start -->
