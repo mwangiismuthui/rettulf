@@ -12,19 +12,23 @@
         </div>
 
         <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
-            <div class="m24_signin_wrapper">                
+            <div class="m24_signin_wrapper">
                 @if (Auth::check())
-                <a href="{{route('login')}}"><img src="{{ Auth::user()->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}" alt="img">
+                <a href="{{route('login')}}"><img
+                        src="{{ Auth::user()->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}"
+                        alt="img">
                     <div class="login_top_wrapper">
-                        <p>{{Auth::user()->name}}</p>
-
-                    </div>                  
+                        <p>{{Auth::user()->name}},</p>
+                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
+                    </div>
 
                 </a>
                 @else
-                <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">
-                    <p>login/register</p>
-
+                <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">                    
+                    <div class="login_top_wrapper">
+                        <p>login/register</p>
+                    </div>
                 </a>
                 @endif
 
@@ -39,18 +43,34 @@
                     <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">browse <i
                                 class="flaticon-down-arrow"></i></a>
                         <ul class="navi_2_dropdown">
+                            {{-- @hasrole('Producer')                             --}}
                             <li class="parent">
-                                <a href="add_playlist.html"><i class="fas fa-caret-right"></i>New Music</a>
+                                <a href="{{route('newSongs')}}"><i class="fas fa-caret-right"></i>New Songs</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('trending')}}"><i class="fas fa-caret-right"></i>Trending Music</a>
+                                <a href="{{route('mostDownloadedSongs')}}"><i class="fas fa-caret-right"></i>Most Downloaded Songs</a>
                             </li>
                             <li class="parent">
-                                <a href="genres.html"><i class="fas fa-caret-right"></i>Top Artist</a>
+                                <a href="{{route('mostViewedSongs')}}"><i class="fas fa-caret-right"></i>Most Viewed Songs</a>
                             </li>
                             <li class="parent">
-                                <a href="album.html"><i class="fas fa-caret-right"></i>Top Producers</a>
+                            <a href="{{route('topArtists')}}"><i class="fas fa-caret-right"></i>Top Artist</a>
                             </li>
+                            <li class="parent">
+                                <a href="{{route('newBeats')}}"><i class="fas fa-caret-right"></i>New Beats</a>
+                            </li>
+                            <li class="parent">
+                                <a href="{{route('mostDownloadedBeats')}}"><i class="fas fa-caret-right"></i>Most Downloaded Beats</a>
+                            </li>
+                            <li class="parent">
+                                <a href="{{route('mostViewedBeats')}}"><i class="fas fa-caret-right"></i>Most Viewed Beats</a>
+                            </li>
+                            <li class="parent">
+                                <a href="{{route('topProducers')}}"><i class="fas fa-caret-right"></i>Top Producers</a>
+                            </li>
+                            {{-- @endif
+                            @endif
+                             --}}
 
                         </ul>
                     </li>
@@ -86,10 +106,15 @@
                             @if (Auth::check())
                             <a href="{{route('login')}}">
                                 <div class="login_top_wrapper">
-                                    <p>{{Auth::user()->name}}</p>
+                                    <p>{{Auth::user()->name}},</p>
+                                    <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
 
                                 </div>
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                             @else
                             <a href="{{route('login')}}">
                                 <div class="login_top_wrapper">

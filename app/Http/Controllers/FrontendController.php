@@ -147,10 +147,69 @@ class FrontendController extends Controller
         return view('frontend.buymusic', compact('music'));
     }
 
-    public function trending()
+    public function topArtists()
     {
-        $musics = Music::where('downloads', '>', 1)->orderBy('downloads', 'desc')->get();
-        return view('frontend.musicshop', compact('$musics'));
+        $feturedUsers = User::role('Artist')->where('is_featured', '1')->get();
+        $users = User::with('music')->get()->sortBy(function ($user) {
+            if ($user->hasRole('Artist')) {
+                return $user->music->count();
+            }
+        });
+        dd($feturedUsers);
+        return view('frontend.users', compact('users', 'feturedUsers'));
+    }
+    public function topProducers()
+    {
+        $feturedUsers = User::role('Producer')->where('is_featured', '1')->get();
+        $users = User::with('music')->get()->sortBy(function ($user) {
+            if ($user->hasRole('Producer')) {
+                return $user->music->count();
+            }
+        });
+        // dd($feturedUsers);
+        return view('frontend.users', compact('users', 'feturedUsers'));
+    }
+
+    public function mostDownloadedSongs()
+    {
+        $musics = Music::where('downloads', '>', 1)->where('type', 'music')->orderBy('downloads', 'desc')->get();
+        // dd($musics);
+        return view('frontend.musicshop', compact('musics'));
+    }
+
+    public function mostViewedSongs()
+    {
+        $musics = Music::where('views', '>', 1)->where('type', 'music')->orderBy('views', 'desc')->get();
+        // dd($musics);
+        return view('frontend.musicshop', compact('musics'));
+    }
+
+    public function newSongs()
+    {
+        $musics = Music::where('type', 'music')->latest()->get();
+        // dd($musics);
+        return view('frontend.musicshop', compact('musics'));
+    }
+
+    public function mostDownloadedBeats()
+    {
+        $musics = Music::where('downloads', '>', 1)->where('type', 'beats')->orderBy('downloads', 'desc')->get();
+        // dd($musics);
+        return view('frontend.musicshop', compact('musics'));
+    }
+
+    public function mostViewedBeats()
+    {
+        $musics = Music::where('views', '>', 1)->where('type', 'beats')->orderBy('views', 'desc')->get();
+        // dd($musics);
+        return view('frontend.musicshop', compact('musics'));
+    }
+
+    public function newBeats()
+    {
+        $musics = Music::where('type', 'beats')->latest()->get();
+        // dd($musics);
+        return view('frontend.musicshop', compact('musics'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -162,9 +221,9 @@ class FrontendController extends Controller
     {
         $downloaded_musics = PaypalPayment::where('user_id', Auth::user()->id)
             ->get();
-            $downloaded_music= [];
+        $downloaded_music = [];
         foreach ($downloaded_musics as $music) {
-$downloaded_music = $music->music_id;
+            $downloaded_music = $music->music_id;
         }
         return $downloaded_music;
     }

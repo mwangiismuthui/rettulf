@@ -228,7 +228,7 @@
                                 </ul>
                             </div>
                             <div class="showpro">
-                                <p>You're Watching 01 to 20</p>
+                                <p>You're Watching0</p>
                             </div>
                         </div>
                     </div>
@@ -236,19 +236,26 @@
                         <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
                             <div id="grid" class="tab-pane active">
                                 <div class="row">
+                                    @if ($musics->isEmpty())
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <p class="text-center">No record found</p>
+                                    </div>
+                                    @else
+                                    @foreach ($musics as $music)
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                         <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp1.jpg" class="img-responsive" alt="img">
+                                            <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
+                                                alt="{{$music->title}}" class="img-responsive">
                                             <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Kaabil Hoon </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
+                                                <p><a href="{{$music->user->hasRole('Producer') ? route('singleProducer',$music->user->id) : route('singleArtist',$music->user->id)}}">{{$music->user->name}} </a></p>
+                                                <p class="various_artist_text"><a href="#">{{$music->title}}</a>
                                                 </p>
-                                                <h2> $ 10.00
+                                                <h2> $ {{number_format($music->price,2)}}
                                                 </h2>
                                                 <div class="lang_apply_btn">
                                                     <ul>
                                                         <li>
-                                                            <a href="#"> buy</a>
+                                                            <a href="{{route('buymusic',$music->id)}}"> buy</a>
                                                         </li>
                                                     </ul>
 
@@ -256,25 +263,12 @@
 
                                             </div>
                                             <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
                                                 <div
                                                     class="top_song_list_picks featured_list_dropdown shop_playlist_link">
                                                     <div class="m24_tranding_more_icon">
                                                         <i class="flaticon-menu"></i>
                                                     </div>
                                                     <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
                                                         <li><a href="#"><span class="opt_icon"><i
                                                                         class="flaticon-share"></i></span>share</a></li>
                                                         <li><a href="#"><span class="opt_icon"><i
@@ -289,425 +283,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp2.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Jeeley Yeh Lamhe </a></p>
-                                                <p class="various_artist_text"><a href="#">Babuji Ek Bambai
-                                                    </a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp3.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Padhoge Likhoge </a></p>
-                                                <p class="various_artist_text"><a href="#">Mohenjo Daro
-                                                    </a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp4.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Rajj Rajj Ke</a></p>
-                                                <p class="various_artist_text"><a href="#">raj Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp5.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Jeeley Yeh Lamhe </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp1.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Kaabil Hoon </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp2.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">mai hoon na </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="featured_artist_list shop_video_wrapper  m24_cover">
-                                            <img src="/frontend/images/sp6.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Kaabil Hoon </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div id="list" class="tab-pane fade">
                                 <div class="row">
-
+                                    @if ($musics->isEmpty())
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <p class="text-center">No record found</p>
+                                    </div>
+                                    @else
+                                    @foreach ($musics as $music)
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div
                                             class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp1.jpg" class="img-responsive" alt="img">
+                                            <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
+                                            alt="{{$music->title}}" class="img-responsive">
                                             <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Kaabil Hoon </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
+                                            <p><a href="{{$music->user->hasRole('Producer') ? route('singleProducer',$music->user->id) : route('singleArtist',$music->user->id)}}">{{$music->user->name}} </a></p>
+                                                <p class="various_artist_text"><a href="#">{{$music->title}}</a>
                                                 </p>
-                                                <h2> $ 10.00
+                                                <h2> $ {{number_format($music->price,2)}}
                                                 </h2>
                                                 <div class="lang_apply_btn">
                                                     <ul>
                                                         <li>
-                                                            <a href="#"> buy</a>
+                                                            <a href="{{route('buymusic',$music->id)}}"> buy</a>
                                                         </li>
                                                     </ul>
 
                                                 </div>
 
                                             </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
+                                            <div class="shop_rating_section">                                                
                                                 <div
                                                     class="top_song_list_picks featured_list_dropdown shop_playlist_link">
                                                     <div class="m24_tranding_more_icon">
                                                         <i class="flaticon-menu"></i>
                                                     </div>
                                                     <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
                                                         <li><a href="#"><span class="opt_icon"><i
                                                                         class="flaticon-share"></i></span>share</a></li>
                                                         <li><a href="#"><span class="opt_icon"><i
@@ -722,393 +337,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp3.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Jeeley Yeh Lamhe </a></p>
-                                                <p class="various_artist_text"><a href="#">Junooniyat
-                                                        ya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp2.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Dard Ka Pata </a></p>
-                                                <p class="various_artist_text"><a href="#">Pyaar Manga Hai
-                                                    </a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp3.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Jeeley Yeh Lamhe </a></p>
-                                                <p class="various_artist_text"><a href="#">Junooniyat
-                                                        ya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp5.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Kaabil Hoon </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp4.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Suku Suku </a></p>
-                                                <p class="various_artist_text"><a href="#">Raaz Reboot
-                                                    </a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp5.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">Kaabil Hoon </a></p>
-                                                <p class="various_artist_text"><a href="#">Tutak Tutak Tutiya</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div
-                                            class="featured_artist_list shop_video_wrapper shop_list_img_wrapper m24_cover">
-                                            <img src="/frontend/images/sp6.jpg" class="img-responsive" alt="img">
-                                            <div class="featured_artist_detail shop_featured_artist">
-                                                <p><a href="#">mai hoon na </a></p>
-                                                <p class="various_artist_text"><a href="#">the dream girl</a>
-                                                </p>
-                                                <h2> $ 10.00
-                                                </h2>
-                                                <div class="lang_apply_btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#"> buy</a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="shop_rating_section">
-                                                <ul class="star_rating">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <div
-                                                    class="top_song_list_picks featured_list_dropdown shop_playlist_link">
-                                                    <div class="m24_tranding_more_icon">
-                                                        <i class="flaticon-menu"></i>
-                                                    </div>
-                                                    <ul class="tranding_more_option">
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-playlist"></i></span>Add To
-                                                                playlist</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-star"></i></span>favourite</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-share"></i></span>share</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-files-and-folders"></i></span>view
-                                                                lyrics</a></li>
-                                                        <li><a href="#"><span class="opt_icon"><i
-                                                                        class="flaticon-trash"></i></span>delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                    @endif
+                                   
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="blog_pagination_section m24_cover">
+                    {{-- <div class="blog_pagination_section m24_cover">
                         <ul>
                             <li>
                                 <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>
@@ -1128,7 +364,7 @@
                                 <a href="#" class="next"><i class="flaticon-right-arrow"></i></a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
