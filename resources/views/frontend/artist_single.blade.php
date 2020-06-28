@@ -96,7 +96,7 @@
                             </div>
                         </li>
                         <li class="song_title_width"><a href="#">{{$artist->name}}</a></li>
-                        <li class="text-center"><a href="#">3:26</a></li>
+                    <li class="text-center"><a href="#">{{$music->duration}}</a></li>
 
                         <li class="text-center top_song_artist_playlist">
                             <div class="m24_tranding_more_icon">

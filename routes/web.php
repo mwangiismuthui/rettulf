@@ -22,7 +22,14 @@ Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('sing
 Route::get('/single/producer/{id}', 'FrontendController@singleProducer')->name('singleProducer');
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
 Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
-Route::get('/trending-music', 'FrontendController@trending')->name('trending');
+Route::get('/most-downloaded-songs', 'FrontendController@mostDownloadedSongs')->name('mostDownloadedSongs');
+Route::get('/most-viewed-songs', 'FrontendController@mostViewedSongs')->name('mostViewedSongs');
+Route::get('/new-songs', 'FrontendController@newSongs')->name('newSongs');
+Route::get('/most-downloaded-beats', 'FrontendController@mostDownloadedBeats')->name('mostDownloadedBeats');
+Route::get('/most-viewed-beats', 'FrontendController@mostViewedBeats')->name('mostViewedBeats');
+Route::get('/new-beats', 'FrontendController@newBeats')->name('newBeats');
+Route::get('/top-producers', 'FrontendController@topProducers')->name('topProducers');
+Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
 
 Route::group(['middleware' => 'auth'], function () {
 
