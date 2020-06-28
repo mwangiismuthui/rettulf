@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Balance;
+use App\Commision;
 use App\Music;
 use Illuminate\Http\Request;
 use PayPal\Api\Amount;
@@ -26,90 +28,145 @@ use PaypalPayoutsSDK\Core\PayPalHttpClient;
 use PaypalPayoutsSDK\Core\SandboxEnvironment;
 use PaypalPayoutsSDK\Payouts\PayoutsPostRequest;
 use App\Http\Controllers\PayPalClient;
+use App\UploadFee;
 
 class PaymentController extends Controller
 {
-    //
 
     public function upload_payment($id)
     {
         $previousUrl = url()->previous();
         $exacturl = substr($previousUrl, 22);
-        // dd($exacturl);
-        session()->put('music_id', $id);
-        session()->put('previous_url', $exacturl);
-        // $clientIP = request()->ip();
+
+        $clientIP = request()->ip();
+        $music_amount = Music::where('id', $id)->pluck('price')->first();
+        $total = (int) $music_amount;
 
 
-        $apiContext = new \PayPal\Rest\ApiContext(
-            new \PayPal\Auth\OAuthTokenCredential(
-                'Ab576qDQ2pShVNyKJms7tcBoxaq_xofpmJq2vBpMWLS2jfRkwnyzHB7QO6yH12gbQQa7OU_NJudN6n4z', // ClientID
-                'EDCYQBhWefKcjvS_N26czclv5CzZTC9eF9CGsedOexQDb3K5Hd-M9YtomRosuNFuqfUbry5t-r2HP7gA' // ClientSecret
-            )
-        );
-        // dd($apiContext) ;
 
-        $number_of_days = 1;
-        $price = 3;
-        $subtotal  = $number_of_days * $price;
-        $total = $subtotal + 0;
+        if ($total == 0) {
+            return redirect()->route('downloadMusic');
+        } else {
+            # code...
+            $apiContext = new \PayPal\Rest\ApiContext(
+                new \PayPal\Auth\OAuthTokenCredential(
+                    'Ab576qDQ2pShVNyKJms7tcBoxaq_xofpmJq2vBpMWLS2jfRkwnyzHB7QO6yH12gbQQa7OU_NJudN6n4z', // ClientID
+                    'EDCYQBhWefKcjvS_N26czclv5CzZTC9eF9CGsedOexQDb3K5Hd-M9YtomRosuNFuqfUbry5t-r2HP7gA' // ClientSecret
+                )
+            );
+
+            $payer = new Payer();
+            $payer->setPaymentMethod("paypal");
+            if ($exacturl == "mymusic") {
+
+                $upload_payment = UploadFee::orderBy('created_at', 'DESC')->pluck('amount')->first();
+                $upload_payment_amount = (int) $upload_payment;
+
+                $temporary_trans = new TemporaryTransaction();
+                $temporary_trans->ip_adress = $clientIP;
+                $temporary_trans->music_id = $id;
+                $temporary_trans->amount = $upload_payment_amount;
+                $temporary_trans->exacturl = $exacturl;
+                $temporary_trans->save();
+                $item1 = new Item();
+                $item1->setName('Premium Package')
+                    ->setCurrency('USD')
+                    ->setQuantity(1)
+                    ->setSku("123123")
+                    ->setPrice($upload_payment_amount);
 
 
-        $payer = new Payer();
-        $payer->setPaymentMethod("paypal");
-        $item1 = new Item();
-        $item1->setName('Premium Package')
-            ->setCurrency('USD')
-            ->setQuantity($number_of_days)
-            ->setSku("123123") // Similar to `item_number` in Classic API
-            ->setPrice($price);
-        // dd($payer) ;
+                $itemList = new ItemList();
+                $itemList->setItems(array($item1));
+
+                $details = new Details();
+                $details->setShipping(0.0)
+                    ->setTax(0.0)
+                    ->setSubtotal($upload_payment_amount);
+
+                $amount = new Amount();
+                $amount->setCurrency("USD")
+                    ->setTotal($upload_payment_amount)
+                    ->setDetails($details);
+            } else {
+
+                $temporary_trans = new TemporaryTransaction();
+                $temporary_trans->ip_adress = $clientIP;
+                $temporary_trans->music_id = $id;
+                $temporary_trans->amount = $total;
+                $temporary_trans->exacturl = $exacturl;
+                $temporary_trans->save();
+                // paying for downloading music 
+                $item1 = new Item();
+                $item1->setName('Premium Package')
+                    ->setCurrency('USD')
+                    ->setQuantity(1)
+                    ->setSku("123123")
+                    ->setPrice($total);
 
 
-        $itemList = new ItemList();
-        $itemList->setItems(array($item1));
+                $itemList = new ItemList();
+                $itemList->setItems(array($item1));
 
-        $details = new Details();
-        $details->setShipping(0.0)
-            ->setTax(0.0)
-            ->setSubtotal($subtotal);
+                $details = new Details();
+                $details->setShipping(0.0)
+                    ->setTax(0.0)
+                    ->setSubtotal($total);
 
-        $amount = new Amount();
-        $amount->setCurrency("USD")
-            ->setTotal($total)
-            ->setDetails($details);
+                $amount = new Amount();
+                $amount->setCurrency("USD")
+                    ->setTotal($total)
+                    ->setDetails($details);
+            }
 
-        $transaction = new Transaction();
-        $transaction->setAmount($amount)
-            ->setItemList($itemList)
-            ->setDescription("Payment description")
-            ->setInvoiceNumber(uniqid());
 
-        $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl("http://localhost:8000/execute_payment")
-            ->setCancelUrl("http://localhost:8000");
 
-        $payment = new Payment();
-        $payment->setIntent("sale")
-            ->setPayer($payer)
-            ->setRedirectUrls($redirectUrls)
-            ->setTransactions(array($transaction));
+            $transaction = new Transaction();
+            $transaction->setAmount($amount)
+                ->setItemList($itemList)
+                ->setDescription("Payment description")
+                ->setInvoiceNumber(uniqid());
 
-        $payment->create($apiContext);
-        // dd($payment) ;
+            $redirectUrls = new RedirectUrls();
+            $redirectUrls->setReturnUrl("http://localhost:8000/execute_payment")
+                ->setCancelUrl("http://localhost:8000");
 
-        $approvalUrl = $payment->getApprovalLink();
-        // dd($approvalUrl) ;
+            $payment = new Payment();
+            $payment->setIntent("sale")
+                ->setPayer($payer)
+                ->setRedirectUrls($redirectUrls)
+                ->setTransactions(array($transaction));
 
-        return redirect($approvalUrl);
+            $payment->create($apiContext);
+            // dd($payment) ;
+
+            $approvalUrl = $payment->getApprovalLink();
+            // dd($approvalUrl) ;
+
+            return redirect($approvalUrl);
+        }
     }
 
     public function execute_payment(Request $request)
     {
-        $music_id = session()->get('music_id');
-        $exacturl = session()->get('previous_url');
 
-        // dd($exacturl) ;
+        $clientIP = request()->ip();
+
+        $music_id = TemporaryTransaction::where('ip_adress', $clientIP)
+            ->orderBy('created_at', 'DESC')
+            ->pluck('music_id')
+            ->first();
+        $exacturl = TemporaryTransaction::where('ip_adress', $clientIP)
+            ->orderBy('created_at', 'DESC')
+            ->pluck('exacturl')
+            ->first();
+        $upload_payment_amount = TemporaryTransaction::where('ip_adress', $clientIP)
+            ->orderBy('created_at', 'DESC')
+            ->pluck('amount')
+            ->first();
+        session()->put('music_id', $music_id);
+        $music_amount = Music::where('id', $music_id)->pluck('price')->first();
+        $total = (int) $music_amount;
 
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
@@ -118,8 +175,6 @@ class PaymentController extends Controller
             )
         );
 
-        $our_amount = 3;
-        //  return request('transactions');
         $paymentId = request('paymentId');
 
         $payment = Payment::get($paymentId, $apiContext);
@@ -130,40 +185,47 @@ class PaymentController extends Controller
         $transaction = new Transaction();
         $amount = new Amount();
         $details = new Details();
-
-        $details->setShipping(0.0)
-            ->setTax(0.0)
-            ->setSubtotal($our_amount);
+        if ($exacturl == "mymusic") {
+            $details->setShipping(0.0)
+                ->setTax(0.0)
+                ->setSubtotal($upload_payment_amount);
 
         $amount->setCurrency('USD');
-        $amount->setTotal($our_amount);
+        $amount->setTotal($upload_payment_amount);
         $amount->setDetails($details);
         $transaction->setAmount($amount);
+        } else {
+            $details->setShipping(0.0)
+                ->setTax(0.0)
+                ->setSubtotal($total);
+
+        $amount->setCurrency('USD');
+        $amount->setTotal($total);
+        $amount->setDetails($details);
+        $transaction->setAmount($amount);
+        }
+
+
 
         $execution->addTransaction($transaction);
 
         $result = $payment->execute($execution, $apiContext);
-        $music_id = session()->get('music_id');
 
         $payment_id = request('paymentId');
         $PayerID = request('PayerID');
         if ($exacturl == "mymusic") {
 
             $storage = $this->uploadedMusic($music_id, $payment_id, $PayerID);
-            // dd($exacturl);
+            return redirect()->route('myMusic');
         } else {
             $pathToFile = $this->downloadedMusic($music_id, $payment_id, $PayerID);
-            return response()->download($pathToFile);
+            return redirect()->route('downloadMusic');
         }
-
-        $request->session()->flush();
-        // return redirect()->route('myMusic');
     }
     public function uploadedMusic($music_id, $payment_id, $PayerID)
     {
 
         $user_id = Auth::user()->id;
-        // dd($music_id) ;
         Music::where('id', $music_id)->update([
             'is_paid' => 1,
         ]);
@@ -177,13 +239,15 @@ class PaymentController extends Controller
     }
     public function downloadedMusic($music_id, $payment_id, $PayerID)
     {
-        // dd($music_id) ;
+
+        $music_amount = Music::where('id', $music_id)->pluck('price')->first();
+        $user_id = Music::where('id', $music_id)->pluck('user_id')->first();
         $downloads = Music::where('id', $music_id)->pluck('downloads')->first();
         $new_downloads = $downloads + 1;
 
 
         $user_id = Auth::user()->id;
-        dd($music_id) ;
+        // dd($music_id);
         Music::where('id', $music_id)->update([
             'is_paid' => 1,
             'downloads' => $new_downloads,
@@ -195,17 +259,20 @@ class PaymentController extends Controller
         $payment->payment_type = 'downloadedMusic';
         $payment->user_id = $user_id;
         if ($payment->save()) {
-            $music_path =  Music::where('id', $music_id)->pluck('music')->first();
-            $music_title =  Music::where('id', $music_id)->pluck('title')->first();
-            //   dd($music_title);
-            //PDF file is stored under project/public/downloads/brochure2020.pdf
-            $file = public_path() . "uploadedFiles/" . $music_path;
+            $commissionearned = 0.2 * $music_amount;
+            $earnings = 0.8 * $music_amount;
+            $balance = Balance::where('user_id', $user_id)->pluck('balance')->first();
+            $newbalance = $balance + $earnings;
+            Balance::where('user_id', $user_id)->update([
+                'balance' => $newbalance
+            ]);
 
-            $headers = [
-                'Content-Type: application/mp4',
-            ];
-            $pathToFile = public_path('uploadedFiles/' . $music_path);
-            return $pathToFile;
+            $commission = new Commision();
+            $commission->buyer_id = Auth::user()->id;
+            $commission->seller_id = $user_id;
+            $commission->music_id = $music_id;
+            $commission->amount = $commissionearned;
+            $commission->save();
         }
     }
 
@@ -257,6 +324,6 @@ class PaymentController extends Controller
         Withdrawal::where('id', $id)->update([
             'status' => 1
         ]);
-        return redirect()->back()->with('message','Payment Successfull');
+        return redirect()->back()->with('message', 'Payment Successfull');
     }
 }

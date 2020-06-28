@@ -9,7 +9,7 @@ use App\PaypalPayment;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
-
+use Response;
 class FrontendController extends Controller
 {
     /**
@@ -168,4 +168,20 @@ $downloaded_music = $music->music_id;
         }
         return $downloaded_music;
     }
-}
+    public function downloadMusic(Request $request)
+    {
+
+        $music_id = session()->get('music_id');
+
+        $music_path =  Music::where('id', $music_id)->pluck('music')->first();
+        $music_title =  Music::where('id', $music_id)->pluck('title')->first();
+        //PDF file is stored under project/public/downloads/brochure2020.pdf
+
+        $file = public_path() . "/uploadedFiles/" . $music_path;
+        $headers = [
+            'Content-Type: application/mp4',
+        ];
+        $name = $music_title.''.'.mp4';
+        $request->session()->flush();       
+         return Response::download($file, $name, $headers);
+    }}
