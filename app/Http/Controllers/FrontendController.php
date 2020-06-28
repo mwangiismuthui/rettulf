@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Genre;
 use App\Location;
 use App\Music;
+use App\PaypalPayment;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -124,7 +125,7 @@ class FrontendController extends Controller
     public function myMusic(Request $request)
     {
         $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->get();
+        $user = User::with('balance')->where('id', $user_id)->get();
         $my_music = Music::where('user_id', $user_id)->get();
         return view('frontend.mymusic', compact('my_music', 'user'));
     }
@@ -148,26 +149,25 @@ class FrontendController extends Controller
 
     public function topArtists()
     {
-        $feturedUsers = User::role('Artist')->where('is_featured','1')->get();
+        $feturedUsers = User::role('Artist')->where('is_featured', '1')->get();
         $users = User::with('music')->get()->sortBy(function ($user) {
             if ($user->hasRole('Artist')) {
                 return $user->music->count();
             }
-            
         });
         dd($feturedUsers);
-        return view('frontend.users', compact('users','feturedUsers'));
+        return view('frontend.users', compact('users', 'feturedUsers'));
     }
     public function topProducers()
     {
-        $feturedUsers = User::role('Producer')->where('is_featured','1')->get();
+        $feturedUsers = User::role('Producer')->where('is_featured', '1')->get();
         $users = User::with('music')->get()->sortBy(function ($user) {
             if ($user->hasRole('Producer')) {
                 return $user->music->count();
             }
         });
         // dd($feturedUsers);
-        return view('frontend.users', compact('users','feturedUsers'));
+        return view('frontend.users', compact('users', 'feturedUsers'));
     }
 
     public function mostDownloadedSongs()
@@ -217,31 +217,14 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function downloadedMusic()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $downloaded_musics = PaypalPayment::where('user_id', Auth::user()->id)
+            ->get();
+        $downloaded_music = [];
+        foreach ($downloaded_musics as $music) {
+            $downloaded_music = $music->music_id;
+        }
+        return $downloaded_music;
     }
 }

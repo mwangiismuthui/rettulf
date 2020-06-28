@@ -17,7 +17,7 @@
              <li class='has-sub'><a href='#'><i class="flaticon-playlist-1"></i>your music</a>
                 <ul>
                     <li><a href="{{route('myMusic')}}"><i class="flaticon-upload"></i>Uploaded</a></li>
-                    <li><a href="download.html"><i class="flaticon-download"></i>downloaded</a></li>
+                    <li><a href="{{route('downloadedMusic')}}"><i class="flaticon-download"></i>downloaded</a></li>
                     {{-- <li><a href="favourite.html"><i class="flaticon-heart"></i>favourite</a></li> --}}
                     {{-- <li><a href="history.html"><i class="flaticon-clock"></i>history</a></li> 						
                     <li><a href="free_music.html"><i class="flaticon-music-1"></i>free_music</a></li> 						 --}}

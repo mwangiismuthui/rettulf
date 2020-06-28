@@ -9,36 +9,34 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Orders
+                        <i class="fa fa-table"></i> Music
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="orders_table" class="table table-bordered ">
+                            <table id="music_table" class="table table-bordered ">
                                 <thead>
 
-                                    <th>Action</th>
-                                        <th>Client Name</th>
-                                        <th>Country</th>
-                                        <th>City</th>
-                                        <th>Description</th>
-                                        <th>Phone</th>
-                                        {{-- <th>Total Order Amount</th> --}}
-                                        <th>Order Status</th>
+                                        <th>Producer/Artist Name</th>
+                                        <th>Price</th>
+                                        <th>Views</th>
+                                        <th>Downloads</th>
+                                        <th>Type</th>
+
+                                        <th> Payment Status</th>
+                                        <th> Status</th>
 
                                 </thead>
                                  <tbody>
 
                                 </tbody>
                                 <tfoot>
-                                    <th>Action</th>
-                                    <th>Client Name</th>
-                                    <th>Country</th>
-                                    <th>City</th>
-                                    <th>Description</th>
-                                    <th>Phone</th>
-                                    {{-- <th>Total Order Amount</th> --}}
-                                    <th>Order Status</th>
-
+                                        <th>Producer/Artist Name</th>
+                                        <th>Price</th>
+                                        <th>Views</th>
+                                        <th>Downloads</th>
+                                        <th>Type</th>
+                                        <th> Payment Status</th>
+                                        <th> Status</th>
                                 </tfoot>
                             </table>
                         </div>
@@ -110,20 +108,19 @@
 
 <script>
 
-        var table = $('#orders_table').DataTable({
+        var table = $('#music_table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('order.index')}}",
+        ajax: "{{ route('adminMusic.index')}}",
         columns:[
 
-        {data: 'action', name: 'action', orderable: false, searchable: false, visible:true},
         {data: 'user.name', name: 'user.name'},
-        {data: 'shippingadress.country', name: 'shippingadress.country'},
-        {data: 'shippingadress.city', name: 'shippingadress.city'},
-        {data: 'shippingadress.description', name: 'shippingadress.description'},
-        {data: 'shippingadress.phone', name: 'shippingadress.phone'},
-        // {data: 'amount', name: 'amount'},
-        {data: 'orderstatus', name: 'orderstatus', orderable: true, searchable: false},
+        {data: 'price', name: 'price'},
+        {data: 'views', name: 'views'},
+        {data: 'downloads', name: 'downloads'},
+        {data: 'type', name: 'type'},
+        {data: 'is_paid', name: 'is_paid', orderable: true, searchable: false},
+        {data: 'status', name: 'status', orderable: true, searchable: false},
         ],
 
 
@@ -133,44 +130,44 @@
 
 
 
-   function Completed(order_id) {
-       var status = '1';
+   function New(music_id) {
+       var status = '0';
     $.ajax({
-           url:'/order/change/status',
+           url:'/music/change/status',
            method:'put',
            data:{
-            order_id:order_id,
+            music_id:music_id,
             status:status,
             _token: "{{ csrf_token() }}"
            },
            success:function(data){
 
             console.log(data);
-             $('#orders_table').DataTable().ajax.reload();
+             $('#music_table').DataTable().ajax.reload();
            },
            error:function(data){
-             $('#orders_table').DataTable().ajax.reload();
+             $('#music_table').DataTable().ajax.reload();
            }
 
        });
     }
 
-   function Inprogress(order_id) {
-       var status = '0';
+   function Published(music_id) {
+       var status = '1';
     $.ajax({
-           url:'/order/change/status',
+           url:'/music/change/status',
            method:'put',
            data:{
-            order_id:order_id,
+            music_id:music_id,
             status:status,
             _token: "{{ csrf_token() }}"
            },
            success:function(data){
 
-             $('#orders_table').DataTable().ajax.reload();
+             $('#music_table').DataTable().ajax.reload();
            },
            error:function(data){
-             $('#orders_table').DataTable().ajax.reload();
+             $('#music_table').DataTable().ajax.reload();
            }
 
        });

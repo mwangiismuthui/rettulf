@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGenresTable extends Migration
+class CreateUploadFeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateGenresTable extends Migration
      */
     public function up()
     {
-        Schema::create('genres', function (Blueprint $table) {
+        Schema::create('upload_fees', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('genre');
-            $table->string('genre_image')->nullable();
+            $table->double('amount');
             $table->softDeletes();
-            $table->timestamps();        
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateGenresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genres');
+        Schema::dropIfExists('upload_fees');
     }
 }

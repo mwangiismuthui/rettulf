@@ -229,7 +229,7 @@
 
                             </div>
                             <div class="top_list_tract_time">
-                                <p>4:22</p>
+                                <p>{{$music->duration}}</p>
                             </div>
                         </div>
                         <div class="top_songs_list_right">
@@ -301,7 +301,6 @@
                         @endforeach
 
 
-
                     </div>
                 </div>
             </div>
@@ -344,7 +343,7 @@
 
                             </div>
                             <div class="top_list_tract_time">
-                                <p>4:22</p>
+                                <p>{{$music->duration}}</p>
                             </div>
                         </div>
                         <div class="top_songs_list_right">

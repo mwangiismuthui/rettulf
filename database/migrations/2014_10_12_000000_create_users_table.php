@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->uuid('location_id');
             $table->string('profile_photo');
-            $table->integer('is_featured');
+            $table->integer('is_featured')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

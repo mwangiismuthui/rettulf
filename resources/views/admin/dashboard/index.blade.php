@@ -12,11 +12,11 @@
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
-                <h4 class="text-info mb-0"></h4>
-                  <span>New Orders</span>
+                <h4 class="text-info mb-0">{{$totalMusic}}</h4>
+                  <span>Total Music</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-scooter">
-                  <i class="icon-basket-loaded text-white"></i></div>
+                <i class="icon-basket-loaded text-white"></i></div>
               </div>
             </div>
           </a>
@@ -28,11 +28,11 @@
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
-                <h4 class="text-danger mb-0"></h4>
-                  <span>Orders Inprogress</span>
+                <h4 class="text-danger mb-0">{{$artists}}</h4>
+                  <span>Total Artist</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-bloody">
-                  <i class="icon-wallet text-white"></i></div>
+                <i class="icon-wallet text-white"></i></div>
               </div>
             </div>
           </a>
@@ -44,11 +44,11 @@
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
-                <h4 class="text-success mb-0"></h4>
-                  <span>Completed Orders</span>
+                <h4 class="text-success mb-0">{{$producers}}</h4>
+                  <span>Total Producers</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-quepal">
-                  <i class="icon-pie-chart text-white"></i></div>
+                <i class="icon-pie-chart text-white"></i></div>
               </div>
             </div>
           </a>
@@ -74,28 +74,48 @@
     <!--End Row-->
 
     
+   
     <div class="row">
-      <div class="col-12 col-lg-12 col-xl-12">
-        <div class="card">
-          <div class="card-header">
-            Service Sales
-            <div class="card-action">
-              <div class="dropdown">
-                
-               </div>
-            </div>
+
+      <div class="col-lg-12">
+          <div class="card">
+
+              <div class="card-header">
+                  <i class="fa fa-table"></i> Latest Added Music
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table id="music_table" class="table table-bordered ">
+                          <thead>
+
+                                  <th>Producer/Artist Name</th>
+                                  <th>Price</th>
+                                  <th>Views</th>
+                                  <th>Downloads</th>
+                                  <th>Type</th>
+
+                                  <th> Payment Status</th>
+                                  <th> Status</th>
+
+                          </thead>
+                           <tbody>
+
+                          </tbody>
+                          <tfoot>
+                                  <th>Producer/Artist Name</th>
+                                  <th>Price</th>
+                                  <th>Views</th>
+                                  <th>Downloads</th>
+                                  <th>Type</th>
+                                  <th> Payment Status</th>
+                                  <th> Status</th>
+                          </tfoot>
+                      </table>
+                  </div>
+              </div>
           </div>
-          <div class="card-body">
-            <div class="chart-container-1">
-              <canvas id="dashboard-chart-1"></canvas>
-            </div>
-          </div>
-        </div>
       </div>
-
-     
-
-    </div>
+  </div><!-- End Row-->
     <!--End Row-->
 
  
@@ -113,147 +133,73 @@
 
 </div>
 <!--End content-wrapper-->
+
 <script>
-var url = "{{url('/order/chart')}}";   
+
+  var table = $('#music_table').DataTable({
+  processing: true,
+  serverSide: true,
+  ajax: "{{ route('dashboard')}}",
+  columns:[
+
+  {data: 'user.name', name: 'user.name'},
+  {data: 'price', name: 'price'},
+  {data: 'views', name: 'views'},
+  {data: 'downloads', name: 'downloads'},
+  {data: 'type', name: 'type'},
+  {data: 'is_paid', name: 'is_paid', orderable: true, searchable: false},
+  {data: 'status', name: 'status', orderable: true, searchable: false},
+  ],
+
+
+  });
 
 
 
 
 
-var Years = new Array();
-        var Labels = new Array();
-        var Prices = new Array();
-        $(document).ready(function(){
-          $.get(url, function(response){
-            response.forEach(function(data){
-                Years.push(data.stockYear);
-                Labels.push(data.stockName);
-                Prices.push(data.stockPrice);
-            });
-            var ctx = document.getElementById("canvas").getContext('2d');
-                var myChart = new Chart(ctx, {
-                  type: 'bar',
-                  data: {
-                      labels:Years,
-                      datasets: [{
-                          label: 'Infosys Price',
-                          data: Prices,
-                          borderWidth: 1
-                      }]
-                  },
-                  options: {
-                      scales: {
-                          yAxes: [{
-                              ticks: {
-                                  beginAtZero:true
-                              }
-                          }]
-                      }
-                  }
-              });
-          });
-        });
+function New(music_id) {
+ var status = '0';
+$.ajax({
+     url:'/music/change/status',
+     method:'put',
+     data:{
+      music_id:music_id,
+      status:status,
+      _token: "{{ csrf_token() }}"
+     },
+     success:function(data){
 
+      console.log(data);
+       $('#music_table').DataTable().ajax.reload();
+     },
+     error:function(data){
+       $('#music_table').DataTable().ajax.reload();
+     }
 
+ });
+}
 
+function Published(music_id) {
+ var status = '1';
+$.ajax({
+     url:'/music/change/status',
+     method:'put',
+     data:{
+      music_id:music_id,
+      status:status,
+      _token: "{{ csrf_token() }}"
+     },
+     success:function(data){
 
+       $('#music_table').DataTable().ajax.reload();
+     },
+     error:function(data){
+       $('#music_table').DataTable().ajax.reload();
+     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var Years = new Array();
-//         var Labels = new Array();
-//         var Prices = new Array();
-//         $(document).ready(function(){
-//           $.get(url, function(response){
-//             response.forEach(function(data){
-//                 Years.push(data.stockYear);
-//                 Labels.push(data.stockName);
-//                 Prices.push(data.stockPrice);
-//             });
-//             var ctx = document.getElementById("dashboard-chart-1").getContext('2d');
-   
-//    var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-//        gradientStroke1.addColorStop(0, '#6078ea');  
-//        gradientStroke1.addColorStop(1, '#17c5ea'); 
-    
-//    var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-//        gradientStroke2.addColorStop(0, '#ff8359');
-//        gradientStroke2.addColorStop(1, '#ffdf40');
-
-//        var myChart = new Chart(ctx, {
-//          type: 'bar',
-//          data: {
-//            labels: ['January','February', 'March','April','May', 'June', 'July', 'August','September','October','November','December'],
-//            datasets: [{
-//              label: 'Laptops',
-//              data: [Amount],
-//              borderColor: gradientStroke1,
-//              backgroundColor: gradientStroke1,
-//              hoverBackgroundColor: gradientStroke1,
-//              pointRadius: 0,
-//              fill: false,
-//              borderWidth: 0
-//            }, 
-//            {
-//              label: 'Mobiles',
-//              data: [28, 48, 40, 19,28, 48, 40, 19,40, 19,28, 48],
-//              borderColor: gradientStroke2,
-//              backgroundColor: gradientStroke2,
-//              hoverBackgroundColor: gradientStroke2,
-//              pointRadius: 0,
-//              fill: false,
-//              borderWidth: 0
-//            }]
-//          },
-     
-//      options:{
-//        maintainAspectRatio: false,
-//        legend: {
-//          position: 'bottom',
-//                display: true,
-//          labels: {
-//                  boxWidth:8
-//                }
-//              },
-//        tooltips: {
-//          displayColors:false,
-//        },	
-//        scales: {
-//          xAxes: [{
-//          barPercentage: .5
-//          }]
-//           }
-//      }
-//        });
-     
-
-//           });
-//         });
-
-
-
-
-
-
-
-
+ });
+}
 
 
 

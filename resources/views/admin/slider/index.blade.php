@@ -99,7 +99,7 @@
         ajax: "{{ route('slider.index')}}",
             columns:[
             {data: 'title', name: 'title'},
-            {data: 'description', name: 'description'},
+            {data: 'subtitle', name: 'subtitle'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             columnDefs:[

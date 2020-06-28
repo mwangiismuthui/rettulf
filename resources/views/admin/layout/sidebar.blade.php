@@ -35,38 +35,40 @@
       </a>
 
     </li>
-    {{-- <li>
-    <a href="{{route('category.index')}}" class="waves-effect">
-        <i class="ti-shopping-cart"></i>
-        <span>Product Management</span>
-      </a>
-
-    </li>
     <li>
-      <a href="{{route('category.index')}}" class="waves-effect">
-          <i class="icon-briefcase"></i>
-          <span>Service Management</span>
+      <a href="{{route('adminMusic.index')}}" class="waves-effect">
+          <i class="ti-shopping-cart"></i>
+          <span>Music Management</span>
         </a>
   
       </li>
     <li>
-    <a href="{{route('category.index')}}" class="waves-effect">
-        <i class="ti-shopping-cart"></i>
-        <span>Slider Management</span>
-      </a>
-
-    </li>
- 
+      <a href="{{route('slider.index')}}" class="waves-effect">
+          <i class="ti-shopping-cart"></i>
+          <span>Slider Management</span>
+        </a>
+  
+      </li>
+      <li>
+      <a href="{{route('seo.index')}}" class="waves-effect">
+          <i class="ti-shopping-cart"></i>
+          <span>SEO Management</span>
+        </a>
+  
+      </li>
+       
     <li>
-    <a href="{{route('category.index')}}" class="waves-effect">
-        <i class="ti-shopping-cart"></i>
-        <span>Order Management</span>
+      <a href="javaScript:void();" class="waves-effect">
+        <i class="icon-briefcase"></i>
+        <span>Money Management</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
-
-    </li> --}}
+      <ul class="sidebar-submenu">
+        <li><a href="{{route('uploadFee.index')}}"><i class="fa fa-circle-o"></i>Upload Fee Management</a></li>
+        <li><a href="{{route('allWithdrawalRequests')}}"><i class="fa fa-circle-o"></i>Payment Management</a></li>
+      </ul>
+    </li>
+   
  
-
-    
     <li>
       <a href="javaScript:void();" class="waves-effect">
         <i class="icon-briefcase"></i>
@@ -77,8 +79,6 @@
         <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i>Role Management</a></li>
       </ul>
     </li>
-   
-
 
   </ul>
 

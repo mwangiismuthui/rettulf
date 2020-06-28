@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea name="description" id="description" cols="5" rows="5"
-                                    class="form-control form-control-rounded">{{$slider->description}}</textarea>
+                                    class="form-control form-control-rounded">{{$slider->subtitle}}</textarea>
                             </div>
 
                             <div class="form-group">

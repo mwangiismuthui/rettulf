@@ -11,7 +11,7 @@
                 <h2>{{$artist->name}}</h2>
 
                     <ul>
-                        <li><a href="#">Home</a> &nbsp;&nbsp;&nbsp;/</li>
+                        <li><a href="#">Home</a> &nbsp;&nbsp;&nbsp;</li>
                         <li>{{$artist->name}}</li>
                     </ul>
 
@@ -35,7 +35,24 @@
                             <h1>{{$artist->name}}</h1>
                             <p>Artist, {{$artist->location->location}}</p>
                             <p>Renowned for his soulful singing, Indian musician Arijit Singh is also a music composer, producer, recordist and programmer. He has several blockbuster songs to his credit and has won 23 awards so far, which makes him one of the most successful sing... Full Bio</p>
-                         
+                            <p>Balance</p>
+                        <p>${{number_format($artist->balance->balance)}}</p>
+                                    @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                        @if ($artist->balance->balance>=100)
+                         <div class="artist_btn m24_cover">
+                            <div class="lang_apply_btn">
+
+                            <a href="{{route('sellerWithdrawal',$artist->id)}}"><i class="flaticon-play-button"></i>Withdraw</a>
+
+                            </div>
+                        </div>
+                         @else
+                             
+                         @endif
                         </div>
                         <div class="artist_list_icon">
                             <div class="m24_tranding_more_icon">
@@ -106,7 +123,7 @@
                         <li class="text-center"><a href="#"><a href="">Paid</a></a></li>
                         @endif
                     <li class="text-center"><a href="#">{{number_format($music->downloads,0)}}</a></li>
-                        <li class="text-center"><a href="#">3:26</a></li>
+                        <li class="text-center"><a href="#">{{$music->duration}}</a></li>
 
                         <li class="text-center top_song_artist_playlist">
                             <div class="m24_tranding_more_icon">
