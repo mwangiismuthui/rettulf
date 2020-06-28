@@ -10,6 +10,10 @@ use Yajra\Datatables\Datatables;
 
 class AdminController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('role:Super-Admin');
+    }
     public function dashboard(Request $request)
     {
         $totalMusic = Music::count();

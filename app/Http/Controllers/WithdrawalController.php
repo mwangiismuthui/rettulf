@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 class WithdrawalController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('role:Super-Admin');
+    }
     public function sellerWithdrawal(Request $request, $id)
     {
         $balance = Balance::where('user_id', $id)->pluck('balance')->first();

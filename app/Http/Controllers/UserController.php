@@ -14,6 +14,10 @@ use Hash;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('role:Super-Admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,6 +53,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
@@ -56,10 +61,17 @@ class UserController extends Controller
 
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        // dd($input);
+        // $input['password'] = 
 
 
-        $user = User::create($input);
+        // $user = User::create($input);
+        $user = new User();
+        $user->name= $request->name;
+        $user->username=$request->username;
+        $user->email= $request->email;
+        $user->password= Hash::make($request->password);
+        $user->save();
         $user->assignRole($request->input('roles'));
 
 
@@ -116,6 +128,7 @@ class UserController extends Controller
 
 
         $input = $request->all();
+        // dd($input);
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{

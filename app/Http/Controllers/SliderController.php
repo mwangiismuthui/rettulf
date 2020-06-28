@@ -11,6 +11,10 @@ use Yajra\Datatables\Datatables;
 use Symfony\Component\HttpFoundation\Response;
 class SliderController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('role:Super-Admin');
+    }
     /**
      * Display a listing of the resource.
      *
