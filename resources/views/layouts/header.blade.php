@@ -43,34 +43,7 @@
                     <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">browse <i
                                 class="flaticon-down-arrow"></i></a>
                         <ul class="navi_2_dropdown">
-                            @hasrole('Producer')
-                            <li class="parent">
-                                <a href="{{route('newBeats')}}"><i class="fas fa-caret-right"></i>New Beats</a>
-                            </li>
-                            <li class="parent">
-                                <a href="{{route('mostDownloadedBeats')}}"><i class="fas fa-caret-right"></i>Most Downloaded Beats</a>
-                            </li>
-                            <li class="parent">
-                                <a href="{{route('mostViewedBeats')}}"><i class="fas fa-caret-right"></i>Most Viewed Beats</a>
-                            </li>
-                            <li class="parent">
-                                <a href="{{route('topProducers')}}"><i class="fas fa-caret-right"></i>Top Producers</a>
-                            </li>
-                            @else
-                            @hasrole ('Artist')
-                            <li class="parent">
-                                <a href="{{route('newSongs')}}"><i class="fas fa-caret-right"></i>New Songs</a>
-                            </li>
-                            <li class="parent">
-                                <a href="{{route('mostDownloadedSongs')}}"><i class="fas fa-caret-right"></i>Most Downloaded Songs</a>
-                            </li>
-                            <li class="parent">
-                                <a href="{{route('mostViewedSongs')}}"><i class="fas fa-caret-right"></i>Most Viewed Songs</a>
-                            </li>
-                            <li class="parent">
-                            <a href="{{route('topArtists')}}"><i class="fas fa-caret-right"></i>Top Artist</a>
-                            </li>
-                            @else
+                            {{-- @hasrole('Producer')                             --}}
                             <li class="parent">
                                 <a href="{{route('newSongs')}}"><i class="fas fa-caret-right"></i>New Songs</a>
                             </li>
@@ -95,9 +68,9 @@
                             <li class="parent">
                                 <a href="{{route('topProducers')}}"><i class="fas fa-caret-right"></i>Top Producers</a>
                             </li>
+                            {{-- @endif
                             @endif
-                            @endif
-                            
+                             --}}
 
                         </ul>
                     </li>
