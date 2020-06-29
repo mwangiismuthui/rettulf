@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
 Route::get('/downloadedMusic', 'FrontendController@downloadedMusic')->name('downloadedMusic');
 Route::get('/downloadMusic', 'FrontendController@downloadMusic')->name('downloadMusic');
-Route::get('/buy-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
 // ..................music..............................//
 Route::get('/file/index', 'MusicController@index')->name('file.index');
@@ -95,7 +95,6 @@ Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.ph
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
 
 
 
@@ -119,6 +118,9 @@ Route::get('/music/index', 'AdminController@adminMusic')->name('adminMusic.index
 Route::put('/music/change/status', 'AdminController@changeStatus')->name('adminMusic.changeStatus');
 Route::get('/music/update/{id}', 'AdminController@update')->name('adminMusic.update');
 Route::get('/music/edit/{id}', 'AdminController@edit')->name('adminMusic.edit');
+Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
+Route::get('/bulk/emails/', 'AdminController@bulkEmails')->name('bulkEmails');
+Route::post('/bulk/emails/send', 'AdminController@bulkEmailsSend')->name('bulkEmailsSend');
 
 
 

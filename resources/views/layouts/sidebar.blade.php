@@ -9,8 +9,11 @@
                   
             <li class='has-sub'><a href='#'><i class="flaticon-playlist-3"></i>browse music</a>
                 <ul>
-                    <li><a href="free_music.html"><i class="flaticon-music-1"></i>free music</a></li>
-                    <li><a href="genres.html"><i class="flaticon-files-and-folders"></i>genres</a></li>
+                    <li><a href="{{route('newSongs')}}"><i class="flaticon-music-1"></i>New  music</a></li>
+                    <li><a href="{{route('newBeats')}}"><i class="flaticon-music-1"></i>New  Beats</a></li>
+                    <li><a href="{{route('mostDownloadedBeats')}}"><i class="flaticon-music-1"></i>Most Downloaded  Beats</a></li>
+                    <li><a href="{{route('mostDownloadedSongs')}}"><i class="flaticon-music-1"></i>Most Downloaded  Music</a></li>
+                   
                 </ul>
             </li>
         

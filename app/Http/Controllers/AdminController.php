@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\BulkEmailSender;
 use Illuminate\Http\Request;
 use App\Music;
 use App\User;
+use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\Datatables\Datatables;
-
+use Mail;
 class AdminController extends Controller
 {
     function __construct()
@@ -114,5 +116,45 @@ class AdminController extends Controller
                 'errors' => "music Status not Updated!",
             ], Response::HTTP_OK);
         }
+    }
+    public function bulkEmails()
+    {
+     
+        return view('admin.emails.index');
+    }
+    public function bulkEmailsSend(Request $request)
+    {
+     $clients = $request->clients;
+     $subject = $request->subject;
+     $themessage = $request->message;
+     $data = array(
+        'subject' =>$subject,
+        'themessage' =>$themessage,     
+        
+    );
+
+     if ($clients=='producers') {
+         $recipient_emails = User::role('Producer')->pluck('email');
+        //  return $recipient_emails;
+     } elseif ($clients=='artist') {
+        $recipient_emails = User::role('Artist')->pluck('email');
+                //  return $recipient_emails;
+
+    }elseif ($clients=='both') {
+        $producers = User::role('Producer')->pluck('email');
+        $artists = User::role('Artist')->pluck('email');
+        $recipient_emails = $producers->merge($artists);         
+     }elseif ($clients=='') {
+       
+        return redirect()->back()->with('error','No recipients Selected');
+     }
+         
+  
+      BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+
+    //  dispatch($job);
+     
+     
+        return redirect()->back()->with('success','Success Emails are being sent!');
     }
 }

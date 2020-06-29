@@ -35,6 +35,7 @@
                             <h1>{{$artist->name}}</h1>
                             <p>Artist, {{$artist->location->location}}</p>
                             <p>Renowned for his soulful singing, Indian musician Arijit Singh is also a music composer, producer, recordist and programmer. He has several blockbuster songs to his credit and has won 23 awards so far, which makes him one of the most successful sing... Full Bio</p>
+                            @role('Producer')
                             <p>Balance</p>
                         <p>${{number_format($artist->balance->balance)}}</p>
                                     @if(session()->has('message'))
@@ -53,18 +54,12 @@
                          @else
                              
                          @endif
+                        @else
+                            
+                        @endrole
+                           
                         </div>
-                        <div class="artist_list_icon">
-                            <div class="m24_tranding_more_icon">
-                                <i class="flaticon-menu"></i>
-                            </div>
-                            <ul class="tranding_more_option">
-                                <li><a href="#"><span class="opt_icon"><i
-                                                class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                <li><a href="#"><span class="opt_icon"><i
-                                                class="flaticon-trash"></i></span>download</a></li>
-                            </ul>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -85,7 +80,12 @@
                         <li>#</li>
                         <li class="text-center">Song Title</li>
                         <li class="text-center">Artist</li>
+                        @role('Producer')
+   
                         <li class="text-center">Payment Status</li>
+                            @else
+                            
+                            @endrole
                         <li class="text-center">downloads</li>
                         <li class="text-center">time</li>
 
@@ -115,13 +115,17 @@
                             </div>
                         </li>
                         <li class="text-center"><a href="#">{{$artist->name}}</a></li>
+                        @role('Producer')
                         @if ($music->is_paid==0)
                             
-                    <li class="text-center"><a href="#"><a href="{{route('upload_payment',$music->id)}}">pay</a></a></li>
-                        @else
-                            
-                        <li class="text-center"><a href="#"><a href="">Paid</a></a></li>
-                        @endif
+                        <li class="text-center"><a href="#"><a href="{{route('upload_payment',$music->id)}}">pay</a></a></li>
+                            @else
+                                
+                            <li class="text-center"><a href="#"><a href="">Paid</a></a></li>
+                            @endif
+                            @else
+                            @endrole
+                      
                     <li class="text-center"><a href="#">{{number_format($music->downloads,0)}}</a></li>
                         <li class="text-center"><a href="#">{{$music->duration}}</a></li>
 
@@ -147,5 +151,9 @@
 </div>
 
 @endforeach
-
+<script>
+       $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
+</script>
 @endsection

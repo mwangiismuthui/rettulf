@@ -50,12 +50,19 @@
   
       </li>
       <li>
+      <a href="{{route('bulkEmails')}}" class="waves-effect">
+          <i class="ti-shopping-cart"></i>
+          <span>Bulk Emails</span>
+        </a>
+  
+      </li>
+      {{-- <li>
       <a href="{{route('seo.index')}}" class="waves-effect">
           <i class="ti-shopping-cart"></i>
           <span>SEO Management</span>
         </a>
   
-      </li>
+      </li> --}}
        
     <li>
       <a href="javaScript:void();" class="waves-effect">

@@ -35,7 +35,17 @@
                             <p>By: {{$music->user->name}}</p>
 
                             <p>{{$music->description}}</p>
+                            @if ($music->type =='music')
                             <div class="artist_btn m24_cover">
+                                <div class="lang_apply_btn">
+
+                                    <a href="{{route('upload_payment',$music->id)}}"><i class="flaticon-play-button"></i>
+                                        Download</a>
+
+                                </div>
+                            </div>  
+                            @else
+                                <div class="artist_btn m24_cover">
                                 <div class="lang_apply_btn">
 
                                     <a href="{{route('upload_payment',$music->id)}}"><i class="flaticon-play-button"></i>$ {{number_format($music->price,2)}}
@@ -43,6 +53,8 @@
 
                                 </div>
                             </div>
+                            @endif
+                            
                         </div>
                         <div class="artist_list_icon">
                             <div class="m24_tranding_more_icon">

@@ -10,6 +10,9 @@
     <title>Music</title>
     <!--favicon-->
     <link rel="icon" href="/backend/assets/images/favicon.ico" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="/backend/assets/plugins/summernote/dist/summernote-bs4.css"/>
     <!-- Vector CSS -->
     <link href="/backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- simplebar CSS-->
@@ -157,7 +160,13 @@
     <script src="/backend/assets/plugins/notifications/js/notifications.min.js"></script>
     <script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
     
-
+    <script src="/backend/assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
+    <script>
+     $('#summernoteEditor').summernote({
+              height: 400,
+              tabsize: 2
+          });
+    </script>
 </body>
 
 

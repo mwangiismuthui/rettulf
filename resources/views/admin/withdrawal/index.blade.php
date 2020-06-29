@@ -19,6 +19,7 @@
                                 <thead>
 
                                     <th> Client</th>
+                                    <th> Client Email</th>
                                     <th> Amount</th>
                                     <th>Action</th>
 
@@ -31,6 +32,8 @@
 
 
                                     <th> Client</th>
+
+                                    <th> Client Email</th>
                                     <th> Amount</th>
                                     <th>Action</th>
 
@@ -78,12 +81,16 @@
 <!-- Large Size Modal -->
 
 <script>
+    $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
     var table = $('#upload_fee_table').DataTable({
         processing: true,
         serverSide: true,    
         ajax: "{{ route('allWithdrawalRequests')}}",
         columns:[
-        {data: 'users.name', name: 'users.name'},
+        {data: 'name', name: 'name'},
+        {data: 'email', name: 'email'},
         {data: 'amount', name: 'amount'},
         {data: 'action', name: 'action', orderable: false, searchable: false},
         ],

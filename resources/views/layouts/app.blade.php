@@ -12,7 +12,6 @@
     <meta name="MobileOptimized" content="320" />
      <!--favicon-->
      <link rel="shortcut icon" type="/frontend/image/png" href="/frontend/images/favicon.png" />
-
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="/frontend/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/css/bootstrap.min.css" />
@@ -228,7 +227,7 @@
     <script src="/backend/assets/plugins/notifications/js/lobibox.min.js"></script>
     <script src="/backend/assets/plugins/notifications/js/notifications.min.js"></script>
     <script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
-
+  
     <script>
 
             var currentAudio = null;

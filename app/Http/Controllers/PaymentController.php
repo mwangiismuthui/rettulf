@@ -42,9 +42,11 @@ class PaymentController extends Controller
         $music_amount = Music::where('id', $id)->pluck('price')->first();
         $total = (int) $music_amount;
 
+       
 
 
         if ($total == 0) {
+            session()->put('music_id', $id);
             return redirect()->route('downloadMusic');
         } else {
             # code...

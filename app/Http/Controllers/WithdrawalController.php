@@ -35,8 +35,14 @@ class WithdrawalController extends Controller
     {
 
         if ($request->ajax()) {
-            $allWithdrawalRequests = Withdrawal::with('users')
+            $allWithdrawalRequests = Withdrawal::join('users','users.id','=','withdrawals.user_id')
             ->where('status', '=', '0')
+            ->select([
+                'withdrawals.id as id',
+                'users.name as name',
+                'users.email as email',
+                'amount as amount',
+            ])
             ->get();
             return Datatables::of($allWithdrawalRequests)
                 ->addIndexColumn()
