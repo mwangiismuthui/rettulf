@@ -198,7 +198,7 @@
 <div class="top_songs_wrapper m24_cover">
     <div class="container">
         <div class="row">
-            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="song_heading_wrapper m24_cover">
                     <div class="m24_heading_wrapper">
                         <h1>top songs</h1>
@@ -253,7 +253,7 @@
 
                 </div>
             </div>
-            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+            {{-- <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
 
                 <div class="m24_heading_wrapper">
                     <h1>Featured Artists</h1>
@@ -303,7 +303,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -312,7 +312,7 @@
 <div class="top_songs_wrapper m24_cover">
     <div class="container">
         <div class="row">
-            <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="song_heading_wrapper m24_cover">
                     <div class="m24_heading_wrapper">
                         <h1>top Beats</h1>
@@ -367,7 +367,7 @@
 
                 </div>
             </div>
-            <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+            {{-- <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
 
                 <div class="m24_heading_wrapper">
                     <h1>Featured Producers</h1>
@@ -409,7 +409,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

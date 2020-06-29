@@ -229,13 +229,17 @@
     <script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
   
     <script>
+              $(document).ready(function(){
+    $(".alert").delay(5000).slideUp(300);
+});
+     
 
             var currentAudio = null;
             var previousAudio = null;
             var audio ;
             $(document).keydown(function(e) {
     var unicode = e.charCode ? e.charCode : e.keyCode;
-    console.log(unicode);
+   
       // right arrow
     if (unicode == 39) {
       audio.currentTime += 5;
@@ -252,7 +256,30 @@
       }
     }
   });
+
+//..................................
         $(document).ready(function(){
+
+            var full_music_path;
+            var sb = {
+                song: null,
+                init: function () {
+                    if (audio!=null) {                        
+                    audio.pause();
+                    sb.song = new Audio(full_music_path);
+                    audio = sb.song;
+                    sb.play();
+                    } else {
+                     sb.song = new Audio(full_music_path);
+                    audio = sb.song;
+                    sb.play();
+                    }
+                   
+                },
+                 play: function (e) {
+                    sb.song.play();
+                }
+                };
             $('.jp-play').on('click',function () {
                 if (!audio.paused) {
                     audio.pause();
@@ -261,24 +288,17 @@
                 }
                 
             });
-            $('.jp-previous').on('click',function () {
-                // if (!audio.paused) {
-                //     audio.pause();
-                // }else if (audio.paused) {
-                //     audio.play();
-                // }
-                audio.currentTime -= 5;
+        // $('.jp-previous').on('click',function () {
+              
+            //     audio.currentTime -= 5;
                 
-            });
-            $('.jp-next').on('click',function () {
-                // if (!audio.paused) {
-                //     audio.pause();
-                // }else if (audio.paused) {
-                //     audio.play();
-                // }
-                audio.currentTime += 5;
-                
-            });
+            // });
+            // $('.jp-next').on('click',function () {
+               
+            //     // audio.currentTime += 5;
+            //     console.log(audio.currentTime);
+            //     console.log(audio.currentTime+=5);
+            // });
             $('.flaticon-play-button').on('click',function () {
                 previousAudio =currentAudio;
              
@@ -297,7 +317,7 @@
                 var cover_art = data.coverart;
                  var music = data.music_path;
                 var path = '/uploadedFiles/';
-                var full_music_path = path+''+music;
+                full_music_path = path+''+music;
                 var full_covertart_path = cover_art_path+''+cover_art;
                 var img;             
                 img = jQuery('<img class="box-rounded-sm"  alt=""> ');
@@ -306,14 +326,16 @@
                 $('.song-poster').append(img);
                 $('.artist-names').empty();
                 $('.artist-names').append(data.artist);
+           sb.init();
 
+                
 
-                    audio= new Audio(full_music_path);
-                    if (!audio.paused) {
-                         audio.pause();
-                    }else if (audio.paused) {
-                         audio.play();
-                    }
+                    // audio= new Audio(full_music_path);
+                    // if (!audio.paused) {
+                    //      audio.pause();
+                    // }else if (audio.paused) {
+                    //      audio.play();
+                    // }
                    
                        
                                                    
@@ -323,7 +345,8 @@
                 }
 
                });
-            })
+            });
+            
         });
         
     </script>

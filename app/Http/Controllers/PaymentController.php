@@ -221,7 +221,7 @@ class PaymentController extends Controller
             return redirect()->route('myMusic');
         } else {
             $pathToFile = $this->downloadedMusic($music_id, $payment_id, $PayerID);
-            return redirect()->route('downloadMusic');
+            return redirect()->route('downloadedMusic')->with('success','Music purchased succesfully!Find it here to download');
         }
     }
     public function uploadedMusic($music_id, $payment_id, $PayerID)

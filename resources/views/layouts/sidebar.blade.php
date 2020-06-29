@@ -19,7 +19,12 @@
         
              <li class='has-sub'><a href='#'><i class="flaticon-playlist-1"></i>your music</a>
                 <ul>
+                    @hasanyrole('Producer|Artist')
+
                     <li><a href="{{route('myMusic')}}"><i class="flaticon-upload"></i>Uploaded</a></li>
+                    @else
+                    @endhasanyrole
+                   
                     <li><a href="{{route('downloadedMusic')}}"><i class="flaticon-download"></i>downloaded</a></li>
                     {{-- <li><a href="favourite.html"><i class="flaticon-heart"></i>favourite</a></li> --}}
                     {{-- <li><a href="history.html"><i class="flaticon-clock"></i>history</a></li> 						
@@ -33,9 +38,14 @@
         </ul>
             <div class="lang_apply_btn">
             <ul>
+                @hasanyrole('Producer|Artist')
+
                 <li>
-                  <a href="{{route('file.upload')}}"> <i class="flaticon-play-button"></i>Upload</a>
-                </li>
+                    <a href="{{route('file.upload')}}"> <i class="flaticon-play-button"></i>Upload</a>
+                  </li>             
+                     @else
+                @endhasanyrole
+               
            </ul>
       </div>
     </div>

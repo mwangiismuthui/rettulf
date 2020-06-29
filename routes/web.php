@@ -30,12 +30,14 @@ Route::get('/most-viewed-beats', 'FrontendController@mostViewedBeats')->name('mo
 Route::get('/new-beats', 'FrontendController@newBeats')->name('newBeats');
 Route::get('/top-producers', 'FrontendController@topProducers')->name('topProducers');
 Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
+Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 
 Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
 Route::get('/downloadedMusic', 'FrontendController@downloadedMusic')->name('downloadedMusic');
 Route::get('/downloadMusic', 'FrontendController@downloadMusic')->name('downloadMusic');
+Route::get('/downloadPurchasedMusic/{id}', 'FrontendController@downloadPurchasedMusic')->name('downloadPurchasedMusic');
 Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
 // ..................music..............................//
@@ -46,7 +48,6 @@ Route::get('/file/edit/{id}', 'MusicController@edit')->name('file.edit');
 Route::post('/file/update/{id}', 'MusicController@update')->name('file.update');
 Route::get('/file/destroy/{id}', 'MusicController@destroy')->name('file.destroy');
 Route::get('/file/destroy-pic/{id}', 'MusicController@destroyPic')->name('file.destroyPic');
-Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 
 
 // ..................Category..............................//

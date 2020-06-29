@@ -17,6 +17,7 @@ class RoleTableSeeder extends Seeder
            'Super-Admin',
            'Producer',
            'Artist',
+           'Normal User',
         ];
 
 

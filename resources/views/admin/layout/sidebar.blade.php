@@ -42,13 +42,13 @@
         </a>
   
       </li>
-    <li>
+    {{-- <li>
       <a href="{{route('slider.index')}}" class="waves-effect">
           <i class="ti-shopping-cart"></i>
           <span>Slider Management</span>
         </a>
   
-      </li>
+      </li> --}}
       <li>
       <a href="{{route('bulkEmails')}}" class="waves-effect">
           <i class="ti-shopping-cart"></i>

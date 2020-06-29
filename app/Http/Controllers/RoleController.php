@@ -62,12 +62,12 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            // 'permission' => 'required',
         ]);
 
 
         $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
+        // $role->syncPermissions($request->input('permission'));
 
 
         return redirect()->route('roles.index')
@@ -121,7 +121,7 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'permission' => 'required',
+            // 'permission' => 'required',
         ]);
 
 
@@ -131,7 +131,7 @@ class RoleController extends Controller
         // dd($request->input('permission'));
 
 
-        $role->syncPermissions($request->input('permission'));
+        // $role->syncPermissions($request->input('permission'));
 
 
         return redirect()->route('roles.index')
