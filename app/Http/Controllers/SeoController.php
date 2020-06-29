@@ -24,10 +24,9 @@ class SeoController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::all();
         if ($request->ajax()) {
 
-            $seo = Seo::with('product')->get();
+            $seo = Seo::all();
             return Datatables::of($seo)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
@@ -55,10 +54,9 @@ class SeoController extends Controller
         $seos =Seo::where('id',$id)->get();
       
         
-        $products = Product::all();
         
 
-        return view ('admin.seo.edit',compact('seos','products'));
+        return view ('admin.seo.edit',compact('seos'));
     }
 
     /**
@@ -71,9 +69,11 @@ class SeoController extends Controller
     {
 
         $rules = [
-            'product_id' => 'required',
-            'meta_description' => 'required',
-            'meta_keyword' => 'required',
+            // 'meta_description' => 'required',
+            // 'meta_keyword' => 'required',
+            // 'page_title' => 'required',
+            // 'seo_title' => 'required',
+            // 'seo_other' => 'required',
 
         ];
 
@@ -87,7 +87,9 @@ class SeoController extends Controller
         }
 
         $seo = new Seo();
-        $seo->product_id = $request->product_id;
+        $seo->page_title = $request->page_title;
+        $seo->seo_title = $request->seo_title;
+        $seo->seo_other = $request->seo_other;
         $seo->meta_description = $request->meta_description;
         $seo->meta_keyword = $request->meta_keyword;
         if ($seo->save()) {
@@ -105,9 +107,11 @@ class SeoController extends Controller
     public function update(Request $request,$id){
       
         $rules = [
-            'product_id' => 'required',
-            'meta_description' => 'required',
-            'meta_keyword' => 'required',
+            // 'meta_description' => 'required',
+            // 'meta_keyword' => 'required',
+            'page_title' => 'required',
+            // 'seo_title' => 'required',
+            // 'seo_other' => 'required',
 
         ];
 
@@ -122,9 +126,11 @@ class SeoController extends Controller
 
      
         Seo::where('id',$id)->update([
-            'product_id'=>$request->product_id,
-            'meta_description'=>$request->meta_description,
-            'meta_keyword'=>$request->meta_keyword,
+           'page_title' => $request->page_title,
+           'seo_title' => $request->seo_title,
+           'seo_other' => $request->seo_other,
+           'meta_description' => $request->meta_description,
+           'meta_keyword' => $request->meta_keyword
         ]);
         return response([
             'success'=>True,

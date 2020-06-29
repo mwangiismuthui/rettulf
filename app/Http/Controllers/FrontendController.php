@@ -7,6 +7,8 @@ use App\Location;
 use App\Music;
 use App\PaypalPayment;
 use App\User;
+use App\Seo;
+use App\Withdrawal;
 use Auth;
 use Illuminate\Http\Request;
 use Response;
@@ -29,8 +31,9 @@ class FrontendController extends Controller
         $topbeats = $trendingBeats->merge($latestbeats);
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
+        $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
 
-        return view('frontend.index', compact('trendingMusic', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats'));
+        return view('frontend.index', compact('trendingMusic', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats','seo'));
     }
 
     public function latestMusic($limit)
@@ -103,6 +106,8 @@ class FrontendController extends Controller
         $genre_music = Music::where('genre_id', $id)
             ->where('music.status', 1)
             ->get();
+            $seo = Seo::where('seos.page_title', 'like', 'singleGenre')->first();
+
         // return $genre_music;
         return view('frontend.genres', compact('genre_music', 'genre'));
     }
@@ -112,6 +117,8 @@ class FrontendController extends Controller
         $user_music = Music::where('user_id', $id)
             ->where('music.status', 1)
             ->orderBy('created_at', 'DESC')->get();
+            $seo = Seo::where('seos.page_title', 'like', 'singleArtist')->first();
+
         // return $genre_music;
         return view('frontend.artist_single', compact('user_music', 'user'));
     }
@@ -122,7 +129,7 @@ class FrontendController extends Controller
 
             ->where('music.status', 1)
             ->orderBy('created_at', 'DESC')->get();
-        // return $genre_music;
+            $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
         return view('frontend.artist_single', compact('user_music', 'user'));
     }
 
@@ -136,15 +143,23 @@ class FrontendController extends Controller
     {
         $user_id = Auth::user()->id;
         $user = User::with('balance')->where('id', $user_id)->get();
+        $pending_withdrawals = Withdrawal::where('user_id',$user_id)
+        // ->where('status',0)
+        ->get();
+
         $my_music = Music::where('user_id', $user_id)
 
             ->where('music.status', 1)
             ->get();
-        return view('frontend.mymusic', compact('my_music', 'user'));
+            $seo = Seo::where('seos.page_title', 'like', 'myMusic')->first();
+
+        return view('frontend.mymusic', compact('my_music', 'user','seo','pending_withdrawals'));
     }
     public function contact(Request $request)
     {
-        return view('frontend.contactus');
+        $seo = Seo::where('seos.page_title', 'like', 'contact')->first();
+
+        return view('frontend.contactus',compact('seo'));
     }
     public function pricing(Request $request)
     {
@@ -156,8 +171,8 @@ class FrontendController extends Controller
     public function buymusic($id)
     {
         $music = Music::find($id);
-        // dd($music);
-        return view('frontend.buymusic', compact('music'));
+        $seo = Seo::where('seos.page_title', 'like', 'buymusic')->first();
+        return view('frontend.buymusic', compact('music','seo'));
     }
 
     public function topArtists()
@@ -168,8 +183,8 @@ class FrontendController extends Controller
                 return $user->music->count();
             }
         });
-        dd($feturedUsers);
-        return view('frontend.users', compact('users', 'feturedUsers'));
+        $seo = Seo::where('seos.page_title', 'like', 'topArtists')->first();
+        return view('frontend.users', compact('users', 'feturedUsers','seo'));
     }
     public function topProducers()
     {
@@ -179,62 +194,69 @@ class FrontendController extends Controller
                 return $user->music->count();
             }
         });
-        // dd($feturedUsers);
-        return view('frontend.users', compact('users', 'feturedUsers'));
+        $seo = Seo::where('seos.page_title', 'like', 'topProducers')->first();
+        return view('frontend.users', compact('users', 'feturedUsers','seo'));
     }
 
     public function mostDownloadedSongs()
     {
         $musics = Music::where('downloads', '>', 1)->where('type', 'music')->orderBy('downloads', 'desc')->get();
-        // dd($musics);
-        return view('frontend.musicshop', compact('musics'));
+        $seo = Seo::where('seos.page_title', 'like', 'mostDownloadedSongs')->first();
+        return view('frontend.musicshop', compact('musics','seo'));
     }
 
     public function mostViewedSongs()
     {
         $musics = Music::where('views', '>', 1)->where('type', 'music')->orderBy('views', 'desc')->get();
-        // dd($musics);
-        return view('frontend.musicshop', compact('musics'));
+        $seo = Seo::where('seos.page_title', 'like', 'mostViewedSongs')->first();
+        return view('frontend.musicshop', compact('musics','seo'));
     }
 
     public function newSongs()
     {
+        $seo = Seo::where('seos.page_title', 'like', 'newSongs')->first();
         $musics = Music::where('type', 'music')
 
             ->where('music.status', 1)
             ->latest()->get();
         // dd($musics);
-        return view('frontend.musicshop', compact('musics'));
+        return view('frontend.musicshop', compact('musics','seo'));
     }
 
     public function mostDownloadedBeats()
     {
+        $seo = Seo::where('seos.page_title', 'like', 'mostDownloadedBeats')->first();
+
         $musics = Music::where('downloads', '>', 1)->where('type', 'beats')
         
         ->where('music.status',1)
         ->orderBy('downloads', 'desc')->get();
         // dd($musics);
-        return view('frontend.musicshop', compact('musics'));
+        return view('frontend.musicshop', compact('musics','seo'));
     }
 
     public function mostViewedBeats()
     {
+        $seo = Seo::where('seos.page_title', 'like', 'mostViewedBeats')->first();
+
         $musics = Music::where('views', '>', 1)->where('type', 'beats')
         
         ->where('music.status',1)
         ->orderBy('views', 'desc')->get();
         // dd($musics);
-        return view('frontend.musicshop', compact('musics'));
+        return view('frontend.musicshop', compact('musics','seo'));
     }
 
     public function newBeats()
     {
+        $seo = Seo::where('seos.page_title', 'like', 'newBeats')->first();
+
         $musics = Music::where('type', 'beats')
         
         ->where('music.status',1)
         ->latest()->get();
         // dd($musics);
-        return view('frontend.musicshop', compact('musics'));
+        return view('frontend.musicshop', compact('musics','seo'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -244,6 +266,8 @@ class FrontendController extends Controller
      */
     public function downloadedMusic()
     {
+        $seo = Seo::where('seos.page_title', 'like', 'downloadedMusic')->first();
+
         $downloaded_musics = PaypalPayment::join('music', 'music.id', '=', 'paypal_payments.music_id')->where('paypal_payments.user_id', Auth::user()->id)
             ->join('users', 'users.id', '=', 'music.user_id')->where('paypal_payments.user_id', Auth::user()->id)
             ->orderBy('paypal_payments.created_at', 'DESC')
@@ -259,7 +283,7 @@ class FrontendController extends Controller
             ])
             ->get();
         // return $downloaded_musics;
-        return view('frontend.download', compact('downloaded_musics'));
+        return view('frontend.download', compact('downloaded_musics','seo'));
     }
     public function downloadMusic(Request $request)
     {

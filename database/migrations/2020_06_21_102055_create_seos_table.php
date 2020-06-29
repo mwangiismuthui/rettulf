@@ -15,10 +15,11 @@ class CreateSeosTable extends Migration
     {
         Schema::create('seos', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            // $table->uuid('product_id');
-            $table->longText('meta_description');
-            $table->longText('meta_keyword');
-            // $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->longText('page_title')->nullable();
+            $table->longText('seo_title')->nullable();
+            $table->longText('meta_description')->nullable();
+            $table->longText('meta_keyword')->nullable();
+            $table->longText('seo_other')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

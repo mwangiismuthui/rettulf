@@ -22,7 +22,7 @@ class RoleTableSeeder extends Seeder
 
 
         foreach ($roles as $role) {
-             Role::create(['name' => $role,'id'=>Str::uuid()->toString()]);
+             Role::create(['name' => $role]);
         }
     }
 }

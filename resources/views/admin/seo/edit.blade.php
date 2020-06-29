@@ -6,32 +6,39 @@
         <div class="row">
  <div class="col-md-6">
 @foreach ($seos as $seo)
- <form id="seo_add" method="POST" enctype="multipart/form-data">
+<form id="seo_add" method="POST" >
     @csrf
-  <div class="form-group">
-        <label for="title">Product</label>
-        <select name="product_id" id="" class="form-control form-control-rounded">
-            <option value="{{$seo->product->id}}">{{$seo->product->product}}</option>
-            @foreach ($products as $product)
-                
-        <option value="{{$product->id}}">{{$product->product}}</option>
-            @endforeach
-        </select>
+    <div class="form-group">
+        <label for="title">Page Title</label>
+    <input type="text" name="page_title" id="" class="form-control" value="{{$seo->page_title}}" readonly>
     </div>
     <div class="form-group">
+        <label for="title">Seo Title</label>
+    <input type="text" name="seo_title" id="" class="form-control" value="{{$seo->seo_title}}">
+    </div>
+<input type="hidden" name="seo_id" id="seo_id" value="{{$seo->id}}">
+    <div class="form-group">
         <label for="description">Meta Description</label>
-        <textarea name="meta_description" id="meta_description" cols="30" rows="10" class="form-control form-control-rounded">
+        <textarea name="meta_description" id="meta_description" cols="10" rows="5" class="form-control form-control-rounded">
 {{$seo->meta_description}}
         </textarea>
     </div>
     <div class="form-group">
         <label for="description">Meta Keywords</label>
-        <textarea name="meta_keyword" id="meta_keywords" cols="30" rows="10" class="form-control form-control-rounded">
-{{$seo->meta_keyword}}
+        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="5" class="form-control form-control-rounded">
+            {{$seo->meta_keyword}}
         </textarea>
     </div>
-    
-                  
+    <div class="form-group">
+        <label for="description">Seo Other</label>
+        <textarea name="seo_other" id="summernoteEditor" cols="10" rows="5" class="form-control form-control-rounded">
+            {{$seo->seo_other}}
+        </textarea>
+    </div>
+  
+  
+  
+ 
 
 
     <div class="form-group">
@@ -39,6 +46,7 @@
                 class="icon-checkbox3"></i> Save</button>
     </div>
 </form>
+
 @endforeach
 
     </div>

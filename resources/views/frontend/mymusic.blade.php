@@ -54,6 +54,17 @@
                          @else
                              
                          @endif
+
+                         @foreach ($pending_withdrawals as $pending_withdrawal)
+                         @if ($pending_withdrawal->status==0)
+
+                         <p>Pending Withdrawal</p>
+                
+                   <p>${{number_format($pending_withdrawal->amount)}}</p>
+                    @else
+                        
+                    @endif
+                    @endforeach
                         @else
                             
                         @endrole

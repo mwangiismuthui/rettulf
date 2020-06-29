@@ -6,6 +6,7 @@ use App\Category;
 use App\Genre;
 use App\Key;
 use App\Music;
+use App\Seo;
 use Illuminate\Http\Request;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -39,10 +40,12 @@ class MusicController extends Controller
      */
     public function create()
     {
+        $seo = Seo::where('seos.page_title', 'like', 'uploadedMusiccreate')->first();
+
         $genres = Genre::all();
         $keys = Key::all();
         $categories = Category::all();
-        return view('frontend.upload', compact('genres', 'keys', 'categories'));
+        return view('frontend.upload', compact('genres', 'keys', 'categories','seo'));
     }
 
     /**
@@ -160,11 +163,13 @@ class MusicController extends Controller
      */
     public function edit($id)
     {    
+        $seo = Seo::where('seos.page_title', 'like', 'uploadedMusicedit')->first();
+
         $genres = Genre::all();
         $keys = Key::all();
         $categories = Category::all();
         $music = Music::find($id);
-        return view('frontend.musicedit', compact('music','genres','keys','categories'));
+        return view('frontend.musicedit', compact('music','genres','keys','categories','seo'));
     }
 
     /**

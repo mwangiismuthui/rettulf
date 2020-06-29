@@ -1,14 +1,25 @@
+
+
+<?php
+if(!isset($seo)){
+	$seo = (object) array('seo_title' => $seo->seo_title,'seo_description' => $seo->seo_description,'seo_keywords' => $seo->seo_keywords,'seo_other' => '');
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="zxx">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8" />
-    <title>Music Platform </title>
+    <title>{{ $seo->seo_title }}</title>
+    <meta name="Description" content="{{ $seo->seo_description }}">
+    <meta name="Keywords" content="{{ $seo->seo_keywords }}">
+    <meta name="_token" content="{{ csrf_token() }}"/>
+    {{-- {!! $seo->seo_other !!} --}}
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Music,music,song" />
-    <meta name="keywords" content="Music,music,song" />
-    <meta name="author" content="" />
+  
+    <meta name="author" content="Mwangi Muthui(0721257308)|Eric Njeru(0792946114)" />
     <meta name="MobileOptimized" content="320" />
      <!--favicon-->
      <link rel="shortcut icon" type="/frontend/image/png" href="/frontend/images/favicon.png" />

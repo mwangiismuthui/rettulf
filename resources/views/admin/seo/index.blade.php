@@ -15,10 +15,12 @@
                             <table id="seo_table" class="table table-bordered ">
                                 <thead>
                                
-                                    <th>Product</th>
+                                    <th>Action</th>
+                                    <th>Page Title</th>
+                                    <th>Seo Title</th>
                                     <th>Meta Description</th>
                                     <th>Meta Keywords</th>
-                                    <th>Action</th>
+                                    <th>Seo Other</th>
                                 
                                 </thead>
                                  <tbody>
@@ -26,10 +28,12 @@
                                 </tbody> 
                                 <tfoot>
                                 
-                                    <th>Product</th>
+                                    <th>Action</th>
+                                    <th>Page Title</th>
+                                    <th>Seo Title</th>
                                     <th>Meta Description</th>
                                     <th>Meta Keywords</th>
-                                    <th>Action</th>
+                                    <th>Seo Other</th>
                                  
                                 </tfoot>
                             </table>
@@ -62,27 +66,33 @@
                 <form id="seo_add" method="POST" >
                     @csrf
                     <div class="form-group">
-                        <label for="title">Service Name</label>
-                        <select name="product_id" id="" class="form-control form-control-rounded">
-                            <option value="">Select Product</option>
-                            @foreach ($products as $product)
-                                
-                        <option value="{{$product->id}}">{{$product->product}}</option>
-                            @endforeach
-                        </select>
+                        <label for="title">Page Title</label>
+                        <input type="text" name="page_title" id="" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="title">Seo Title</label>
+                        <input type="text" name="seo_title" id="" class="form-control">
+                    </div>
+                 
+                    <div class="form-group">
                         <label for="description">Meta Description</label>
-                        <textarea name="meta_description" id="meta_description" cols="30" rows="10" class="form-control form-control-rounded">
+                        <textarea name="meta_description" id="meta_description" cols="10" rows="5" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label for="description">Meta Keywords</label>
-                        <textarea name="meta_keyword" id="meta_keywords" cols="30" rows="10" class="form-control form-control-rounded">
+                        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="5" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="description">Seo Other</label>
+                        <textarea name="seo_other" id="summernoteEditor" cols="10" rows="5" class="form-control form-control-rounded">
+
+                        </textarea>
+                    </div>
+                  
                   
                   
                  
@@ -108,10 +118,13 @@
         serverSide: true,    
         ajax: "{{ route('seo.index')}}",
         columns:[
-        {data: 'product.product', name: 'product.product'},
+
+        {data: 'action', name: 'action', orderable: false, searchable: false},
+        {data: 'page_title', name: 'page_title'},
+        {data: 'seo_title', name: 'seo_title'},
         {data: 'meta_description', name: 'meta_description'},
         {data: 'meta_keyword', name: 'meta_keyword'},
-        {data: 'action', name: 'action', orderable: false, searchable: false},
+        {data: 'seo_other', name: 'seo_other'},
         ],
         columnDefs:[
        
