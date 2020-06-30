@@ -200,7 +200,7 @@ class FrontendController extends Controller
 
         $my_music = Music::where('user_id', $user_id)
 
-            ->where('music.status', 1)
+            // ->where('music.status', 1)
             ->get();
         $seo = Seo::where('seos.page_title', 'like', 'myMusic')->first();
 
