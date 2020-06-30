@@ -32,7 +32,7 @@ class FrontendController extends Controller
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
-        // return $featuredArtists;
+        // return $featuredProducers;
         return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo'));
     }
 
@@ -86,6 +86,7 @@ class FrontendController extends Controller
     public function featuredArtist()
     {
         $featured_artist = User::role('Artist')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
+        // return $featured_artist;
         $listlen = sizeof($featured_artist);
         if ($listlen > 3) {
             $group = floor($listlen / 3);
