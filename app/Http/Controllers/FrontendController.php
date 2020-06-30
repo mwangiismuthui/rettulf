@@ -32,8 +32,8 @@ class FrontendController extends Controller
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
-            // return $featuredProducers;
-        return view('frontend.index', compact('trendingMusic','trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats','seo'));
+        // return $featuredProducers;
+        return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo'));
     }
 
     public function latestMusic($limit)
@@ -87,34 +87,45 @@ class FrontendController extends Controller
     {
         $featured_artist = User::role('Artist')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
         $listlen = sizeof($featured_artist);
-        $group = floor($listlen / 3);
-        $partlen = floor($listlen / $group);
-        $partrem = $listlen % $group;
-        $partition = collect(new User());
-        $mark = 0;
-        for($px = 0; $px < $group; $px ++) {
-            $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
-            $partition->add( array_slice($featured_artist, $mark, $incr));
-            $mark += $incr;
+        if ($listlen > 0) {
+            $group = floor($listlen / 3);
+            $partlen = floor($listlen / $group);
+            $partrem = $listlen % $group;
+            $partition = collect(new User());
+            $mark = 0;
+            for ($px = 0; $px < $group; $px++) {
+                $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
+                $partition->add(array_slice($featured_artist, $mark, $incr));
+                $mark += $incr;
+            }
+            return collect($partition);
+        } else {
+           return null;
         }
-        return collect($partition);
     }
     public function featuredProducers()
     {
         $featuredProducers = User::role('Producer')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
-       
+
         $listlen = sizeof($featuredProducers);
-        $group = floor($listlen / 3);
-        $partlen = floor($listlen / $group);
-        $partrem = $listlen % $group;
-        $partition = collect(new User());
-        $mark = 0;
-        for($px = 0; $px < $group; $px ++) {
-            $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
-            $partition->add( array_slice($featuredProducers, $mark, $incr));
-            $mark += $incr;
+        if ($listlen > 0) {
+            $group = floor($listlen / 3);
+            $partlen = floor($listlen / $group);
+            $partrem = $listlen % $group;
+            $partition = collect(new User());
+            $mark = 0;
+            for ($px = 0; $px < $group; $px++) {
+                $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
+                $partition->add(array_slice($featuredProducers, $mark, $incr));
+                $mark += $incr;
+            }
+            return collect($partition);
+        } else {
+           return null;
         }
-        return collect($partition);
+
+
+       
     }
 
 
@@ -130,13 +141,13 @@ class FrontendController extends Controller
         $genre_music = Music::where('genre_id', $id)
             ->where('music.status', 1)
             ->get();
-            $seo = Seo::where('seos.page_title', 'like', 'singleGenre')->first();
+        $seo = Seo::where('seos.page_title', 'like', 'singleGenre')->first();
 
         // $count = count($genre_music); 
         // $half = $count/2; 
-        $musicsplit = $genre_music->chunk(2);      
+        $musicsplit = $genre_music->chunk(2);
         // $music2 =  $genre_music->skip($half);
-        // return $musicsplit;
+        return $musicsplit;
         return view('frontend.genres', compact('musicsplit', 'genre'));
     }
     public function singleArtist($id)
@@ -145,7 +156,7 @@ class FrontendController extends Controller
         $user_music = Music::where('user_id', $id)
             ->where('music.status', 1)
             ->orderBy('created_at', 'DESC')->get();
-            $seo = Seo::where('seos.page_title', 'like', 'singleArtist')->first();
+        $seo = Seo::where('seos.page_title', 'like', 'singleArtist')->first();
 
         // return $genre_music;
         return view('frontend.artist_single', compact('user_music', 'user'));
@@ -157,7 +168,7 @@ class FrontendController extends Controller
 
             ->where('music.status', 1)
             ->orderBy('created_at', 'DESC')->get();
-            $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
+        $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
         return view('frontend.artist_single', compact('user_music', 'user'));
     }
 
@@ -171,23 +182,23 @@ class FrontendController extends Controller
     {
         $user_id = Auth::user()->id;
         $user = User::with('balance')->where('id', $user_id)->get();
-        $pending_withdrawals = Withdrawal::where('user_id',$user_id)
-        // ->where('status',0)
-        ->get();
+        $pending_withdrawals = Withdrawal::where('user_id', $user_id)
+            // ->where('status',0)
+            ->get();
 
         $my_music = Music::where('user_id', $user_id)
 
             ->where('music.status', 1)
             ->get();
-            $seo = Seo::where('seos.page_title', 'like', 'myMusic')->first();
+        $seo = Seo::where('seos.page_title', 'like', 'myMusic')->first();
 
-        return view('frontend.mymusic', compact('my_music', 'user','seo','pending_withdrawals'));
+        return view('frontend.mymusic', compact('my_music', 'user', 'seo', 'pending_withdrawals'));
     }
     public function contact(Request $request)
     {
         $seo = Seo::where('seos.page_title', 'like', 'contact')->first();
 
-        return view('frontend.contactus',compact('seo'));
+        return view('frontend.contactus', compact('seo'));
     }
     public function pricing(Request $request)
     {
@@ -200,7 +211,7 @@ class FrontendController extends Controller
     {
         $music = Music::find($id);
         $seo = Seo::where('seos.page_title', 'like', 'buymusic')->first();
-        return view('frontend.buymusic', compact('music','seo'));
+        return view('frontend.buymusic', compact('music', 'seo'));
     }
 
     public function topArtists()
@@ -212,7 +223,7 @@ class FrontendController extends Controller
             }
         });
         $seo = Seo::where('seos.page_title', 'like', 'topArtists')->first();
-        return view('frontend.users', compact('users', 'feturedUsers','seo'));
+        return view('frontend.users', compact('users', 'feturedUsers', 'seo'));
     }
     public function topProducers()
     {
@@ -223,25 +234,25 @@ class FrontendController extends Controller
             }
         });
         $seo = Seo::where('seos.page_title', 'like', 'topProducers')->first();
-        return view('frontend.users', compact('users', 'feturedUsers','seo'));
+        return view('frontend.users', compact('users', 'feturedUsers', 'seo'));
     }
 
     public function mostDownloadedSongs()
     {
         $musics = Music::where('downloads', '>', 1)->where('type', 'music')->orderBy('downloads', 'desc')->get();
         $seo = Seo::where('seos.page_title', 'like', 'mostDownloadedSongs')->first();
-        $musicsplit = $musics->chunk(2);      
+        $musicsplit = $musics->chunk(2);
         $title = 'Most Downloaded Songs';
-        return view('frontend.musicshop', compact('musicsplit','seo','title'));
+        return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
     public function mostListenedSongs()
     {
         $musics = Music::where('views', '>', 1)->where('type', 'music')->orderBy('views', 'desc')->get();
         $seo = Seo::where('seos.page_title', 'like', 'mostListenedSongs')->first();
-        $musicsplit = $musics->chunk(2);      
+        $musicsplit = $musics->chunk(2);
         $title = 'Most Listened Songs';
-        return view('frontend.musicshop', compact('musicsplit','seo','title'));
+        return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
     public function newSongs()
@@ -252,9 +263,9 @@ class FrontendController extends Controller
             ->where('music.status', 1)
             ->latest()->get();
         // dd($musics);
-        $musicsplit = $musics->chunk(2);      
+        $musicsplit = $musics->chunk(2);
         $title = 'New Songs';
-        return view('frontend.musicshop', compact('musicsplit','seo','title'));
+        return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
     public function mostDownloadedBeats()
@@ -262,13 +273,13 @@ class FrontendController extends Controller
         $seo = Seo::where('seos.page_title', 'like', 'mostDownloadedBeats')->first();
 
         $musics = Music::where('downloads', '>', 1)->where('type', 'beats')
-        
-        ->where('music.status',1)
-        ->orderBy('downloads', 'desc')->get();
+
+            ->where('music.status', 1)
+            ->orderBy('downloads', 'desc')->get();
         // dd($musics);
-        $musicsplit = $musics->chunk(2);      
+        $musicsplit = $musics->chunk(2);
         $title = 'Most Downloaded Beats';
-        return view('frontend.musicshop', compact('musicsplit','seo','title'));
+        return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
     public function mostListenedBeats()
@@ -276,12 +287,12 @@ class FrontendController extends Controller
         $seo = Seo::where('seos.page_title', 'like', 'mostListenedBeats')->first();
 
         $musics = Music::where('views', '>', 1)->where('type', 'beats')
-        
-        ->where('music.status',1)
-        ->orderBy('views', 'desc')->get();
-        $musicsplit = $musics->chunk(2);      
+
+            ->where('music.status', 1)
+            ->orderBy('views', 'desc')->get();
+        $musicsplit = $musics->chunk(2);
         $title = 'Most Listened Beats';
-        return view('frontend.musicshop', compact('musicsplit','seo','title'));
+        return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
     public function newBeats()
@@ -289,13 +300,13 @@ class FrontendController extends Controller
         $seo = Seo::where('seos.page_title', 'like', 'newBeats')->first();
 
         $musics = Music::where('type', 'beats')
-        
-        ->where('music.status',1)
-        ->latest()->get();
+
+            ->where('music.status', 1)
+            ->latest()->get();
         // dd($musics);
-        $musicsplit = $musics->chunk(2);      
+        $musicsplit = $musics->chunk(2);
         $title = 'New Beats';
-        return view('frontend.musicshop', compact('musicsplit','seo','title'));
+        return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -322,7 +333,7 @@ class FrontendController extends Controller
             ])
             ->get();
         // return $downloaded_musics;
-        return view('frontend.download', compact('downloaded_musics','seo'));
+        return view('frontend.download', compact('downloaded_musics', 'seo'));
     }
     public function downloadMusic(Request $request)
     {
