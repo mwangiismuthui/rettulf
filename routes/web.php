@@ -32,8 +32,9 @@ Route::get('/top-producers', 'FrontendController@topProducers')->name('topProduc
 Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
 Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 Route::get('/search/music', 'FrontendController@searchMusic')->name('searchMusic');
-Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+
 
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
 Route::get('/downloadedMusic', 'FrontendController@downloadedMusic')->name('downloadedMusic');

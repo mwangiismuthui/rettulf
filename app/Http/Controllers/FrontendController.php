@@ -11,7 +11,7 @@ use App\Seo;
 use App\Withdrawal;
 use Auth;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Response;
 
 class FrontendController extends Controller
 {
@@ -32,7 +32,7 @@ class FrontendController extends Controller
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
-        // return $featuredProducers;
+        // return $featuredArtists;
         return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo'));
     }
 
@@ -87,7 +87,7 @@ class FrontendController extends Controller
     {
         $featured_artist = User::role('Artist')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
         $listlen = sizeof($featured_artist);
-        if ($listlen > 0) {
+        if ($listlen > 3) {
             $group = floor($listlen / 3);
             $partlen = floor($listlen / $group);
             $partrem = $listlen % $group;
@@ -100,7 +100,7 @@ class FrontendController extends Controller
             }
             return collect($partition);
         } else {
-           return null;
+           return [];
         }
     }
     public function featuredProducers()
@@ -108,7 +108,7 @@ class FrontendController extends Controller
         $featuredProducers = User::role('Producer')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
 
         $listlen = sizeof($featuredProducers);
-        if ($listlen > 0) {
+        if ($listlen > 3) {
             $group = floor($listlen / 3);
             $partlen = floor($listlen / $group);
             $partrem = $listlen % $group;
@@ -121,7 +121,7 @@ class FrontendController extends Controller
             }
             return collect($partition);
         } else {
-           return null;
+           return [];
         }
 
 
@@ -349,7 +349,7 @@ class FrontendController extends Controller
             'Content-Type: application/mp4',
         ];
         $name = $music_title . '' . '.mp4';
-        $request->session()->flush();
+        $request->session()->forget('music_id');
         return Response::download($file, $name, $headers);
     }
     public function downloadPurchasedMusic(Request $request, $id)
@@ -393,6 +393,6 @@ class FrontendController extends Controller
                 "text" => $music->title,
             ];
         }
-        return response($response, Response::HTTP_OK);
+        return response($response, \Symfony\Component\HttpFoundation\Response::HTTP_OK);
     }
 }
