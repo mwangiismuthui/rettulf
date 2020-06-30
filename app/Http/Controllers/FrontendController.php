@@ -143,11 +143,23 @@ class FrontendController extends Controller
             ->get();
         $seo = Seo::where('seos.page_title', 'like', 'singleGenre')->first();
 
+        if (sizeOf($genre_music) == 1 ) {
+            $musicsplit =  $genre_music->split(2);
+            $musicsplit[1] = []; 
+        } elseif(sizeOf($genre_music) == 0){
+            $musicsplit[0] = [];
+            $musicsplit[1] = [];
+        }else{
+            $musicsplit =  $genre_music->split(2);
+        }
         // $count = count($genre_music); 
         // $half = $count/2; 
-        $musicsplit = $genre_music->chunk(2);
+        // $musicsplit = $genre_music->chunk(1);
+       
         // $music2 =  $genre_music->skip($half);
-        return $musicsplit;
+        // return $music1;
+        
+        
         return view('frontend.genres', compact('musicsplit', 'genre'));
     }
     public function singleArtist($id)
@@ -250,7 +262,15 @@ class FrontendController extends Controller
     {
         $musics = Music::where('views', '>', 1)->where('type', 'music')->orderBy('views', 'desc')->get();
         $seo = Seo::where('seos.page_title', 'like', 'mostListenedSongs')->first();
-        $musicsplit = $musics->chunk(2);
+        if (sizeOf($musics) == 1 ) {
+            $musicsplit =  $musics->split(2);
+            $musicsplit[1] = []; 
+        } elseif(sizeOf($musics) == 0){
+            $musicsplit[0] = [];
+            $musicsplit[1] = [];
+        }else{
+            $musicsplit =  $musics->split(2);
+        }
         $title = 'Most Listened Songs';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
@@ -263,7 +283,15 @@ class FrontendController extends Controller
             ->where('music.status', 1)
             ->latest()->get();
         // dd($musics);
-        $musicsplit = $musics->chunk(2);
+        if (sizeOf($musics) == 1 ) {
+            $musicsplit =  $musics->split(2);
+            $musicsplit[1] = []; 
+        } elseif(sizeOf($musics) == 0){
+            $musicsplit[0] = [];
+            $musicsplit[1] = [];
+        }else{
+            $musicsplit =  $musics->split(2);
+        }
         $title = 'New Songs';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
@@ -277,7 +305,15 @@ class FrontendController extends Controller
             ->where('music.status', 1)
             ->orderBy('downloads', 'desc')->get();
         // dd($musics);
-        $musicsplit = $musics->chunk(2);
+        if (sizeOf($musics) == 1 ) {
+            $musicsplit =  $musics->split(2);
+            $musicsplit[1] = []; 
+        } elseif(sizeOf($musics) == 0){
+            $musicsplit[0] = [];
+            $musicsplit[1] = [];
+        }else{
+            $musicsplit =  $musics->split(2);
+        }
         $title = 'Most Downloaded Beats';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
@@ -290,7 +326,15 @@ class FrontendController extends Controller
 
             ->where('music.status', 1)
             ->orderBy('views', 'desc')->get();
-        $musicsplit = $musics->chunk(2);
+            if (sizeOf($musics) == 1 ) {
+                $musicsplit =  $musics->split(2);
+                $musicsplit[1] = []; 
+            } elseif(sizeOf($musics) == 0){
+                $musicsplit[0] = [];
+                $musicsplit[1] = [];
+            }else{
+                $musicsplit =  $musics->split(2);
+            }
         $title = 'Most Listened Beats';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
@@ -304,7 +348,15 @@ class FrontendController extends Controller
             ->where('music.status', 1)
             ->latest()->get();
         // dd($musics);
-        $musicsplit = $musics->chunk(2);
+        if (sizeOf($musics) == 1 ) {
+            $musicsplit =  $musics->split(2);
+            $musicsplit[1] = []; 
+        } elseif(sizeOf($musics) == 0){
+            $musicsplit[0] = [];
+            $musicsplit[1] = [];
+        }else{
+            $musicsplit =  $musics->split(2);
+        }
         $title = 'New Beats';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
