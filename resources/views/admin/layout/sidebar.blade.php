@@ -1,8 +1,8 @@
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
   <div class="brand-logo">
     <a href="{{route('dashboard')}}">
-      <img src="/backend/assets/images/logo.jpg" class="logo-icon" alt="logo icon">
-      <h5 class="logo-text">Musuc</h5>
+      <img src="/backend/assets/image/logo.jpg" class="logo-icon" alt="logo icon">
+      <h5 class="logo-text">Music</h5>
     </a>
   </div>
   <ul class="sidebar-menu do-nicescrol">
