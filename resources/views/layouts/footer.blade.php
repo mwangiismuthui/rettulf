@@ -1,11 +1,12 @@
-<div class="footer_wrapper m24_cover">
+{{-- <div class="footer_wrapper m24_cover">
     <div class="container">
         <div class="row">
 
             <div class="col-lg-3 col-md-6 col-12 col-sm-12">
                 <div class="footer_widget footer_about_wrapper m24_cover">
                     <div class="wrapper_first_image">
-                        <a href="index.html"><img src="/frontend/images/logo.png" class="img-responsive" alt="logo" /></a>
+                        <a href="index.html"><img src="/frontend/images/logo.png" class="img-responsive"
+                                alt="logo" /></a>
                     </div>
                     <div class="abotus_content">
                         <p>Sed do eiusmod tempor unt ut labore et dolore magna liqua. Ut enim ad minim veniam...</p>
@@ -33,12 +34,12 @@
                         <li> <a href="#">Report an issue </a>
                         </li>
                         <li> <a href="#">
-                                        Sitemap </a>
+                                Sitemap </a>
                         </li>
                         <li> <a href="#">
                                 FAQ </a></li>
                         <li> <a href="#">
-                                                advertise </a></li>
+                                advertise </a></li>
                     </ul>
                 </div>
             </div>
@@ -46,9 +47,12 @@
                 <div class="footer_widget footer_contact_wrapper m24_cover">
                     <h4>download app </h4>
                     <p>All type of app’s available for download</p>
-                    <span><a href="#"><img src="/frontend/images/app_btn1.png" class="img-responsive" alt="img"></a></span>
-                    <span><a href="#"><img src="/frontend/images/app_btn2.png" class="img-responsive" alt="img"></a></span>
-                    <span><a href="#"><img src="/frontend/images/app_btn3.png" class="img-responsive" alt="img"></a></span>
+                    <span><a href="#"><img src="/frontend/images/app_btn1.png" class="img-responsive"
+                                alt="img"></a></span>
+                    <span><a href="#"><img src="/frontend/images/app_btn2.png" class="img-responsive"
+                                alt="img"></a></span>
+                    <span><a href="#"><img src="/frontend/images/app_btn3.png" class="img-responsive"
+                                alt="img"></a></span>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-12 col-sm-12">
@@ -74,7 +78,7 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 {{-- <div class="foter_top_wrapper m24_cover">
     <div class="container">
         <ul>
@@ -105,10 +109,7 @@
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                 <div class="btm_foter_box">
 
-                    <p>Copyright © 2019 <a href="index.html"> Music </a> Template designed by <a href="#"> Webstrot.</a></p>
-                    <div class="aboutus_social_icons">
-                        <a href="#">Get Music <i class="flaticon-play-button"></i></a>
-                    </div>
+                    <p>Copyright © 2020 <a href="index.html"> Music</p>
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@
                                     <p data-animation="animated fadeInUp">Even while listening to music, simply say
                                         “Olivia”
                                         <br> to interact with Olivia. </p>
-                                    <div class="slider_btn m24_cover">
+                                    {{-- <div class="slider_btn m24_cover">
                                         <div class="lang_apply_btn">
                                             <ul>
                                                 <li data-animation="animated fadeInUp">
@@ -32,7 +32,7 @@
                                             </ul>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                     <p data-animation="animated fadeInUp">Even while listening to music, simply say
                                         “Olivia”
                                         <br> to interact with Olivia. </p>
-                                    <div class="slider_btn m24_cover">
+                                    {{-- <div class="slider_btn m24_cover">
                                         <div class="lang_apply_btn">
                                             <ul>
                                                 <li data-animation="animated fadeInUp">
@@ -68,7 +68,7 @@
                                             </ul>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                     <p data-animation="animated fadeInUp">Even while listening to music, simply say
                                         “Olivia”
                                         <br> to interact with Olivia. </p>
-                                    <div class="slider_btn m24_cover">
+                                    {{-- <div class="slider_btn m24_cover">
                                         <div class="lang_apply_btn">
                                             <ul>
                                                 <li data-animation="animated fadeInUp">
@@ -105,7 +105,7 @@
                                             </ul>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -221,8 +221,8 @@
                                     </div>
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
-                                    <p><a href="#">{{$music->title}}</a></p>
-                                    <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
+                                    <p><a href="{{route('buymusic',$music->id)}}">{{$music->title}}</a></p>
+                                <p class="various_artist_text"><a href="{{route('singleArtist',$music->user->id)}}">{{$music->user->name}}</a></p>
                                 </div>
 
                             </div>
@@ -366,8 +366,8 @@
                                     </div>
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
-                                    <p><a href="#">{{$music->title}}</a></p>
-                                    <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
+                                    <p><a href="{{route('buymusic',$music->id)}}">{{$music->title}}</a></p>
+                                <p class="various_artist_text"><a href="{{route('singleArtist',$music->user->id)}}">{{$music->user->name}}</a></p>
                                 </div>
 
                             </div>
