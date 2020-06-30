@@ -367,6 +367,28 @@
                 }), check
             }
             jQuery(document).ready(function(e) {
+               
+                $('.music_search').select2({
+                    placeholder: 'Search Music and beats',
+                    minimumInputLength: 2,
+                    ajax: {
+                      url: 'search/music',
+                      dataType: 'json',
+                      delay: 250,
+                      data: function (params) {
+                        return {
+                          search: params.term 
+                        };
+                      },
+                      processResults: function (response) {
+                        SampleJSONData2 = response;
+                        return {
+                          results: response
+                        };
+                      },
+                      cache: true
+                    }
+                  });
                 comboTree2 = e("#justAnotherInputBox").comboTree({
                     source: SampleJSONData2,
                     isMultiple: !1

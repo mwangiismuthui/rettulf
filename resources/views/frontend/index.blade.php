@@ -165,11 +165,8 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
-                                        </li>
                                         <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>download</a></li>
+                                                        class="flaticon-download"></i></span>download</a></li>
                                     </ul>
                                     <div class="tranding_play_icon">
                                         <a id="{{$music->id}}">
@@ -204,6 +201,7 @@
                         <h1>top songs</h1>
                     </div>
                     <div class="relaese_viewall_wrapper">
+                        <a href="{{route('mostListenedSongs')}}"> view all <i class="flaticon-right-arrow"></i></a>
                     </div>
                     @foreach ($topsongs as $music)
                     <div class="top_songs_list m24_cover">
@@ -241,10 +239,8 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i
-                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
                                     <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                    class="flaticon-trash"></i></span>download</a></li>
+                                                    class="flaticon-download"></i></span>download</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -256,50 +252,37 @@
             <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
 
                 <div class="m24_heading_wrapper">
-                    <h1>Featured Artists</h1>
+                    <h1>Featured Musicians</h1>
                 </div>
 
                 <div class="featured_song_slider">
                     <div class="owl-carousel owl-theme">
-                        @foreach ($featuredArtists as $artist)
+                       
+                        @foreach ($featuredArtists as $group)
                         <div class="item">
-                            @foreach ($featuredArtists as $artist)
-
+                            @foreach ($group as $artist)
                             <div class="featured_artist_list m24_cover">
-                                <img src="{{url('/ProfilePics').'/'.$artist->profile_photo }}" class="img-responsive"
+                                <img src="{{url('/ProfilePics').'/'.$artist['profile_photo'] }}" class="img-responsive"
                                     alt="img">
                                 <div class="featured_artist_detail">
-                                    <p><a href="#">{{$artist->name}} </a></p>
-                                    <p class="various_artist_text"><a href="#">{{$artist->music->count()}} tracks</a>
+                                    <p><a href="#">{{$artist['name']}} </a></p>
+                                    <p class="various_artist_text"><a href="#">{{$artist['music_count']}} songs</a>
                                     </p>
                                     <div class="lang_apply_btn">
                                         <ul>
                                             <li>
-                                                <a href="{{route('singleArtist',$music->user->id)}}"
-                                                    id="{{$music->id}}"> <i class="flaticon-play-button"></i>View
+                                                <a href="{{route('singleProducer',$artist['id'])}}"
+                                                    id="{{$artist['id']}}"> <i class="flaticon-play-button"></i>View
                                                     Playlist</a>
                                             </li>
                                         </ul>
 
                                     </div>
-                                    <div class="top_song_list_picks featured_list_dropdown">
-                                        <div class="m24_tranding_more_icon">
-                                            <i class="flaticon-menu"></i>
-                                        </div>
-                                        <ul class="tranding_more_option">
-                                            <li><a href="#"><span class="opt_icon"><i
-                                                            class="flaticon-files-and-folders"></i></span>view
-                                                    lyrics</a></li>
-                                            <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                            class="flaticon-trash"></i></span>download</a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             @endforeach
-                        </div>
+                        </div>                       
                         @endforeach
-
 
                     </div>
                 </div>
@@ -308,6 +291,51 @@
     </div>
 </div>
 <!-- top songs wrapper end -->
+
+<div class="treanding_songs_wrapper treanding_index_wrapper m24_cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="m24_heading_wrapper">
+                    <h1>trending beats</h1>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                <div class="treanding_song_slider">
+                    <div class="owl-carousel owl-theme">
+
+                        @foreach ($trendingBeats as $music)
+                        <div class="item">
+
+                            <div class="treanding_slider_main_box m24_cover">
+                                <img src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}" alt="{{$music->title}}">
+                                <div class="m24_treanding_box_overlay">
+                                    <div class="m24_tranding_box_overlay"></div>
+                                    <div class="m24_tranding_more_icon">
+                                        <i class="flaticon-menu"></i>
+                                    </div>
+                                    <ul class="tranding_more_option">
+                                        <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                        class="flaticon-download"></i></span>download</a></li>
+                                    </ul>
+                                    <div class="tranding_play_icon">
+                                        <a id="{{$music->id}}">
+                                            <i class="flaticon-play-button" id="{{$music->id}}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- top beats wrapper start -->
 <div class="top_songs_wrapper m24_cover">
     <div class="container">
@@ -318,6 +346,7 @@
                         <h1>top Beats</h1>
                     </div>
                     <div class="relaese_viewall_wrapper">
+                        <a href="{{route('mostListenedBeats')}}"> view all <i class="flaticon-right-arrow"></i></a>
                     </div>
                     @foreach ($topbeats as $music)
                     <div class="top_songs_list m24_cover">
@@ -355,10 +384,8 @@
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
-                                    <li><a href="#"><span class="opt_icon"><i
-                                                    class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
                                     <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
-                                                    class="flaticon-trash"></i></span>download</a></li>
+                                                    class="flaticon-download"></i></span>download</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -375,38 +402,31 @@
 
                 <div class="featured_song_slider">
                     <div class="owl-carousel owl-theme">
-                        @foreach ($featuredProducers as $artist)
+                        @foreach ($featuredProducers as $group)
                         <div class="item">
+                            @foreach ($group as $artist)
                             <div class="featured_artist_list m24_cover">
-                                <img src="{{url('/ProfilePics').'/'.$artist->profile_photo }}" class="img-responsive"
+                                <img src="{{url('/ProfilePics').'/'.$artist['profile_photo'] }}" class="img-responsive"
                                     alt="img">
                                 <div class="featured_artist_detail">
-                                    <p><a href="#">{{$artist->name}} </a></p>
-                                    <p class="various_artist_text"><a href="#">{{$artist->music->count()}} tracks</a>
+                                    <p><a href="#">{{$artist['name']}} </a></p>
+                                    <p class="various_artist_text"><a href="#">{{$artist['music_count']}} beats</a>
                                     </p>
                                     <div class="lang_apply_btn">
                                         <ul>
                                             <li>
-                                                <a href="{{route('singleProducer',$music->user->id)}}"
-                                                    id="{{$music->id}}"> <i class="flaticon-play-button"></i>View
+                                                <a href="{{route('singleProducer',$artist['id'])}}"
+                                                    id="{{$music['id']}}"> <i class="flaticon-play-button"></i>View
                                                     Playlist</a>
                                             </li>
                                         </ul>
 
                                     </div>
-                                    <div class="top_song_list_picks featured_list_dropdown">
-                                        <div class="m24_tranding_more_icon">
-                                            <i class="flaticon-menu"></i>
-                                        </div>
-
-                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            @endforeach
+                        </div>                       
                         @endforeach
-
-
-
                     </div>
                 </div>
             </div>
@@ -453,181 +473,6 @@
                         </div>
                         @endforeach
 
-                        {{-- <div class="item">
-                            <div class="treanding_slider_main_box m24_cover">
-                                <img src="/frontend/images/td8.png" alt="img">
-
-                                <div class="m24_treanding_box_overlay">
-                                    <div class="m24_tranding_box_overlay"></div>
-                                    <div class="m24_tranding_more_icon">
-                                        <i class="flaticon-menu"></i>
-                                    </div>
-                                    <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
-                                        </li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>delete</a></li>
-                                    </ul>
-                                    <div class="tranding_play_icon various_concert_icon">
-                                        <a href="#">
-                                            <i class="flaticon-play-button"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="various_song_playlist">
-                                    <p><a href="#">yellow wood</a></p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <div class="treanding_slider_main_box m24_cover">
-                                <img src="/frontend/images/td9.png" alt="img">
-
-                                <div class="m24_treanding_box_overlay">
-                                    <div class="m24_tranding_box_overlay"></div>
-                                    <div class="m24_tranding_more_icon">
-                                        <i class="flaticon-menu"></i>
-                                    </div>
-                                    <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
-                                        </li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>delete</a></li>
-                                    </ul>
-                                    <div class="tranding_play_icon various_concert_icon">
-                                        <a href="#">
-                                            <i class="flaticon-play-button"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="various_song_playlist">
-                                    <p><a href="#">veere di wedding</a></p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <div class="treanding_slider_main_box m24_cover">
-                                <img src="/frontend/images/td4.png" alt="img">
-
-                                <div class="m24_treanding_box_overlay">
-                                    <div class="m24_tranding_box_overlay"></div>
-                                    <div class="m24_tranding_more_icon">
-                                        <i class="flaticon-menu"></i>
-                                    </div>
-                                    <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
-                                        </li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>delete</a></li>
-                                    </ul>
-                                    <div class="tranding_play_icon various_concert_icon">
-                                        <a href="#">
-                                            <i class="flaticon-play-button"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="various_song_playlist">
-                                    <p><a href="#">Lambiyaan Si</a></p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <div class="treanding_slider_main_box m24_cover">
-                                <img src="/frontend/images/td5.png" alt="img">
-
-                                <div class="m24_treanding_box_overlay">
-                                    <div class="m24_tranding_box_overlay"></div>
-                                    <div class="m24_tranding_more_icon">
-                                        <i class="flaticon-menu"></i>
-                                    </div>
-                                    <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
-                                        </li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>delete</a></li>
-                                    </ul>
-                                    <div class="tranding_play_icon various_concert_icon">
-                                        <a href="#">
-                                            <i class="flaticon-play-button"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="various_song_playlist">
-                                    <p><a href="#">Dilla Ther Jaa</a></p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <div class="treanding_slider_main_box m24_cover">
-                                <img src="/frontend/images/td6.png" alt="img">
-
-                                <div class="m24_treanding_box_overlay">
-                                    <div class="m24_tranding_box_overlay"></div>
-                                    <div class="m24_tranding_more_icon">
-                                        <i class="flaticon-menu"></i>
-                                    </div>
-                                    <ul class="tranding_more_option">
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-playlist"></i></span>Add To playlist</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-star"></i></span>favourite</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-share"></i></span>share</a></li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-files-and-folders"></i></span>view lyrics</a>
-                                        </li>
-                                        <li><a href="#"><span class="opt_icon"><i
-                                                        class="flaticon-trash"></i></span>delete</a></li>
-                                    </ul>
-                                    <div class="tranding_play_icon various_concert_icon">
-                                        <a href="#">
-                                            <i class="flaticon-play-button"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="various_song_playlist">
-                                    <p><a href="#">4 G Ka Jamana</a></p>
-
-                                </div>
-                            </div>
-
-                        </div> --}}
                     </div>
                 </div>
             </div>

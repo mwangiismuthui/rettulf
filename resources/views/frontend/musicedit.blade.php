@@ -296,7 +296,7 @@
                             continueDelayOnInactiveTab: false,
                             position: "top right",
                             icon: "fa fa-times-circle",
-                            msg:  data.success,
+                            msg:  data.warning,
                         });
                 }
                 if (data.success) {
@@ -313,7 +313,6 @@
                             icon: "fa fa-times-circle",
                             msg: data.success,
                          });
-                     $('#product_add')[0].reset();
                   
                 }
                      $("#form_result").html(html);
@@ -324,7 +323,7 @@
 
             },
             error:function (data) {
-                $(".productoverlay").fadeOut();
+                $(".fileuploadoverlay").fadeOut();
             Lobibox.notify("error", {
                 pauseDelayOnHover: true,
                 continueDelayOnInactiveTab: false,

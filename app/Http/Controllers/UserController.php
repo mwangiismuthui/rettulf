@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        //  $this->middleware('role:Super-Admin');
     }
     /**
      * Display a listing of the resource.
@@ -26,6 +26,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
+        // dd($data);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -102,9 +103,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
+        // $roles = Role::pluck('name','name')->all();
+        $roles = DB::table('roles')->pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
 
+        // return $userRole;
 
         return view('users.edit',compact('user','roles','userRole'));
     }
@@ -128,7 +131,7 @@ class UserController extends Controller
 
 
         $input = $request->all();
-        // dd($input);
+        // dd($request->input('roles'));
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{

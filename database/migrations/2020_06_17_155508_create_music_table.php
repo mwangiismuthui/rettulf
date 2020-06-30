@@ -20,7 +20,7 @@ class CreateMusicTable extends Migration
             $table->uuid('key_id')->nullable();
             $table->string('title');
             $table->string('type');
-            $table->string('description');
+            $table->longText('description');
             $table->string('tempo_of_beat')->nullable();
             $table->string('cover_art')->nullable();
             $table->string('music');

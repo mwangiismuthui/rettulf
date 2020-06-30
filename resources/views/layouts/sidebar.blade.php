@@ -7,12 +7,16 @@
               
             </li>
                   
-            <li class='has-sub'><a href='#'><i class="flaticon-playlist-3"></i>browse music</a>
+            <li class='has-sub'><a href='#'><i class="flaticon-playlist-3"></i>browse</a>
                 <ul>
-                    <li><a href="{{route('newSongs')}}"><i class="flaticon-music-1"></i>New  music</a></li>
+                    <li><a href="{{route('newSongs')}}"><i class="flaticon-music-1"></i>New  Songs</a></li>
+                    <li><a href="{{route('mostDownloadedSongs')}}"><i class="flaticon-music-1"></i>Most Downloaded  Songs</a></li>
+                    <li><a href="{{route('mostListenedSongs')}}"><i class="flaticon-music-1"></i>Most Listened  Songs</a></li>
+                    <li><a href="{{route('topArtists')}}"><i class="flaticon-music-1"></i>Top Artist</a></li>
                     <li><a href="{{route('newBeats')}}"><i class="flaticon-music-1"></i>New  Beats</a></li>
                     <li><a href="{{route('mostDownloadedBeats')}}"><i class="flaticon-music-1"></i>Most Downloaded  Beats</a></li>
-                    <li><a href="{{route('mostDownloadedSongs')}}"><i class="flaticon-music-1"></i>Most Downloaded  Music</a></li>
+                    <li><a href="{{route('mostListenedBeats')}}"><i class="flaticon-music-1"></i>Most Listened  Beats</a></li>
+                    <li><a href="{{route('topProducers')}}"><i class="flaticon-music-1"></i>Top Producers</a></li>
                    
                 </ul>
             </li>

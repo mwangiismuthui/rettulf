@@ -25,7 +25,7 @@
 
                 </a>
                 @else
-                <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">                    
+                <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">
                     <div class="login_top_wrapper">
                         <p>login/register</p>
                     </div>
@@ -48,22 +48,26 @@
                                 <a href="{{route('newSongs')}}"><i class="fas fa-caret-right"></i>New Songs</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('mostDownloadedSongs')}}"><i class="fas fa-caret-right"></i>Most Downloaded Songs</a>
+                                <a href="{{route('mostDownloadedSongs')}}"><i class="fas fa-caret-right"></i>Most
+                                    Downloaded Songs</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('mostViewedSongs')}}"><i class="fas fa-caret-right"></i>Most Viewed Songs</a>
+                                <a href="{{route('mostListenedSongs')}}"><i class="fas fa-caret-right"></i>Most Listened
+                                    Songs</a>
                             </li>
                             <li class="parent">
-                            <a href="{{route('topArtists')}}"><i class="fas fa-caret-right"></i>Top Artist</a>
+                                <a href="{{route('topArtists')}}"><i class="fas fa-caret-right"></i>Top Artist</a>
                             </li>
                             <li class="parent">
                                 <a href="{{route('newBeats')}}"><i class="fas fa-caret-right"></i>New Beats</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('mostDownloadedBeats')}}"><i class="fas fa-caret-right"></i>Most Downloaded Beats</a>
+                                <a href="{{route('mostDownloadedBeats')}}"><i class="fas fa-caret-right"></i>Most
+                                    Downloaded Beats</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('mostViewedBeats')}}"><i class="fas fa-caret-right"></i>Most Viewed Beats</a>
+                                <a href="{{route('mostListenedBeats')}}"><i class="fas fa-caret-right"></i>Most Listened
+                                    Beats</a>
                             </li>
                             <li class="parent">
                                 <a href="{{route('topProducers')}}"><i class="fas fa-caret-right"></i>Top Producers</a>
@@ -74,27 +78,31 @@
 
                         </ul>
                     </li>
-                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">more <i
+                    {{-- <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">more <i
                                 class="flaticon-down-arrow"></i></a>
                         <ul class="navi_2_dropdown">
                             <li class="parent">
                                 <a href="{{route('contact')}}"><i class="fas fa-caret-right"></i>contact</a>
-                            </li>
-                            <li class="parent">
-                                <a href="{{route('pricing')}}"><i class="fas fa-caret-right"></i> pricing plan </a>
-                            </li>
-
-                        </ul>
                     </li>
+                    <li class="parent">
+                        <a href="{{route('pricing')}}"><i class="fas fa-caret-right"></i> pricing plan </a>
+                    </li>
+
+                </ul>
+                </li> --}}
 
                 </ul>
             </div>
             <!-- mainmenu end -->
             <div class="navi_searchbar_wrapper">
-                <i class="flaticon-magnifying-glass"></i>
-
-                <input type="text" id="justAnotherInputBox"
-                    placeholder="Search for Songs, Artists, Playlists and More.." />
+                <form>
+                    <div class="input-group">
+                        <select2 class="music_search" name="music" onchange="gotoMusic(this)">
+                            <option value="" disabled selected> Search for music and beats from different artists
+                            </option>
+                        </select2>
+                    </div>
+                </form>
             </div>
             <div class="d-block d-sm-block d-md-block d-lg-block d-xl-none">
                 <div class="search_bar">
@@ -139,3 +147,11 @@
         </div>
     </div>
 </div>
+<script>
+    function gotoMusic(selectObject){
+	
+    var music_id = selectObject.value;
+    window.location.href = "/download-music/"+music_id;
+
+	}
+</script>

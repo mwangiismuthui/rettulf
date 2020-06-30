@@ -11,7 +11,7 @@
                             <h2>Artists</h2>
 
                             <ul>
-                                <li><a href="#">Home</a> &nbsp;&nbsp;&nbsp;/</li>
+                                <li><a href="{{route('index')}}">Home</a> &nbsp;&nbsp;&nbsp;/</li>
                                 <li>Artists</li>
                             </ul>
 
