@@ -11,7 +11,7 @@
                 <h2>{{$artist->name}}</h2>
 
                     <ul>
-                        <li><a href="#">Home</a> &nbsp;&nbsp;&nbsp;/</li>
+                        <li><a href="{{route('index')}}">Home</a> &nbsp;&nbsp;&nbsp;/</li>
                         <li>{{$artist->name}}</li>
                     </ul>
 
@@ -36,17 +36,6 @@
                             <p>Artist, {{$artist->location->location}}</p>
                             <p>Renowned for his soulful singing, Indian musician Arijit Singh is also a music composer, producer, recordist and programmer. He has several blockbuster songs to his credit and has won 23 awards so far, which makes him one of the most successful sing... Full Bio</p>
                          
-                        </div>
-                        <div class="artist_list_icon">
-                            <div class="m24_tranding_more_icon">
-                                <i class="flaticon-menu"></i>
-                            </div>
-                            <ul class="tranding_more_option">
-                                <li><a href="#"><span class="opt_icon"><i
-                                                class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                <li><a href="#"><span class="opt_icon"><i
-                                                class="flaticon-trash"></i></span>download</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -90,27 +79,21 @@
 
                                 <div class="top_song_artist_contnt">
                                     <h1><a href="#">{{$music->title}}</a></h1>
-                                    <p class="various_artist_text"><a href="#">{{$music->description}}</a></p>
+                                    <p class="various_artist_text"><a href="#">{{\Illuminate\Support\Str::limit($music->description,150, $end='...')}}</a></p>
                                 </div>
 
                             </div>
                         </li>
                         <li class="song_title_width"><a href="#">{{$artist->name}}</a></li>
-<<<<<<< HEAD
-                    <li class="text-center"><a href="#">{{$music->duration}}</a></li>
-=======
                         <li class="text-center"><a href="#">{{$music->duration}}</a></li>
->>>>>>> 124f16d940252acec7615513ddcb479bcbaf36f8
 
                         <li class="text-center top_song_artist_playlist">
                             <div class="m24_tranding_more_icon">
                                 <i class="flaticon-menu"></i>
                             </div>
                             <ul class="tranding_more_option">
-                                <li><a href="#"><span class="opt_icon"><i
-                                                class="flaticon-files-and-folders"></i></span>view lyrics</a></li>
-                                <li><a href="#"><span class="opt_icon"><i
-                                                class="flaticon-trash"></i></span>download</a></li>
+                                <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
+                                                class="flaticon-download"></i></span>download</a></li>
                             </ul>
                         </li>
                     </ul>

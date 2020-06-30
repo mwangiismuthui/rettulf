@@ -20,7 +20,7 @@ class RoleController extends Controller
      */
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        //  $this->middleware('role:Super-Admin');
         //  $this->middleware('permission:role-create', ['only' => ['create','store']]);
         //  $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
         //  $this->middleware('permission:role-delete', ['only' => ['destroy']]);
@@ -34,7 +34,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id','DESC')->paginate(5);
+        // $roles = Role::orderBy('id','DESC')->paginate(5);
+        $roles = DB::table('roles')->orderBy('id','DESC')->paginate(5);
+        // dd($roles);
         return view('roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -82,6 +84,7 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
+        // dd($role);
         $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
             ->where("role_has_permissions.role_id",$id)
             ->get();

@@ -9,7 +9,7 @@
                     <h2>My downloads</h2>
 
                     <ul>
-                        <li><a href="#">Home</a> &nbsp;&nbsp;&nbsp;/</li>
+                        <li><a href="{{route('index')}}">Home</a> &nbsp;&nbsp;&nbsp;/</li>
                         <li>My downloads</li>
                     </ul>
 

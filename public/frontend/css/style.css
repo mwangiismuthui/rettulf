@@ -356,7 +356,7 @@ a:hover {
 }
 .mainmenu ul ul,
 .mainmenu ul li .mega-menu {
-    width: 220px;
+    width: 320px;
     position: absolute;
     text-align: left;
     top: calc(100% + 30px);
@@ -1521,6 +1521,8 @@ span.comboTreeItemTitle{
 	  -webkit-border-radius: 10px; 
   -moz-border-radius: 10px; 
    border-radius: 10px; 
+   height: 115px;
+   object-fit: cover;
 }
 .m24_treanding_box_overlay {
 	opacity: 0;
@@ -2123,6 +2125,9 @@ ul.tranding_more_option li a .opt_icon i:before{
 .featured_artist_list img{
 	float:left;
 	width:160px !important;
+	height: 160px;
+    object-fit: fill;
+    border-radius: 50%;
 }
 .featured_artist_detail{
 	float:left;
@@ -4468,6 +4473,8 @@ body.off-canvas-overlay-on {
 .artist_wrapper_content img{
 	float:left;
 	width:250px;
+	height: 250px;
+    border-radius: 50%;
 }
 .artist_wrapper_content .artist_wrapper_text{
 	float:left;
