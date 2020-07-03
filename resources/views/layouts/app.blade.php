@@ -11,12 +11,11 @@
 
 <head>
     <meta charset="utf-8" />
-    {{-- <title>{{ $seo->seo_title }}</title> --}}
-    <title>Title</title>
-    {{-- <meta name="Description" content="{{ $seo->seo_description }}">
-    <meta name="Keywords" content="{{ $seo->seo_keywords }}"> --}}
+    <title>{{ $seo->seo_title }}</title>
+    <meta name="Description" content="{{ $seo->meta_description }}">
+    <meta name="Keywords" content="{{ $seo->meta_keyword }}">
     <meta name="_token" content="{{ csrf_token() }}" />
-    {{-- {!! $seo->seo_other !!} --}}
+    {!! $seo->seo_other !!}
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <meta name="author" content="Mwangi Muthui(0721257308)|Eric Njeru(0792946114)" />
@@ -267,6 +266,8 @@
 
             var currentAudio = null;
             var previousAudio = null;
+            var music_type ;
+            var new_beat_time ;
             var audio ;
             $(document).keydown(function(e) {
     var unicode = e.charCode ? e.charCode : e.keyCode;
@@ -295,16 +296,37 @@
             var sb = {
                 song: null,
                 init: function () {
-                    if (audio!=null) {                        
+                if (music_type=='music') {                   
+                    if (audio!=null) {                                            
                     audio.pause();
                     sb.song = new Audio(full_music_path);
                     audio = sb.song;
                     sb.play();
+                
                     } else {
-                     sb.song = new Audio(full_music_path);
+                    sb.song = new Audio(full_music_path);
                     audio = sb.song;
                     sb.play();
                     }
+                }else if (music_type == 'beats') {
+                    
+                    if (audio!=null) {   
+                    audio.pause();
+                    sb.song = new Audio(full_music_path);
+                    audio = sb.song;
+                    sb.play();
+                    setTimeout(function(){
+                         audio.pause(); 
+                         }, new_beat_time);
+                    } else {
+                    sb.song = new Audio(full_music_path);
+                    audio = sb.song;
+                    sb.play();
+                    setTimeout(function(){
+                         audio.pause(); 
+                         }, new_beat_time);
+                    }
+                }
                    
                 },
                  play: function (e) {
@@ -312,24 +334,24 @@
                 }
                 };
             $('.jp-play').on('click',function () {
+                if (music_type=='music') {                   
+
                 if (!audio.paused) {
                     audio.pause();
                 }else if (audio.paused) {
                     audio.play();
+
                 }
-                
+            }else if (music_type == 'beats') {
+
+                if (!audio.paused) {
+                    audio.pause();
+                }else if (audio.paused) {
+                    audio.pause();
+                }
+            }
             });
-        // $('.jp-previous').on('click',function () {
-              
-            //     audio.currentTime -= 5;
-                
-            // });
-            // $('.jp-next').on('click',function () {
-               
-            //     // audio.currentTime += 5;
-            //     console.log(audio.currentTime);
-            //     console.log(audio.currentTime+=5);
-            // });
+       
             $('.flaticon-play-button').on('click',function () {
                 previousAudio =currentAudio;
              
@@ -347,6 +369,10 @@
                 var cover_art_path = '/uploadedCoverArts/';
                 var cover_art = data.coverart;
                  var music = data.music_path;
+                //  console.log(data.music_type);
+                 music_type = data.music_type;
+                 var beat_time = data.beat_time;
+                 new_beat_time = beat_time*1000;
                 var path = '/uploadedFiles/';
                 full_music_path = path+''+music;
                 var full_covertart_path = cover_art_path+''+cover_art;

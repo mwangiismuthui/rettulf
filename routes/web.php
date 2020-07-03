@@ -21,7 +21,7 @@ Route::get('/single/genre/{id}', 'FrontendController@singleGenre')->name('single
 Route::get('/single/artist/{id}', 'FrontendController@singleArtist')->name('singleArtist');
 Route::get('/single/producer/{id}', 'FrontendController@singleProducer')->name('singleProducer');
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
-Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
+// Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
 Route::get('/most-downloaded-songs', 'FrontendController@mostDownloadedSongs')->name('mostDownloadedSongs');
 Route::get('/most-Listened-songs', 'FrontendController@mostListenedSongs')->name('mostListenedSongs');
 Route::get('/new-songs', 'FrontendController@newSongs')->name('newSongs');
@@ -32,8 +32,9 @@ Route::get('/top-producers', 'FrontendController@topProducers')->name('topProduc
 Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
 Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 Route::get('/search/music', 'FrontendController@searchMusic')->name('searchMusic');
+Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
 
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
@@ -124,7 +125,10 @@ Route::get('/music/edit/{id}', 'AdminController@edit')->name('adminMusic.edit');
 Route::get('/admin/dashboard', 'AdminController@dashboard')->name('dashboard');
 Route::get('/bulk/emails/', 'AdminController@bulkEmails')->name('bulkEmails');
 Route::post('/bulk/emails/send', 'AdminController@bulkEmailsSend')->name('bulkEmailsSend');
-
+Route::get('/sitesettings/index', 'AdminController@siteSettingsIndex')->name('siteSettingsIndex');
+Route::get('/sitesettings/edit/{id}', 'AdminController@siteSettingsEdit')->name('siteSettingsEdit');
+Route::post('/sitesettings/store', 'AdminController@siteSettingsStore')->name('siteSettingsStore');
+Route::post('/sitesettings/update/{id}', 'AdminController@siteSettingsUpdate')->name('siteSettingsUpdate');
 
 
 // ..................SEO..............................//
@@ -136,7 +140,7 @@ Route::delete('/seo/destroy/', 'SeoController@destroy')->name('seo.destroy');
 Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.photo.destroy');
 
 
-// ..................SEO..............................//
+// ..................Withdrawal..............................//
 Route::get('/withdraw/{id}', 'WithdrawalController@sellerWithdrawal')->name('sellerWithdrawal');
 Route::get('/allWithdrawalRequests', 'WithdrawalController@allWithdrawalRequests')->name('allWithdrawalRequests');
 });

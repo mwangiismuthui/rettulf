@@ -124,16 +124,16 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            // 'permission' => 'required',
+            'permission' => 'required',
         ]);
 
 
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-        // dd($request->input('permission'));
 
-
+// return ;
+$role->permissions()->sync($request->input('permission'));
         // $role->syncPermissions($request->input('permission'));
 
 

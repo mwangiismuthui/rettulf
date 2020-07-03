@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header"><i class="fa fa-table"></i> Seo
+                    <div class="card-header"><i class="fa fa-table"></i> Site Settings
                         <a href="#" class="btn btn-info btn-round waves-effect waves-light m-1" data-toggle="modal"
-                        data-target="#seomodal">Add Seo</a>
+                        data-target="#seomodal">Add Site Settings</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -16,11 +16,11 @@
                                 <thead>
                                
                                     <th>Action</th>
-                                    <th>Page Title</th>
-                                    <th>Seo Title</th>
-                                    <th>Meta Description</th>
-                                    <th>Meta Keywords</th>
-                                    <th>Seo Other</th>
+                                    <th>Logo</th>
+                                    <th>Bank details</th>
+                                    <th>Paypal Client Id </th>
+                                    <th>Paypal Client Secret</th>
+                                    <th>Beat Playtime</th>
                                 
                                 </thead>
                                  <tbody>
@@ -29,11 +29,11 @@
                                 <tfoot>
                                 
                                     <th>Action</th>
-                                    <th>Page Title</th>
-                                    <th>Seo Title</th>
-                                    <th>Meta Description</th>
-                                    <th>Meta Keywords</th>
-                                    <th>Seo Other</th>
+                                    <th>Logo</th>
+                                    <th>Bank details</th>
+                                    <th>Paypal Client Id </th>
+                                    <th>Paypal Client Secret</th>
+                                    <th>Beat Playtime</th>
                                  
                                 </tfoot>
                             </table>
@@ -52,7 +52,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fa fa-star"></i> Add Seo</h5>
+                <h5 class="modal-title"><i class="fa fa-star"></i> Add Site Settings</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -63,32 +63,28 @@
                     <br />
                     Saving...
                 </div>
-                <form id="seo_add" method="POST" >
+                <form id="sitesettings_add" method="POST" >
                     @csrf
                     <div class="form-group">
-                        <label for="title">Page Title</label>
-                        <input type="text" name="page_title" id="" class="form-control">
+                        <label for="title">Site Logo</label>
+                        <input type="file" name="logo" id="" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="title">Seo Title</label>
-                        <input type="text" name="seo_title" id="" class="form-control">
+                        <label for="title">Paypal Client Id</label>
+                        <input type="text" name="client_id" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Paypal Secret</label>
+                        <input type="text" name="paypal_secret" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Beat Playtime in seconds</label>
+                        <input type="number" name="beatplaytime" id="" class="form-control">
                     </div>
                  
                     <div class="form-group">
-                        <label for="description">Meta Description</label>
-                        <textarea name="meta_description" id="meta_description" cols="10" rows="5" class="form-control form-control-rounded">
-
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Meta Keywords</label>
-                        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="5" class="form-control form-control-rounded">
-
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Other Seo Tags</label>
-                        <textarea name="seo_other"  cols="10" rows="5" class="form-control form-control-rounded">
+                        <label for="description">Bank Details</label>
+                        <textarea name="bank_details" id="summernoteEditor"  cols="10" rows="5" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>
@@ -116,19 +112,19 @@
         var table = $('#seo_table').DataTable({
         processing: true,
         serverSide: true,    
-        ajax: "{{ route('seo.index')}}",
+        ajax: "{{ route('siteSettingsIndex')}}",
         columns:[
 
         {data: 'action', name: 'action', orderable: false, searchable: false},
-        {data: 'page_title', name: 'page_title'},
-        {data: 'seo_title', name: 'seo_title'},
-        {data: 'meta_description', name: 'meta_description'},
-        {data: 'meta_keyword', name: 'meta_keyword'},
-        {data: 'seo_other', name: 'seo_other'},
+        {data:'logo',name:'logo',
+                      render: function(data, type, full, meta){
+                      return "<img src={{ URL::to('') }}/Logos/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},
+        {data: 'bank_details', name: 'bank_details'},
+        {data: 'paypal_client_id', name: 'paypal_client_id'},
+        {data: 'paypal_secret', name: 'paypal_secret'},
+        {data: 'beat_time', name: 'beat_time'},
         ],
-        columnDefs:[
        
-        ]
 
         });
 
@@ -173,12 +169,12 @@
 
 
 
-    $("#seo_add").on("submit", function (event) {
+    $("#sitesettings_add").on("submit", function (event) {
         event.preventDefault();
 
         $(".imguploadoverlay").fadeIn();
         $.ajax({
-            url: "/seo/store",
+            url: "/sitesettings/store",
             method: "POST",
             data: new FormData(this),
             contentType: false,

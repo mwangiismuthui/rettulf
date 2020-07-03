@@ -47,6 +47,7 @@
                             <option value="">Select Recipients</option>
                             <option value="producers">Producers</option>
                             <option value="artist">Artists</option>
+                            <option value="normal-users">Normal Users</option>
                             <option value="both">Both Producers and Artists</option>
                           </select>
                         </div>

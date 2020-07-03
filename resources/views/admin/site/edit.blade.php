@@ -5,34 +5,30 @@
 
         <div class="row">
  <div class="col-md-6">
-@foreach ($seos as $seo)
-<form id="seo_add" method="POST" >
+@foreach ($sitesettings as $sitesetting)
+ <form id="sitesettings_add" method="POST" action="{{route('siteSettingsUpdate',$sitesetting->id)}}" enctype="multipart/form-data" >
     @csrf
     <div class="form-group">
-        <label for="title">Page Title</label>
-    <input type="text" name="page_title" id="" class="form-control" value="{{$seo->page_title}}" readonly>
+        <label for="title">Site Logo</label>
+        <input type="file" name="logo" id="" class="form-control">
     </div>
     <div class="form-group">
-        <label for="title">Seo Title</label>
-    <input type="text" name="seo_title" id="" class="form-control" value="{{$seo->seo_title}}">
-    </div>
-<input type="hidden" name="seo_id" id="seo_id" value="{{$seo->id}}">
-    <div class="form-group">
-        <label for="description">Meta Description</label>
-        <textarea name="meta_description" id="meta_description" cols="10" rows="5" class="form-control form-control-rounded">
-{{$seo->meta_description}}
-        </textarea>
+        <label for="title">Paypal Client Id</label>
+    <input type="text" name="client_id" id="" class="form-control" value="{{$sitesetting->paypal_client_id}}">
     </div>
     <div class="form-group">
-        <label for="description">Meta Keywords</label>
-        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="5" class="form-control form-control-rounded">
-            {{$seo->meta_keyword}}
-        </textarea>
+        <label for="title">Paypal Secret</label>
+        <input type="text" name="paypal_secret" id="" class="form-control" value="{{$sitesetting->paypal_secret}}">
     </div>
     <div class="form-group">
-        <label for="description">Other Seo Tags</label>
-        <textarea name="seo_other"  cols="10" rows="5" class="form-control form-control-rounded">
-            {{$seo->seo_other}}
+        <label for="title">Beat Playtime in seconds</label>
+        <input type="number" name="beatplaytime" id="" class="form-control" value="{{$sitesetting->beat_time}}">
+    </div>
+ 
+    <div class="form-group">
+        <label for="description">Bank Details</label>
+        <textarea name="bank_details" id="summernoteEditor"  cols="10" rows="5" class="form-control form-control-rounded">
+{{$sitesetting->bank_details}}
         </textarea>
     </div>
   
@@ -46,7 +42,6 @@
                 class="icon-checkbox3"></i> Save</button>
     </div>
 </form>
-
 @endforeach
 
     </div>

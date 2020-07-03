@@ -38,7 +38,7 @@
            
          
             <li><a href='{{route('contact')}}'><i class="flaticon-internet"></i>contact us</a></li>
-            <li><a href='{{route('pricing')}}'><i class="flaticon-bell"></i>pricing plan</a></li>
+            {{-- <li><a href='{{route('pricing')}}'><i class="flaticon-bell"></i>pricing plan</a></li> --}}
         </ul>
             <div class="lang_apply_btn">
             <ul>

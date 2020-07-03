@@ -18,6 +18,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\PaymentController;
+use App\SiteSetting;
+
 class MusicController extends Controller
 {
 
@@ -245,12 +247,15 @@ class MusicController extends Controller
     public function musicpath(Request $request)
     {
         if ($request->ajax()) {
+            $beat_time = SiteSetting::pluck('beat_time')->first();
+            // dd($beat_time);
         $music_id = $request->id;
         $musics = Music::where('id',$music_id)->get();
         foreach ($musics as $music) {
           $music_path = $music->music;
           $coverart = $music->cover_art;
           $artist = $music->user->name;
+          $music_type = $music->type;
         }
         $views = Music::where('id', $music_id)->pluck('views')->first();
         $new_views = $views + 1;
@@ -262,6 +267,8 @@ class MusicController extends Controller
             'music_path'=>$music_path,
             'coverart'=>$coverart,
             'artist'=>$artist,
+            'beat_time'=>$beat_time,
+            'music_type'=>$music_type,
         ];
         
         return $music;

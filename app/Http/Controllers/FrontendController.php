@@ -122,7 +122,7 @@ class FrontendController extends Controller
             }
             return collect($partition);
         } else {
-           return [];
+           return [];   
         }
 
 
@@ -161,7 +161,7 @@ class FrontendController extends Controller
         // return $music1;
         
         
-        return view('frontend.genres', compact('musicsplit', 'genre'));
+        return view('frontend.genres', compact('musicsplit', 'genre','seo'));
     }
     public function singleArtist($id)
     {
@@ -182,7 +182,7 @@ class FrontendController extends Controller
             ->where('music.status', 1)
             ->orderBy('created_at', 'DESC')->get();
         $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
-        return view('frontend.artist_single', compact('user_music', 'user'));
+        return view('frontend.artist_single', compact('user_music', 'user','seo'));
     }
 
     /**
@@ -263,6 +263,7 @@ class FrontendController extends Controller
     {
         $musics = Music::where('views', '>', 1)->where('type', 'music')->orderBy('views', 'desc')->get();
         $seo = Seo::where('seos.page_title', 'like', 'mostListenedSongs')->first();
+        // return $seo;
         if (sizeOf($musics) == 1 ) {
             $musicsplit =  $musics->split(2);
             $musicsplit[1] = []; 
@@ -321,7 +322,7 @@ class FrontendController extends Controller
 
     public function mostListenedBeats()
     {
-        $seo = Seo::where('seos.page_title', 'like', 'mostListenedBeats')->first();
+        $seo = Seo::where('seos.page_title', 'like', 'most-Listened-beats')->first();
 
         $musics = Music::where('views', '>', 1)->where('type', 'beats')
 

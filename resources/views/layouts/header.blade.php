@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
-                <a href="{{route('home')}}">
+                <a href="{{route('index')}}">
                     <img src="/frontend/images/logo.png" alt="logo">
                 </a>
             </div>

@@ -41,9 +41,12 @@
                                     <a class="flaticon-play-button" id="{{$music->id}}"> Play
                                         <i id="{{$music->id}}"></i>
                                     </a>
+                                    @if (Auth::check())
                                     <a href="{{route('upload_payment',$music->id)}}"><i
-                                            class="flaticon-play-button"></i>
-                                        Download</a>
+                                        class="flaticon-play-button"></i>
+                                    Download</a>
+                                    @endif
+                                   
 
                                 </div>
                             </div>
@@ -54,9 +57,12 @@
                                     <a class="flaticon-play-button" id="{{$music->id}}"> Play
                                         <i id="{{$music->id}}"></i>
                                     </a>
+                                    @if (Auth::check())
                                     <a href="{{route('upload_payment',$music->id)}}"><i
-                                            class="flaticon-play-button"></i>$ {{number_format($music->price,2)}}
-                                        buy</a>
+                                        class="flaticon-play-button"></i>$ {{number_format($music->price,2)}}
+                                    buy</a>
+                                    @endif
+                                   
 
                                 </div>
                             </div>
