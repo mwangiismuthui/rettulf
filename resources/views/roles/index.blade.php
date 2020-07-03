@@ -39,7 +39,16 @@
                                     @foreach ($roles as $role)
                                     <tr>
                                         <td>{{ ++$i }}</td>
-                                        <td>{{ $role->name }}</td>
+                                        @if ($role->name == 'Producer')
+                                        <td><label class="badge badge-warning">{{ $role->name }}</label></td>
+                                        @elseif($role->name == 'Artist')
+                                        <td><label class="badge badge-success">{{ $role->name }}</label></td>
+                                        @elseif( $role->name == 'Normal User')
+                                        <td><label class="badge badge-info">{{ $role->name }}</label></td>
+                                        @elseif($role->name == 'Super-Admin')
+                                        <td><label class="badge badge-danger">{{ $role->name }}</label></td>
+                                        @endif
+                                        
                                         <td>
                                             <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
                                             {{-- @can('role-edit') --}}

@@ -168,6 +168,7 @@
                                 <div class="form-group i-name">
 
                                     <label for="music">Price range between $10 to $100</label>
+                                    <p class="text-info">Enter $0 for free Beats</p>
                                     <input type="text" class="form-control require" name="price" required=""
                                         placeholder="price*">
                                 </div>

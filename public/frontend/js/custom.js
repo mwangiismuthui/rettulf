@@ -369,7 +369,7 @@
             jQuery(document).ready(function(e) {
                
                 $('.music_search').select2({
-                    placeholder: 'Search Music and beats',
+                    placeholder: 'Search Music and Beats',
                     minimumInputLength: 2,
                     ajax: {
                       url: 'search/music',

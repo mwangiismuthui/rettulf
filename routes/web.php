@@ -23,17 +23,19 @@ Route::get('/single/producer/{id}', 'FrontendController@singleProducer')->name('
 Route::get('/contact-us', 'FrontendController@contact')->name('contact');
 Route::get('/pricing-plan', 'FrontendController@pricing')->name('pricing');
 Route::get('/most-downloaded-songs', 'FrontendController@mostDownloadedSongs')->name('mostDownloadedSongs');
-Route::get('/most-Listened-songs', 'FrontendController@mostListenedSongs')->name('mostListenedSongs');
+Route::get('/most-Played-songs', 'FrontendController@mostListenedSongs')->name('mostListenedSongs');
 Route::get('/new-songs', 'FrontendController@newSongs')->name('newSongs');
 Route::get('/most-downloaded-beats', 'FrontendController@mostDownloadedBeats')->name('mostDownloadedBeats');
-Route::get('/most-Listened-beats', 'FrontendController@mostListenedBeats')->name('mostListenedBeats');
+Route::get('/most-Played-beats', 'FrontendController@mostListenedBeats')->name('mostListenedBeats');
 Route::get('/new-beats', 'FrontendController@newBeats')->name('newBeats');
 Route::get('/top-producers', 'FrontendController@topProducers')->name('topProducers');
 Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
 Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 Route::get('/search/music', 'FrontendController@searchMusic')->name('searchMusic');
 Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+
 Route::group(['middleware' => 'auth'], function () {
+
 
 Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
 Route::get('/downloadedMusic', 'FrontendController@downloadedMusic')->name('downloadedMusic');
@@ -135,7 +137,7 @@ Route::delete('/seo/destroy/', 'SeoController@destroy')->name('seo.destroy');
 Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.photo.destroy');
 
 
-// ..................SEO..............................//
+// ..................Withdrawal..............................//
 Route::get('/withdraw/{id}', 'WithdrawalController@sellerWithdrawal')->name('sellerWithdrawal');
 Route::get('/allWithdrawalRequests', 'WithdrawalController@allWithdrawalRequests')->name('allWithdrawalRequests');
 });

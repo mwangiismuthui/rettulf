@@ -38,28 +38,34 @@
                             @if ($music->type =='music')
                             <div class="artist_btn m24_cover">
                                 <div class="lang_apply_btn">
-                                    <a class="flaticon-play-button" id="{{$music->id}}"> Play
-                                        <i id="{{$music->id}}"></i>
-                                    </a>
+                                    <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>play</a>
+                                    @if (Auth::check())
                                     <a href="{{route('upload_payment',$music->id)}}"><i
                                             class="flaticon-play-button"></i>
                                         Download</a>
+                                    @endif
+
 
                                 </div>
                             </div>
                             @else
                             <div class="artist_btn m24_cover">
-                               
-                                <div class="lang_apply_btn">
-                                    <a class="flaticon-play-button" id="{{$music->id}}"> Play
-                                        <i id="{{$music->id}}"></i>
-                                    </a>
-                                    <a href="{{route('upload_payment',$music->id)}}"><i
-                                            class="flaticon-play-button"></i>$ {{number_format($music->price,2)}}
-                                        buy</a>
-
-                                </div>
+                                <div class="lang_apply_btn">                                   
+                                    <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>play</a>
+                                    
+                                </div>                                
                             </div>
+                            @if (Auth::check())
+                                    <a style="padding: 15px 30px; margin-top:15px;display:inline-block;" href="{{route('upload_payment',$music->id)}}" class="paypal-button">
+                                        <span class="paypal-button-title">
+                                            Buy for ${{number_format($music->price,2)}} with
+                                        </span>
+                                        <span class="paypal-logo">
+                                            <i>Pay</i><i>Pal</i>
+                                        </span>
+                                    </a>
+                                  
+                                    @endif
                             @endif
 
                         </div>

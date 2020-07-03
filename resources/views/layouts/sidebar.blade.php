@@ -1,7 +1,7 @@
 <div id="sidebar" class="bounce-to-right">
     <div id="toggle_close">×</div>
     <div id='cssmenu'>
-        <a href="index.html"><img src="/frontend/images/logo.png" alt="logo"></a>
+        <a href="{{route('index')}}"><img src="/frontend/images/logo.png" alt="logo"></a>
         <ul class="sidebb">
         <li><a href='{{route('index')}}'><i class="flaticon-home"></i>Home</a>
               
@@ -11,11 +11,11 @@
                 <ul>
                     <li><a href="{{route('newSongs')}}"><i class="flaticon-music-1"></i>New  Songs</a></li>
                     <li><a href="{{route('mostDownloadedSongs')}}"><i class="flaticon-music-1"></i>Most Downloaded  Songs</a></li>
-                    <li><a href="{{route('mostListenedSongs')}}"><i class="flaticon-music-1"></i>Most Listened  Songs</a></li>
+                    <li><a href="{{route('mostListenedSongs')}}"><i class="flaticon-music-1"></i>Most Played  Songs</a></li>
                     <li><a href="{{route('topArtists')}}"><i class="flaticon-music-1"></i>Top Artist</a></li>
                     <li><a href="{{route('newBeats')}}"><i class="flaticon-music-1"></i>New  Beats</a></li>
                     <li><a href="{{route('mostDownloadedBeats')}}"><i class="flaticon-music-1"></i>Most Downloaded  Beats</a></li>
-                    <li><a href="{{route('mostListenedBeats')}}"><i class="flaticon-music-1"></i>Most Listened  Beats</a></li>
+                    <li><a href="{{route('mostListenedBeats')}}"><i class="flaticon-music-1"></i>Most Played  Beats</a></li>
                     <li><a href="{{route('topProducers')}}"><i class="flaticon-music-1"></i>Top Producers</a></li>
                    
                 </ul>

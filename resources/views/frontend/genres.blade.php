@@ -24,7 +24,9 @@
 <div class="treanding_songs_wrapper punjabi_sogns m24_cover">
     <div class="container">
         <div class="row">
-           
+           @if (sizeOf($musicsplit[0]) < 1)
+               <p>No records found!</p>
+           @endif
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 @foreach ($musicsplit[0] as $music)
                 <div class="top_songs_list free_music_wrapper m24_cover">
@@ -44,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="release_content_artist top_list_content_artist">
-                                <p><a href="#">{{$music->title}}</a></p>
+                                <p><a href="#">{{\Illuminate\Support\Str::limit($music->title,23, $end='...')}}</a></p>
                                 <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
                             </div>
 
@@ -55,7 +57,7 @@
                     </div>
                     <div class="top_songs_list_right">
                         <div class="top_list_tract_view">
-                            <p>{{$music->views}} Views</p>
+                            <p>{{$music->views}} Plays</p>
                         </div>
                         <div class="top_song_list_picks">
                             <div class="m24_tranding_more_icon">
@@ -89,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="release_content_artist top_list_content_artist">
-                                <p><a href="#">{{$music->title}}</a></p>
+                                <p><a href="#">{{\Illuminate\Support\Str::limit($music->title,23, $end='...')}}</a></p>
                                 <p class="various_artist_text"><a href="#">{{$music->user->name}}</a></p>
                             </div>
 
@@ -100,7 +102,7 @@
                     </div>
                     <div class="top_songs_list_right">
                         <div class="top_list_tract_view">
-                            <p>{{$music->views}} Views</p>
+                            <p>{{$music->views}} Plays</p>
                         </div>
                         <div class="top_song_list_picks">
                             <div class="m24_tranding_more_icon">

@@ -8,10 +8,11 @@ use App\Music;
 use App\PaypalPayment;
 use App\User;
 use App\Seo;
+use App\Slider;
 use App\Withdrawal;
 use Auth;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Response;
 
 class FrontendController extends Controller
 {
@@ -23,6 +24,7 @@ class FrontendController extends Controller
     public function index()
     {
         $genres = $this->genres();
+        $sliders = Slider::all();
         $latestMusic = $this->latestMusic(5);
         $trendingMusic = $this->trendingMusic(3, 5);
         $latestbeats = $this->latestBeats(5);
@@ -33,7 +35,7 @@ class FrontendController extends Controller
         $featuredProducers = $this->featuredProducers();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
         // return $featuredProducers;
-        return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo'));
+        return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo','sliders'));
     }
 
     public function latestMusic($limit)
@@ -86,8 +88,9 @@ class FrontendController extends Controller
     public function featuredArtist()
     {
         $featured_artist = User::role('Artist')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
+        // return $featured_artist;
         $listlen = sizeof($featured_artist);
-        if ($listlen > 0) {
+        if ($listlen > 3) {
             $group = floor($listlen / 3);
             $partlen = floor($listlen / $group);
             $partrem = $listlen % $group;
@@ -100,7 +103,7 @@ class FrontendController extends Controller
             }
             return collect($partition);
         } else {
-           return null;
+           return [];
         }
     }
     public function featuredProducers()
@@ -108,7 +111,7 @@ class FrontendController extends Controller
         $featuredProducers = User::role('Producer')->where('is_featured', '=', 1)->withCount('music')->get()->toArray();
 
         $listlen = sizeof($featuredProducers);
-        if ($listlen > 0) {
+        if ($listlen > 3) {
             $group = floor($listlen / 3);
             $partlen = floor($listlen / $group);
             $partrem = $listlen % $group;
@@ -121,7 +124,7 @@ class FrontendController extends Controller
             }
             return collect($partition);
         } else {
-           return null;
+           return [];   
         }
 
 
@@ -197,14 +200,15 @@ class FrontendController extends Controller
         $pending_withdrawals = Withdrawal::where('user_id', $user_id)
             // ->where('status',0)
             ->get();
-
+        $published_music_count = Music::where('user_id', $user_id)->where('status',1)->count();
+        $unpublished_music_count = Music::where('user_id', $user_id)->where('status',0)->count();
         $my_music = Music::where('user_id', $user_id)
 
-            ->where('music.status', 1)
+            // ->where('music.status', 1)
             ->get();
         $seo = Seo::where('seos.page_title', 'like', 'myMusic')->first();
 
-        return view('frontend.mymusic', compact('my_music', 'user', 'seo', 'pending_withdrawals'));
+        return view('frontend.mymusic', compact('my_music', 'user', 'seo', 'pending_withdrawals','published_music_count','unpublished_music_count'));
     }
     public function contact(Request $request)
     {
@@ -401,7 +405,7 @@ class FrontendController extends Controller
             'Content-Type: application/mp4',
         ];
         $name = $music_title . '' . '.mp4';
-        $request->session()->flush();
+        $request->session()->forget('music_id');
         return Response::download($file, $name, $headers);
     }
     public function downloadPurchasedMusic(Request $request, $id)
@@ -445,6 +449,6 @@ class FrontendController extends Controller
                 "text" => $music->title,
             ];
         }
-        return response($response, Response::HTTP_OK);
+        return response($response, \Symfony\Component\HttpFoundation\Response::HTTP_OK);
     }
 }

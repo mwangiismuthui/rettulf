@@ -44,7 +44,15 @@
                     <td>
                       @if(!empty($user->getRoleNames()))
                       @foreach($user->getRoleNames() as $v)
+                      @if ($v == 'Producer')
+                      <label class="badge badge-warning">{{ $v }}</label>
+                      @elseif($v == 'Artist')
                       <label class="badge badge-success">{{ $v }}</label>
+                      @elseif( $v == 'Normal User')
+                      <label class="badge badge-info">{{ $v }}</label>
+                      @elseif($v == 'Super-Admin')
+                      <label class="badge badge-danger">{{ $v }}</label>
+                      @endif                     
                       @endforeach
                       @endif
                     </td>

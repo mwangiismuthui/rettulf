@@ -59,7 +59,7 @@ class GenreController extends Controller
     {
         if($request->ajax()){
             if($request->hasFile('genre_image')){
-                $fileDestination = 'Genre_Images';
+                $fileDestination = '/Genre_Images';
                 $genrefile = $request->file('genre_image');
                 $filename = $this->generateUniqueFileName($genrefile, $fileDestination);
                 
@@ -157,16 +157,16 @@ class GenreController extends Controller
         }
     
     }
-    public function generateUniqueFileName($genrefile, $destinationPath)
+    public function generateUniqueFileName($image, $destinationPath)
     {
         $initial = "Genre";
-        $name = $initial . str_random() . time() . '.' . $genrefile->getClientOriginalExtension();
-        if ($genrefile->move(public_path() . $destinationPath, $name)) {
+        $name = $initial  . bin2hex(random_bytes(8)) . '.' . $image->getClientOriginalExtension();
+        if ($image->move(public_path() . $destinationPath, $name)) {
             return $name;
-            
         } else {
             return null;
         }
     }
+   
 
 }

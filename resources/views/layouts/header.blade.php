@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
-                <a href="{{route('home')}}">
+                <a href="{{route('index')}}">
                     <img src="/frontend/images/logo.png" alt="logo">
                 </a>
             </div>
@@ -52,7 +52,7 @@
                                     Downloaded Songs</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('mostListenedSongs')}}"><i class="fas fa-caret-right"></i>Most Listened
+                                <a href="{{route('mostListenedSongs')}}"><i class="fas fa-caret-right"></i>Most Played
                                     Songs</a>
                             </li>
                             <li class="parent">
@@ -66,31 +66,14 @@
                                     Downloaded Beats</a>
                             </li>
                             <li class="parent">
-                                <a href="{{route('mostListenedBeats')}}"><i class="fas fa-caret-right"></i>Most Listened
+                                <a href="{{route('mostListenedBeats')}}"><i class="fas fa-caret-right"></i>Most Played
                                     Beats</a>
                             </li>
                             <li class="parent">
                                 <a href="{{route('topProducers')}}"><i class="fas fa-caret-right"></i>Top Producers</a>
                             </li>
-                            {{-- @endif
-                            @endif
-                             --}}
-
                         </ul>
                     </li>
-                    {{-- <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">more <i
-                                class="flaticon-down-arrow"></i></a>
-                        <ul class="navi_2_dropdown">
-                            <li class="parent">
-                                <a href="{{route('contact')}}"><i class="fas fa-caret-right"></i>contact</a>
-                    </li>
-                    <li class="parent">
-                        <a href="{{route('pricing')}}"><i class="fas fa-caret-right"></i> pricing plan </a>
-                    </li>
-
-                </ul>
-                </li> --}}
-
                 </ul>
             </div>
             <!-- mainmenu end -->

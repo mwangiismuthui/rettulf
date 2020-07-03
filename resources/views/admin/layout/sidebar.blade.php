@@ -1,8 +1,8 @@
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
   <div class="brand-logo">
     <a href="{{route('dashboard')}}">
-      <img src="/backend/assets/images/logo.jpg" class="logo-icon" alt="logo icon">
-      <h5 class="logo-text">Musuc</h5>
+      <img src="/backend/assets/image/logo.jpg" class="logo-icon" alt="logo icon">
+      <h5 class="logo-text">Music</h5>
     </a>
   </div>
   <ul class="sidebar-menu do-nicescrol">
@@ -16,49 +16,49 @@
     </li>
     <li>
     <a href="{{route('category.index')}}" class="waves-effect">
-        <i class="ti-shopping-cart"></i>
+        <i class="ti-package"></i>
         <span>Category Management</span>
       </a>
 
     </li>
     <li>
     <a href="{{route('genre.index')}}" class="waves-effect">
-        <i class="ti-shopping-cart"></i>
+        <i class="ti-layout-media-right"></i>
         <span>Genre Management</span>
       </a>
 
     </li>
     <li>
     <a href="{{route('key.index')}}" class="waves-effect">
-        <i class="ti-shopping-cart"></i>
+        <i class="ti-music"></i>
         <span>Key Management</span>
       </a>
 
     </li>
     <li>
       <a href="{{route('adminMusic.index')}}" class="waves-effect">
-          <i class="ti-shopping-cart"></i>
+          <i class="ti-music-alt"></i>
           <span>Music Management</span>
         </a>
   
       </li>
-    {{-- <li>
+    <li>
       <a href="{{route('slider.index')}}" class="waves-effect">
-          <i class="ti-shopping-cart"></i>
+          <i class="ti-layout-slider"></i>
           <span>Slider Management</span>
         </a>
   
-      </li> --}}
+      </li>
       <li>
       <a href="{{route('bulkEmails')}}" class="waves-effect">
-          <i class="ti-shopping-cart"></i>
+          <i class="ti-email"></i>
           <span>Bulk Emails</span>
         </a>
   
       </li>
       <li>
       <a href="{{route('seo.index')}}" class="waves-effect">
-          <i class="ti-shopping-cart"></i>
+          <i class="ti-search"></i>
           <span>SEO Management</span>
         </a>
   
@@ -66,7 +66,7 @@
        
     <li>
       <a href="javaScript:void();" class="waves-effect">
-        <i class="icon-briefcase"></i>
+        <i class="ti-money"></i>
         <span>Money Management</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="sidebar-submenu">
@@ -78,7 +78,7 @@
  
     <li>
       <a href="javaScript:void();" class="waves-effect">
-        <i class="icon-briefcase"></i>
+        <i class="icon-user"></i>
         <span>User Management</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="sidebar-submenu">

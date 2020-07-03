@@ -18,7 +18,7 @@
 
                                         <th>Producer/Artist Name</th>
                                         <th>Price</th>
-                                        <th>Views</th>
+                                        <th>Plays</th>
                                         <th>Downloads</th>
                                         <th>Type</th>
 
@@ -32,7 +32,7 @@
                                 <tfoot>
                                         <th>Producer/Artist Name</th>
                                         <th>Price</th>
-                                        <th>Views</th>
+                                        <th>Plays</th>
                                         <th>Downloads</th>
                                         <th>Type</th>
                                         <th> Payment Status</th>

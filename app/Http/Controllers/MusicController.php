@@ -251,6 +251,8 @@ class MusicController extends Controller
           $music_path = $music->music;
           $coverart = $music->cover_art;
           $artist = $music->user->name;
+          $title = $music->title;
+          $lyrics = $music->lyrics;
         }
         $views = Music::where('id', $music_id)->pluck('views')->first();
         $new_views = $views + 1;
@@ -262,6 +264,8 @@ class MusicController extends Controller
             'music_path'=>$music_path,
             'coverart'=>$coverart,
             'artist'=>$artist,
+            'title'=>$title,
+            'lyrics'=>$lyrics,
         ];
         
         return $music;

@@ -26,7 +26,7 @@ class CreateMusicTable extends Migration
             $table->string('music');
             $table->integer('is_paid')->default(0);
             $table->integer('status')->default(0);
-            $table->double('price')->nullable();
+            $table->double('price')->default(0);
             $table->integer('views')->default(0);
             $table->integer('downloads')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

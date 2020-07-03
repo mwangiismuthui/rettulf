@@ -13,8 +13,8 @@
     <meta charset="utf-8" />
     {{-- <title>{{ $seo->seo_title }}</title> --}}
     <title>Title</title>
-    {{-- <meta name="Description" content="{{ $seo->seo_description }}">
-    <meta name="Keywords" content="{{ $seo->seo_keywords }}"> --}}
+    {{-- <meta name="Description" content="{{ $seo->seo_description }}"> --}}
+    {{-- <meta name="Keywords" content="{{ $seo->seo_keywords }}"> --}}
     <meta name="_token" content="{{ csrf_token() }}" />
     {{-- {!! $seo->seo_other !!} --}}
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -82,9 +82,9 @@
                                         <div class="artist-name"><a href="#" class="artist-names"></a></div>
                                     </div>
                                 </div>
-                                <div class="jp-details">
+                                {{-- <div class="jp-details">
                                     <div class="jp-title" aria-label="title">&nbsp;</div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-sm-4 col-lg-4 col-xl-6 col-4 resp">
                                 <div class="player-controls">
@@ -107,37 +107,12 @@
                                                 </svg></span></a>
 
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col-sm-4 col-lg-4 col-xl-3 col-4">
                                 <div class="jp_controls_wrapper">
-                                    <div class="jp-volume-controls">
-                                        <a class="adonis-mute-control" role="button" tabindex="0">
-                                            <span class="adonis-icon icon-volume icon-3x"><svg version="1.1"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32">
-                                                    <path
-                                                        d="M31.76 9.056l-1.36 2.592c1.265 1.020 2.071 2.567 2.080 4.302v0.002c0 1.896-0.456 3.616-1.952 4.648l1.28 2.184c1.962-1.642 3.202-4.092 3.202-6.831 0-2.776-1.272-5.254-3.266-6.884l-0.016-0.013zM36.664 4.424l-1.664 2.288c2.479 2.331 4.027 5.627 4.040 9.286v0.002c-0.027 3.717-1.634 7.053-4.182 9.375l-0.010 0.009 1.728 2.2c3.058-2.92 4.96-7.028 4.96-11.581 0-0.001 0-0.002 0-0.003v0c-0.017-4.532-1.877-8.626-4.87-11.574l-0.002-0.002zM41.6 0l-1.848 2.168c3.497 3.563 5.665 8.442 5.696 13.826l0 0.006c-0.043 5.368-2.202 10.223-5.683 13.779l0.003-0.003 1.832 2.168c3.946-4.151 6.373-9.778 6.373-15.972s-2.427-11.821-6.383-15.982l0.009 0.010zM0 10.888v10.4c0 1.328 1.2 3.016 2.688 3.016h8.080v-16.616h-8.080c-1.488 0-2.688 1.912-2.688 3.2zM23.272 0.136l-11.272 7.4v16.984l11.272 7.48c1.48 0 3.608-1.072 3.608-2.4v-27.072c0-1.32-2.128-2.392-3.608-2.392z">
-                                                    </path>
-                                                </svg></span>
-                                            <span class="adonis-icon icon-mute icon-3x"><svg version="1.1"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 11.95">
-                                                    <g data-name="Layer 2">
-                                                        <g id="Group_4" data-name="Group 4">
-                                                            <path
-                                                                d="M18.75,8.12V9.61H17.26L15.38,7.73,13.49,9.61H12V8.12l1.88-1.89L12,4.35V2.86h1.49l1.89,1.88,1.88-1.88h1.49V4.35L16.87,6.23Z" />
-                                                            <g id="audio_2" data-name="audio 2">
-                                                                <path class="cls-1"
-                                                                    d="M0,4V7.92A1.16,1.16,0,0,0,1,9.05H4V2.83H1C.45,2.83,0,3.54,0,4ZM8.73,0,4.51,2.78V9.14L8.73,12c.55,0,1.35-.4,1.35-.9V.9C10.08.4,9.28,0,8.73,0Z" />
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </svg></span>
-                                        </a>
-                                        <div class="jp-volume-bar d-flex align-items-center">
-                                            <div class="jp-volume-bar-value"></div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="jp_adoins_wrapper"><a class="toggle-off-canvas"
                                             data-target="#adonis-playlist" role="button" tabindex="0"><span
                                                 class="adonis-icon icon-4x"><svg version="1.1"
@@ -183,7 +158,7 @@
                             <div class="player-details col-8">
                                 <h3 class="jp-title"></h3>
                                 <p class="artist-name"></p>
-                                
+
                             </div>
                         </div>
                         <div class="media controls jp_media_playlist">
@@ -205,9 +180,9 @@
                                             </path>
                                         </svg></span>
                                 </a>
-                                
+
                             </div>
-                            <div class="col-8">
+                            {{-- <div class="col-8">
                                 <div class="jp-current-time jp-time" role="timer" aria-label="time"></div>
                                 <div class="jp-progress jp_progress2">
                                     <div class="jp-seek-bar">
@@ -215,13 +190,15 @@
                                     </div>
                                 </div>
                                 <div class="jp-duration" role="timer" aria-label="duration"></div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="jp-playlist scroll-y">
-                        <ul>
+                        {{-- <ul>
                             <li>&nbsp;</li>
-                        </ul>
+                        </ul> --}}
+                        <h5>Lyrics</h5>
+                        <p class="song-lyrics">No lyrics</p>
                     </div>
                 </div>
             </div>
@@ -281,9 +258,13 @@
     } else if (unicode == 32) {
       if (audio.paused) {
         audio.play();
+        $(".icon-play").hide();
+        $(".icon-pause").show();
       } 
       else {
         audio.pause()
+        $(".icon-play").show();
+        $(".icon-pause").hide();
       }
     }
   });
@@ -304,6 +285,8 @@
                      sb.song = new Audio(full_music_path);
                     audio = sb.song;
                     sb.play();
+                    $(".icon-play").hide();
+                    $(".icon-pause").show();
                     }
                    
                 },
@@ -314,8 +297,12 @@
             $('.jp-play').on('click',function () {
                 if (!audio.paused) {
                     audio.pause();
+                    $(".icon-play").show();
+                    $(".icon-pause").hide();
                 }else if (audio.paused) {
                     audio.play();
+                    $(".icon-play").hide();
+                    $(".icon-pause").show();
                 }
                 
             });
@@ -355,8 +342,18 @@
                 img.attr('src', full_covertart_path);
                 $('.song-poster').empty();
                 $('.song-poster').append(img);
-                $('.artist-names').empty();
-                $('.artist-names').append(data.artist);
+                $('.artist-name').empty();
+                $('.artist-name').append(data.artist);
+                $('.jp-title').empty();
+                $('.jp-title').append(data.title);
+                if (data.lyrics !=null) {
+                    $('.song-lyrics').empty();
+                    $('.song-lyrics').append(data.lyrics);
+                }else{
+                    $('.song-lyrics').empty();
+                     $('.song-lyrics').append('No Lyrics');
+                    }
+               
            sb.init();
 
                 

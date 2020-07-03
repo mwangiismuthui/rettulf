@@ -10,123 +10,36 @@
     </div>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="carousel-captions caption-1">
+            @foreach ($sliders as $slider)
+
+            <div class="carousel-item {{$loop->first ? 'active':''}}">
+                <div class="carousel-captions caption-{{$loop->index + 1}}">
                     <div class="container jn_container">
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="content">
 
-                                    <h1 data-animation="animated fadeInUp">sound,</h1>
-
-                                    <h2 data-animation="animated fadeInUp">your world</h2>
-                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say
-                                        “Olivia”
-                                        <br> to interact with Olivia. </p>
-                                    {{-- <div class="slider_btn m24_cover">
-                                        <div class="lang_apply_btn">
-                                            <ul>
-                                                <li data-animation="animated fadeInUp">
-                                                    <a href="#"> <i class="flaticon-play-button"></i>browse</a>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div> --}}
+                                    <h2 data-animation="animated fadeInUp">{{$slider->title}}</h2>
+                                    <p data-animation="animated fadeInUp">{{$slider->subtitle}} </p>
                                     <div class="clear"></div>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="content_img_wrapper">
-                                    <img src="/frontend/images/banner2.jpg" alt="img">
+                                    <img src="{{ URL::to('/') }}/SliderImages/{{$slider->image_path}}" alt="img" }}>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="carousel-captions caption-2">
-                    <div class="container jn_container">
-                        <div class="row">
-
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="content">
-
-                                    <h1 data-animation="animated fadeInUp">sound,</h1>
-
-                                    <h2 data-animation="animated fadeInUp">your world</h2>
-                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say
-                                        “Olivia”
-                                        <br> to interact with Olivia. </p>
-                                    {{-- <div class="slider_btn m24_cover">
-                                        <div class="lang_apply_btn">
-                                            <ul>
-                                                <li data-animation="animated fadeInUp">
-                                                    <a href="#"> <i class="flaticon-play-button"></i>browse</a>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div> --}}
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="content_img_wrapper">
-                                    <img src="/frontend/images/banner.jpg" alt="img">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-captions caption-3">
-                    <div class="container jn_container">
-                        <div class="row">
-
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="content">
-
-                                    <h1 data-animation="animated fadeInUp">sound,</h1>
-
-                                    <h2 data-animation="animated fadeInUp">your world</h2>
-                                    <p data-animation="animated fadeInUp">Even while listening to music, simply say
-                                        “Olivia”
-                                        <br> to interact with Olivia. </p>
-                                    {{-- <div class="slider_btn m24_cover">
-                                        <div class="lang_apply_btn">
-                                            <ul>
-                                                <li data-animation="animated fadeInUp">
-                                                    <a href="#"> <i class="flaticon-play-button"></i>browse</a>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div> --}}
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="content_img_wrapper">
-                                    <img src="/frontend/images/banner2.jpg" alt="img">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span
-                        class="number"></span>
+                @foreach ($sliders as $slider)
+                <li data-target="#carousel-example-generic" data-slide-to="{{$loop->index}}"
+                    class="{{$loop->first ? 'active':''}}"><span class="number"></span>
                 </li>
-                <li data-target="#carousel-example-generic" data-slide-to="1" class=""><span class="number"></span>
-                </li>
-                <li data-target="#carousel-example-generic" data-slide-to="2" class=""><span class="number"></span>
-                </li>
+                @endforeach
             </ol>
             <div class="carousel-nevigation">
                 <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev"> <span> prev</span> <i
@@ -165,6 +78,18 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
+                                        <li><a
+                                                href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
+                                                    class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
+                                        </li>
+                                        <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                                target="_blank"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>FaceBook</a>
+                                        </li>
+                                        <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
+                                                target="_blank"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>Twitter</a>
+                                        </li>
                                         <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
                                                         class="flaticon-download"></i></span>download</a></li>
                                     </ul>
@@ -221,8 +146,10 @@
                                     </div>
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
-                                    <p><a href="{{route('buymusic',$music->id)}}">{{$music->title}}</a></p>
-                                <p class="various_artist_text"><a href="{{route('singleArtist',$music->user->id)}}">{{$music->user->name}}</a></p>
+                                    <p><a href="{{route('buymusic',$music->id)}}">{{\Illuminate\Support\Str::limit($music->title,23, $end='...')}}</a></p>
+                                    <p class="various_artist_text"><a
+                                            href="{{route('singleArtist',$music->user->id)}}">{{$music->user->name}}</a>
+                                    </p>
                                 </div>
 
                             </div>
@@ -232,13 +159,25 @@
                         </div>
                         <div class="top_songs_list_right">
                             <div class="top_list_tract_view">
-                                <p>{{$music->views}} Views</p>
+                                <p>{{$music->views}} {{$music->views == 1 ? 'Play': 'Plays'}}</p>
                             </div>
                             <div class="top_song_list_picks">
                                 <div class="m24_tranding_more_icon">
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
+                                    <li><a
+                                            href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
+                                                class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
+                                    </li>
+                                    <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                            target="_blank"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>FaceBook</a>
+                                    </li>
+                                    <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
+                                            target="_blank"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>Twitter</a>
+                                    </li>
                                     <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
                                                     class="flaticon-download"></i></span>download</a></li>
                                 </ul>
@@ -257,7 +196,7 @@
 
                 <div class="featured_song_slider">
                     <div class="owl-carousel owl-theme">
-                       
+
                         @foreach ($featuredArtists as $group)
                         <div class="item">
                             @foreach ($group as $artist)
@@ -266,7 +205,8 @@
                                     alt="img">
                                 <div class="featured_artist_detail">
                                     <p><a href="#">{{$artist['name']}} </a></p>
-                                    <p class="various_artist_text"><a href="#">{{$artist['music_count']}} songs</a>
+                                    <p class="various_artist_text"><a href="#">{{$artist['music_count']}}
+                                            {{$artist['music_count'] == 1 ? 'Song' : 'Songs'}}</a>
                                     </p>
                                     <div class="lang_apply_btn">
                                         <ul>
@@ -281,7 +221,7 @@
                                 </div>
                             </div>
                             @endforeach
-                        </div>                       
+                        </div>
                         @endforeach
 
                     </div>
@@ -315,6 +255,18 @@
                                         <i class="flaticon-menu"></i>
                                     </div>
                                     <ul class="tranding_more_option">
+                                        <li><a
+                                                href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
+                                                    class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
+                                        </li>
+                                        <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                                target="_blank"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>FaceBook</a>
+                                        </li>
+                                        <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
+                                                target="_blank"><span class="opt_icon"><i
+                                                        class="flaticon-share"></i></span>Twitter</a>
+                                        </li>
                                         <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
                                                         class="flaticon-download"></i></span>download</a></li>
                                     </ul>
@@ -366,8 +318,10 @@
                                     </div>
                                 </div>
                                 <div class="release_content_artist top_list_content_artist">
-                                    <p><a href="{{route('buymusic',$music->id)}}">{{$music->title}}</a></p>
-                                <p class="various_artist_text"><a href="{{route('singleArtist',$music->user->id)}}">{{$music->user->name}}</a></p>
+                                    <p><a href="{{route('buymusic',$music->id)}}">{{\Illuminate\Support\Str::limit($music->title,23, $end='...')}}</a></p>
+                                    <p class="various_artist_text"><a
+                                            href="{{route('singleArtist',$music->user->id)}}">{{$music->user->name}}</a>
+                                    </p>
                                 </div>
 
                             </div>
@@ -377,13 +331,25 @@
                         </div>
                         <div class="top_songs_list_right">
                             <div class="top_list_tract_view">
-                                <p>{{$music->views}} Views</p>
+                                <p>{{$music->views}} {{$music->views ==1 ? 'Play' : 'Plays'}}</p>
                             </div>
                             <div class="top_song_list_picks">
                                 <div class="m24_tranding_more_icon">
                                     <i class="flaticon-menu"></i>
                                 </div>
                                 <ul class="tranding_more_option">
+                                    <li><a
+                                            href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
+                                                class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
+                                    </li>
+                                    <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                            target="_blank"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>FaceBook</a>
+                                    </li>
+                                    <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
+                                            target="_blank"><span class="opt_icon"><i
+                                                    class="flaticon-share"></i></span>Twitter</a>
+                                    </li>
                                     <li><a href="{{route('buymusic',$music->id)}}"><span class="opt_icon"><i
                                                     class="flaticon-download"></i></span>download</a></li>
                                 </ul>
@@ -410,7 +376,8 @@
                                     alt="img">
                                 <div class="featured_artist_detail">
                                     <p><a href="#">{{$artist['name']}} </a></p>
-                                    <p class="various_artist_text"><a href="#">{{$artist['music_count']}} beats</a>
+                                    <p class="various_artist_text"><a href="#">{{$artist['music_count']}}
+                                            {{$artist['music_count'] == 1 ? 'Beat' : 'Beats'}}</a>
                                     </p>
                                     <div class="lang_apply_btn">
                                         <ul>
@@ -425,7 +392,7 @@
                                 </div>
                             </div>
                             @endforeach
-                        </div>                       
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -454,10 +421,6 @@
 
                                 <div class="m24_treanding_box_overlay">
                                     <div class="m24_tranding_box_overlay"></div>
-                                    <div class="m24_tranding_more_icon">
-                                        <i class="flaticon-menu"></i>
-                                    </div>
-
                                     <div class="tranding_play_icon various_concert_icon">
                                         <a href="{{route('singleGenre',$genre->id)}}">
                                             <i class="flaticon-play-button"></i>
