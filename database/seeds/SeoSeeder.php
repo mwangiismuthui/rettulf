@@ -28,8 +28,12 @@ class SeoSeeder extends Seeder
            'mostViewedBeats',
            'newBeats',
            'downloadedMusic',
+           'login',
+           'register',
            'uploadedMusicedit',
            'uploadedMusiccreate',
+           'mostListenedSongs',
+           'most-Listened-beats',
         ];
 
 

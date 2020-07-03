@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Jobs\BulkEmailSender;
 use Illuminate\Http\Request;
 use App\Music;
+use App\SiteSetting;
 use App\User;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\Datatables\Datatables;
-use Mail;
+use Validator;
 class AdminController extends Controller
 {
     function __construct()
@@ -140,6 +141,10 @@ class AdminController extends Controller
         $recipient_emails = User::role('Artist')->pluck('email');
                 //  return $recipient_emails;
 
+    } elseif ($clients=='normal-users') {
+        $recipient_emails = User::role('Normal User')->pluck('email');
+                //  return $recipient_emails;
+
     }elseif ($clients=='both') {
         $producers = User::role('Producer')->pluck('email');
         $artists = User::role('Artist')->pluck('email');
@@ -156,5 +161,130 @@ class AdminController extends Controller
      
      
         return redirect()->back()->with('success','Success Emails are being sent!');
+    }
+
+
+    public function siteSettingsIndex(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $sitesettings = SiteSetting::all();
+            return Datatables::of($sitesettings)
+                ->addIndexColumn()
+                ->addColumn('action', function ($data) {
+                    return '<a class="btn btn-outline-danger btn-round waves-effect waves-light name="delete" id="' . $data->id . '" onclick="sitesettingsdelete(\'' . $data->id . '\')"><i class="icon-trash"></i>Delete</a>&nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('siteSettingsEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
+                })
+
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.site.index');
+    }
+
+
+
+    public function siteSettingsStore(Request $request)
+    {
+
+        $rules = [
+            'logo' => 'required',
+            'bank_details' => 'required',
+            'client_id' => 'required',
+            'paypal_secret' => 'required',
+            'beatplaytime' => 'required',
+
+        ];
+
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+            return response([
+                'errors'=>True,
+                'message'=>$error->errors()->all(),
+            ],Response::HTTP_OK);
+        }
+
+        if ($request->hasFile('logo')) {
+            $coverfileDestination = '/Logos';
+            $logo = $request->file('logo');
+            $filename = $this->generateUniqueFileName($logo, $coverfileDestination);
+            
+        }
+        $sitesettings = new SiteSetting();
+        $sitesettings->logo = $filename;
+        $sitesettings->bank_details = $request->bank_details;
+        $sitesettings->paypal_client_id = $request->client_id;
+        $sitesettings->paypal_secret = $request->paypal_secret;
+        $sitesettings->beat_time = $request->beatplaytime;
+        if ($sitesettings->save()) {
+            return response([
+                'error'=>False,
+                'message'=>'Site Settings Added Successfully',
+            ],Response::HTTP_OK);
+        
+          
+        }
+    }
+
+    public function siteSettingsEdit(Request $request,$id)
+    {
+        $sitesettings =SiteSetting::where('id',$id)->get();
+      
+        
+        
+
+        return view ('admin.site.edit',compact('sitesettings'));
+    }
+
+
+    public function siteSettingsUpdate(Request $request,$id){
+        $filename = SiteSetting::where('id',$id)->pluck('logo')->first();
+        // dd($request->hasFile('logo'));
+       
+
+        $rules = [
+            // 'logo' => 'required',
+            'bank_details' => 'required',
+            'client_id' => 'required',
+            'paypal_secret' => 'required',
+            'beatplaytime' => 'required',
+
+        ];
+
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+            return response([
+                'errors'=>True,
+                'message'=>$error->errors()->all(),
+            ],Response::HTTP_OK);
+        }
+        if ($request->hasFile('logo')) {
+            $coverfileDestination = '/Logos';
+            $logo = $request->file('logo');
+            $filename = $this->generateUniqueFileName($logo, $coverfileDestination);
+            
+        }
+     
+        SiteSetting::where('id',$id)->update([
+           'logo' => $filename,
+           'bank_details' => $request->bank_details,
+           'paypal_client_id' => $request->client_id,
+           'paypal_secret' => $request->paypal_secret,
+           'beat_time' => $request->beatplaytime
+        ]);
+        return redirect()->route('siteSettingsIndex')->with('message','Site Settings Updated Succesfully');
+    
+     }
+    public function generateUniqueFileName($image, $destinationPath)
+    {
+        $initial = "Logo";
+        $name = $initial  . bin2hex(random_bytes(8)) . '.' . $image->getClientOriginalExtension();
+        if ($image->move(public_path() . $destinationPath, $name)) {
+            return $name;
+        } else {
+            return null;
+        }
     }
 }

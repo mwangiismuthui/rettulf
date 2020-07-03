@@ -5733,9 +5733,13 @@ body.off-canvas-overlay-on {
 	overflow:hidden;
 	margin-bottom:20px;
 }
-.top_artist_wrapper_new img{width:100%;}
+.top_artist_wrapper_new img{	
+    width: 157px;
+    object-fit: contain;
+    border-radius: 50%;
+}
 .top_artist_wrapper_new .various_song_playlist p a{
-	text-align:center; display:block;
+	display:block;
 }
 .cancel_times{
 	text-align:center !important;

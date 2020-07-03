@@ -126,7 +126,7 @@
 
                         @foreach ($my_music as $music)
                         <ul class="album_inner_list_padding">
-                            <li><a><span class="play_no">0{{ $loop->index + 1}}</span><span class="play_hover"> <i
+                            <li><a id="{{$music->id}}"><span class="play_no">0{{ $loop->index + 1}}</span><span class="play_hover"> <i
                                             class="flaticon-play-button" id="{{$music->id}}"></i></span></a></li>
                             <li class="text-center">
                                 <div class="top_song_artist_wrapper">
@@ -134,8 +134,8 @@
                                         alt="{{$music->title}}" style="height: 60px;width:60px;">
                                     <div class="top_song_artist_contnt">
                                         <h1><a>{{$music->title}}</a></h1>
-                                        <p class="various_artist_text"><a>{{\Illuminate\Support\Str::limit($music->description,150, $end='...')}}</a>
-                                        </p>
+                                        {{-- <p class="various_artist_text"><a>{{\Illuminate\Support\Str::limit($music->description,50, $end='...')}}</a>
+                                        </p> --}}
                                     </div>
 
                                 </div>

@@ -20,10 +20,10 @@ class RoleController extends Controller
      */
     function __construct()
     {
-        //  $this->middleware('role:Super-Admin');
-        //  $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        //  $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        //  $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+         $this->middleware('role:Super-Admin');
+         $this->middleware('permission:role-create', ['only' => ['create','store']]);
+         $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
 
 
@@ -124,16 +124,16 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            // 'permission' => 'required',
+            'permission' => 'required',
         ]);
 
 
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-        // dd($request->input('permission'));
 
-
+// return ;
+$role->permissions()->sync($request->input('permission'));
         // $role->syncPermissions($request->input('permission'));
 
 

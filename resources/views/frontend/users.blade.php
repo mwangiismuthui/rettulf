@@ -38,7 +38,7 @@
                                 <div class="item">
 
                                     <div class="treanding_slider_main_box m24_cover">
-                                        <img src="{{ $user->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}" alt="img">
+                                        <img style="object-fit: contain;" src="{{ $user->profile_photo == "" ? '/frontend/images/pf.png':  url('/ProfilePics').'/'.$user->profile_photo }}" alt="img">
 
                                         <div class="m24_treanding_box_overlay">
                                             <div class="m24_tranding_box_overlay"></div>
@@ -84,7 +84,7 @@
                     @foreach ($users as $user)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div class="treanding_slider_main_box top_artist_wrapper_new m24_cover">
-                            <img src="{{ $user->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}" alt="img">
+                            <img src="{{ is_null($user->profile_photo)  ? '/frontend/images/pf.png' : url('/ProfilePics').'/'.$user->profile_photo }}" alt="img">
 
                             <div class="m24_treanding_box_overlay">
                                 <div class="m24_tranding_box_overlay"></div>
