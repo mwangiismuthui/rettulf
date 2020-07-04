@@ -26,15 +26,15 @@ class FrontendController extends Controller
         $genres = $this->genres();
         $sliders = Slider::all();
         $latestMusic = $this->latestMusic(5);
-        $trendingMusic = $this->trendingMusic(3, 5);
+        $trendingMusic = $this->trendingMusic(7, 5);
         $latestbeats = $this->latestBeats(5);
-        $trendingBeats = $this->trendingBeats(3, 5);
+        $trendingBeats = $this->trendingBeats(7, 5);
         $topsongs = $trendingMusic->merge($latestMusic);
         $topbeats = $trendingBeats->merge($latestbeats);
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
-        // return $featuredProducers;
+        // return $trendingBeats;
         return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo','sliders'));
     }
 

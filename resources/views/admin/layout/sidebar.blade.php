@@ -79,7 +79,7 @@
 
       <li>
       <a href="{{route('siteSettingsIndex')}}" class="waves-effect">
-          <i class="ti-shopping-cart"></i>
+          <i class="ti-settings"></i>
           <span>Site Management</span>
         </a>
   
