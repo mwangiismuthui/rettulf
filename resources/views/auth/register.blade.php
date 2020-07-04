@@ -17,7 +17,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     <input type="text" class="form-control" name="name"
-                                        placeholder="Producer/Artist Name">
+                                        placeholder="Your Name*">
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     <select name="location_id" class="form-control location">
-                                        <option value="">Select Location</option>
+                                        <option value="">Select Location*</option>
                                         @foreach ($locations as $location)
                                         <option value="{{$location->id}}">{{$location->location}}</option>
                                         @endforeach
@@ -58,22 +58,11 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     <select name="designation" id="designation" class="form-control designation">
-                                        <option value="">Select Your Designation </option>
+                                        <option value="">Select Your Designation* </option>
                                         <option value="producer">Producer</option>
                                         <option value="artist">Artist</option>
                                         <option value="Normal User">Normal User</option>
                                     </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-pos">
-                                <div class="form-group i-name">
-                                    <label for="profile"> Profile Picture<label><br>
-                                            <input type="file" class="form-control" id="profile"
-                                                placeholder="Upload Profile Photo" name="profile_photo">
                                 </div>
                             </div>
                         </div>
@@ -96,13 +85,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+                                    <label for="profile"> Profile Picture<label>
+                                            <input type="file" class="form-control" id="profile"
+                                                placeholder="Upload Profile Photo" name="profile_photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="lang_apply_btn_wrapper m24_cover">
                         <div class="lang_apply_btn">
                             <button type="submit">register</button>
 
                         </div>
                         <div class="cancel_wrapper">
-                            <a href="#" class="" data-dismiss="modal">cancel</a>
+                            <a href="{{route('index')}}">cancel</a>
                         </div>
                         <div class="dont_have_account m24_cover">
                             <p>Do have an acount ? <a href="{{route('login')}}">login here</a></p>
