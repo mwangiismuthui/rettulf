@@ -3,7 +3,7 @@
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
                 <a href="{{route('index')}}">
-                    <img src="/frontend/images/logo.png" alt="logo">
+                    {{-- <img src="{{url('/Logos').'/'.$logopath}}" alt="logo"> --}}
                 </a>
             </div>
             <div id="toggle">
@@ -18,9 +18,14 @@
                         src="{{ Auth::user()->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}"
                         alt="img">
                     <div class="login_top_wrapper">
-                        <p>{{Auth::user()->name}},</p>
-                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
+                        <ul class="main_nav_ul">
+                            <li><a>{{Auth::user()->name}}, <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a></a></li>
+                           <li><a class="tex-info" href="{{route('editProfile')}}">My Profile</a></li>
+                        </ul>
+                        {{-- <p>{{Auth::user()->name}},</p> --}}
+                        {{-- <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a> --}}
                     </div>
 
                 </a>

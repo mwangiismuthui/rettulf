@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="des">
                                         <div class="jp-title" aria-label="title">&nbsp;</div>
-                                        <div class="artist-name"><a href="#" class="artist-names"></a></div>
+                                        <div class="artist-name"><a class="artist-name"></a></div>
                                     </div>
                                 </div>
                                 {{-- <div class="jp-details">
@@ -131,11 +131,7 @@
                         </div>
                     </div>
                     <!--./ container-fluid-->
-                    <div class="jp-progress d-flex align-items-center jp-progress-pos-top">
-                        <div class="jp-seek-bar">
-                            <div class="jp-play-bar"></div>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div id="adonis-playlist" class="adonis-playlist off-canvas off-canvas-right">
@@ -153,7 +149,6 @@
                         </div>
                         <div class="media current-item">
                             <div class="song-poster">
-                                <img class="box-rounded-sm" src="" alt="">
                             </div>
                             <div class="player-details col-8">
                                 <h3 class="jp-title"></h3>

@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Response;
 use App\Jobs\BulkEmailSender;
 use Carbon\Carbon;
+use Validator;
+use Illuminate\Support\Facades\Hash;
 
 class FrontendController extends Controller
 {
@@ -28,15 +30,15 @@ class FrontendController extends Controller
         $genres = $this->genres();
         $sliders = Slider::all();
         $latestMusic = $this->latestMusic(5);
-        $trendingMusic = $this->trendingMusic(3, 5);
+        $trendingMusic = $this->trendingMusic(7, 5);
         $latestbeats = $this->latestBeats(5);
-        $trendingBeats = $this->trendingBeats(3, 5);
+        $trendingBeats = $this->trendingBeats(7, 5);
         $topsongs = $trendingMusic->merge($latestMusic);
         $topbeats = $trendingBeats->merge($latestbeats);
         $featuredArtists = $this->featuredArtist();
         $featuredProducers = $this->featuredProducers();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
-        // return $featuredProducers;
+        // return $trendingBeats;
         return view('frontend.index', compact('trendingMusic', 'trendingBeats', 'genres', 'latestMusic', 'topsongs', 'featuredArtists', 'featuredProducers', 'topbeats', 'seo','sliders'));
     }
 
@@ -371,6 +373,58 @@ class FrontendController extends Controller
         $title = 'New Beats';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
+
+    public function editProfile()
+    {
+        $artist = Auth::user();
+        $locations = Location::all();
+        return view('frontend.updateProfile',compact('artist','locations'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        $rules = [
+            'name' => 'required',
+            'username' => 'required',
+            'password' => 'same:confirm-password',
+        ];
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+            return response([
+                'errors' =>  $error->errors()->all(),
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        }
+
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->paypal_email = $request->paypal_email;
+        if(!empty($request->password)){ 
+            $user->password = Hash::make($request->password);
+        }
+
+        if ($request->hasfile('profile_photo')) {
+            $imgdestination = '/ProfilePics';
+            $profile_photo = $request->file('profile_photo');
+            $imgname = $this->generateUniqueFileName($profile_photo, $imgdestination);
+            $user->profile_photo = $imgname;
+        }
+
+        if ($user->update()) {
+            return response([
+                'success' =>  'Profile Updated successfully',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        } else {
+
+            return response([
+                'warning' => 'Profile not updated',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        }
+
+
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -467,5 +521,16 @@ class FrontendController extends Controller
             ];
         }
         return response($response, \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+    }
+
+    public function generateUniqueFileName($image, $destinationPath)
+    {
+        $initial = "ProfilePics ";
+        $name = $initial  . time() . '.' . $image->getClientOriginalExtension();
+        if ($image->move(public_path() . $destinationPath, $name)) {
+            return $name;
+        } else {
+            return null;
+        }
     }
 }

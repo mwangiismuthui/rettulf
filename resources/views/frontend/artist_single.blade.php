@@ -35,9 +35,7 @@
                         <div class="artist_wrapper_left">
                             <h1>{{$artist->name}}</h1>
                             <p>Artist, {{$artist->location->location}}</p>
-                            <p>Renowned for his soulful singing, Indian musician Arijit Singh is also a music composer,
-                                producer, recordist and programmer. He has several blockbuster songs to his credit and
-                                has won 23 awards so far, which makes him one of the most successful sing... Full Bio
+                            <p>{{$artist->about}}
                             </p>
 
                         </div>

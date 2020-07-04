@@ -18,8 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('paypal_email')->nullable();
             $table->uuid('location_id')->nullable();
             $table->string('profile_photo')->nullable();
+            $table->longText('about')->nullable();
             $table->integer('is_featured')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
