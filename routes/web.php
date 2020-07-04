@@ -129,6 +129,7 @@ Route::get('/sitesettings/index', 'AdminController@siteSettingsIndex')->name('si
 Route::get('/sitesettings/edit/{id}', 'AdminController@siteSettingsEdit')->name('siteSettingsEdit');
 Route::post('/sitesettings/store', 'AdminController@siteSettingsStore')->name('siteSettingsStore');
 Route::post('/sitesettings/update/{id}', 'AdminController@siteSettingsUpdate')->name('siteSettingsUpdate');
+Route::delete('/sitesettings/destroy', 'AdminController@sitesettingsDelete')->name('sitesettingsDelete');
 
 
 // ..................SEO..............................//
@@ -141,6 +142,6 @@ Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.ph
 
 
 // ..................Withdrawal..............................//
-Route::get('/withdraw/{id}', 'WithdrawalController@sellerWithdrawal')->name('sellerWithdrawal');
+Route::post('/withdraw/{id}', 'WithdrawalController@sellerWithdrawal')->name('sellerWithdrawal');
 Route::get('/allWithdrawalRequests', 'WithdrawalController@allWithdrawalRequests')->name('allWithdrawalRequests');
 });

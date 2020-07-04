@@ -66,20 +66,31 @@
                         <li>Your Balance
                             <span>${{number_format($artist->balance->balance,2)}}</span>
                         </li>
-                        @foreach ($pending_withdrawals as $pending_withdrawal)
-                        @if ($pending_withdrawal->status==0)
+                        {{-- @foreach ($pending_withdrawals as $pending_withdrawal) --}}
+                        {{-- @if ($pending_withdrawal->status==0) --}}
                         <li>Pending Withdrawal...
-                            <span>${{number_format($pending_withdrawal->amount,2)}}</span>
+                            <span>${{number_format($pending_withdrawals,2)}}</span>
                         </li>
-                        @else
+                        {{-- @else --}}
 
-                        @endif
-                        @endforeach
+                        {{-- @endif --}}
+                        {{-- @endforeach --}}
                     </ul>
                     @if ($artist->balance->balance>=100)
                     <div class="cancel_wrapper renew_btn">
-                        <a href="{{route('sellerWithdrawal',$artist->id)}}"><i
+                        <a id="withrawbutton"><i
                                 class="flaticon-play-button"></i>Withdraw</a>
+                                <form  id="withdrawaAmount">
+                                    @csrf
+                                    <br>
+            <input type="number" name="amount" id="" placeholder="Enter amount you wish to Withdraw" class="form-control">
+                                <input type="hidden" name="artist_id" value="{{$artist->id}}" id="artist_id">
+            <br>
+            <div class="lang_apply_btn">
+                <button type="submit">Send</button>
+
+            </div>
+                                </form>
                     </div>
                     @else
                     <div class="cancel_wrapper renew_btn disabled">
@@ -198,6 +209,71 @@
     <script>
         $(document).ready(function(){
     $(".alert").delay(5000).slideUp(300);
+    $('#withdrawaAmount').hide();
+    $('#withrawbutton').on('click',function () {
+        $('#withdrawaAmount').show();
+    });
+
+
+
+    $("#withdrawaAmount").on("submit", function (event) {
+        event.preventDefault();
+
+var id = $('#artist_id').val();
+console.log(id);
+
+        $(".imguploadoverlay").fadeIn();
+        $.ajax({
+            url: "/withdraw/" +''+ id,
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            dataType: "json",
+            success:function(data){
+
+                $(".imguploadoverlay").fadeOut();
+            console.log("success");
+             if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     
+                     });
+                   
+
+                }
+
+
+
+                $('#seomodal').modal('hide');
+                $('#seo_table').DataTable().ajax.reload();
+            },
+            error: function () {
+            Lobibox.notify("error", {
+                pauseDelayOnHover: true,
+                continueDelayOnInactiveTab: false,
+                position: "top right",
+                icon: "fa fa-times-circle",
+                msg: "Something went wrong!Please try again",
+            });
+            console.log("error");
+            },
+        });
+    });
 });
     </script>
     @endsection

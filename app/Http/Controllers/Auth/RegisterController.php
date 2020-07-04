@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Response;
 use Auth;
 use DB;
+use App\Jobs\BulkEmailSender;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -145,7 +147,12 @@ class RegisterController extends Controller
             Auth::login($user, true);
             
             $user = Auth::user();
-
+            $data = array(
+                'subject' =>"Welcome to our Music Application",
+                
+            );
+            $recipient_emails=$request->email;
+            BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
             if ($user->hasRole('Super-Admin')) {
 
                 // dd($user);

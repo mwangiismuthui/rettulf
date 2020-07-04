@@ -13,6 +13,8 @@ use App\Withdrawal;
 use Auth;
 use Illuminate\Http\Request;
 use Response;
+use App\Jobs\BulkEmailSender;
+use Carbon\Carbon;
 
 class FrontendController extends Controller
 {
@@ -197,9 +199,13 @@ class FrontendController extends Controller
     {
         $user_id = Auth::user()->id;
         $user = User::with('balance')->where('id', $user_id)->get();
+        // return $user;
         $pending_withdrawals = Withdrawal::where('user_id', $user_id)
-            // ->where('status',0)
-            ->get();
+            ->where('status',0)
+            ->sum('amount');
+      
+                    // return $pending_withdrawals;
+
         $published_music_count = Music::where('user_id', $user_id)->where('status',1)->count();
         $unpublished_music_count = Music::where('user_id', $user_id)->where('status',0)->count();
         $my_music = Music::where('user_id', $user_id)
@@ -412,6 +418,16 @@ class FrontendController extends Controller
     public function downloadPurchasedMusic(Request $request, $id)
     {
 
+
+        $data = array(
+            'subject' =>"Your Music Has been Downloaded",
+            
+        );
+        $user_id =  Music::where('id', $id)->pluck('user_id')->first();
+
+        $recipient_emails=User::where('id',$user_id)->pluck('email')->first();
+       
+        BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
         $music_id = $id;
 
         $music_path =  Music::where('id', $music_id)->pluck('music')->first();

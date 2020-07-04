@@ -28,13 +28,18 @@ use PaypalPayoutsSDK\Core\PayPalHttpClient;
 use PaypalPayoutsSDK\Core\SandboxEnvironment;
 use PaypalPayoutsSDK\Payouts\PayoutsPostRequest;
 use App\Http\Controllers\PayPalClient;
+use App\SiteSetting;
 use App\UploadFee;
-
+use App\Jobs\BulkEmailSender;
+use Carbon\Carbon;
 class PaymentController extends Controller
 {
 
     public function upload_payment($id)
     {
+
+        $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
+        $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
         $previousUrl = url()->previous();
         $exacturl = substr($previousUrl, 22);
 
@@ -52,8 +57,8 @@ class PaymentController extends Controller
             # code...
             $apiContext = new \PayPal\Rest\ApiContext(
                 new \PayPal\Auth\OAuthTokenCredential(
-                    'Ab576qDQ2pShVNyKJms7tcBoxaq_xofpmJq2vBpMWLS2jfRkwnyzHB7QO6yH12gbQQa7OU_NJudN6n4z', // ClientID
-                    'EDCYQBhWefKcjvS_N26czclv5CzZTC9eF9CGsedOexQDb3K5Hd-M9YtomRosuNFuqfUbry5t-r2HP7gA' // ClientSecret
+                    $paypal_client_id, // ClientID
+                    $paypal_secret // ClientSecret
                 )
             );
 
@@ -152,6 +157,9 @@ class PaymentController extends Controller
     public function execute_payment(Request $request)
     {
 
+        $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
+        $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
+
         $clientIP = request()->ip();
 
         $music_id = TemporaryTransaction::where('ip_adress', $clientIP)
@@ -172,8 +180,8 @@ class PaymentController extends Controller
 
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
-                'Ab576qDQ2pShVNyKJms7tcBoxaq_xofpmJq2vBpMWLS2jfRkwnyzHB7QO6yH12gbQQa7OU_NJudN6n4z', // ClientID
-                'EDCYQBhWefKcjvS_N26czclv5CzZTC9eF9CGsedOexQDb3K5Hd-M9YtomRosuNFuqfUbry5t-r2HP7gA' // ClientSecret
+                $paypal_client_id, // ClientID
+                $paypal_secret // ClientSecret
             )
         );
 
@@ -280,39 +288,49 @@ class PaymentController extends Controller
 
     public function payout($id)
     {
-        // "sb-7melu1698512@personal.example.com"
         $user_id = Withdrawal::where('id', $id)->pluck('user_id')->first();
         $amount = Withdrawal::where('id', $id)->pluck('amount')->first();
         $payment_email = User::where('id', $user_id)->pluck('email')->first();
-        $clientId = "Ab576qDQ2pShVNyKJms7tcBoxaq_xofpmJq2vBpMWLS2jfRkwnyzHB7QO6yH12gbQQa7OU_NJudN6n4z";
-        $clientSecret = "EDCYQBhWefKcjvS_N26czclv5CzZTC9eF9CGsedOexQDb3K5Hd-M9YtomRosuNFuqfUbry5t-r2HP7gA";
+        // return $payment_email;
+        $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
+        $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
+        
+        $clientId = $paypal_client_id;
+        $clientSecret = $paypal_secret;
 
         $environment = new SandboxEnvironment($clientId, $clientSecret);
         $client = new PayPalHttpClient($environment);
         $request = new PayoutsPostRequest();
-        $body = json_decode(
-            '{
-                "sender_batch_header":
-                {
-                  "email_subject": "SDK payouts test txn"
-                },
-                "items": [
-                {
-                  "recipient_type": "EMAIL",
-                  "receiver": "sb-7melu1698512@personal.example.com",
-                  "note": "Your 1$ payout",
-                  "sender_item_id": "Test_txn_12",
-                  "amount":
-                  {
-                    "currency": "USD",
-                    "value": "890.00"
-                  }
-                }]
-              }',
-            true
+
+
+
+        $data = array(
+            'subject' =>"Payment Sent",
+            
         );
-        // return $body;
-        $request->body = $body;
+        $recipient_emails=User::where('id',$user_id)->pluck('email')->first();
+        BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+     
+        $our_body= [
+            "sender_batch_header" => [
+                  "email_subject" => "SDK payouts test txn" 
+               ], 
+            "items" => [
+                     [
+                        "recipient_type" => "EMAIL", 
+                        "receiver" => $payment_email, 
+                        "note" => "Your 1$ payout", 
+                        "sender_item_id" => "Test_txn_12", 
+                        "amount" => [
+                           "currency" => "USD", 
+                           "value" => $amount 
+                        ] 
+                     ] 
+                  ] 
+         ]; 
+        $our_body2=json_encode($our_body);
+       
+        $request->body = $our_body2;
         $client = PayPalClient::client();
         $response = $client->execute($request);
         print "Status Code: {$response->statusCode}\n";

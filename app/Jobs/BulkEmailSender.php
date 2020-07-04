@@ -35,16 +35,54 @@ class BulkEmailSender implements ShouldQueue
      */
     public function handle()
     {
-        // dd($this->data);
-        // dd( $this->data);
-        foreach ($this->recipient_emails as $email) {
-          
-            Mail::send('bulkEmail.email', $this->data, function ($message) use ($email) {
+        $subject = $this->data['subject'];
+
+        if ($subject=="Payment Sent") {
+            $email = $this->recipient_emails;
+            // dd($email);
+            Mail::send('bulkEmail.paymentSent', $this->data, function ($message) use ($email) {
                 $message->from('me@gmail.com', 'Music App');
             
                 $message->to($email)->subject($this->data['subject']);;
             });
         }
+        elseif($subject=="Withdrawal Request Recieved"){
+            $email = $this->recipient_emails;
+            Mail::send('bulkEmail.withdraw', $this->data, function ($message) use ($email) {
+                $message->from('me@gmail.com', 'Music App');
+            
+                $message->to($email)->subject($this->data['subject']);;
+            });
+        }
+        elseif($subject=="Your Music Has been Downloaded"){
+            $email = $this->recipient_emails;
+            Mail::send('bulkEmail.succesfullDownload
+            ', $this->data, function ($message) use ($email) {
+                $message->from('me@gmail.com', 'Music App');
+            
+                $message->to($email)->subject($this->data['subject']);;
+            });
+        }
+        elseif($subject=="Welcome to our Music Application"){
+            $email = $this->recipient_emails;
+            Mail::send('bulkEmail.welcome', $this->data, function ($message) use ($email) {
+                $message->from('me@gmail.com', 'Music App');
+            
+                $message->to($email)->subject($this->data['subject']);;
+            });
+        }
+        else{
+        foreach ($this->recipient_emails as $email) {
+                
+                    Mail::send('bulkEmail.email', $this->data, function ($message) use ($email) {
+                        $message->from('me@gmail.com', 'Music App');
+                    
+                        $message->to($email)->subject($this->data['subject']);;
+                    });
+                }
+        }
+
+        
        
     }
 }

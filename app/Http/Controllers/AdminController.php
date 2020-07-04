@@ -172,7 +172,7 @@ class AdminController extends Controller
             return Datatables::of($sitesettings)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    return '<a class="btn btn-outline-danger btn-round waves-effect waves-light name="delete" id="' . $data->id . '" onclick="sitesettingsdelete(\'' . $data->id . '\')"><i class="icon-trash"></i>Delete</a>&nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('siteSettingsEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
+                    return '<a class="btn btn-outline-danger btn-round waves-effect waves-light name="delete" id="' . $data->id . '" onclick="sitesettingsDelete(\'' . $data->id . '\')"><i class="icon-trash"></i>Delete</a>&nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('siteSettingsEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
                 })
 
                 ->rawColumns(['action'])
@@ -277,6 +277,29 @@ class AdminController extends Controller
         return redirect()->route('siteSettingsIndex')->with('message','Site Settings Updated Succesfully');
     
      }
+     public function sitesettingsDelete(Request $request)
+     {
+         if($request->ajax()){
+                 $siteSettings_id = $request->siteSettings_id;
+         $siteSettings = SiteSetting::find($siteSettings_id);
+         if ($siteSettings) {
+             $siteSettings->delete();
+             return response([
+                 'success'=>True,
+                 'message'=>'Site Settings  deleted Succesfully',
+             ],Response::HTTP_OK);
+         } else {
+             return response([
+                 'success'=>True,
+                 'message'=>'Site Settings  not deleted',
+             ],Response::HTTP_OK);
+         }
+         }
+     
+     }   
+
+
+     
     public function generateUniqueFileName($image, $destinationPath)
     {
         $initial = "Logo";

@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="seo_table" class="table table-bordered ">
+                            <table id="siteSettings_table" class="table table-bordered ">
                                 <thead>
                                
                                     <th>Action</th>
@@ -109,7 +109,7 @@
 
 <script>
 
-        var table = $('#seo_table').DataTable({
+        var table = $('#siteSettings_table').DataTable({
         processing: true,
         serverSide: true,    
         ajax: "{{ route('siteSettingsIndex')}}",
@@ -131,13 +131,13 @@
 
 
 
-   function seodelete(seo_id) {
-       console.log(seo_id);
+   function sitesettingsDelete(siteSettings_id) {
+       console.log(siteSettings_id);
     $.ajax({
-           url:'/seo/destroy/',
+           url:'/sitesettings/destroy',
            method:'delete',
            data:{
-               seo_id:seo_id,
+               siteSettings_id:siteSettings_id,
                  _token: "{{ csrf_token() }}",
            },
            success:function(data){
@@ -161,7 +161,7 @@
                      });
 
                 }
-             $('#seo_table').DataTable().ajax.reload();
+             $('#siteSettings_table').DataTable().ajax.reload();
            }
 
        });
@@ -206,7 +206,7 @@
                 }
 
                 $('#seomodal').modal('hide');
-                $('#seo_table').DataTable().ajax.reload();
+                $('#siteSettings_table').DataTable().ajax.reload();
             },
             error: function () {
             Lobibox.notify("error", {

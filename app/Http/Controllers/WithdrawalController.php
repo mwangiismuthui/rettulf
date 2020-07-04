@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Balance;
 use App\Withdrawal;
 use Illuminate\Http\Request;
-
+use App\Jobs\BulkEmailSender;
+use App\User;
 use Yajra\Datatables\Datatables;
 class WithdrawalController extends Controller
 {
@@ -15,20 +16,41 @@ class WithdrawalController extends Controller
     }
     public function sellerWithdrawal(Request $request, $id)
     {
+        $withdrawalAmount = $request->amount;
         $balance = Balance::where('user_id', $id)->pluck('balance')->first();
+        if ($withdrawalAmount<=$balance) {
+            
+        $newBalance= $balance-$withdrawalAmount;
+        }else{
+
+            return response([
+                'error' => 'Withdrawal Amount cannot be more than the balance',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        }
+     
         Balance::where('user_id', $id)->update([
-            'balance' => 0,
+            'balance' => $newBalance,
         ]);
         $withdrawal = new Withdrawal();
         $withdrawal->user_id = $id;
-        $withdrawal->amount = $balance;
+        $withdrawal->amount = $withdrawalAmount;
         $withdrawal->status = 0;
         if ($withdrawal->save()) {
 
-            return redirect()->back()->with('message', 'We have recieved your withdrawal request and are working on it');
+            $data = array(
+                'subject' =>"Withdrawal Request Recieved",
+                
+            );
+            $recipient_emails=User::where('id',$id)->pluck('email')->first();
+            BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+            return response([
+                'success' => 'We have recieved your withdrawal request and are working on it',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
         } else {
 
-            return redirect()->back()->with('error', 'Something went wrong !');
+            return response([
+                'error' => 'Something went wrong',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
         }
     }
     public function allWithdrawalRequests(Request $request)
