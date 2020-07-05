@@ -10,7 +10,8 @@ class CategoryController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        
+         $this->middleware('permission:manage-category');
     }
     /**
      * Display a listing of the resource.

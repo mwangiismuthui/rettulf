@@ -15,7 +15,7 @@ class SeoController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        $this->middleware('permission:manage-seo');
     }
     /**
      * Display a listing of the resource.

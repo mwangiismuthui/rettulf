@@ -10,7 +10,7 @@ class GenreController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        $this->middleware('permission:manage-genre');
     }
     /**
      * Display a listing of the resource.

@@ -32,10 +32,12 @@ use App\SiteSetting;
 use App\UploadFee;
 use App\Jobs\BulkEmailSender;
 use Carbon\Carbon;
+
+
 class PaymentController extends Controller
 {
 
-    public function upload_payment($id)
+    public function upload_payment(Request $request,$id)
     {
 
         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
@@ -43,15 +45,15 @@ class PaymentController extends Controller
         $previousUrl = url()->previous();
         $exacturl = substr($previousUrl, 22);
 
-        $clientIP = request()->ip();
+        // $user_id = request()->ip();
         $music_amount = Music::where('id', $id)->pluck('price')->first();
         $total = (int) $music_amount;
 
-       
+
 
 
         if ($total == 0) {
-            session()->put('music_id', $id);
+            $request->session()->put('music_id', $id);
             return redirect()->route('downloadMusic');
         } else {
             # code...
@@ -68,9 +70,8 @@ class PaymentController extends Controller
 
                 $upload_payment = UploadFee::orderBy('created_at', 'DESC')->pluck('amount')->first();
                 $upload_payment_amount = (int) $upload_payment;
-
                 $temporary_trans = new TemporaryTransaction();
-                $temporary_trans->ip_adress = $clientIP;
+                $temporary_trans->user_id = Auth::user()->id;
                 $temporary_trans->music_id = $id;
                 $temporary_trans->amount = $upload_payment_amount;
                 $temporary_trans->exacturl = $exacturl;
@@ -98,7 +99,7 @@ class PaymentController extends Controller
             } else {
 
                 $temporary_trans = new TemporaryTransaction();
-                $temporary_trans->ip_adress = $clientIP;
+                $temporary_trans->user_id = Auth::user()->id;
                 $temporary_trans->music_id = $id;
                 $temporary_trans->amount = $total;
                 $temporary_trans->exacturl = $exacturl;
@@ -156,24 +157,29 @@ class PaymentController extends Controller
 
     public function execute_payment(Request $request)
     {
-
+      
         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
         $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
 
-        $clientIP = request()->ip();
+        $user_id = Auth::user()->id;
 
-        $music_id = TemporaryTransaction::where('ip_adress', $clientIP)
+        $music_id = TemporaryTransaction::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->pluck('music_id')
             ->first();
-        $exacturl = TemporaryTransaction::where('ip_adress', $clientIP)
+            // dd($music_id);
+        $exacturl = TemporaryTransaction::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->pluck('exacturl')
             ->first();
-        $upload_payment_amount = TemporaryTransaction::where('ip_adress', $clientIP)
+            // dd($exacturl);
+
+        $upload_payment_amount = TemporaryTransaction::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->pluck('amount')
             ->first();
+            // dd($upload_payment_amount);
+
         session()->put('music_id', $music_id);
         $music_amount = Music::where('id', $music_id)->pluck('price')->first();
         $total = (int) $music_amount;
@@ -200,19 +206,19 @@ class PaymentController extends Controller
                 ->setTax(0.0)
                 ->setSubtotal($upload_payment_amount);
 
-        $amount->setCurrency('USD');
-        $amount->setTotal($upload_payment_amount);
-        $amount->setDetails($details);
-        $transaction->setAmount($amount);
+            $amount->setCurrency('USD');
+            $amount->setTotal($upload_payment_amount);
+            $amount->setDetails($details);
+            $transaction->setAmount($amount);
         } else {
             $details->setShipping(0.0)
                 ->setTax(0.0)
                 ->setSubtotal($total);
 
-        $amount->setCurrency('USD');
-        $amount->setTotal($total);
-        $amount->setDetails($details);
-        $transaction->setAmount($amount);
+            $amount->setCurrency('USD');
+            $amount->setTotal($total);
+            $amount->setDetails($details);
+            $transaction->setAmount($amount);
         }
 
 
@@ -226,10 +232,16 @@ class PaymentController extends Controller
         if ($exacturl == "mymusic") {
 
             $storage = $this->uploadedMusic($music_id, $payment_id, $PayerID);
+            $request->session()->forget('amount');
+            $request->session()->forget('exacturl');
+            $request->session()->forget('music_id');
             return redirect()->route('myMusic');
         } else {
             $pathToFile = $this->downloadedMusic($music_id, $payment_id, $PayerID);
-            return redirect()->route('downloadedMusic')->with('success','Music purchased succesfully!Find it here to download');
+            $request->session()->forget('amount');
+            $request->session()->forget('exacturl');
+            $request->session()->forget('music_id');
+            return redirect()->route('downloadedMusic')->with('success', 'Music purchased succesfully!Find it here to download');
         }
     }
     public function uploadedMusic($music_id, $payment_id, $PayerID)
@@ -294,7 +306,7 @@ class PaymentController extends Controller
         // return $payment_email;
         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
         $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
-        
+
         $clientId = $paypal_client_id;
         $clientSecret = $paypal_secret;
 
@@ -305,31 +317,31 @@ class PaymentController extends Controller
 
 
         $data = array(
-            'subject' =>"Payment Sent",
-            
+            'subject' => "Payment Sent",
+
         );
-        $recipient_emails=User::where('id',$user_id)->pluck('email')->first();
-        BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
-     
-        $our_body= [
+        $recipient_emails = User::where('id', $user_id)->pluck('email')->first();
+        BulkEmailSender::dispatch($recipient_emails, $data)->delay(Carbon::now()->addSeconds(5));
+
+        $our_body = [
             "sender_batch_header" => [
-                  "email_subject" => "SDK payouts test txn" 
-               ], 
+                "email_subject" => "SDK payouts test txn"
+            ],
             "items" => [
-                     [
-                        "recipient_type" => "EMAIL", 
-                        "receiver" => $payment_email, 
-                        "note" => "Your 1$ payout", 
-                        "sender_item_id" => "Test_txn_12", 
-                        "amount" => [
-                           "currency" => "USD", 
-                           "value" => $amount 
-                        ] 
-                     ] 
-                  ] 
-         ]; 
-        $our_body2=json_encode($our_body);
-       
+                [
+                    "recipient_type" => "EMAIL",
+                    "receiver" => $payment_email,
+                    "note" => "Your 1$ payout",
+                    "sender_item_id" => "Test_txn_12",
+                    "amount" => [
+                        "currency" => "USD",
+                        "value" => $amount
+                    ]
+                ]
+            ]
+        ];
+        $our_body2 = json_encode($our_body);
+
         $request->body = $our_body2;
         $client = PayPalClient::client();
         $response = $client->execute($request);

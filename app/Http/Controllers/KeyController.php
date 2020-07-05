@@ -10,7 +10,7 @@ class KeyController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        $this->middleware('permission:manage-keys');
     }
     /**
      * Display a listing of the resource.

@@ -12,7 +12,7 @@ class WithdrawalController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin')->except('sellerWithdrawal');
+         $this->middleware('permission:manage-payments')->except('sellerWithdrawal');
     }
     public function sellerWithdrawal(Request $request, $id)
     {

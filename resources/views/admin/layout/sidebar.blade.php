@@ -55,6 +55,17 @@
   
       </li>
       @endcan
+
+      @can('activate-artist')
+
+    <li>
+      <a href="{{route('activation')}}" class="waves-effect">
+          <i class="ti-light-bulb"></i>
+          <span>Activation Management</span>
+        </a>
+  
+      </li>
+      @endcan
       @can('manage-slider')
 
     <li>
