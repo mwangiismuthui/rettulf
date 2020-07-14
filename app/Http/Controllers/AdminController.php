@@ -15,7 +15,11 @@ class AdminController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+        
+         $this->middleware('permission:manage-music', ['only' => ['adminMusic']]);
+         $this->middleware('permission:manage-emails', ['only' => ['bulkEmails','bulkEmailsSend']]);
+         $this->middleware('permission:manage-site-settings', ['only' => ['siteSettingsIndex','siteSettingsStore','siteSettingsEdit','siteSettingsUpdate','sitesettingsDelete']]);
+         $this->middleware('permission:activate-artist', ['only' => ['activation']]);
     }
     public function dashboard(Request $request)
     {
@@ -297,8 +301,56 @@ class AdminController extends Controller
          }
      
      }   
+     public function activation(Request $request)
+     {
+        if ($request->ajax()) {
+            $producers = User::role('Producer')->get();
+            $artist = User::role('Artist')->get();
+            $users = $producers->merge($artist);
+            return Datatables::of($users)
+                ->addIndexColumn()
+                ->addColumn('status', function ($data) {
+                    if ($data->is_featured == '0') {
+                        return ' <a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unfeatured</a><div class="dropdown-menu">
+                        <a class="dropdown-item" data-id="" onclick="makeFeatured(\'' . $data->id . '\')">Make Featured </a>
+                        <a class="dropdown-item" data-id="" onclick="unFeature(\'' . $data->id . '\')">Unfeature </a> 
+                        
+                        </div>';
+                    } elseif ($data->is_featured == '1') {
 
+                        return ' <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Featured</a><div class="dropdown-menu">
+                        <a class="dropdown-item" data-id="" onclick="makeFeatured(\'' . $data->id . '\')">Make Featured </a>
+                        <a class="dropdown-item" data-id="" onclick="unFeature(\'' . $data->id . '\')">Unfeature </a> 
+                        
+                        </div>';
+                    }
+                })
 
+                ->rawColumns(['status', 'action', 'contact', 'is_paid'])
+                ->make(true);
+        }
+
+        return view('admin.music.activation');
+     }
+
+public function makeFeatured(Request $request)
+{
+    $user_id = $request->user_id;
+    $status = $request->status;
+    if (User::where('id', $user_id)->update([
+
+        'is_featured' => $status
+    ])) {
+        return response([
+            'success' => "music Status Updated!",
+        ], Response::HTTP_OK);
+    } else {
+        return response([
+            'errors' => "music Status not Updated!",
+        ], Response::HTTP_OK);
+    }
+
+}
      
     public function generateUniqueFileName($image, $destinationPath)
     {

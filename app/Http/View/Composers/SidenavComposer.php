@@ -35,7 +35,6 @@ class SidenavComposer
         'logopath' => $logopath,
        
       ];
-
         $view->with($data);
     }
 }

@@ -131,6 +131,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sitesettings/edit/{id}', 'AdminController@siteSettingsEdit')->name('siteSettingsEdit');
     Route::post('/sitesettings/store', 'AdminController@siteSettingsStore')->name('siteSettingsStore');
     Route::post('/sitesettings/update/{id}', 'AdminController@siteSettingsUpdate')->name('siteSettingsUpdate');
+    Route::get('/artist/activation', 'AdminController@activation')->name('activation');
+    Route::put('/feature/change/status', 'AdminController@makeFeatured')->name('makeFeatured');
 
 
     // ..................SEO..............................//

@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-         $this->middleware('role:Super-Admin');
+         $this->middleware('permission:manage-users');
     }
     /**
      * Display a listing of the resource.
