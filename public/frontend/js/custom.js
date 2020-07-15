@@ -366,37 +366,17 @@
                     }
                 }), check
             }
-            jQuery(document).ready(function(e) {
+            // jQuery(document).ready(function(e) {
                
-                $('.music_search').select2({
-                    placeholder: 'Search Music and Beats',
-                    minimumInputLength: 2,
-                    ajax: {
-                      url: 'search/music',
-                      dataType: 'json',
-                      delay: 250,
-                      data: function (params) {
-                        return {
-                          search: params.term 
-                        };
-                      },
-                      processResults: function (response) {
-                        SampleJSONData2 = response;
-                        return {
-                          results: response
-                        };
-                      },
-                      cache: true
-                    }
-                  });
-                comboTree2 = e("#justAnotherInputBox").comboTree({
-                    source: SampleJSONData2,
-                    isMultiple: !1
-                }), comboTree1 = e("#justAnotherInputBox2").comboTree({
-                    source: SampleJSONData1,
-                    isMultiple: !0
-                })
-            }), 
+               
+            //     comboTree2 = e("#justAnotherInputBox").comboTree({
+            //         source: SampleJSONData2,
+            //         isMultiple: !1
+            //     }), comboTree1 = e("#justAnotherInputBox2").comboTree({
+            //         source: SampleJSONData1,
+            //         isMultiple: !0
+            //     })
+            // }), 
 			
 			 /*--- contact form Start ----*/		
 			$(".submitForm").on("click", function() {
@@ -487,6 +467,6 @@
                     ease: "Power1.easeOut"
                 }), $($circleCursor).removeClass("cursor-close")
             }
-            $(window).on("mousemove", moveCursor), $("a, .zoom-cursor").on("mouseenter", zoomCursor), $(".trigger-close").on("mouseenter", closeCursor), $("a, .zoom-cursor, .trigger-close, .trigger-plus").on("mouseleave", defaultCursor)
+            // $(window).on("mousemove", moveCursor), $("a, .zoom-cursor").on("mouseenter", zoomCursor), $(".trigger-close").on("mouseenter", closeCursor), $("a, .zoom-cursor, .trigger-close, .trigger-plus").on("mouseleave", defaultCursor)
         })
 }(jQuery);

@@ -1,7 +1,7 @@
 <div id="sidebar" class="bounce-to-right">
     <div id="toggle_close">×</div>
     <div id='cssmenu'>
-        <a href="{{route('index')}}"><img src="/frontend/images/logo.png" alt="logo"></a>
+        <a href="{{route('index')}}"><img  src="{{url('/Logos').'/'.$logopath}}" alt="logo"></a>
         <ul class="sidebb">
         <li><a href='{{route('index')}}'><i class="flaticon-home"></i>Home</a>
               

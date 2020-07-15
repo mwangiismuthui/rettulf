@@ -247,6 +247,9 @@ a:hover {
 	float:left;
 	width:auto;
 }
+.m24_logo_div img{
+	max-height: 44px;
+}
 .m24_navi_main_wrapper{
 	position:relative;
 	padding:5px 35px 0 15px;
@@ -438,7 +441,7 @@ a:hover {
 }
 .m24_header_right_Wrapper{
 	float: right;
-    width: 15%;
+    width:15%;
     padding-top: 16px;
     position: relative;
 }
@@ -624,6 +627,7 @@ a:hover {
 #cssmenu img{
 	padding-top:25px;
 	padding-left:30px;
+	max-height: 70px;
 }
 #cssmenu ul ul {
   display: none;
@@ -808,11 +812,11 @@ a:hover {
 .navi_searchbar_wrapper {
     position: relative;
 	float:left;
-	width:49%;
+	/* width:49%; */
 	margin-left:30px;
 	padding-top:11px;
 }
-.navi_searchbar_wrapper i {
+/* .navi_searchbar_wrapper i {
     float: left;
     width: 45px;
     height: 50px;
@@ -822,7 +826,7 @@ a:hover {
     left: 5px;
     cursor: pointer;
     text-align: center;
-}
+} */
 .navi_searchbar_wrapper input {
 	float:left;
     height: 50px;
@@ -1232,7 +1236,8 @@ span.comboTreeItemTitle{
 }
 .m24_signin_wrapper a img {
     float: left;
-	width:35px;
+	width:60px;
+	height:60px;
 	margin-left: 15px;
      -webkit-border-radius: 100px; 
   -moz-border-radius: 100px; 
@@ -1240,7 +1245,7 @@ span.comboTreeItemTitle{
 }
 .m24_signin_wrapper .login_top_wrapper {
     float: right;
-    width: calc(100% - 50px);
+    width: calc(100% - 80px);
     padding-left: 15px;
 	padding-top:6px;
 }
@@ -7150,4 +7155,18 @@ span.ovrly_text2 {
 	display: inline-block;
 	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 	font-size: 20px;
+}
+
+.navi_searchbar_wrapper button{
+	height: 100%;
+	width: 200px;
+}
+.navi_searchbar_wrapper #toremove{
+	width: 230px;
+}
+.navi_searchbar_wrapper .input-group{
+	flex-wrap: wrap-reverse;
+}
+.navi_searchbar_wrapper  .select2-container--default .select2-selection--single{
+	border-radius: 0%;
 }
