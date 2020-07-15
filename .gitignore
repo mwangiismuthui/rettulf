@@ -6,6 +6,8 @@
 /public/Logos
 /public/Genre_Images
 /public/ProfilePics
+/public/Favicon
+/public/Loading_Icons
 /public/uploadedCoverArts
 /storage/*.key
 /vendor
