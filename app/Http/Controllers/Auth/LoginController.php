@@ -7,7 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Validator;
-use Symfony\Component\HttpFoundation\Request;   
+use Symfony\Component\HttpFoundation\Request;
+
 class LoginController extends Controller
 {
     /*
@@ -40,52 +41,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
-        $credentials = [
-          'email' => $request->email ,
-          'password' => $request->password
-         ];
-  
-  
-      $rules = [
-          'email'    => 'required|email',
-          'password' => [
-              'required',
-              'string',
-              'min:4',
-          ],
-      ];
-      $error =Validator::make($credentials,$rules);
-  
-  
-      if($error->fails())
-      {
-          return redirect()->back()->with('message',$error->errors()->all());
-      }
-  
-  
-  
-  
-    if(Auth::attempt($credentials)){
-
-        $user = Auth::user();
-        if ($user->hasRole('Super-Admin')) {
-
-            return redirect()->route('dashboard');
-        }else {
-
-            return redirect()->back();
-        }
-
-      
- 
-    }else{
-    return redirect()->back()->with('message',$error->errors()->all());
-    }
-  
-  
-  
-  
-  
-      }
+   
 }

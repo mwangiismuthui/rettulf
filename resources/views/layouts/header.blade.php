@@ -3,7 +3,7 @@
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
                 <a href="{{route('index')}}">
-                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo">
+                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo" style="width: 100px;height:100px; border-radius:20px;">
                 </a>
             </div>
             <div id="toggle">

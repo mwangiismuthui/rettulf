@@ -41,7 +41,7 @@ class BulkEmailSender implements ShouldQueue
             $email = $this->recipient_emails;
             // dd($email);
             Mail::send('bulkEmail.paymentSent', $this->data, function ($message) use ($email) {
-                $message->from('me@gmail.com', 'Music App');
+                $message->from('noreply@justerudite.com', 'Music App');
             
                 $message->to($email)->subject($this->data['subject']);;
             });
@@ -49,7 +49,7 @@ class BulkEmailSender implements ShouldQueue
         elseif($subject=="Withdrawal Request Recieved"){
             $email = $this->recipient_emails;
             Mail::send('bulkEmail.withdraw', $this->data, function ($message) use ($email) {
-                $message->from('me@gmail.com', 'Music App');
+                $message->from('noreply@justerudite.com', 'Music App');
             
                 $message->to($email)->subject($this->data['subject']);;
             });
@@ -58,7 +58,7 @@ class BulkEmailSender implements ShouldQueue
             $email = $this->recipient_emails;
             Mail::send('bulkEmail.succesfullDownload
             ', $this->data, function ($message) use ($email) {
-                $message->from('me@gmail.com', 'Music App');
+                $message->from('noreply@justerudite.com', 'Music App');
             
                 $message->to($email)->subject($this->data['subject']);;
             });
@@ -66,7 +66,7 @@ class BulkEmailSender implements ShouldQueue
         elseif($subject=="Welcome to our Music Application"){
             $email = $this->recipient_emails;
             Mail::send('bulkEmail.welcome', $this->data, function ($message) use ($email) {
-                $message->from('me@gmail.com', 'Music App');
+                $message->from('noreply@justerudite.com', 'Music App');
             
                 $message->to($email)->subject($this->data['subject']);;
             });
@@ -75,7 +75,7 @@ class BulkEmailSender implements ShouldQueue
         foreach ($this->recipient_emails as $email) {
                 
                     Mail::send('bulkEmail.email', $this->data, function ($message) use ($email) {
-                        $message->from('me@gmail.com', 'Music App');
+                        $message->from('noreply@justerudite.com', 'Music App');
                     
                         $message->to($email)->subject($this->data['subject']);;
                     });

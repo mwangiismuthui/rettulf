@@ -47,6 +47,8 @@
                                         <td><label class="badge badge-info">{{ $role->name }}</label></td>
                                         @elseif($role->name == 'Super-Admin')
                                         <td><label class="badge badge-danger">{{ $role->name }}</label></td>
+                                        @else
+                                        <td><label class="badge badge-pill badge-dark m-1">{{ $role->name }}</label></td>
                                         @endif
                                         
                                         <td>

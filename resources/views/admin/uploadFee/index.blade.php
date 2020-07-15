@@ -55,9 +55,9 @@
                 <form id="upload_fee_form" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="title"> Upload Fees Amount</label>
+                        <label for="title"> Upload Fees Amount(in $)</label>
                         <input type="text" class="form-control form-control-rounded" id="title"
-                            placeholder="Enter Amount" name="amount">
+                            placeholder="Enter Amount in dollars" name="amount">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary shadow-primary btn-round px-5"><i

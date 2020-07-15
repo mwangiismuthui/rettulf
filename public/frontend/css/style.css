@@ -1697,7 +1697,7 @@ ul.tranding_more_option li a .opt_icon i:before{
   -moz-border-radius: 6px; 
    border-radius: 6px; 
     box-shadow: none;
-	text-transform:capitalize;
+	text-transform:none;
 	-webkit-transition: all 0.3s ease 0s;
    -moz-transition: all 0.3s ease 0s;
    -o-transition: all 0.3s ease 0s;

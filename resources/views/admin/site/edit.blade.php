@@ -13,6 +13,18 @@
         <input type="file" name="logo" id="" class="form-control">
     </div>
     <div class="form-group">
+        <label for="title">Loading Icon</label>
+        <input type="file" name="loading_icon" id="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="title">Favicon </label>
+        <input type="file" name="favicon" id="" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="title">Footer text</label>
+        <input type="text" name="footer_text" id="" class="form-control" value="{{$sitesetting->footer_text}}">
+    </div>
+    <div class="form-group">
         <label for="title">Paypal Client Id</label>
     <input type="text" name="client_id" id="" class="form-control" value="{{$sitesetting->paypal_client_id}}">
     </div>

@@ -9,7 +9,7 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Music
+                        <i class="fa fa-table"></i> Artists Activation 
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -128,7 +128,26 @@
             _token: "{{ csrf_token() }}"
            },
            success:function(data){
+            if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     });
 
+                     console.log(data.success);
+                }
             console.log(data);
              $('#featured_table').DataTable().ajax.reload();
            },
@@ -150,6 +169,26 @@
             _token: "{{ csrf_token() }}"
            },
            success:function(data){
+            if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     });
+
+                     console.log(data.success);
+                }
 
              $('#featured_table').DataTable().ajax.reload();
            },

@@ -66,6 +66,20 @@
                                         </div>
                                     </div>
                                 </div>
+                           
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-pos">
+                                            <div class="form-group i-name">
+                                                <label for="about">Edit Bio</label>
+                                                <input type="text" class="form-control" id="about" name="about"
+                                            placeholder="Edit bio ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                </div>
+                           
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-pos">

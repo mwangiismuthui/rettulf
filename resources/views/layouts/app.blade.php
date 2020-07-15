@@ -1,7 +1,7 @@
 <?php
-// if(!isset($seo)){
-// 	$seo = (object) array('seo_title' => $seo->seo_title,'seo_description' => $seo->seo_description,'seo_keywords' => $seo->seo_keywords,'seo_other' => '');
-// }
+if(!isset($seo)){
+	$seo = (object) array('seo_title' => $seo->seo_title,'seo_description' => $seo->seo_description,'seo_keywords' => $seo->seo_keywords,'seo_other' => '');
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,18 +11,18 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Title</title>
-    {{-- <title>{{ $seo->seo_title }}</title>
+    <title>{{ $seo->seo_title }}</title>
     <meta name="Description" content="{{ $seo->meta_description }}">
     <meta name="Keywords" content="{{ $seo->meta_keyword }}">
     <meta name="_token" content="{{ csrf_token() }}" />
-    {!! $seo->seo_other !!} --}}
+    {!! $seo->seo_other !!}
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <meta name="author" content="Mwangi Muthui(0721257308)|Eric Njeru(0792946114)" />
     <meta name="MobileOptimized" content="320" />
     <!--favicon-->
-    <link rel="shortcut icon" type="/frontend/image/png" href="/frontend/images/favicon.png" />
+    <link rel="shortcut icon" href="{{url('/Favicon').'/'.$favicon}}" type="image/x-icon">
+
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="/frontend/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/css/bootstrap.min.css" />

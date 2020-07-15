@@ -6,6 +6,7 @@ use App\Jobs\BulkEmailSender;
 use Illuminate\Http\Request;
 use App\Music;
 use App\SiteSetting;
+use App\TemporaryTransaction;
 use App\User;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,7 @@ class AdminController extends Controller
         $totalMusic = Music::count();
         $producers = User::role('Producer')->count();
         $artists = User::role('Artist')->count();
+        $total_sales = TemporaryTransaction::pluck('amount')->sum();
         if ($request->ajax()) {
             $music = Music::with('user')
                 ->orderBy('created_at', 'DESC')
@@ -62,7 +64,7 @@ class AdminController extends Controller
                 ->rawColumns(['status', 'contact', 'is_paid'])
                 ->make(true);
         }
-        return view('admin.dashboard.index',compact('artists','totalMusic','producers'));
+        return view('admin.dashboard.index',compact('artists','totalMusic','producers','total_sales'));
     }
 
     public function adminMusic(Request $request)
@@ -159,7 +161,7 @@ class AdminController extends Controller
      }
          
   
-      BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+      BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addMinutes(5));
 
     //  dispatch($job);
      
@@ -212,22 +214,42 @@ class AdminController extends Controller
         if ($request->hasFile('logo')) {
             $coverfileDestination = '/Logos';
             $logo = $request->file('logo');
-            $filename = $this->generateUniqueFileName($logo, $coverfileDestination);
+            $logoname = $this->generateUniqueFileName($logo, $coverfileDestination);
+            
+        }
+        if ($request->hasFile('loading_icon')) {
+            $coverfileDestination = '/Loading_Icons';
+            $loading_icon = $request->file('loading_icon');
+            $loading_iconname = $this->generateUniqueFileName($loading_icon, $coverfileDestination);
+            
+        }
+        if ($request->hasFile('favicon')) {
+            $coverfileDestination = '/Favicon';
+            $favicon = $request->file('favicon');
+            $faviconname = $this->generateUniqueFileName($favicon, $coverfileDestination);
             
         }
         $sitesettings = new SiteSetting();
-        $sitesettings->logo = $filename;
+        $sitesettings->logo = $logoname;
+        $sitesettings->loading_icon = $loading_iconname;
+        $sitesettings->favicon = $faviconname;
+        $sitesettings->footer_text = $request->footer_text;
         $sitesettings->bank_details = $request->bank_details;
         $sitesettings->paypal_client_id = $request->client_id;
         $sitesettings->paypal_secret = $request->paypal_secret;
         $sitesettings->beat_time = $request->beatplaytime;
         if ($sitesettings->save()) {
             return response([
-                'error'=>False,
+                'success'=>True,
                 'message'=>'Site Settings Added Successfully',
             ],Response::HTTP_OK);
         
           
+        }else {
+            return response([
+                'error'=>True,
+                'message'=>'Something went wrong',
+            ],Response::HTTP_OK);
         }
     }
 
@@ -243,7 +265,7 @@ class AdminController extends Controller
 
 
     public function siteSettingsUpdate(Request $request,$id){
-        $filename = SiteSetting::where('id',$id)->pluck('logo')->first();
+        
         // dd($request->hasFile('logo'));
        
 
@@ -269,10 +291,32 @@ class AdminController extends Controller
             $logo = $request->file('logo');
             $filename = $this->generateUniqueFileName($logo, $coverfileDestination);
             
+        }else {
+            $filename = SiteSetting::where('id',$id)->pluck('logo')->first();
+        
+        }
+        if ($request->hasFile('loading_icon')) {
+            $coverfileDestination = '/Loading_Icons';
+            $loading_icon = $request->file('loading_icon');
+            $loading_iconname = $this->generateUniqueFileName($loading_icon, $coverfileDestination);
+            
+        }else {
+            $loading_iconname = SiteSetting::where('id',$id)->pluck('loading_icon')->first();
+        }
+        if ($request->hasFile('favicon')) {
+            $coverfileDestination = '/Favicon';
+            $favicon = $request->file('favicon');
+            $faviconname = $this->generateUniqueFileName($favicon, $coverfileDestination);
+            
+        }else {
+            $faviconname = SiteSetting::where('id',$id)->pluck('favicon')->first();
         }
      
         SiteSetting::where('id',$id)->update([
            'logo' => $filename,
+           'loading_icon' => $loading_iconname,
+           'favicon' => $faviconname,
+           'footer_text' => $request->footer_text,
            'bank_details' => $request->bank_details,
            'paypal_client_id' => $request->client_id,
            'paypal_secret' => $request->paypal_secret,
@@ -294,7 +338,7 @@ class AdminController extends Controller
              ],Response::HTTP_OK);
          } else {
              return response([
-                 'success'=>True,
+                 'error'=>True,
                  'message'=>'Site Settings  not deleted',
              ],Response::HTTP_OK);
          }
@@ -342,11 +386,13 @@ public function makeFeatured(Request $request)
         'is_featured' => $status
     ])) {
         return response([
-            'success' => "music Status Updated!",
+            'success' => True,
+            'message' => "Activation Status Updated!",
         ], Response::HTTP_OK);
     } else {
         return response([
-            'errors' => "music Status not Updated!",
+            'errors' => True,
+            'message' => "Activation Status not Updated!",
         ], Response::HTTP_OK);
     }
 

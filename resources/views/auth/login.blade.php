@@ -15,7 +15,7 @@
 
                     <div class="icon_form comments_form">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus autocapitalize="none">
 
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -38,10 +38,10 @@
                     </div>
                     <div class="login_remember_box">
                         <label class="control control--checkbox">keep me signed in
-                            <input type="checkbox">
+                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <span class="control__indicator"></span>
                         </label>
-                        <a href="#" class="forget_password">
+                    <a href="{{url('/password/reset')}}" class="forget_password">
                             Forgot Password ?
                         </a>
                     </div>

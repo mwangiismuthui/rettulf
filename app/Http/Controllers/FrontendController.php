@@ -399,6 +399,7 @@ class FrontendController extends Controller
 
         $user->name = $request->name;
         $user->username = $request->username;
+        $user->about = $request->about;
         $user->paypal_email = $request->paypal_email;
         if(!empty($request->password)){ 
             $user->password = Hash::make($request->password);
