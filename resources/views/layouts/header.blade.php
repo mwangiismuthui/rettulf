@@ -3,7 +3,7 @@
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
                 <a href="{{route('index')}}">
-                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo">
+                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo" style="width: 100px;height:100px; border-radius:20px;">
                 </a>
             </div>
             <div id="toggle">
@@ -15,7 +15,7 @@
             <div class="m24_signin_wrapper">
                 @if (Auth::check())
                 <a href="{{route('login')}}"><img
-                        src="{{ Auth::user()->profile_photo == "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}"
+                        src="{{ Auth::user()->profile_photo != "" ? url('/ProfilePics').'/'.Auth::user()->profile_photo : '/frontend/images/pf.png'}}"
                         alt="img">
                     <div class="login_top_wrapper">
                         <ul class="main_nav_ul">

@@ -38,10 +38,10 @@
                     </div>
                     <div class="login_remember_box">
                         <label class="control control--checkbox">keep me signed in
-                            <input type="checkbox">
+                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <span class="control__indicator"></span>
                         </label>
-                        <a href="#" class="forget_password">
+                    <a href="{{url('/password/reset')}}" class="forget_password">
                             Forgot Password ?
                         </a>
                     </div>

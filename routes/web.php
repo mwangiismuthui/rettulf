@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 // ........................Frontend....................//
 Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/single/genre/{id}', 'FrontendController@singleGenre')->name('singleGenre');
@@ -34,7 +34,7 @@ Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 Route::get('/search/music', 'FrontendController@searchMusic')->name('searchMusic');
 Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'verified'], function () {
 
 
     Route::get('/edit-profile', 'FrontendController@editProfile')->name('editProfile');

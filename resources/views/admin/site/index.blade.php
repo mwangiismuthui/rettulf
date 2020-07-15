@@ -17,6 +17,9 @@
                                
                                     <th>Action</th>
                                     <th>Logo</th>
+                                    <th>Loading Icon</th>
+                                    <th>Favicon</th>
+                                    <th>Footer Text</th>
                                     <th>Bank details</th>
                                     <th>Paypal Client Id </th>
                                     <th>Paypal Client Secret</th>
@@ -30,11 +33,13 @@
                                 
                                     <th>Action</th>
                                     <th>Logo</th>
+                                    <th>Loading Icon</th>
+                                    <th>Favicon</th>
+                                    <th>Footer Text</th>
                                     <th>Bank details</th>
                                     <th>Paypal Client Id </th>
                                     <th>Paypal Client Secret</th>
                                     <th>Beat Playtime</th>
-                                 
                                 </tfoot>
                             </table>
                         </div>
@@ -68,6 +73,18 @@
                     <div class="form-group">
                         <label for="title">Site Logo</label>
                         <input type="file" name="logo" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Loading Icon</label>
+                        <input type="file" name="loading_icon" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Favicon </label>
+                        <input type="file" name="favicon" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Footer text</label>
+                        <input type="text" name="footer_text" id="" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="title">Paypal Client Id</label>
@@ -119,6 +136,13 @@
         {data:'logo',name:'logo',
                       render: function(data, type, full, meta){
                       return "<img src={{ URL::to('') }}/Logos/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},
+        {data:'loading_icon',name:'loading_icon',
+                      render: function(data, type, full, meta){
+                      return "<img src={{ URL::to('') }}/Loading_Icons/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},
+        {data:'favicon',name:'favicon',
+                      render: function(data, type, full, meta){
+                      return "<img src={{ URL::to('') }}/Favicon/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},
+        {data: 'footer_text', name: 'footer_text'},
         {data: 'bank_details', name: 'bank_details'},
         {data: 'paypal_client_id', name: 'paypal_client_id'},
         {data: 'paypal_secret', name: 'paypal_secret'},
@@ -182,9 +206,8 @@
             processData: false,
             dataType: "json",
             success:function(data){
-
+console.log(data);
                 $(".imguploadoverlay").fadeOut();
-            console.log("success");
              if (data.errors) {
                     Lobibox.notify("error", {
                         pauseDelayOnHover: true,

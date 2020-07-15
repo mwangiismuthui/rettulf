@@ -1,7 +1,8 @@
 <div id="sidebar" class="bounce-to-right">
     <div id="toggle_close">×</div>
     <div id='cssmenu'>
-        <a href="{{route('index')}}"><img src="/frontend/images/logo.png" alt="logo"></a>
+        <a href="{{route('index')}}"><img src="{{url('/Logos').'/'.$logopath}}" alt="logo" style="width: 10px;height:10px; border-radius:20px;">
+        </a>
         <ul class="sidebb">
         <li><a href='{{route('index')}}'><i class="flaticon-home"></i>Home</a>
               
@@ -21,15 +22,15 @@
                 </ul>
             </li>
         
-             <li class='has-sub'><a href='#'><i class="flaticon-playlist-1"></i>your music</a>
+             <li class='has-sub'><a href='#'><i class="flaticon-playlist-1"></i>My Dashboard</a>
                 <ul>
                     @hasanyrole('Producer|Artist')
 
-                    <li><a href="{{route('myMusic')}}"><i class="flaticon-playlist-1"></i>Uploaded</a></li>
+                    <li><a href="{{route('myMusic')}}"><i class="flaticon-playlist-1"></i>Uploaded music</a></li>
                     @else
                     @endhasanyrole
                    
-                    <li><a href="{{route('downloadedMusic')}}"><i class="flaticon-download"></i>downloaded</a></li>
+                    <li><a href="{{route('downloadedMusic')}}"><i class="flaticon-download"></i>downloaded music</a></li>
                     {{-- <li><a href="favourite.html"><i class="flaticon-heart"></i>favourite</a></li> --}}
                     {{-- <li><a href="history.html"><i class="flaticon-clock"></i>history</a></li> 						
                     <li><a href="free_music.html"><i class="flaticon-music-1"></i>free_music</a></li> 						 --}}
@@ -50,6 +51,22 @@
                      @else
                 @endhasanyrole
                
+                     
+           </ul>
+      </div>
+            <div class="lang_apply_btn">
+            <ul>
+           
+                @if (Auth::check())
+                <li>
+                    <a href="{{route('logout')}}"> <i class="flaticon-login-button"></i>Logout</a>
+                  </li>   
+                @else
+                <li>
+                    <a href="{{route('login')}}"> <i class="flaticon-login-button"></i>Register/Login</a>
+                  </li>   
+                @endif
+                     
            </ul>
       </div>
     </div>

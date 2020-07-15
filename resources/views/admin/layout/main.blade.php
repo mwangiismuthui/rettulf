@@ -7,9 +7,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Music</title>
+    <title>{{ $seo->seo_title }}</title>
     <!--favicon-->
-    <link rel="icon" href="/backend/assets/images/favicon.ico" type="image/x-icon">
+   
+    <link rel="icon" href="{{url('/Favicon').'/'.$favicon}}" type="image/x-icon">
 
 
     <link rel="stylesheet" href="/backend/assets/plugins/summernote/dist/summernote-bs4.css"/>

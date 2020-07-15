@@ -1,8 +1,8 @@
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
   <div class="brand-logo">
     <a href="{{route('dashboard')}}">
-      <img src="/backend/assets/image/logo.jpg" class="logo-icon" alt="logo icon">
-      <h5 class="logo-text">Music</h5>
+      <img src="{{url('/Logos').'/'.$logopath}}" alt="logo" style="width: 30px;height:30px; border-radius:20px;">
+            <h5 class="logo-text">{{ $seo->seo_title }}</h5>
     </a>
   </div>
   <ul class="sidebar-menu do-nicescrol">

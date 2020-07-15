@@ -109,7 +109,7 @@
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                 <div class="btm_foter_box">
 
-                    <p>Copyright © 2020 <a> Music</p>
+                <p>{{$footer_text}}</p>
                 </div>
             </div>
         </div>

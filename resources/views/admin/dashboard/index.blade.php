@@ -7,7 +7,7 @@
     <div class="row mt-3">
       <div class="col-12 col-lg-6 col-xl-3">
         <div class="card border-info border-left-sm">
-          <a href="">
+          <a >
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
@@ -23,7 +23,7 @@
       </div>
       <div class="col-12 col-lg-6 col-xl-3">
         <div class="card border-danger border-left-sm">
-          <a href="">
+          <a>
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
@@ -39,7 +39,7 @@
       </div>
       <div class="col-12 col-lg-6 col-xl-3">
         <div class="card border-success border-left-sm">
-          <a href="">
+          <a>
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
@@ -55,15 +55,15 @@
       </div>
       <div class="col-12 col-lg-6 col-xl-3">
         <div class="card border-warning border-left-sm">
-          <a href="">
+          <a >
             <div class="card-body">
               <div class="media align-items-center">
                 <div class="media-body text-left">
-                <h4 class="text-warning mb-0"></h4>
-                  <span>Coming Soon</span>
+                <h4 class="text-warning mb-0">{{$total_sales}}</h4>
+                  <span>Total Sales</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-blooker">
-                  <i class="icon-user text-white"></i></div>
+                  <i class="fa fa-money text-white"></i></div>
               </div>
             </div>
           </a>

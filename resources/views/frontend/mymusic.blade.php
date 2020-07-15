@@ -34,10 +34,8 @@
                     <div class="artist_wrapper_text">
                         <div class="artist_wrapper_left">
                             <h1>{{$artist->name}}</h1>
-                            <p>Artist, {{$artist->location->location}}</p>
-                            <p>Renowned for his soulful singing, Indian musician Arijit Singh is also a music composer,
-                                producer, recordist and programmer. He has several blockbuster songs to his credit and
-                                has won 23 awards so far, which makes him one of the most successful sing... Full Bio
+                            <p>@role('Producer') Producer ,@endrole  @role('Artist') Artist ,@endrole {{$artist->location->location}}</p>
+                            <p>{{$artist->about}}
                             </p>
 
                             @if(session()->has('message'))
@@ -97,7 +95,7 @@
                         <a><i class="flaticon-play-button" aria-disabled="true"></i>Withdraw</a>
                     </div>
                     <p style="color: #fff">You will be able to request a withdrawal as soon as your balance reaches the
-                        minimum required amount of $ 100.00.</p>
+                        minimum required amount of $100.00.</p>
                     @endif
                 </div>
             </div>
