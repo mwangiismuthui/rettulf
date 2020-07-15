@@ -19,7 +19,7 @@ class CreateTemporaryTransactionsTable extends Migration
             $table->string('exacturl');
             $table->uuid('music_id');
             $table->double('amount');
-            $table->foreign('user_id')->references('id')->on('music')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('music_id')->references('id')->on('music')->onDelete('cascade');
             $table->string('time')->default(date('YYYY-MM-dd HH:mm:ss'));
             $table->softDeletes();

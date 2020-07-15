@@ -15,7 +15,7 @@
                   <span>Total Music</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-scooter">
-                <i class="icon-basket-loaded text-white"></i></div>
+                <i class="icon-music-tone text-white"></i></div>
               </div>
             </div>
           </a>
@@ -31,7 +31,7 @@
                   <span>Total Artist</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-bloody">
-                <i class="icon-wallet text-white"></i></div>
+                <i class="icon-people text-white"></i></div>
               </div>
             </div>
           </a>
@@ -47,7 +47,7 @@
                   <span>Total Producers</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-quepal">
-                <i class="icon-pie-chart text-white"></i></div>
+                <i class="icon-user text-white"></i></div>
               </div>
             </div>
           </a>
@@ -60,7 +60,7 @@
               <div class="media align-items-center">
                 <div class="media-body text-left">
                 <h4 class="text-warning mb-0"></h4>
-                  <span>Total Services</span>
+                  <span>Coming Soon</span>
                 </div>
                 <div class="align-self-center w-circle-icon rounded-circle gradient-blooker">
                   <i class="icon-user text-white"></i></div>

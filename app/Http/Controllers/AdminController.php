@@ -159,7 +159,7 @@ class AdminController extends Controller
      }
          
   
-      BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+      BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addMinutes(5));
 
     //  dispatch($job);
      

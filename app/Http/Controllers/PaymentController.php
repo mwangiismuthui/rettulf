@@ -40,11 +40,12 @@ class PaymentController extends Controller
     public function upload_payment(Request $request,$id)
     {
 
-        $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
-        $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
+        // $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
+        // $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
         $previousUrl = url()->previous();
         $exacturl = substr($previousUrl, 22);
-
+        return $previousUrl;
+        https://justerudite.com/
         // $user_id = request()->ip();
         $music_amount = Music::where('id', $id)->pluck('price')->first();
         $total = (int) $music_amount;
