@@ -194,16 +194,21 @@ class AdminController extends Controller
     {
 
         $rules = [
-            'logo' => 'required',
+            'logo' => 'required|mimes:png,jpg,jpeg',
             'bank_details' => 'required',
             'client_id' => 'required',
             'paypal_secret' => 'required',
             'beatplaytime' => 'required',
+            'favicon' => 'required|mimes:png,jpg,jpeg,ico',
+            'loading_icon' => 'required|mimes:gif',
 
         ];
-
-        $error = Validator::make($request->all(), $rules);
-
+        $messages = [
+            'loading_icon.mimes' => 'Loading Icon must be of farmat: gif',
+            'logo.mimes' => 'Logo must be of farmat: png,jpg,jpeg',
+            'favicon.mimes' => 'Favicon must be of farmat: png,jpg,jpeg,ico',
+        ];
+        $error = Validator::make($request->all(), $rules, $messages);
         if ($error->fails()) {
             return response([
                 'errors'=>True,
@@ -248,7 +253,7 @@ class AdminController extends Controller
         }else {
             return response([
                 'error'=>True,
-                'message'=>'Something went wrong',
+                'message'=>$error->errors()->all(),
             ],Response::HTTP_OK);
         }
     }
@@ -270,15 +275,21 @@ class AdminController extends Controller
        
 
         $rules = [
-            // 'logo' => 'required',
+            'logo' => 'mimes:png,jpg,jpeg',
             'bank_details' => 'required',
             'client_id' => 'required',
             'paypal_secret' => 'required',
             'beatplaytime' => 'required',
+            'favicon' => 'mimes:png,jpg,jpeg,ico',
+            'loading_icon' => 'mimes:gif',
 
         ];
-
-        $error = Validator::make($request->all(), $rules);
+        $messages = [
+            'loading_icon.mimes' => 'Loading Icon must be of farmat: gif',
+            'logo.mimes' => 'Logo must be of farmat: png,jpg,jpeg',
+            'favicon.mimes' => 'Favicon must be of farmat: png,jpg,jpeg,ico',
+        ];
+        $error = Validator::make($request->all(), $rules, $messages);
 
         if ($error->fails()) {
             return response([

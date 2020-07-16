@@ -57,7 +57,6 @@ if(!isset($seo)){
             <img src="{{url('/Loading_Icons').'/'.$loading_icon}}" id="preloader_image" alt="loader">
         </div>
     </div>
-    <div class="cursor"></div>
     <!-- top navi wrapper Start -->
     <div class="m24_main_wrapper">
         @include('layouts.header')

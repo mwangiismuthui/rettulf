@@ -231,16 +231,16 @@ console.log(data);
                 $('#seomodal').modal('hide');
                 $('#siteSettings_table').DataTable().ajax.reload();
             },
-            error: function () {
-            Lobibox.notify("error", {
-                pauseDelayOnHover: true,
-                continueDelayOnInactiveTab: false,
-                position: "top right",
-                icon: "fa fa-times-circle",
-                msg: "Something went wrong!Please try again",
-            });
-            console.log("error");
-            },
+            // error: function () {
+            // Lobibox.notify("error", {
+            //     pauseDelayOnHover: true,
+            //     continueDelayOnInactiveTab: false,
+            //     position: "top right",
+            //     icon: "fa fa-times-circle",
+            //     msg: "Something went wrong!Please try again",
+            // });
+            // console.log("error");
+            // },
         });
     });
    
