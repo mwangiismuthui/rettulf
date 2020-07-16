@@ -89,10 +89,10 @@
         padding: 5px 0 0 0
     }
     .m24_header_right_Wrapper {
-        width: 10%
+        width: 15%
     }
     .m24_navigation_wrapper {
-        width: 75%
+        width: 70%
     }
     .slider_headphone {
         left: 0
@@ -183,13 +183,13 @@
     .m24_logo_wrapper {
         width: 22%
     }
-    .m24_navigation_wrapper {
+    /* .m24_navigation_wrapper {
         width: 78%
     }
     .navi_searchbar_wrapper {
         width: 69%;
         float: left
-    }
+    } */
     .login_top_wrapper p {
         display: block
     }
@@ -624,6 +624,9 @@
     }
     .navi_searchbar_wrapper #toremove {
         width: inherit;
+    }
+    .navi_searchbar_wrapper .input-group{
+        flex-wrap: wrap;
     }
 }
 @media (max-width:850px) {

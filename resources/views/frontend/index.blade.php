@@ -5,9 +5,9 @@
 <!-- slider wrapper start -->
 <div class="main_slider_wrapper slider-area">
     <div class="slider_side_width"></div>
-    <div class="slider_headphone">
+    {{-- <div class="slider_headphone">
         <img src="/frontend/images/headphone.png" class="img-responsive" alt="img">
-    </div>
+    </div> --}}
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             @foreach ($sliders as $slider)
