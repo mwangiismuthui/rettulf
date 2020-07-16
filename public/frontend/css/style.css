@@ -7165,8 +7165,18 @@ span.ovrly_text2 {
 	width: 230px;
 }
 .navi_searchbar_wrapper .input-group{
-	flex-wrap: wrap-reverse;
+	flex-wrap: inherit;
 }
 .navi_searchbar_wrapper  .select2-container--default .select2-selection--single{
 	border-radius: 0%;
+}
+.jn_container .content{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.jn_container .content p, .jn_container .content h2{
+	color: #fff !important;
+} 
+.main_nav_ul li a{
+	font-size: small;
 }

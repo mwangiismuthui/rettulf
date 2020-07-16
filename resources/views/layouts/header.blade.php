@@ -3,7 +3,7 @@
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
                 <a href="{{route('index')}}">
-                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo" style="width: 100px;height:100px; border-radius:20px;">
+                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo" >
                 </a>
             </div>
             <div id="toggle">
@@ -97,7 +97,7 @@
                         <li class="divider"></li>
                         <li class="parent"><a href="#all"><i class="fas fa-caret-right"></i>Anything</a></li>
                     </ul>
-                </div><br>
+                </div>
                 <input type="hidden" name="search_category" value="all" id="search_param">
                 <div id="toremove">
                 <select class="music_search" name="music" onchange="gotoMusic(this)">
