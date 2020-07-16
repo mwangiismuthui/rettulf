@@ -23,6 +23,10 @@
                         <img src="{{url('/Loading_Icons').'/'.$loading_icon}}" alt="loader">
                         <br>
                         Uploading...
+                        <!-- Progress bar -->
+                        <div class="progress">
+                            <div class="progress-bar" style="background-color: #ff3b1b;"></div>
+                        </div>
                     </div>
                     <center id="form_result" style="margin-bottom:35px"> </center>
                     <div class="row">
@@ -35,7 +39,7 @@
                                     @hasrole ('Artist')
                                     <label for="genre">Genre of Song</label>
                                     @endif
-                                    <select class="form-control require genre" id="genre" name="genre_id">
+                                    <select class="form-control require genre" id="genre" name="genre_id" required="">
                                         <option value="" disabled selected>Select Genre *</option>
                                         @foreach ($genres as $genre)
                                         <option value="{{$genre->id}}">{{$genre->genre}}</option>
@@ -84,7 +88,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
 
-                                    <label for="cover">Tempo</label>
+                                    <label for="cover">Tempo (bpm)</label>
                                     <input type="text" class="form-control require" name="tempo" required=""
                                         placeholder="beat tempo *">
 
@@ -101,10 +105,10 @@
                             <div class="form-e">
                                 <div class="form-group i-name">
                                     @hasrole ('Producer')
-                                    <label for="cover">Choose Cover Art for Beat </label>
+                                    <label for="cover">Choose Cover Art for Beat (jpeg/png)</label>
                                     @endif
                                     @hasrole ('Artist')
-                                    <label for="cover">Choose Cover Art for Song </label>
+                                    <label for="cover">Choose Cover Art for Song (jpeg/png)</label>
                                     @endif
                                     <input class="form-control require" name="cover_art" id="cover" type="file" required
                                         accept="image/*" required="" />
@@ -116,10 +120,10 @@
                             <div class="form-e">
                                 <div class="form-group i-name">
                                     @hasrole ('Producer')
-                                    <label for="music">Choose Beat File</label>
+                                    <label for="music">Choose Beat File (mp3/wav)</label>
                                     @endif
                                     @hasrole ('Artist')
-                                    <label for="music">Choose Song File</label>
+                                    <label for="music">Choose Song File (mp3/wav)</label>
                                     @endif
 
                                     <input class="form-control require" name="music" id="music" type="file" required
@@ -167,7 +171,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
 
-                                    <label for="music">Price range between $10 to $100</label>
+                                    <label for="music">Price range between $0 to $100</label>
                                     <p class="text-info">Enter $0 for free Beats</p>
                                     <input type="text" class="form-control require" name="price" required=""
                                         placeholder="price*">
@@ -198,6 +202,7 @@
 <script src="/frontend/plugin/ckeditor/ckeditor.js"></script>
 
 <script type="text/javascript">
+    @hasrole ('Artist')
     ClassicEditor
 		.create( document.querySelector( '#lyrics' ), {
 			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
@@ -208,7 +213,7 @@
 		.catch( err => {
 			console.error( err.stack );
 		} );
-
+@endif
     $(document).ready(function() {
             $('.genre').select2();           
             $('.key').select2(); 
@@ -220,6 +225,17 @@
         event.preventDefault();
          $(".fileuploadoverlay").fadeIn();
         $.ajax({
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = ((evt.loaded / evt.total) * 100);
+                        $(".progress-bar").width(percentComplete + '%');
+                        $(".progress-bar").html(percentComplete+'%');
+                    }
+                }, false);
+                return xhr;
+            },
             url: "{{route('file.store')}}",
             method: "POST",
             data: new FormData(this),
@@ -227,7 +243,10 @@
             cache: false,
             processData: false,
             dataType: "json",
-
+            beforeSend: function(){
+                $(".progress-bar").width('0%');
+                // $('#uploadStatus').html('<img src="images/loading.gif"/>');
+            },
             success:function(data){
                 $(".fileuploadoverlay").fadeOut();
                if (data.errors) {
@@ -304,6 +323,29 @@
 
             },
         });
+    });
+
+    // File type validation
+    $("#music").change(function(){
+        var allowedTypes = ['audio/mpeg','audio/wav'];
+        var file = this.files[0];
+        var fileType = file.type;
+        if(!allowedTypes.includes(fileType)){
+            alert('Please select a valid file mp3/wav.');
+            $("#music").val('');
+            return false;
+        }
+    });
+
+    $("#cover").change(function(){
+        var allowedTypes = ['image/jpeg','image/png'];
+        var file = this.files[0];
+        var fileType = file.type;
+        if(!allowedTypes.includes(fileType)){
+            alert('Please select a valid file jpeg/png.');
+            $("#cover").val('');
+            return false;
+        }
     });
 </script>
 

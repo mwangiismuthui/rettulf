@@ -622,6 +622,9 @@
     .res_search_box {
        margin-top: 12px
     }
+    .navi_searchbar_wrapper #toremove {
+        width: inherit;
+    }
 }
 @media (max-width:850px) {
     .jp_repeat_responsive .icon-3x,

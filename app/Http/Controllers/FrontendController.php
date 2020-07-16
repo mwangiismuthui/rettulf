@@ -184,7 +184,6 @@ class FrontendController extends Controller
     {
         $user = User::where('id', $id)->get();
         $user_music = Music::where('user_id', $id)
-
             ->where('music.status', 1)
             ->orderBy('created_at', 'DESC')->get();
         $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
@@ -497,22 +496,83 @@ class FrontendController extends Controller
         return Response::download($file, $name, $headers);
     }
 
+    public function searchResults($id)
+    {
+        $is_music = Music::find($id);
+        $music = collect();
+        $user = collect();
+        if ($is_music) {
+            $seo = Seo::where('seos.page_title', 'like', 'buymusic')->first();
+            $music = Music::find($id);
+            return view('frontend.buymusic', compact('music', 'seo'));
+        } else {
+            $user = User::where('id', $id)->get();
+            $user_music = Music::where('user_id', $id)
+                ->where('music.status', 1)
+                ->orderBy('created_at', 'DESC')->get();
+            $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
+            return view('frontend.artist_single', compact('user_music', 'user','seo'));
+        }
+        
+       
+        
+        
+    }
 
-    public function searchMusic(Request $request)
+    public function searchMusic(Request $request, $search_category)
     {
         $search = $request->search;
+        $musics = collect();
         if ($search == '') {
-            $musics = Music::orderby('title', 'asc')
+            if ($search_category == 'all') {
+                $data1 = Music::orderby('title', 'asc')
                 ->select("id", "title")
                 ->limit(15)
                 ->get();
+                $data2 = User::role(['Artist','Producer'])->orderby('name', 'asc')
+                ->select("id", "name as title")
+                ->limit(15)
+                ->get();
+                $musics = $data1->merge($data2);
+            } else if ($search_category == 'artists_search') {
+                $musics = User::role(['Artist','Producer'])->orderby('name', 'asc')
+                ->select("id", "name as title")
+                ->limit(15)
+                ->get();
+            }else if ($search_category == 'beats_music_search') {
+                $musics = Music::orderby('title', 'asc')
+                ->select("id", "title")
+                ->limit(15)
+                ->get();
+            }            
+            
         } else {
-            $musics = Music::orderby('title', 'asc')
+            if ($search_category == 'all') {
+                $data1 = Music::orderby('title', 'asc')
                 ->select("id", "title")
                 ->where('title', 'LIKE', "%$search%")
                 ->orWhere('description', 'LIKE', "%$search%")
                 ->limit(15)
                 ->get();
+                $data2 = User::role(['Artist','Producer'])->orderby('name', 'asc')
+                ->select("id", "name as title")
+                ->limit(15)
+                ->get();
+                $musics = $data1->merge($data2);
+            } else if ($search_category == 'artists_search') {
+                $musics = User::role(['Artist','Producer'])->orderby('name', 'asc')
+                ->select("id", "name as title")
+                ->where('name', 'LIKE', "%$search%")
+                ->orWhere('username', 'LIKE', "%$search%")
+                ->limit(15)
+                ->get();
+            }else if ($search_category == 'beats_music_search') {
+                $musics = Music::orderby('title', 'asc')
+                ->select("id", "title")
+                ->limit(15)
+                ->get();
+            }
+            
         }
         $response = [];
         foreach ($musics as $music) {

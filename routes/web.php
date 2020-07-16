@@ -31,8 +31,9 @@ Route::get('/new-beats', 'FrontendController@newBeats')->name('newBeats');
 Route::get('/top-producers', 'FrontendController@topProducers')->name('topProducers');
 Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
 Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
-Route::get('/search/music', 'FrontendController@searchMusic')->name('searchMusic');
+Route::get('/search/music/{search_category}', 'FrontendController@searchMusic')->name('searchMusic');
 Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+Route::get('/search-results/{id}', 'FrontendController@searchResults')->name('searchResults');
 
 Route::group(['middleware' => 'verified','auth'], function () {
 

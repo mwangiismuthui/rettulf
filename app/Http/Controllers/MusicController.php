@@ -66,9 +66,8 @@ class MusicController extends Controller
             'description' => 'required',
             // 'tempo' => 'required',
             'cover_art' => 'required',
-            'music' => 'mimes:mpga,wav,webm,mp4',
-            // 'music' => 'mimes:MP3, AAC, M4A, wav, AIFF, FLAC, MP2, WMA, MP4,OGG',
-            'price' => '|integer|between:10,100',
+            'music' => 'mimes:mpga,wav',
+            'price' => '|integer|between:0,100',
 
         ];
         $messages = [
