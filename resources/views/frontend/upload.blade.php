@@ -20,7 +20,7 @@
                 <form id="music_add" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div id="overlay-load" style="display:none;" class="fileuploadoverlay">
-                        <img src="/frontend/images/loader.gif" alt="loader">
+                        <img src="{{url('/Loading_Icons').'/'.$loading_icon}}" alt="loader">
                         <br>
                         Uploading...
                     </div>

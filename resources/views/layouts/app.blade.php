@@ -54,7 +54,7 @@ if(!isset($seo)){
     <!-- preloader Start -->
     <div id="preloader">
         <div id="status">
-            <img src="/frontend/images/loader.gif" id="preloader_image" alt="loader">
+            <img src="{{url('/Loading_Icons').'/'.$loading_icon}}" id="preloader_image" alt="loader">
         </div>
     </div>
     <div class="cursor"></div>

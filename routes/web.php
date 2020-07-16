@@ -34,7 +34,7 @@ Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 Route::get('/search/music', 'FrontendController@searchMusic')->name('searchMusic');
 Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 
-Route::group(['middleware' => 'verified'], function () {
+Route::group(['middleware' => 'verified','auth'], function () {
 
 
     Route::get('/edit-profile', 'FrontendController@editProfile')->name('editProfile');

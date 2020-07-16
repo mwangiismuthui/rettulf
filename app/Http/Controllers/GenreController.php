@@ -117,7 +117,7 @@ class GenreController extends Controller
     public function update(Request $request,$id)
     {
         if($request->hasFile('genre_image')){
-            $fileDestination = 'Genre_Images';
+            $fileDestination = '/Genre_Images';
             $genrefile = $request->file('genre_image');
             $filename = $this->generateUniqueFileName($genrefile, $fileDestination);
             
