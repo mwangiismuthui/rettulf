@@ -1246,7 +1246,7 @@ span.comboTreeItemTitle{
 .m24_signin_wrapper .login_top_wrapper {
     float: right;
     width: calc(100% - 80px);
-    padding-left: 15px;
+    /* padding-left: 15px; */
 	padding-top:6px;
 }
 .login_top_wrapper p {
@@ -4476,7 +4476,7 @@ body.off-canvas-overlay-on {
 	background:#fff;
 	padding-top:80px;
 }
-.artist_wrapper_content img{
+.artist_wrapper_content .img-responsive{
 	float:left;
 	width:130px;
 	height: 130px;

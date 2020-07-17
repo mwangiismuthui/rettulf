@@ -105,7 +105,7 @@
 </div>
 
 <script>
-
+    
         var table = $('#music_table').DataTable({
         processing: true,
         serverSide: true,
