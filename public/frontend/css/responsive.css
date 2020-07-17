@@ -365,6 +365,10 @@
     .navi_searchbar_wrapper {
         width: 65%
     }
+    .m24_signin_wrapper .login_top_wrapper {
+        float: none;
+        width: 0px;
+    }
 }
 @media (max-width:991px) {
     .house_toggle .menubar {
@@ -628,6 +632,7 @@
     .navi_searchbar_wrapper .input-group{
         flex-wrap: wrap;
     }
+    
 }
 @media (max-width:850px) {
     .jp_repeat_responsive .icon-3x,

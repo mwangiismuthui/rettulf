@@ -9,11 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ $seo->seo_title }}</title>
     <!--favicon-->
-   
-    <link rel="icon" href="{{url('/Favicon').'/'.$favicon}}" type="image/x-icon">
-
-
-    <link rel="stylesheet" href="/backend/assets/plugins/summernote/dist/summernote-bs4.css"/>
+    <link rel="icon" href="/backend/assets/images/favicon.ico" type="image/x-icon">
     <!-- Vector CSS -->
     <link href="/backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- simplebar CSS-->
@@ -61,9 +57,11 @@
     <!--Inputtags Js-->
     <script src="/backend/assets/plugins/inputtags/js/bootstrap-tagsinput.js"></script>
     <script src="/backend/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+
+    <script src="/backend/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/backend/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+    <script src="/backend/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
     {{-- <script src="/backend/assets/plugins/bootstrap-datatable/js/dataTables.cellEdit.js"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> --}}
-   
 
 </head>
 
@@ -133,11 +131,9 @@
     <script src="/backend/assets/js/index.js"></script>
 
     <!--Data Tables js-->
-    <script src="/backend/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/backend/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
-    <script src="/backend/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+    
     <script src="/backend/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
-    {{-- <script src="/backend/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script> --}}
+    <script src="/backend/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
     <script src="/backend/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
     <script src="/backend/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
     <script src="/backend/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>

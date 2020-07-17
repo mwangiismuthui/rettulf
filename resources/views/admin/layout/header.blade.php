@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
           <span class="user-profile"><img src="/backend/assets/images/avatars/profilepic.png" class="img-circle"
-              alt="user avatar"></span>
+              alt="img"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
           <li class="dropdown-item user-details">

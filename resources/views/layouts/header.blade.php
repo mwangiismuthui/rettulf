@@ -3,7 +3,7 @@
         <div class="m24_logo_wrapper">
             <div class="m24_logo_div">
                 <a href="{{route('index')}}">
-                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo" >
+                    <img src="{{url('/Logos').'/'.$logopath}}" alt="logo">
                 </a>
             </div>
             <div id="toggle">
@@ -31,11 +31,15 @@
 
             </a>
             @else
-            <a href="{{route('login')}}">
-                <div class="login_top_wrapper">
-                    <p>login/register</p>
+
+            <div class="login_top_wrapper">
+                <div class="lang_apply_btn">
+                    <ul>
+                        <li><a href="{{route('login')}}"><i class="flaticon-login-button"></i>Register/Login</a></li>
+                    </ul>
                 </div>
-            </a>
+            </div>
+
             @endif
 
         </div>
@@ -100,10 +104,10 @@
                 </div>
                 <input type="hidden" name="search_category" value="all" id="search_param">
                 <div id="toremove">
-                <select class="music_search" name="music" onchange="gotoMusic(this)">
-                    <option value="" disabled selected>Search Music and Beats
-                    </option>
-                </select>
+                    <select class="music_search" name="music" onchange="gotoMusic(this)">
+                        <option value="" disabled selected>Search Music and Beats
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -131,8 +135,11 @@
                         @else
                         <a href="{{route('login')}}">
                             <div class="login_top_wrapper">
-                                <p>login/register</p>
-
+                                <div class="lang_apply_btn">
+                                    <ul>
+                                        <li><i class="flaticon-login-button"></i>Register/Login</li>
+                                    </ul>
+                                </div>
                             </div>
                         </a>
                         @endif
