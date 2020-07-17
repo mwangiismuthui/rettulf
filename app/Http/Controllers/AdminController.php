@@ -76,14 +76,14 @@ class AdminController extends Controller
                 ->addIndexColumn()
                 ->addColumn('status', function ($data) {
                     if ($data->status == '0') {
-                        return ' <a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New</a><div class="dropdown-menu">
+                        return ' <a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New</a> &nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New</a><div class="dropdown-menu">
                         <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">New </a>
                         <a class="dropdown-item" data-id="" onclick="Published(\'' . $data->id . '\')">Publish </a> 
                         
                         </div>';
                     } elseif ($data->status == '1') {
 
-                        return ' <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Published</a><div class="dropdown-menu">
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '"><i class="fa fa-volume-up"></i></a> &nbsp;&nbsp; <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Published</a><div class="dropdown-menu">
                         <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">New </a>
                         <a class="dropdown-item" data-id="" onclick="Published(\'' . $data->id . '\')">Publish </a> 
                         
@@ -419,4 +419,16 @@ public function makeFeatured(Request $request)
             return null;
         }
     }
+
+
+    public function Musicshow($id)
+    {
+      if (request()->ajax()) {
+        $data = Music::findOrFail($id);
+        // return $data;
+        return response(['data' => $data], Response::HTTP_OK);
+      }
+    }
+
+    
 }

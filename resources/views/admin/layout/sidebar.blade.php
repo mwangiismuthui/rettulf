@@ -8,16 +8,16 @@
   <ul class="sidebar-menu do-nicescrol">
     <li class="sidebar-header">MAIN NAVIGATION</li>
     @can('view-dashboard')
-    <li>
-      <a href="{{route('dashboard')}}" class="waves-effect">
-        <i class="ti-home"></i> <span>Dashboard</span>
+    <li class="{{ Route::currentRouteNamed('dashboard') ? 'active ' : '' }}">
+      <a href="{{route('dashboard')}}" class="waves-effect ">
+        <i class="ti-home "></i> <span>Dashboard</span>
       </a>
 
     </li>
     @endcan
     @can('manage-category')
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('category.index') ? 'active ' : '' }}">
     <a href="{{route('category.index')}}" class="waves-effect">
         <i class="ti-package"></i>
         <span>Category Management</span>
@@ -27,7 +27,7 @@
     @endcan
     @can('manage-genre')
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('genre.index') ? 'active ' : '' }}">
     <a href="{{route('genre.index')}}" class="waves-effect">
         <i class="ti-layout-media-right"></i>
         <span>Genre Management</span>
@@ -37,7 +37,7 @@
     @endcan
     @can('manage-keys')
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('key.index') ? 'active ' : '' }}">
     <a href="{{route('key.index')}}" class="waves-effect">
         <i class="ti-music"></i>
         <span>Key Management</span>
@@ -47,7 +47,7 @@
     @endcan
     @can('manage-music')
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('adminMusic.index') ? 'active ' : '' }}">
       <a href="{{route('adminMusic.index')}}" class="waves-effect">
           <i class="ti-music-alt"></i>
           <span>Music Management</span>
@@ -58,7 +58,7 @@
 
       @can('activate-artist')
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('activation') ? 'active ' : '' }}">
       <a href="{{route('activation')}}" class="waves-effect">
           <i class="ti-light-bulb"></i>
           <span>Activation Management</span>
@@ -68,7 +68,7 @@
       @endcan
       @can('manage-slider')
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('slider.index') ? 'active ' : '' }}">
       <a href="{{route('slider.index')}}" class="waves-effect">
           <i class="ti-layout-slider"></i>
           <span>Slider Management</span>
@@ -78,7 +78,7 @@
       @endcan
       @can('manage-emails')
 
-      <li>
+      <li class="{{ Route::currentRouteNamed('bulkEmails') ? 'active ' : '' }}">
       <a href="{{route('bulkEmails')}}" class="waves-effect">
           <i class="ti-email"></i>
           <span>Bulk Emails</span>
@@ -88,7 +88,7 @@
       @endcan
       @can('manage-seo')
 
-      <li>
+      <li class="{{ Route::currentRouteNamed('siteSettingsIndex') ? 'active ' : '' }}">
       <a href="{{route('siteSettingsIndex')}}" class="waves-effect">
           <i class="ti-settings"></i>
           <span>Site Management</span>
@@ -98,7 +98,7 @@
       @endcan
       @can('manage-seo')
 
-      <li>
+      <li class="{{ Route::currentRouteNamed('seo.index') ? 'active ' : '' }}">
       <a href="{{route('seo.index')}}" class="waves-effect">
           <i class="ti-search"></i>
           <span>SEO Management</span>
@@ -108,7 +108,7 @@
       @endcan
 
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('uploadFee.index') ? 'active ' : '' }}">
       <a href="javaScript:void();" class="waves-effect">
         <i class="ti-money"></i>
         <span>Money Management</span> <i class="fa fa-angle-left pull-right"></i>
@@ -116,17 +116,17 @@
       <ul class="sidebar-submenu">
 
       @can('manage-upload-fee')
-        <li><a href="{{route('uploadFee.index')}}"><i class="fa fa-circle-o"></i>Upload Fee Management</a></li>
+        <li class="{{ Route::currentRouteNamed('uploadFee.index') ? 'active ' : '' }}"><a href="{{route('uploadFee.index')}}"><i class="fa fa-circle-o"></i>Upload Fee Management</a></li>
         @endcan
 
       @can('manage-payments')
-        <li><a href="{{route('allWithdrawalRequests')}}"><i class="fa fa-circle-o"></i>Payment Management</a></li>
+        <li class="{{ Route::currentRouteNamed('allWithdrawalRequests') ? 'active' : '' }}"><a href="{{route('allWithdrawalRequests')}}"><i class="fa fa-circle-o"></i>Payment Management</a></li>
         @endcan
 
       </ul>
     </li>
 
-    <li>
+    <li class="{{ Route::currentRouteNamed('users.index') ? 'active ' : '' }}">
       <a href="javaScript:void();" class="waves-effect">
         <i class="icon-user"></i>
         <span>User Management</span> <i class="fa fa-angle-left pull-right"></i>
@@ -134,12 +134,12 @@
       <ul class="sidebar-submenu">
         @can('manage-users')
 
-        <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i>User Management</a></li>
+        <li class="{{ Route::currentRouteNamed('users.index') ? 'active ' : '' }}"><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i>User Management</a></li>
         @endcan
 
         {{-- @can('manage-roles') --}}
 
-        <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i>Role Management</a></li>
+        <li class="{{ Route::currentRouteNamed('roles.index') ? 'active ' : '' }}"><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i>Role Management</a></li>
         {{-- @endcan --}}
 
       </ul>

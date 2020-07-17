@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\User;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,9 +26,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $week = Carbon::now()->addWeek();
+            User::whereNull('email_verified_at')
+            ->where('created_at', $week)
+            ->delete();
+        })->everyMinute();
         $schedule->command('queue:listen')
-        ->everyMinute();
+            ->everyMinute();
+    
     }
 
     /**
@@ -36,7 +44,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
