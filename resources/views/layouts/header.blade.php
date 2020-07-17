@@ -31,7 +31,7 @@
 
             </a>
             @else
-            <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">
+            <a href="{{route('login')}}">
                 <div class="login_top_wrapper">
                     <p>login/register</p>
                 </div>
@@ -129,7 +129,7 @@
                             @csrf
                         </form>
                         @else
-                        <a href="{{route('login')}}"><img src="/frontend/images/pf.png" alt="img">
+                        <a href="{{route('login')}}">
                             <div class="login_top_wrapper">
                                 <p>login/register</p>
 

@@ -2,56 +2,23 @@
 @section('content')
 
 
-<!-- slider wrapper start -->
 <div class="main_slider_wrapper slider-area">
-    <div class="slider_side_width"></div>
-    {{-- <div class="slider_headphone">
-        <img src="/frontend/images/headphone.png" class="img-responsive" alt="img">
-    </div> --}}
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-            @foreach ($sliders as $slider)
-
-            <div class="carousel-item {{$loop->first ? 'active':''}}">
-                <div class="carousel-captions caption-{{$loop->index + 1}}">
-                    <div class="container jn_container">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="content">
-
-                                    <h2 data-animation="animated fadeInUp">{{$slider->title}}</h2>
-                                    <p data-animation="animated fadeInUp">{{$slider->subtitle}} </p>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="content_img_wrapper">
-                                    <img src="{{ URL::to('/') }}/SliderImages/{{$slider->image_path}}" alt="img" }}>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-            <ol class="carousel-indicators">
-                @foreach ($sliders as $slider)
-                <li data-target="#carousel-example-generic" data-slide-to="{{$loop->index}}"
-                    class="{{$loop->first ? 'active':''}}"><span class="number"></span>
-                </li>
-                @endforeach
-            </ol>
-            <div class="carousel-nevigation">
-                <a class="prev" href="#carousel-example-generic" role="button" data-slide="prev"> <span> prev</span> <i
-                        class="flaticon-arrow-1"></i>
-                </a>
-                <a class="next" href="#carousel-example-generic" role="button" data-slide="next"> <span> next</span> <i
-                        class="flaticon-arrow"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+   <div id="wowslider-container1">
+	<div class="ws_images"><ul>
+        @foreach ($sliders as $slider)
+        <li><img src="{{ URL::to('/') }}/SliderImages/{{$slider->image_path}}" alt="img" title="{{$slider->title}}" id="wows1_{{$loop->index}}"/>{{$slider->subtitle}}</li>
+        @endforeach
+	</ul></div>
+	<div class="ws_bullets"><div>
+        @foreach ($sliders as $slider)
+        <a href="#" title="slider-2gfcgcfycycy"><span><img src="{{ URL::to('/') }}/SliderImages/{{$slider->image_path}}" alt="img" />1</span></a>
+        @endforeach
+	</div></div>
+	<div class="ws_shadow"></div>
+	</div>	
 </div>
+
+
 
 <!--slider wrapper end-->
 <!-- treanding song wrapper start -->

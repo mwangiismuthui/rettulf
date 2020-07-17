@@ -303,7 +303,7 @@ class PaymentController extends Controller
     {
         $user_id = Withdrawal::where('id', $id)->pluck('user_id')->first();
         $amount = Withdrawal::where('id', $id)->pluck('amount')->first();
-        $payment_email = User::where('id', $user_id)->pluck('email')->first();
+        $payment_email = User::where('id', $user_id)->pluck('paypal_email')->first();
         // return $payment_email;
         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
         $paypal_secret = SiteSetting::pluck('paypal_secret')->first();

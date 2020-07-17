@@ -527,6 +527,8 @@ class FrontendController extends Controller
             if ($search_category == 'all') {
                 $data1 = Music::orderby('title', 'asc')
                 ->select("id", "title")
+                ->where('is_paid',1)
+                ->where('status',1)
                 ->limit(15)
                 ->get();
                 $data2 = User::role(['Artist','Producer'])->orderby('name', 'asc')
@@ -537,11 +539,15 @@ class FrontendController extends Controller
             } else if ($search_category == 'artists_search') {
                 $musics = User::role(['Artist','Producer'])->orderby('name', 'asc')
                 ->select("id", "name as title")
+                ->where('is_paid',1)
+                ->where('status',1)
                 ->limit(15)
                 ->get();
             }else if ($search_category == 'beats_music_search') {
                 $musics = Music::orderby('title', 'asc')
                 ->select("id", "title")
+                ->where('is_paid',1)
+                ->where('status',1)
                 ->limit(15)
                 ->get();
             }            
@@ -552,6 +558,8 @@ class FrontendController extends Controller
                 ->select("id", "title")
                 ->where('title', 'LIKE', "%$search%")
                 ->orWhere('description', 'LIKE', "%$search%")
+                ->where('is_paid',1)
+                ->where('status',1)
                 ->limit(15)
                 ->get();
                 $data2 = User::role(['Artist','Producer'])->orderby('name', 'asc')
@@ -569,6 +577,8 @@ class FrontendController extends Controller
             }else if ($search_category == 'beats_music_search') {
                 $musics = Music::orderby('title', 'asc')
                 ->select("id", "title")
+                ->where('is_paid',1)
+                ->where('status',1)
                 ->limit(15)
                 ->get();
             }

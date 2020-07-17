@@ -22,7 +22,10 @@ if(!isset($seo)){
     <meta name="MobileOptimized" content="320" />
     <!--favicon-->
     <link rel="shortcut icon" href="{{url('/Favicon').'/'.$favicon}}" type="image/x-icon">
+{{-- slider maneno --}}
 
+<link rel="stylesheet" type="text/css" href="/frontend/engine1/style.css" />
+<script type="text/javascript" src="/frontend/engine1/jquery.js"></script>
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="/frontend/css/animate.css" />
     <link rel="stylesheet" type="text/css" href="/frontend/css/bootstrap.min.css" />
@@ -197,6 +200,10 @@ if(!isset($seo)){
                 </div>
             </div>
         </div>
+        {{-- slider new js --}}
+
+	<script type="text/javascript" src="/frontend/engine1/wowslider.js"></script>
+	<script type="text/javascript" src="/frontend/engine1/script.js"></script>
         <!-- playlist wrapper end -->
         <!--custom js files-->
 

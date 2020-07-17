@@ -238,4 +238,8 @@ Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.ph
 Route::post('/withdraw/{id}', 'WithdrawalController@sellerWithdrawal')->name('sellerWithdrawal');
 Route::get('/allWithdrawalRequests', 'WithdrawalController@allWithdrawalRequests')->name('allWithdrawalRequests');
 });
-
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    return 'Success';
+    // return what you want
+});
