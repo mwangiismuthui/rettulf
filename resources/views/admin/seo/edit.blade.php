@@ -19,19 +19,19 @@
 <input type="hidden" name="seo_id" id="seo_id" value="{{$seo->id}}">
     <div class="form-group">
         <label for="description">Meta Description</label>
-        <textarea name="meta_description" id="meta_description" cols="10" rows="5" class="form-control form-control-rounded">
+        <textarea name="meta_description" id="meta_description" cols="10" rows="3" class="form-control form-control-rounded">
 {{$seo->meta_description}}
         </textarea>
     </div>
     <div class="form-group">
         <label for="description">Meta Keywords</label>
-        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="5" class="form-control form-control-rounded">
+        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="3" class="form-control form-control-rounded">
             {{$seo->meta_keyword}}
         </textarea>
     </div>
     <div class="form-group">
         <label for="description">Other Seo Tags</label>
-        <textarea name="seo_other"  cols="10" rows="5" class="form-control form-control-rounded">
+        <textarea name="seo_other"  cols="10" rows="3" class="form-control form-control-rounded">
             {{$seo->seo_other}}
         </textarea>
     </div>
@@ -88,6 +88,12 @@ var seo_id =$('#seo_id').val();
                         icon: "fa fa-check-circle", //path to image
                         msg: data.message,
                      });
+                     setTimeout(function () {
+                        $("#form_result").html("");
+                        window.location.replace("/seo/index");
+                    }, 2000);
+                    
+
 
                 }
             },

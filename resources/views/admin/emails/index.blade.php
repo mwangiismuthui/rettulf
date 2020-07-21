@@ -56,7 +56,7 @@
                             <input type="text" class="form-control" placeholder="Subject" name="subject">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="summernoteEditor" placeholder="Message body" name="message" style="height: 200px"></textarea>
+                            <textarea class="form-control" id="summernoteEditor" placeholder="Message body" name="message" rows="30"></textarea>
                         </div>
                         <div class="form-group">
                           
@@ -73,7 +73,9 @@
   </div>
 <script>
      $(document).ready(function(){
-    $(".alert").delay(5000).slideUp(300);
-});
+        $(".alert").delay(5000).slideUp(300);
+      });
+
+      
 </script>
 @endsection

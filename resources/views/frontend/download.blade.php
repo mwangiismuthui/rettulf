@@ -74,8 +74,6 @@
                                            
                     <li class="text-center"><a href="#">{{number_format($music->downloads,0)}}</a></li>
                         <li class="text-center"><a href="#">{{$music->duration}}</a></li>
-
-                        
                         <li class="text-center top_song_artist_playlist"><a href="{{route('downloadPurchasedMusic',$music->music_id)}}"><i class="flaticon-download"></i></a></li>
                     </ul>
                 @endforeach

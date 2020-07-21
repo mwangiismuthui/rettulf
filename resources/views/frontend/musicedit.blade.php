@@ -146,7 +146,7 @@
                                     @hasrole ('Artist')
                                     <label for="description">Description of Song</label>
                                     @endif
-                                    <textarea class="form-control require" name="description" required="" rows="5"
+                                    <textarea class="form-control require" name="description" required="" rows="3"
                                         id="description" placeholder=" description">{{$music->description}}</textarea>
 
                                 </div>

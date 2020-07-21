@@ -91,7 +91,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="main_image">Description</label>
-                            <textarea name="description" id="" cols="30" rows="5"
+                            <textarea name="description" id="" cols="30" rows="3"
                                 class="form-control form-control-rounded" required></textarea>
 
                         </div>
