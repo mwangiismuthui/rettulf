@@ -76,19 +76,19 @@
                  
                     <div class="form-group">
                         <label for="description">Meta Description</label>
-                        <textarea name="meta_description" id="meta_description" cols="10" rows="5" class="form-control form-control-rounded">
+                        <textarea name="meta_description" id="meta_description" cols="10" rows="3" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label for="description">Meta Keywords</label>
-                        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="5" class="form-control form-control-rounded">
+                        <textarea name="meta_keyword" id="meta_keywords" cols="10" rows="3" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label for="description">Other Seo Tags</label>
-                        <textarea name="seo_other"  cols="10" rows="5" class="form-control form-control-rounded">
+                        <textarea name="seo_other"  cols="10" rows="3" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>

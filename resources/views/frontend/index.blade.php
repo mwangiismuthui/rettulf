@@ -171,14 +171,14 @@
                                 <img src="{{url('/ProfilePics').'/'.$artist['profile_photo'] }}" class="img-responsive"
                                     alt="img">
                                 <div class="featured_artist_detail">
-                                    <p><a href="#">{{$artist['name']}} </a></p>
+                                    <p><a href="{{route('singleArtist',$artist['id'])}}">{{$artist['name']}} </a></p>
                                     <p class="various_artist_text"><a href="#">{{$artist['music_count']}}
                                             {{$artist['music_count'] == 1 ? 'Song' : 'Songs'}}</a>
                                     </p>
                                     <div class="lang_apply_btn">
                                         <ul>
                                             <li>
-                                                <a href="{{route('singleProducer',$artist['id'])}}"
+                                                <a href="{{route('singleArtist',$artist['id'])}}"
                                                     id="{{$artist['id']}}"> <i class="flaticon-play-button"></i>View
                                                     Playlist</a>
                                             </li>
@@ -342,7 +342,7 @@
                                 <img src="{{url('/ProfilePics').'/'.$artist['profile_photo'] }}" class="img-responsive"
                                     alt="img">
                                 <div class="featured_artist_detail">
-                                    <p><a href="#">{{$artist['name']}} </a></p>
+                                    <p><a href="{{route('singleProducer',$artist['id'])}}">{{$artist['name']}} </a></p>
                                     <p class="various_artist_text"><a href="#">{{$artist['music_count']}}
                                             {{$artist['music_count'] == 1 ? 'Beat' : 'Beats'}}</a>
                                     </p>

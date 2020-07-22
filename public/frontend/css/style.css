@@ -1922,6 +1922,9 @@ ul.tranding_more_option li a .opt_icon i:before{
 	color:#888 !important;
 	text-transform:capitalize!important;
 }
+.various_artist_text:hover a{
+	color:#fa5b41 !important;
+}
 .release_box_overlay .tranding_play_icon{
 	top:40%;
 }

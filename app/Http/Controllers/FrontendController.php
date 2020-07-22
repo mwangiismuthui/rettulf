@@ -264,7 +264,15 @@ class FrontendController extends Controller
     {
         $musics = Music::where('downloads', '>', 1)->where('type', 'music')->orderBy('downloads', 'desc')->get();
         $seo = Seo::where('seos.page_title', 'like', 'mostDownloadedSongs')->first();
-        $musicsplit = $musics->chunk(2);
+        if (sizeOf($musics) == 1 ) {
+            $musicsplit =  $musics->split(2);
+            $musicsplit[1] = []; 
+        } elseif(sizeOf($musics) == 0){
+            $musicsplit[0] = [];
+            $musicsplit[1] = [];
+        }else{
+            $musicsplit =  $musics->split(2);
+        }
         $title = 'Most Downloaded Songs';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }

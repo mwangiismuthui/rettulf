@@ -101,7 +101,7 @@
                  
                     <div class="form-group">
                         <label for="description">Bank Details</label>
-                        <textarea name="bank_details" id="summernoteEditor"  cols="10" rows="5" class="form-control form-control-rounded">
+                        <textarea name="bank_details" id="summernoteEditor"  cols="10" rows="3" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>

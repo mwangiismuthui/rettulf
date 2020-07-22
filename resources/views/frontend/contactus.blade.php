@@ -130,7 +130,7 @@
                                 <div class="form-m">
                                     <div class="form-group i-message">
 
-                                        <textarea class="form-control require" name="message" required="" rows="5" id="messageTen" placeholder=" Message"></textarea>
+                                        <textarea class="form-control require" name="message" required="" rows="3" id="messageTen" placeholder=" Message"></textarea>
 
                                     </div>
                                 </div>

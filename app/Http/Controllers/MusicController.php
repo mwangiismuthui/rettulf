@@ -255,6 +255,7 @@ class MusicController extends Controller
           $title = $music->title;
           $lyrics = $music->lyrics;
           $music_type = $music->type;
+          $artist_id = $music->user->id;
         }
         $views = Music::where('id', $music_id)->pluck('views')->first();
         $new_views = $views + 1;
@@ -270,6 +271,7 @@ class MusicController extends Controller
             'lyrics'=>$lyrics,
             'beat_time'=>$beat_time,
             'music_type'=>$music_type,
+            'artist_id'=>$artist_id,
         ];
 
         return $music;

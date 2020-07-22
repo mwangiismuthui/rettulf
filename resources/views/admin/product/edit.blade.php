@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="main_image">Description</label>
-                                <textarea name="description" id="" cols="30" rows="5"
+                                <textarea name="description" id="" cols="30" rows="3"
                                     class="form-control form-control-rounded">{{$product->description}}</textarea>
 
                             </div>

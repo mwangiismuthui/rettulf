@@ -149,7 +149,7 @@
             </div>
         </div>
         <div class="m24_navi_langauage_box">
-            <div class="theme-switch-wrapper">
+            <div class="theme-switch-wrapper"> <span id="switch-text" style="font-size: 16px">Dark Mode	&nbsp;</span>
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox" />
                     <span class="slider round"></span>

@@ -81,7 +81,7 @@ if(!isset($seo)){
                                     </div>
                                     <div class="des">
                                         <div class="jp-title" aria-label="title">&nbsp;</div>
-                                        <div class="artist-name"><a class="artist-name"></a></div>
+                                        <div class="artist-name"></div>
                                     </div>
                                 </div>
                                 {{-- <div class="jp-details">
@@ -239,8 +239,8 @@ if(!isset($seo)){
 
         <script>
             $(document).ready(function(){
-    $(".alert").delay(5000).slideUp(300);
-});
+             $(".alert").delay(5000).slideUp(300);
+        });
      
 
             var currentAudio = null;
@@ -248,6 +248,7 @@ if(!isset($seo)){
             var music_type ;
             var new_beat_time ;
             var audio ;
+            var musicId;
             $(document).keydown(function(e) {
     var unicode = e.charCode ? e.charCode : e.keyCode;
    
@@ -263,11 +264,13 @@ if(!isset($seo)){
         audio.play();
         $(".icon-play").hide();
         $(".icon-pause").show();
+        $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-play-button').addClass('flaticon-pause');
       } 
       else {
         audio.pause()
         $(".icon-play").show();
         $(".icon-pause").hide();
+        $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-pause').addClass('flaticon-play-button');
       }
     }
   });
@@ -292,6 +295,9 @@ if(!isset($seo)){
                     sb.play();
                     $(".icon-play").hide();
                     $(".icon-pause").show();
+
+                    $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-play-button').addClass('flaticon-pause');
+
                     }
                 }else if (music_type == 'beats') {
                     
@@ -309,6 +315,7 @@ if(!isset($seo)){
                     sb.play();
                     $(".icon-play").hide();
                     $(".icon-pause").show();
+                    $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-play-button').addClass('flaticon-pause');
                     setTimeout(function(){
                          audio.pause(); 
                          }, new_beat_time);
@@ -321,32 +328,25 @@ if(!isset($seo)){
                 }
                 };
             $('.jp-play').on('click',function () {
-                if (music_type=='music') {                   
-
-                if (!audio.paused) {
-                    audio.pause();
-                    $(".icon-play").show();
-                    $(".icon-pause").hide();
-                }else if (audio.paused) {
-                    audio.play();
-                    $(".icon-play").hide();
-                    $(".icon-pause").show();
-
-                }
-            }else if (music_type == 'beats') {
-
-                if (!audio.paused) {
-                    audio.pause();
-                }else if (audio.paused) {
-                    audio.pause();
-                }
-            }
+                if (audio.paused) {
+                        audio.play();
+                        $(".icon-play").hide();
+                        $(".icon-pause").show();
+                        $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-play-button').addClass('flaticon-pause');
+                    } 
+                    else {
+                        audio.pause()
+                        $(".icon-play").show();
+                        $(".icon-pause").hide();
+                        $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-pause').addClass('flaticon-play-button');
+                    }
             });
        
             $('.flaticon-play-button').on('click',function () {
                 previousAudio =currentAudio;
              
                var id = $(this).attr('id');
+               musicId = id;
             
                $.ajax({
                 method:"POST",   
@@ -357,6 +357,10 @@ if(!isset($seo)){
 
                 },
                 success:function(data){
+                    $(".tranding_play_icon i").removeClass('flaticon-pause').addClass('flaticon-play-button');
+                    $(".icon-play").hide();
+                    $(".icon-pause").show();
+                    $(".tranding_play_icon  #"+ musicId +" i").removeClass('flaticon-play-button').addClass('flaticon-pause');
                 var cover_art_path = '/uploadedCoverArts/';
                 var cover_art = data.coverart;
                  var music = data.music_path;
@@ -372,10 +376,14 @@ if(!isset($seo)){
                 img.attr('src', full_covertart_path);
                 $('.song-poster').empty();
                 $('.song-poster').append(img);
-                $('.artist-name').empty();
-                $('.artist-name').append(data.artist);
+                $('.artist-name').empty();               
                 $('.jp-title').empty();
                 $('.jp-title').append(data.title);
+                if (data.music_type == 'beats') {
+                    $('.artist-name').append('<a href="/single/producer/'+data.artist_id+'">'+data.artist+'</a>');
+                } else {
+                    $('.artist-name').append('<a href="/single/artist/'+data.artist_id+'">'+data.artist+'</a>');
+                }
                 if (data.lyrics !=null) {
                     $('.song-lyrics').empty();
                     $('.song-lyrics').append(data.lyrics);

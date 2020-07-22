@@ -51,8 +51,7 @@
                             @else
                             <div class="artist_btn m24_cover">
                                 <div class="lang_apply_btn">                                   
-                                    <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>play</a>
-                                    
+                                    <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>play</a>                                    
                                 </div>                                
                             </div>
                             @if (Auth::check())
