@@ -63,7 +63,11 @@
 
                 @if (Auth::check())
                 <li>
-                    <a href="{{route('logout')}}"> <i class="flaticon-login-button"></i>Logout</a>
+                    <a class="class="flaticon-login-button"" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
                 @else
                 <li>

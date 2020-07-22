@@ -85,7 +85,7 @@
                                 <div class="form-group i-name">
                                     <label for="profile"> Profile Picture: &nbsp;<label>
                                             <input type="file" class="form-control" id="profile"
-                                                placeholder="Upload Profile Photo" name="profile_photo">
+                                                placeholder="Upload Profile Photo" name="profile_photo" required>
                                 </div>
                             </div>
                         </div>
