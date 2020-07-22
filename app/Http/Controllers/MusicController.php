@@ -23,8 +23,6 @@ use App\SiteSetting;
 class MusicController extends Controller
 {
 
-    // $user_id= Auth::user()->id;
-    // protected $user_id 
     /**
      * Display a listing of the resource.
      *
@@ -142,8 +140,8 @@ class MusicController extends Controller
                 'warning' => 'Files not saved',
             ], Response::HTTP_OK);
         }
-       
-        
+
+
     }
 
     /**
@@ -163,7 +161,7 @@ class MusicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {    
+    {
         $seo = Seo::where('seos.page_title', 'like', 'uploadedMusicedit')->first();
 
         $genres = Genre::all();
@@ -183,7 +181,7 @@ class MusicController extends Controller
     public function update(Request $request, $music_id)
     {
         $music= Music::find($music_id);
-        
+
         $music->genre_id = $request->genre_id;
         $music->key_id = $request->key_id;
         $music->title = $request->title;
@@ -212,7 +210,7 @@ class MusicController extends Controller
                 'warning' => 'Files not updated',
             ], Response::HTTP_OK);
         }
-       
+
     }
 
     /**
@@ -229,7 +227,7 @@ class MusicController extends Controller
     public function destroyPic($musicID)
     {
         $music = Music::find($musicID);
-        
+
         if ($music) {
             $music->cover_art = null;
             $music->update();
@@ -261,7 +259,7 @@ class MusicController extends Controller
         $views = Music::where('id', $music_id)->pluck('views')->first();
         $new_views = $views + 1;
         Music::where('id', $music_id)->update([
-           
+
             'views' => $new_views,
         ]);
         $music = [
@@ -273,10 +271,10 @@ class MusicController extends Controller
             'beat_time'=>$beat_time,
             'music_type'=>$music_type,
         ];
-        
+
         return $music;
         }
-       
+
     }
 
     // public function generateUniqueFileName($musicfile, $destinationPath)
@@ -305,7 +303,7 @@ class MusicController extends Controller
     public function analyzeFile($full_video_path)
     {
         $getID3 = new \getID3;
-        $file = $getID3->analyze($full_video_path);      
+        $file = $getID3->analyze($full_video_path);
         // dd($file);
         return $file;
     }

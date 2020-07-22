@@ -87,8 +87,8 @@
         });
 
    function keydelete(key_id) {
-       console.log(key_id);
-    $.ajax({
+    if (confirm("Do you wantto delete this Key!")) {
+        $.ajax({
            url:'/key/destroy/',
            method:'delete',
            data:{
@@ -119,7 +119,10 @@
              $('#key_table').DataTable().ajax.reload();
            }
 
-       });
+       });  } else {
+    txt = "You pressed Cancel!";
+  }
+   
     }
 
 

@@ -25,6 +25,16 @@
 
     </li>
     @endcan
+    @can('manage-category')
+
+    <li class="{{ Route::currentRouteNamed('location.index') ? 'active ' : '' }}">
+    <a href="{{route('location.index')}}" class="waves-effect">
+        <i class="fa fa-map-marker"></i>
+        <span>Location Management</span>
+      </a>
+
+    </li>
+    @endcan
     @can('manage-genre')
 
     <li class="{{ Route::currentRouteNamed('genre.index') ? 'active ' : '' }}">

@@ -7,7 +7,7 @@
 
             </li>
 
-            <li class='has-sub'><a href='#'><i class="flaticon-playlist-3"></i>browse</a>
+            <li class='has-sub'><a href='javascript:void(0);'><i class="flaticon-playlist-3"></i>browse</a>
                 <ul>
                     <li><a href="{{route('newSongs')}}"><i class="flaticon-music-1"></i>New Songs</a></li>
                     <li><a href="{{route('mostDownloadedSongs')}}"><i class="flaticon-music-1"></i>Most Downloaded
@@ -24,26 +24,26 @@
 
                 </ul>
             </li>
+                @if (Auth::check())
+                    
+                <li class='has-sub'><a href='javascript:void(0);'><i class="flaticon-playlist-1"></i>My Dashboard</a>
+                    <ul>
+                        @hasanyrole('Producer|Artist')
 
-            <li class='has-sub'><a href='#'><i class="flaticon-playlist-1"></i>My Dashboard</a>
-                <ul>
-                    @hasanyrole('Producer|Artist')
+                        <li><a href="{{route('myMusic')}}"><i class="flaticon-playlist-1"></i>Uploaded music</a></li>
+                        @else
+                        @endhasanyrole
 
-                    <li><a href="{{route('myMusic')}}"><i class="flaticon-playlist-1"></i>Uploaded music</a></li>
-                    @else
-                    @endhasanyrole
-
-                    <li><a href="{{route('downloadedMusic')}}"><i class="flaticon-download"></i>downloaded music</a>
-                    </li>
-                    {{-- <li><a href="favourite.html"><i class="flaticon-heart"></i>favourite</a></li> --}}
-                    {{-- <li><a href="history.html"><i class="flaticon-clock"></i>history</a></li> 						
-                    <li><a href="free_music.html"><i class="flaticon-music-1"></i>free_music</a></li> 						 --}}
-                </ul>
-            </li>
+                        <li><a href="{{route('downloadedMusic')}}"><i class="flaticon-download"></i>downloaded music</a>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                    
+                @endif
 
 
             <li><a href='{{route('contact')}}'><i class="flaticon-internet"></i>contact us</a></li>
-            {{-- <li><a href='{{route('pricing')}}'><i class="flaticon-bell"></i>pricing plan</a></li> --}}
         </ul>
         <div class="lang_apply_btn">
             <ul>

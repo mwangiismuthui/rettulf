@@ -55,9 +55,9 @@
                         </button>
 
                     </div>
-                    <div class="cancel_wrapper">
+                    {{-- <div class="cancel_wrapper">
                         <a href="{{route('index')}}">cancel</a>
-                    </div>
+                    </div> --}}
                     <div class="dont_have_account m24_cover">
                         <p>Don’t have an acount ? <a href="{{route('register')}}">register here</a></p>
                     </div>

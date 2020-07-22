@@ -88,8 +88,8 @@
         });
 
    function UploadFeedelete(fee_id) {
-       console.log(fee_id);
-    $.ajax({
+    if (confirm("Do you want to delete the upload fee!")) {
+        $.ajax({
            url:'/uploadFee/destroy/',
            method:'delete',
            data:{
@@ -120,7 +120,9 @@
              $('#upload_fee_table').DataTable().ajax.reload();
            }
 
-       });
+       });  } else {
+    txt = "You pressed Cancel!";
+  }   
     }
 
 

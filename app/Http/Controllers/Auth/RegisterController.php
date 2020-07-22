@@ -97,23 +97,23 @@ class RegisterController extends Controller
             'email'    => 'required|email|unique:users,email',
             'name'    => 'required',
             'designation'    => 'required',
-            'username'    => 'required',
+            'username'    => 'required|unique:users,username',
             'location_id'    => 'required',
             'profile_photo'    => 'required',
             // 'adress'    => 'required',
             'password' => [
                 'required',
                 'string',
+                'confirmed',
                 'min:4',
+
             ],
         ];
 
-        $error = Validator::make($credentials, $rules);
+        $request->validate($rules,$credentials);
 
 
-        if ($error->fails()) {
-            return Response::json(['errors' => $error->errors()->all()]);
-        }
+        
         $imgdestination = '/ProfilePics';
         $gallerarray = [];
         // return $request->hasfile('profile_photo');

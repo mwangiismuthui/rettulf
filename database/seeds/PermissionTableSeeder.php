@@ -21,6 +21,7 @@ class PermissionTableSeeder extends Seeder
            'role-delete',
            'view-dashboard',
            'manage-category',
+           'manage-location',
            'manage-genre',
            'manage-keys',
            'manage-music',

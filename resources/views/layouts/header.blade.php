@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div id="toggle">
-                <a href="#"><i class="flaticon-menu-1"></i></a>
+                <a href="javascript:void(0);"><i class="flaticon-menu-1"></i></a>
             </div>
         </div>
 
