@@ -1,20 +1,20 @@
-{{-- <div class="footer_wrapper m24_cover">
+<div class="footer_wrapper m24_cover">
     <div class="container">
         <div class="row">
 
             <div class="col-lg-3 col-md-6 col-12 col-sm-12">
                 <div class="footer_widget footer_about_wrapper m24_cover">
                     <div class="wrapper_first_image">
-                        <a href="index.html"><img src="/frontend/images/logo.png" class="img-responsive"
+                        <a href="index.html"><img src="{{url('/Logos').'/'.$logopath}}" class="img-responsive"
                                 alt="logo" /></a>
                     </div>
                     <div class="abotus_content">
-                        <p>Sed do eiusmod tempor unt ut labore et dolore magna liqua. Ut enim ad minim veniam...</p>
+                        <p>We make your music dream come to reality. JUST ERUDiTE - simply outstanding.</p>
                     </div>
                     <ul class="footer_about_link_wrapper m24_cover">
-                        <li> <i class="fa fa-phone"></i>808 - 111 - 9999</li>
-                        <li> <a href="#"><i class="fa fa-envelope"></i>Music@example.com</a></li>
-                        <li> <a href="#"><i class="fas fa-user-alt"></i>Music@support.com</a></li>
+                        <li> <i class="fa fa-phone"></i> 08164466311</li>
+                        <li> <a href="#"><i class="fa fa-envelope"></i>support@justerudite.com</a></li>
+                        <li> <a href="#"><i class="fas fa-user-alt"></i>info@justerudite.com</a></li>
                     </ul>
 
                 </div>
@@ -45,15 +45,16 @@
             </div>
             <div class="col-lg-3 col-md-6 col-12 col-sm-12">
                 <div class="footer_widget footer_contact_wrapper m24_cover">
-                    <h4>download app </h4>
-                    <p>All type of app’s available for download</p>
-                    <span><a href="#"><img src="/frontend/images/app_btn1.png" class="img-responsive"
-                                alt="img"></a></span>
-                    <span><a href="#"><img src="/frontend/images/app_btn2.png" class="img-responsive"
-                                alt="img"></a></span>
-                    <span><a href="#"><img src="/frontend/images/app_btn3.png" class="img-responsive"
-                                alt="img"></a></span>
-                </div>
+                    <h4>Contact Us </h4>
+                    <p>All our support team are available 24/7 to respond to all your requests.</p>
+                    <div class="lang_apply_btn footer_cont_btn">
+                        <ul>
+                            <li>
+                            <a href="{{route('contact')}}"> <i></i>Contact Us</a>
+                            </li>
+                        </ul>
+
+                    </div>                </div>
             </div>
             <div class="col-lg-3 col-md-6 col-12 col-sm-12">
                 <div class="footer_widget footer_contact_wrapper m24_cover">
@@ -68,7 +69,7 @@
                     <div class="lang_apply_btn footer_cont_btn">
                         <ul>
                             <li>
-                                <a href="#"> <i class="flaticon-play-button"></i>subscribe</a>
+                                <a href="#"> <i></i>subscribe</a>
                             </li>
                         </ul>
 
@@ -78,30 +79,21 @@
 
         </div>
     </div>
-</div> --}}
-{{-- <div class="foter_top_wrapper m24_cover">
+</div> 
+ <div class="foter_top_wrapper m24_cover">
     <div class="container">
         <ul>
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+            <li><a href="www.facebook.com/justerudite.official"><i class="fab fa-facebook-f"></i></a>
             </li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a>
+            <li><a href="www.twitter.com/justerudite"><i class="fab fa-twitter"></i></a>
             </li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a>
+            <li><a href="www.instagram.com/justerudite"><i class="fab fa-instagram"></i></a>
             </li>
-            <li> <a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
-
-            <li><a href="#"><i class="fab fa-google-plus-g"></i></a>
-            </li>
-            <li><a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </li>
-            <li><a href="#"><i class="fab fa-tumblr"></i></a>
-            </li>
-            <li> <a href="#"><i class="fab fa-behance"></i></a> </li>
-            <li> <a href="#"><i class="fab fa-dribbble"></i></a> </li>
-            <li> <a href="#"><i class="fab fa-whatsapp"></i></a> </li>
+            <li> <a href="www.linkedin.com/justerudite"><i class="fab fa-linkedin-in"></i></a> </li>
+            <li> <a href="https://api.whatsapp.com/send?phone=2348164466311"><i class="fab fa-whatsapp"></i></a> </li>
         </ul>
     </div>
-</div> --}}
+</div>
 <div class="section2_bottom_wrapper m24_cover">
     <div class="container">
         <div class="row">
