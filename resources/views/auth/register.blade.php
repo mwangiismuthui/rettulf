@@ -13,11 +13,22 @@
                 </div>
                 <div class="login_form_wrapper">
                     <div class="row">
+                       
                         <div class="col-md-12">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                             <div class="form-pos">
                                 <div class="form-group i-name">
+                                    <label for="name">Enter the name that you would like to appear on your profile</label>
                                     <input type="text" class="form-control" name="name"
-                                        placeholder="Your Name*">
+                                        placeholder="Dispaly Name*" value="{{  old('name') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -27,7 +38,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     <input type="text" class="form-control" name="username"
-                                        placeholder="Enter your Username">
+                                        placeholder="Enter your Username" value="{{ old('username') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +46,7 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     <input type="text" class="form-control" name="email"
-                                        placeholder="Enter Email Address*">
+                                        placeholder="Enter Email Address*" value="{{ old('email') }}" required>
                                 </div>
                             </div>
                         </div>
@@ -44,10 +55,11 @@
                         <div class="col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    <select name="location_id" class="form-control location">
+                                    <select name="location_id" class="form-control location" required>
+
                                         <option value="">Select Location*</option>
                                         @foreach ($locations as $location)
-                                        <option value="{{$location->id}}">{{$location->location}}</option>
+                                    <option {{ old('location_id') ==$location->id ? 'selected':''}} value="{{$location->id}}">{{$location->location}}</option>
                                         @endforeach
                                     </select>
 
@@ -57,12 +69,23 @@
                         <div class="col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    <select name="designation" id="designation" class="form-control designation">
+                                    <select name="designation" id="designation" class="form-control designation" required>
                                         <option value="">Select Your Designation* </option>
-                                        <option value="producer">Producer</option>
-                                        <option value="artist">Artist</option>
-                                        <option value="Normal User">Normal User</option>
+                                        <option {{ old('designation') =='producer' ? 'selected':''}} value="producer">Producer</option>
+                                        <option {{ old('designation') =='artist'? 'selected':''}} value="artist">Artist</option>
+                                        <option {{ old('designation') =='Normal User'? 'selected':''}} value="Normal User">Normal User</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+                                    <label for="profile"> Profile Picture: &nbsp;<label>
+                                            <input type="file" class="form-control" id="profile"
+                                                placeholder="Upload Profile Photo" name="profile_photo" required>
                                 </div>
                             </div>
                         </div>
@@ -72,38 +95,28 @@
                             <div class="form-pos">
                                 <div class="form-group i-name">
                                     <input type="password" class="form-control" placeholder="Enter Password *"
-                                        name="password">
+                                        name="password" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-pos">
-                                <div class="form-group i-name">
+                                <div class="form-group i-name" >
                                     <input type="password" class="form-control" placeholder="confirm password*"
-                                        name="cpassword">
+                                    name="password_confirmation"  required>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-pos">
-                                <div class="form-group i-name">
-                                    <label for="profile"> Profile Picture<label>
-                                            <input type="file" class="form-control" id="profile"
-                                                placeholder="Upload Profile Photo" name="profile_photo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="lang_apply_btn_wrapper m24_cover">
                         <div class="lang_apply_btn">
                             <button type="submit">register</button>
 
                         </div>
-                        <div class="cancel_wrapper">
+                        {{-- <div class="cancel_wrapper">
                             <a href="{{route('index')}}">cancel</a>
-                        </div>
+                        </div> --}}
                         <div class="dont_have_account m24_cover">
                             <p>Do have an acount ? <a href="{{route('login')}}">login here</a></p>
                         </div>

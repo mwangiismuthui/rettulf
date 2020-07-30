@@ -17,6 +17,7 @@
                                 <thead>
 
                                         <th>Producer/Artist Name</th>
+                                        <th>Album Photo</th>
                                         <th>Price</th>
                                         <th>Plays</th>
                                         <th>Downloads</th>
@@ -31,6 +32,7 @@
                                 </tbody>
                                 <tfoot>
                                         <th>Producer/Artist Name</th>
+                                        <th>Album Photo</th>
                                         <th>Price</th>
                                         <th>Plays</th>
                                         <th>Downloads</th>
@@ -82,25 +84,23 @@
 
 <!-- Large Size Modal -->
 
-
-<div class="modal fade" id="confirmmodal" role="dialog">>
+<div class="modal fade" id="viewmodal" role="dialog">>
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-danger">
-            <div class="modal-header bg-danger">
-                <h5 class="modal-title text-white"></i> Are you sure?</h5>
+            <div class="modal-header">
+                <h2 class="modal-title">External Link Content</h2>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Once deleted, you will not be able to recover this Feature</p>
-
+                <span id="form_result"></span>
+                <iframe id="link_view" src=""
+                style="width:100%; height:350px;" frameborder="0"></iframe>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-inverse-warning" data-dismiss="modal"><i class="fa fa-times"></i>
+                <button type="button" class="btn btn-inverse-warning" data-dismiss="modal" onclick="closeAudio()"><i class="fa fa-times"></i>
                     Close</button>
-                <button type="button" id="ok_button" name="ok_button" class="btn btn-danger"><i
-                        class="fa fa-check-trash"></i>Delete</button>
             </div>
         </div>
     </div>
@@ -115,6 +115,10 @@
         columns:[
 
         {data: 'user.name', name: 'user.name'},
+        {data:'cover_art',name:'cover_art',
+                      render: function(data, type, full, meta){
+                      return "<img src={{ URL::to('') }}/uploadedCoverArts/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},   
+                      
         {data: 'price', name: 'price'},
         {data: 'views', name: 'views'},
         {data: 'downloads', name: 'downloads'},
@@ -141,8 +145,25 @@
             _token: "{{ csrf_token() }}"
            },
            success:function(data){
+            if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     });
 
-            console.log(data);
+                }
              $('#music_table').DataTable().ajax.reload();
            },
            error:function(data){
@@ -150,6 +171,11 @@
            }
 
        });
+    }
+    function closeAudio() {
+        $('#link_view').attr('src', '');
+
+        
     }
 
    function Published(music_id) {
@@ -163,7 +189,25 @@
             _token: "{{ csrf_token() }}"
            },
            success:function(data){
+            if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     });
 
+                }
              $('#music_table').DataTable().ajax.reload();
            },
            error:function(data){
@@ -173,6 +217,26 @@
        });
     }
 
+    $(function () {
+
+        $(document).on('click', '.view', function(){
+
+                  var id = $(this).attr('id');
+                  $('#form_result').html('');
+                  $.ajax({
+                   url:"/music-show/"+id,
+                   dataType:"json",
+                   success:function(html){
+                    console.log(html.data.music);
+
+                    $('#link_view').attr('src', '/uploadedFiles/'+ html.data.music);
+                    $('.modal-title').text("Audio Preview");
+                    $('#viewmodal').modal({backdrop: 'static', keyboard: false}) 
+                    $('#viewmodal').modal('show');
+                   }
+                  })
+                 });
+    });
 
 
 

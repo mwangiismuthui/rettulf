@@ -88,6 +88,8 @@
                           <thead>
 
                                   <th>Producer/Artist Name</th>
+                                  <th>Album Photo</th>
+
                                   <th>Price</th>
                                   <th>Plays</th>
                                   <th>Downloads</th>
@@ -102,6 +104,7 @@
                           </tbody>
                           <tfoot>
                                   <th>Producer/Artist Name</th>
+                                  <th>Album Photo</th>
                                   <th>Price</th>
                                   <th>Plays</th>
                                   <th>Downloads</th>
@@ -135,70 +138,114 @@
 
 <script>
 
-  var table = $('#music_table').DataTable({
-  processing: true,
-  serverSide: true,
-  ajax: "{{ route('dashboard')}}",
-  columns:[
+var table = $('#music_table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('adminMusic.index')}}",
+        columns:[
 
-  {data: 'user.name', name: 'user.name'},
-  {data: 'price', name: 'price'},
-  {data: 'views', name: 'views'},
-  {data: 'downloads', name: 'downloads'},
-  {data: 'type', name: 'type'},
-  {data: 'is_paid', name: 'is_paid', orderable: true, searchable: false},
-  {data: 'status', name: 'status', orderable: true, searchable: false},
-  ],
-
-
-  });
-
-
-
+        {data: 'user.name', name: 'user.name'},
+        {data:'cover_art',name:'cover_art',
+                      render: function(data, type, full, meta){
+                      return "<img src={{ URL::to('') }}/uploadedCoverArts/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},   
+                      
+        {data: 'price', name: 'price'},
+        {data: 'views', name: 'views'},
+        {data: 'downloads', name: 'downloads'},
+        {data: 'type', name: 'type'},
+        {data: 'is_paid', name: 'is_paid', orderable: true, searchable: false},
+        {data: 'status', name: 'status', orderable: true, searchable: false},
+        ],
 
 
-function New(music_id) {
- var status = '0';
-$.ajax({
-     url:'/music/change/status',
-     method:'put',
-     data:{
-      music_id:music_id,
-      status:status,
-      _token: "{{ csrf_token() }}"
-     },
-     success:function(data){
+        });
 
-      console.log(data);
-       $('#music_table').DataTable().ajax.reload();
-     },
-     error:function(data){
-       $('#music_table').DataTable().ajax.reload();
-     }
 
- });
-}
 
-function Published(music_id) {
- var status = '1';
-$.ajax({
-     url:'/music/change/status',
-     method:'put',
-     data:{
-      music_id:music_id,
-      status:status,
-      _token: "{{ csrf_token() }}"
-     },
-     success:function(data){
 
-       $('#music_table').DataTable().ajax.reload();
-     },
-     error:function(data){
-       $('#music_table').DataTable().ajax.reload();
-     }
 
- });
-}
+  function New(music_id) {
+       var status = '0';
+    $.ajax({
+           url:'/music/change/status',
+           method:'put',
+           data:{
+            music_id:music_id,
+            status:status,
+            _token: "{{ csrf_token() }}"
+           },
+           success:function(data){
+            if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     });
+
+                }
+             $('#music_table').DataTable().ajax.reload();
+           },
+           error:function(data){
+             $('#music_table').DataTable().ajax.reload();
+           }
+
+       });
+    }
+    function closeAudio() {
+        $('#link_view').attr('src', '');
+
+        
+    }
+
+   function Published(music_id) {
+       var status = '1';
+    $.ajax({
+           url:'/music/change/status',
+           method:'put',
+           data:{
+            music_id:music_id,
+            status:status,
+            _token: "{{ csrf_token() }}"
+           },
+           success:function(data){
+            if (data.errors) {
+                    Lobibox.notify("error", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-times-circle",
+                        msg: data.message,
+                    });
+                }
+                if (data.success) {
+                    Lobibox.notify("success", {
+                        pauseDelayOnHover: true,
+                        continueDelayOnInactiveTab: false,
+                        position: "top right",
+                        icon: "fa fa-check-circle", //path to image
+                        msg: data.message,
+                     });
+
+                }
+             $('#music_table').DataTable().ajax.reload();
+           },
+           error:function(data){
+             $('#music_table').DataTable().ajax.reload();
+           }
+
+       });
+    }
 
 
 

@@ -90,8 +90,8 @@
         });
 
    function genredelete(genre_id) {
-       console.log(genre_id);
-    $.ajax({
+    if (confirm("Do you want to delete this Genre!")) {
+        $.ajax({
            url:'/genre/destroy/',
            method:'delete',
            data:{
@@ -122,7 +122,10 @@
              $('#genre_table').DataTable().ajax.reload();
            }
 
-       });
+       });  } else {
+    txt = "You pressed Cancel!";
+  }
+    
     }
 
 

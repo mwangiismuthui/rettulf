@@ -10,20 +10,22 @@
     </ul>
 
     <ul class="navbar-nav align-items-center right-nav-link">
-   
       <li class="nav-item">
+        @if (Auth::check())
+
         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-          <span class="user-profile"><img src="/backend/assets/images/avatars/profilepic.png" class="img-circle"
-              alt="img"></span>
+          <span class="user-profile"><img src="{{ Auth::user()->profile_photo == "" ? '/frontend/images/pf.png': url('/ProfilePics').'/'.Auth::user()->profile_photo}}"
+            alt="img" class="img-circle"
+              ></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
           <li class="dropdown-item user-details">
             <a href="javaScript:void();">
+
               <div class="media">
-                <div class="avatar"><img class="align-self-start mr-3"
-                    src="/backend/assets/images/avatars/profilepic.png" alt="user avatar"></div>
+                <div class="avatar"><img class="align-self-start mr-3" src="{{ Auth::user()->profile_photo == "" ? '/frontend/images/pf.png': url('/ProfilePics').'/'.Auth::user()->profile_photo}}"
+                  alt="img">
                 <div class="media-body">
-                  @if (Auth::check())
                       
                   <h6 class="mt-2 user-title">{{Auth::user()->name}}</h6>
                   <p class="user-subtitle">{{Auth::user()->email}}</p>

@@ -136,8 +136,8 @@
 
 
    function seodelete(seo_id) {
-       console.log(seo_id);
-    $.ajax({
+    if (confirm("Do you want to delete the SEO!")) {
+        $.ajax({
            url:'/seo/destroy/',
            method:'delete',
            data:{
@@ -168,7 +168,10 @@
              $('#seo_table').DataTable().ajax.reload();
            }
 
-       });
+       });  } else {
+    txt = "You pressed Cancel!";
+  }
+    
     }
 
 

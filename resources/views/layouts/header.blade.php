@@ -7,14 +7,14 @@
                 </a>
             </div>
             <div id="toggle">
-                <a href="#"><i class="flaticon-menu-1"></i></a>
+                <a href="javascript:void(0);"><i class="flaticon-menu-1"></i></a>
             </div>
         </div>
 
         <div class="m24_header_right_Wrapper d-none d-sm-none d-md-none d-lg-none d-xl-block">
             <div class="m24_signin_wrapper">
                 @if (Auth::check())
-                <a href="{{route('login')}}"><img
+                <a href="{{route('editProfile')}}"><img
                         src="{{ Auth::user()->profile_photo == "" ? '/frontend/images/pf.png': url('/ProfilePics').'/'.Auth::user()->profile_photo}}"
                         alt="img">
                     <div class="login_top_wrapper">
@@ -149,7 +149,7 @@
             </div>
         </div>
         <div class="m24_navi_langauage_box">
-            <div class="theme-switch-wrapper"> <span id="switch-text" style="font-size: 16px">Dark Mode	&nbsp;</span>
+            <div class="theme-switch-wrapper"> <span id="switch-text" style="font-size: 16px">	&nbsp;</span>
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox" />
                     <span class="slider round"></span>

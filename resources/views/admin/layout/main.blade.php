@@ -41,6 +41,9 @@
     <link href="/backend/assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css">
     <!-- notifications css -->
     <link rel="stylesheet" href="/backend/assets/plugins/notifications/css/lobibox.min.css" />
+    {{-- ckeditor --}}
+    <link rel="stylesheet" href="/backend/assets/plugins/summernote/dist/summernote-bs4.css"/>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="/backend/assets/js/jquery.min.js"></script>

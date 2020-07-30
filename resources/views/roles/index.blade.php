@@ -61,7 +61,7 @@
 
                                             @can('role-delete')
                                             {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy',
-                                            $role->id],'style'=>'display:inline']) !!}
+                                            $role->id],'style'=>'display:inline','onsubmit' => 'return confirm("Are you sure you want to delete this Role?");']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                             {!! Form::close() !!}
                                             @endcan

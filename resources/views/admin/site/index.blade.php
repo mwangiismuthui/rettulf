@@ -156,8 +156,8 @@
 
 
    function sitesettingsDelete(siteSettings_id) {
-       console.log(siteSettings_id);
-    $.ajax({
+    if (confirm("Do you want to delete this Site Setting!")) {
+        $.ajax({
            url:'/sitesettings/destroy',
            method:'delete',
            data:{
@@ -188,7 +188,10 @@
              $('#siteSettings_table').DataTable().ajax.reload();
            }
 
-       });
+       });  } else {
+    txt = "You pressed Cancel!";
+  }
+    
     }
 
 

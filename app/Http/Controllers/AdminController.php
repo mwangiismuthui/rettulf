@@ -28,40 +28,40 @@ class AdminController extends Controller
         $producers = User::role('Producer')->count();
         $artists = User::role('Artist')->count();
         $total_sales = TemporaryTransaction::pluck('amount')->sum();
-        if ($request->ajax()) {
+      if ($request->ajax()) {
             $music = Music::with('user')
-                ->orderBy('created_at', 'DESC')
-                ->get();
+            ->orderBy('created_at','DESC')
+            ->get();
             // dd($music);
             return Datatables::of($music)
                 ->addIndexColumn()
                 ->addColumn('status', function ($data) {
                     if ($data->status == '0') {
-                        return ' <a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New</a><div class="dropdown-menu">
-                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">New </a>
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '"><i class="fa fa-volume-up"></i></a> &nbsp;&nbsp;  &nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unpublished</a><div class="dropdown-menu">
+                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">Unpublish </a>
                         <a class="dropdown-item" data-id="" onclick="Published(\'' . $data->id . '\')">Publish </a> 
                         
                         </div>';
                     } elseif ($data->status == '1') {
 
-                        return ' <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Published</a><div class="dropdown-menu">
-                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">New </a>
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '"><i class="fa fa-volume-up"></i></a> &nbsp;&nbsp; <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Published</a><div class="dropdown-menu">
+                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">Unpublish </a>
                         <a class="dropdown-item" data-id="" onclick="Published(\'' . $data->id . '\')">Publish </a> 
                         
                         </div>';
                     }
                 })->addColumn('is_paid', function ($data) {
                     if ($data->is_paid == '0') {
-                        return ' <a class="btn btn-outline-danger btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unpaid</a>';
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '">Unpaid<i class="fa fa-times-circle-o"></i></a>';
                     } elseif ($data->is_paid == '1') {
 
-                        return ' <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Paid</a>';
+                        return '<a class="btn btn-outline-success btn-round waves-effect waves-light view" id="'. $data->id . '">Paid<i class="fa fa-times-circle-o"></i></a>';
                     }
                 })->addColumn('contact', function ($data) {
                     return '<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="mailto:' . $data->user->email . '" ><i class="ti-email"></i></a> &nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="tel:' . $data->phone . '" ><i class="fa fa-phone"></i></a>';
                 })
 
-                ->rawColumns(['status', 'contact', 'is_paid'])
+                ->rawColumns(['status', 'action', 'contact', 'is_paid'])
                 ->make(true);
         }
         return view('admin.dashboard.index',compact('artists','totalMusic','producers','total_sales'));
@@ -76,25 +76,25 @@ class AdminController extends Controller
                 ->addIndexColumn()
                 ->addColumn('status', function ($data) {
                     if ($data->status == '0') {
-                        return ' <a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New</a><div class="dropdown-menu">
-                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">New </a>
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '"><i class="fa fa-volume-up"></i></a> &nbsp;&nbsp;  &nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unpublished</a><div class="dropdown-menu">
+                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">Unpublish </a>
                         <a class="dropdown-item" data-id="" onclick="Published(\'' . $data->id . '\')">Publish </a> 
                         
                         </div>';
                     } elseif ($data->status == '1') {
 
-                        return ' <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Published</a><div class="dropdown-menu">
-                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">New </a>
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '"><i class="fa fa-volume-up"></i></a> &nbsp;&nbsp; <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Published</a><div class="dropdown-menu">
+                        <a class="dropdown-item" data-id="" onclick="New(\'' . $data->id . '\')">Unpublish </a>
                         <a class="dropdown-item" data-id="" onclick="Published(\'' . $data->id . '\')">Publish </a> 
                         
                         </div>';
                     }
                 })->addColumn('is_paid', function ($data) {
                     if ($data->is_paid == '0') {
-                        return ' <a class="btn btn-outline-danger btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unpaid</a>';
+                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="'. $data->id . '">Unpaid<i class="fa fa-times-circle-o"></i></a>';
                     } elseif ($data->is_paid == '1') {
 
-                        return ' <a class="btn btn-outline-success btn-round waves-effect waves-light dropdown-toggle"        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Paid</a>';
+                        return '<a class="btn btn-outline-success btn-round waves-effect waves-light view" id="'. $data->id . '">Paid<i class="fa fa-times-circle-o"></i></a>';
                     }
                 })->addColumn('contact', function ($data) {
                     return '<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="mailto:' . $data->user->email . '" ><i class="ti-email"></i></a> &nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="tel:' . $data->phone . '" ><i class="fa fa-phone"></i></a>';
@@ -116,11 +116,13 @@ class AdminController extends Controller
             'status' => $status
         ])) {
             return response([
-                'success' => "music Status Updated!",
+                'success' =>true,
+                'message' => "Music Status Updated!",
             ], Response::HTTP_OK);
         } else {
             return response([
-                'errors' => "music Status not Updated!",
+                'erros'=>true,
+                'message' => "Music Status not Updated!",
             ], Response::HTTP_OK);
         }
     }
@@ -419,4 +421,16 @@ public function makeFeatured(Request $request)
             return null;
         }
     }
+
+
+    public function Musicshow($id)
+    {
+      if (request()->ajax()) {
+        $data = Music::findOrFail($id);
+        // return $data;
+        return response(['data' => $data], Response::HTTP_OK);
+      }
+    }
+
+    
 }

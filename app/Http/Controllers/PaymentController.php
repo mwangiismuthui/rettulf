@@ -40,8 +40,8 @@ class PaymentController extends Controller
     public function upload_payment(Request $request,$id)
     {
 
-        // $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
-        // $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
+         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
+         $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
         $previousUrl = url()->previous();
         $exacturl = substr($previousUrl, 22);
         return $previousUrl;
@@ -105,7 +105,7 @@ class PaymentController extends Controller
                 $temporary_trans->amount = $total;
                 $temporary_trans->exacturl = $exacturl;
                 $temporary_trans->save();
-                // paying for downloading music 
+                // paying for downloading music
                 $item1 = new Item();
                 $item1->setName('Premium Package')
                     ->setCurrency('USD')
@@ -158,7 +158,7 @@ class PaymentController extends Controller
 
     public function execute_payment(Request $request)
     {
-      
+
         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
         $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
 

@@ -87,8 +87,8 @@
         });
 
    function categorydelete(category_id) {
-       console.log(category_id);
-    $.ajax({
+    if (confirm("Do you want to delete this Category!")) {
+        $.ajax({
            url:'/category/destroy/',
            method:'delete',
            data:{
@@ -119,7 +119,10 @@
              $('#category_table').DataTable().ajax.reload();
            }
 
-       });
+       });  } else {
+    txt = "You pressed Cancel!";
+  }
+    
     }
 
 
