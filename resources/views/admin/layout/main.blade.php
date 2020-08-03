@@ -161,11 +161,24 @@
     <script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
     
     <script src="/backend/assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
+
+    <script src="/frontend/plugin/ckeditor/ckeditor.js"></script>
     <script>
-     $('#summernoteEditor').summernote({
-              height: 400,
-              tabsize: 2
-          });
+         ClassicEditor
+		.create( document.querySelector( '#summernoteEditor' ), {
+			toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+
+    //  $('#summernoteEditor').summernote({
+    //           height: 400,
+    //           tabsize: 2
+    //       });
     </script>
 </body>
 

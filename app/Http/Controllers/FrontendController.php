@@ -291,7 +291,7 @@ class FrontendController extends Controller
         }else{
             $musicsplit =  $musics->split(2);
         }
-        $title = 'Most Listened Songs';
+        $title = 'Most Played Songs';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
@@ -355,7 +355,7 @@ class FrontendController extends Controller
             }else{
                 $musicsplit =  $musics->split(2);
             }
-        $title = 'Most Listened Beats';
+        $title = 'Most Played Beats';
         return view('frontend.musicshop', compact('musicsplit', 'seo', 'title'));
     }
 
