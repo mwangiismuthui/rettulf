@@ -30,7 +30,8 @@
 
                         <h1>contact with us</h1>
 
-                        <p>Your next level Product developemnt company assets</p>
+                        <p>
+                            All our support team are available 24/7 to respond to all your requests</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -39,8 +40,8 @@
                             <i class="fas fa-phone"></i>
                         </div>
                             <h4>contact us</h4>                        
-                                <p>+1800-148-423
-                            <br> +9175-148-124</p>
+                                <p>+ 08164466311
+                            <br> + 08164466311</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -49,8 +50,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                             <h4>Email</h4>                           
-                                <p><a href="#">music24@example.com </a>
-                            <br><a href="#">support@example.com</a></p>
+                                <p><a href="#">support@justerudite.com </a>
+                            <br><a href="#">info@justerudite.com</a></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -59,8 +60,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <h4>location</h4>                           
-                                <p>51-Maxico ,canada
-                            <br> 52B-melbourne,UK</p>
+                                <p>51 ,abuja
+                            <br> 52B-lagos,Nigeria</p>
                     </div>
                 </div>
             </div>

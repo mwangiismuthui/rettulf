@@ -55,14 +55,29 @@
                                 </div>                                
                             </div>
                             @if (Auth::check())
-                                    <a style="padding: 15px 30px; margin-top:15px;display:inline-block;" href="{{route('upload_payment',$music->id)}}" class="paypal-button">
-                                        <span class="paypal-button-title">
-                                            Buy for ${{number_format($music->price,2)}} with
-                                        </span>
-                                        <span class="paypal-logo">
-                                            <i>Pay</i><i>Pal</i>
-                                        </span>
-                                    </a>
+                            @if ($music->price == 0)
+
+
+                            <div class="artist_btn m24_cover">
+                                <div class="lang_apply_btn">                                   
+                                  
+                            <a href="{{route('upload_payment',$music->id)}}"><i
+                                class="flaticon-play-button">Download  free beat</i>  
+                            </a>                                 
+                                </div>                                
+                            </div>
+                           
+                            @else
+                            <a style="padding: 15px 30px; margin-top:15px;display:inline-block;" href="{{route('upload_payment',$music->id)}}" class="paypal-button">
+                                <span class="paypal-button-title">
+                                    Buy for ${{number_format($music->price,2)}} with
+                                </span>
+                                <span class="paypal-logo">
+                                    <i>Pay</i><i>Pal</i>
+                                </span>
+                            </a>
+                            @endif
+                                   
                                   
                                     @endif
                             @endif

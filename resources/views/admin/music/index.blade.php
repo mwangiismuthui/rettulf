@@ -84,7 +84,7 @@
 
 <!-- Large Size Modal -->
 
-<div class="modal fade" id="viewmodal" role="dialog">>
+<div class="modal fade" id="viewmodal" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-danger">
             <div class="modal-header">

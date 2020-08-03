@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Commision;
 use App\Jobs\BulkEmailSender;
 use Illuminate\Http\Request;
 use App\Music;
@@ -27,7 +28,7 @@ class AdminController extends Controller
         $totalMusic = Music::count();
         $producers = User::role('Producer')->count();
         $artists = User::role('Artist')->count();
-        $total_sales = TemporaryTransaction::pluck('amount')->sum();
+        $total_sales = Commision::pluck('amount')->sum();
       if ($request->ajax()) {
             $music = Music::with('user')
             ->orderBy('created_at','DESC')

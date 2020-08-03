@@ -299,7 +299,7 @@
                             pauseDelayOnHover: true,
                             continueDelayOnInactiveTab: false,
                             position: "top right",
-                            icon: "fa fa-times-circle",
+                            icon: "fa fa-check-circle",
                             msg: data.success,
                          });
                          $('#music_add')[0].reset();

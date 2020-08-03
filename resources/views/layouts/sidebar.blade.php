@@ -28,7 +28,12 @@
                     
                 <li class='has-sub'><a href='javascript:void(0);'><i class="flaticon-playlist-1"></i>My Dashboard</a>
                     <ul>
-                        @hasanyrole('Producer|Artist')
+                        @hasanyrole('Producer')
+
+                        <li><a href="{{route('myMusic')}}"><i class="flaticon-playlist-1"></i>Uploaded beats</a></li>
+                        @else
+                        @endhasanyrole              
+                        @hasanyrole('Artist')
 
                         <li><a href="{{route('myMusic')}}"><i class="flaticon-playlist-1"></i>Uploaded music</a></li>
                         @else

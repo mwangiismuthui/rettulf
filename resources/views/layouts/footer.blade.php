@@ -13,8 +13,8 @@
                     </div>
                     <ul class="footer_about_link_wrapper m24_cover">
                         <li> <i class="fa fa-phone"></i> 08164466311</li>
-                        <li> <a href="#"><i class="fa fa-envelope"></i>support@justerudite.com</a></li>
-                        <li> <a href="#"><i class="fas fa-user-alt"></i>info@justerudite.com</a></li>
+                        <li> <a href="javascript:void(0);"><i class="fa fa-envelope"></i>support@justerudite.com</a></li>
+                        <li> <a href="javascript:void(0);"><i class="fas fa-user-alt"></i>info@justerudite.com</a></li>
                     </ul>
 
                 </div>
@@ -24,21 +24,21 @@
                     <h4>usefull links</h4>
                     <ul class="footer_about_link_wrapper usefull_linkx m24_cover">
 
-                        <li> <a href="#">Terms of Use</a>
+                        <li> <a href="javascript:void(0);">Terms of Use</a>
                         </li>
-                        <li> <a href="#">Privacy Policy </a>
+                        <li> <a href="javascript:void(0);">Privacy Policy </a>
                         </li>
-                        <li> <a href="#">Feedback </a>
+                        <li> <a href="javascript:void(0);">Feedback </a>
                         </li>
 
-                        <li> <a href="#">Report an issue </a>
+                        <li> <a href="javascript:void(0);">Report an issue </a>
                         </li>
-                        <li> <a href="#">
+                        <li> <a href="javascript:void(0);">
                                 Sitemap </a>
                         </li>
-                        <li> <a href="#">
+                        <li> <a href="javascript:void(0);">
                                 FAQ </a></li>
-                        <li> <a href="#">
+                        <li> <a href="javascript:void(0);">
                                 advertise </a></li>
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                     <div class="lang_apply_btn footer_cont_btn">
                         <ul>
                             <li>
-                                <a href="#"> <i></i>subscribe</a>
+                                <a href="javascript:void(0);"> <i></i>subscribe</a>
                             </li>
                         </ul>
 

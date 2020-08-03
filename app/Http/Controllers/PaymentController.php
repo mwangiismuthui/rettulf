@@ -43,17 +43,14 @@ class PaymentController extends Controller
          $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
          $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
         $previousUrl = url()->previous();
-        $exacturl = substr($previousUrl, 22);
-        return $previousUrl;
-        https://justerudite.com/
-        // $user_id = request()->ip();
+        $exacturl = substr($previousUrl, 24);
+        // return $exacturl;
+        // https://justerudite.com/
+        // // $user_id = request()->ip();
         $music_amount = Music::where('id', $id)->pluck('price')->first();
         $total = (int) $music_amount;
-
-
-
-
-        if ($total == 0) {
+        $is_paid = Music::where('id', $id)->pluck('is_paid')->first();
+        if ($total == 0 && $is_paid ==1 ) {
             $request->session()->put('music_id', $id);
             return redirect()->route('downloadMusic');
         } else {
@@ -98,7 +95,7 @@ class PaymentController extends Controller
                     ->setTotal($upload_payment_amount)
                     ->setDetails($details);
             } else {
-
+// return Auth::user()->id;
                 $temporary_trans = new TemporaryTransaction();
                 $temporary_trans->user_id = Auth::user()->id;
                 $temporary_trans->music_id = $id;
@@ -137,8 +134,8 @@ class PaymentController extends Controller
                 ->setInvoiceNumber(uniqid());
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl("http://localhost:8000/execute_payment")
-                ->setCancelUrl("http://localhost:8000");
+            $redirectUrls->setReturnUrl("https://localhost:8000/execute_payment")
+                ->setCancelUrl("https://localhost:8000/");
 
             $payment = new Payment();
             $payment->setIntent("sale")

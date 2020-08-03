@@ -124,6 +124,27 @@
     <!--End Row-->
 
 
+    <div class="modal fade" id="viewmodal" role="dialog">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-danger">
+              <div class="modal-header">
+                  <h2 class="modal-title">External Link Content</h2>
+                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <span id="form_result"></span>
+                  <iframe id="link_view" src=""
+                  style="width:100%; height:350px;" frameborder="0"></iframe>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-inverse-warning" data-dismiss="modal" onclick="closeAudio()"><i class="fa fa-times"></i>
+                      Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
 
 
     <!--End Dashboard Content-->
@@ -249,6 +270,26 @@ var table = $('#music_table').DataTable({
 
 
 
+    $(function () {
+
+$(document).on('click', '.view', function(){
+
+          var id = $(this).attr('id');
+          $('#form_result').html('');
+          $.ajax({
+           url:"/music-show/"+id,
+           dataType:"json",
+           success:function(html){
+            console.log(html.data.music);
+
+            $('#link_view').attr('src', '/uploadedFiles/'+ html.data.music);
+            $('.modal-title').text("Audio Preview");
+            $('#viewmodal').modal({backdrop: 'static', keyboard: false}) 
+            $('#viewmodal').modal('show');
+           }
+          })
+         });
+});
 
 
 
