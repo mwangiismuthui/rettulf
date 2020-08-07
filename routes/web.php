@@ -35,6 +35,11 @@ Route::get('/search/music/{search_category}', 'FrontendController@searchMusic')-
 Route::get('/search-results/{id}', 'FrontendController@searchResults')->name('searchResults');
 
 Route::group(['middleware' => 'verified', 'auth'], function () {
+    Route::get('/emailverified', 'RegisterController@sendWelcomeEmail')->name('sendWelcomeEmail');
+
+    Route::get('/emailverified', function () {
+        return view('auth.emailverified');
+    });
 
     Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
 

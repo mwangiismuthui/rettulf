@@ -130,6 +130,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = $password; //hashed password.
         if ($user->save()) {
+            $user->sendEmailVerificationNotification();
             $user_id = $user->id;
             $designation = $request->designation;
             $role = DB::table('roles')->where('name', $designation)->pluck('id')->first();
@@ -147,12 +148,7 @@ class RegisterController extends Controller
             Auth::login($user, true);
             
             $user = Auth::user();
-            $data = array(
-                'subject' =>"Welcome to our Music Application",
-                
-            );
-            $recipient_emails=$request->email;
-            BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+          
             if ($user->hasRole('Super-Admin')) {
 
                 // dd($user);
@@ -173,5 +169,16 @@ class RegisterController extends Controller
         } else {
             return null;
         }
+    }
+    public function sendWelcomeEmail()
+    {
+        $data = array(
+            'subject' =>"Welcome to our Music Application",
+            
+        );
+        $recipient_emails=Auth::user()->email;
+        BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
+
+        return view('auth.emailverified');
     }
 }

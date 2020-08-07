@@ -63,7 +63,8 @@
                                   
                             <a href="{{route('upload_payment',$music->id)}}"><i
                                 class="flaticon-play-button">Download  free beat</i>  
-                            </a>                                 
+                            </a>                       
+                                      
                                 </div>                                
                             </div>
                            
