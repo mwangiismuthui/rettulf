@@ -4,6 +4,17 @@
     <div class="container-fluid">
 
         <div class="row">
+            <div class="col-md-12">
+                @if(session()->has('success'))
+              <div class="alert alert-success">
+                  {{ session()->get('success') }}
+              </div>
+              @elseif(session()->has('error'))
+              <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+          @endif
+            </div>
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header"><i class="fa fa-table"></i> Site Settings

@@ -56,17 +56,11 @@
                             </div>
                             @if (Auth::check())
                             @if ($music->price == 0)
-
-
-                            <div class="artist_btn m24_cover">
-                                <div class="lang_apply_btn">                                   
-                                  
                             <a href="{{route('upload_payment',$music->id)}}"><i
-                                class="flaticon-play-button">Download  free beat</i>  
-                            </a>                       
-                                      
-                                </div>                                
-                            </div>
+                                class="flaticon-download"> &nbsp; Download</i>  
+                            </a> 
+
+                           
                            
                             @else
                             <a style="padding: 15px 30px; margin-top:15px;display:inline-block;" href="{{route('upload_payment',$music->id)}}" class="paypal-button">

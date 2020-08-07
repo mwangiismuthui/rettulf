@@ -49,11 +49,9 @@
                                                 href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
                                                     class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
                                         </li>
-                                        <li><a href="http://www.facebook.com/sharer/sharer.php?u={{route('buymusic',$music->id)}}&quote=Check out this music by {{$music->user->name}} on Music"
-                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                                            target="_blank" title="Share on Facebook"><span class="opt_icon"><i
+                                        <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                                target="_blank"><span class="opt_icon"><i
                                                         class="flaticon-share"></i></span>FaceBook</a>
-                                                       
                                         </li>
                                         <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
                                                 target="_blank"><span class="opt_icon"><i
@@ -139,11 +137,9 @@
                                             href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
                                                 class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
                                     </li>
-                                    <li><a href="http://www.facebook.com/sharer/sharer.php?u={{route('buymusic',$music->id)}}&quote=Check out this music by {{$music->user->name}} on Music"
-                                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                                        target="_blank" title="Share on Facebook"><span class="opt_icon"><i
+                                    <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                            target="_blank"><span class="opt_icon"><i
                                                     class="flaticon-share"></i></span>FaceBook</a>
-                                                   
                                     </li>
                                     <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
                                             target="_blank"><span class="opt_icon"><i
@@ -230,11 +226,9 @@
                                                 href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
                                                     class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
                                         </li>
-                                        <li><a href="http://www.facebook.com/sharer/sharer.php?u={{route('buymusic',$music->id)}}&quote=Check out this music by {{$music->user->name}} on Music"
-                                            onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                                            target="_blank" title="Share on Facebook"><span class="opt_icon"><i
+                                        <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                                target="_blank"><span class="opt_icon"><i
                                                         class="flaticon-share"></i></span>FaceBook</a>
-                                                       
                                         </li>
                                         <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
                                                 target="_blank"><span class="opt_icon"><i
@@ -298,18 +292,18 @@
                                 </div>
 
                             </div>
-                            @if ($music->price<= 0)
+                             @if ($music->price<= 0)
                             <div class="top_list_tract_time">
-                                <p>Free</p>
+                                
+                                <p style="color:#FD7444;">Free</p>
                             </div>
                             @else
                             <div class="top_list_tract_time">
-                                <p>${{$music->price}}</p>
+                                <p style="color:#FD7444;">${{$music->price}}</p>
                             </div>
                             @endif
-                            
                             <div class="top_list_tract_time">
-                                <p>{{$music->duration}}</p>
+                                <p >{{$music->duration}}</p>
                             </div>
                         </div>
                         <div class="top_songs_list_right">
@@ -325,11 +319,9 @@
                                             href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
                                                 class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
                                     </li>
-                                    <li><a href="http://www.facebook.com/sharer/sharer.php?u={{route('buymusic',$music->id)}}&quote=Check out this music by {{$music->user->name}} on Music"
-                                        onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                                        target="_blank" title="Share on Facebook"><span class="opt_icon"><i
+                                    <li><a href="http://www.facebook.com/sharer.php?u={{route('buymusic',$music->id)}}"
+                                            target="_blank"><span class="opt_icon"><i
                                                     class="flaticon-share"></i></span>FaceBook</a>
-                                                   
                                     </li>
                                     <li><a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
                                             target="_blank"><span class="opt_icon"><i

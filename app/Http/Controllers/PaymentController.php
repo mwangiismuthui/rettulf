@@ -55,13 +55,21 @@ class PaymentController extends Controller
             return redirect()->route('downloadMusic');
         } else {
             # code...
+      
             $apiContext = new \PayPal\Rest\ApiContext(
                 new \PayPal\Auth\OAuthTokenCredential(
                     $paypal_client_id, // ClientID
                     $paypal_secret // ClientSecret
                 )
             );
-
+//   $apiContext->setConfig(
+//             array(
+//                 'mode' => 'LIVE',
+//                 'log.LogEnabled' => true,
+//                 'log.FileName' => '../PayPal.log',
+//                 'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
+//             )
+//         );
             $payer = new Payer();
             $payer->setPaymentMethod("paypal");
             if ($exacturl == "mymusic") {
@@ -95,7 +103,7 @@ class PaymentController extends Controller
                     ->setTotal($upload_payment_amount)
                     ->setDetails($details);
             } else {
-// return Auth::user()->id;
+
                 $temporary_trans = new TemporaryTransaction();
                 $temporary_trans->user_id = Auth::user()->id;
                 $temporary_trans->music_id = $id;
@@ -134,8 +142,8 @@ class PaymentController extends Controller
                 ->setInvoiceNumber(uniqid());
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl("https://localhost:8000/execute_payment")
-                ->setCancelUrl("https://localhost:8000/");
+            $redirectUrls->setReturnUrl("https://justerudite.com/execute_payment")
+                ->setCancelUrl("https://justerudite.com/");
 
             $payment = new Payment();
             $payment->setIntent("sale")
@@ -182,12 +190,21 @@ class PaymentController extends Controller
         $music_amount = Music::where('id', $music_id)->pluck('price')->first();
         $total = (int) $music_amount;
 
+      
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 $paypal_client_id, // ClientID
                 $paypal_secret // ClientSecret
             )
         );
+        //   $apiContext->setConfig(
+        //     array(
+        //         'mode' => 'LIVE',
+        //         'log.LogEnabled' => true,
+        //         'log.FileName' => '../PayPal.log',
+        //         'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
+        //     )
+        // );
 
         $paymentId = request('paymentId');
 

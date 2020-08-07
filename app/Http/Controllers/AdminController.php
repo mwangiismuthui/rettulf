@@ -336,7 +336,7 @@ class AdminController extends Controller
            'paypal_secret' => $request->paypal_secret,
            'beat_time' => $request->beatplaytime
         ]);
-        return redirect()->route('siteSettingsIndex')->with('message','Site Settings Updated Succesfully');
+        return redirect()->route('siteSettingsIndex')->with('success','Site Settings Updated Succesfully');
     
      }
      public function sitesettingsDelete(Request $request)
