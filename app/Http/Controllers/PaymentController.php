@@ -62,14 +62,14 @@ class PaymentController extends Controller
                     $paypal_secret // ClientSecret
                 )
             );
-//   $apiContext->setConfig(
-//             array(
-//                 'mode' => 'LIVE',
-//                 'log.LogEnabled' => true,
-//                 'log.FileName' => '../PayPal.log',
-//                 'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
-//             )
-//         );
+  $apiContext->setConfig(
+            array(
+                'mode' => 'LIVE',
+                'log.LogEnabled' => true,
+                'log.FileName' => '../PayPal.log',
+                'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
+            )
+        );
             $payer = new Payer();
             $payer->setPaymentMethod("paypal");
             if ($exacturl == "mymusic") {
@@ -197,14 +197,14 @@ class PaymentController extends Controller
                 $paypal_secret // ClientSecret
             )
         );
-        //   $apiContext->setConfig(
-        //     array(
-        //         'mode' => 'LIVE',
-        //         'log.LogEnabled' => true,
-        //         'log.FileName' => '../PayPal.log',
-        //         'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
-        //     )
-        // );
+          $apiContext->setConfig(
+            array(
+                'mode' => 'LIVE',
+                'log.LogEnabled' => true,
+                'log.FileName' => '../PayPal.log',
+                'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
+            )
+        );
 
         $paymentId = request('paymentId');
 

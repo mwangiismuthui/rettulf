@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-12">
+                <div class="col-md-12">
                 @if(session()->has('success'))
               <div class="alert alert-success">
                   {{ session()->get('success') }}
@@ -257,6 +257,11 @@ console.log(data);
             // },
         });
     });
+    
+     $(document).ready(function(){
+        $(".alert").delay(5000).slideUp(300);
+      });
+
    
 </script>
 

@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6 col-12 col-sm-12">
                 <div class="footer_widget footer_about_wrapper m24_cover">
                     <div class="wrapper_first_image">
-                        <a href="index.html"><img src="{{url('/Logos').'/'.$logopath}}" class="img-responsive"
+                    <a href="{{route('index')}}"><img src="{{url('/Logos').'/'.$logopath}}" class="img-responsive"
                                 alt="logo" /></a>
                     </div>
                     <div class="abotus_content">

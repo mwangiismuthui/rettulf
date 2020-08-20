@@ -54,13 +54,16 @@
                                     <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>play</a>                                    
                                 </div>                                
                             </div>
+                            <br>
+                            <br>
+            
                             @if (Auth::check())
                             @if ($music->price == 0)
-                            <a href="{{route('upload_payment',$music->id)}}"><i
-                                class="flaticon-download"> &nbsp; Download</i>  
-                            </a> 
 
-                           
+
+                              <a href="{{route('upload_payment',$music->id)}}"><i
+                                class="flaticon-download">&nbsp; Download</i>  
+                            </a> 
                            
                             @else
                             <a style="padding: 15px 30px; margin-top:15px;display:inline-block;" href="{{route('upload_payment',$music->id)}}" class="paypal-button">

@@ -10,7 +10,6 @@
 /public/Loading_Icons
 /public/uploadedCoverArts
 /storage/*.key
-/vendor
 .env
 .env.backup
 .phpunit.result.cache
