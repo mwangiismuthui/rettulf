@@ -10,7 +10,6 @@
 /public/Loading_Icons
 /public/uploadedCoverArts
 /storage/*.key
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json

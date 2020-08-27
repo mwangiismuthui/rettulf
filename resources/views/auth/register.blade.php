@@ -94,7 +94,7 @@
                         <div class="col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name">
-                                    <input type="password" class="form-control" placeholder="Enter Password *"
+                                    <input type="password" class="form-control password" placeholder="Enter Password *"
                                         name="password" required>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                         <div class="col-md-6">
                             <div class="form-pos">
                                 <div class="form-group i-name" >
-                                    <input type="password" class="form-control" placeholder="confirm password*"
+                                    <input type="password" class="form-control cpassword" placeholder="confirm password*"
                                     name="password_confirmation"  required>
                                 </div>
                             </div>
@@ -135,13 +135,33 @@
 
             
     });
-    //       $(function() {
+ 
+$('.cpassword').on('keyup',function(){ 
 
-//    $('#designation').on('change',function () {
-//      var designation = $(this).val();  
-//      console.log(designation);
-//    });
-// });
+password = $('.password').val();
+cpassword = $('.cpassword').val();
+
+if (password==cpassword) {
+    
+    $(".cpassword").css({"color":"#95FF00","border":"1px solid #95FF00"});
+    $(".password").css({"color":"#95FF00","border":"1px solid #95FF00"});
+    console.log('matched');
+}else if (password==''||password==null ||cpassword==''||cpassword==null) {
+    $(".cpassword").css({"color":"#95FF00","border":"1px solid #FFFFFF"});
+    $(".password").css({"color":"#95FF00","border":"1px solid #FFFFFF"});    
+    console.log('empty');
+
+}else{
+
+    $(".cpassword").css({"color":"#95FF00","border":"1px solid #FF0025"});
+    $(".password").css({"color":"#95FF00","border":"1px solid #FF0025"});  
+    console.log('not matched');
+
+}
+    });
+
+
+    
 
 </script>
 
