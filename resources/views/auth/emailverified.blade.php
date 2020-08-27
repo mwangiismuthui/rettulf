@@ -33,7 +33,7 @@ today = mm + '/' + dd + '/' + yyyy;
                        
     
                         {{ __('To continue to the music application click on the link below.') }}
-                        {{ __('If you did not receive the email') }},
+                       ,
                        
                             <a href="{{route('index')}}" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to go to home') }}</a>.
                 
