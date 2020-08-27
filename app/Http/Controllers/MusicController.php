@@ -64,7 +64,7 @@ class MusicController extends Controller
             'description' => 'required',
             // 'tempo' => 'required',
             'cover_art' => 'required',
-            'music' => 'mimes:mpga,wav',
+            'music' => 'mimes:mp3,wav',
             'price' => '|integer|between:0,100',
 
         ];
