@@ -74,7 +74,7 @@ class MusicController extends Controller
             // 'key_id.required' => 'The Key is required.',
             // 'tempo.required' => 'The Tempo of beat is required.',
             'cover_art.required' => 'The Cover art is required.',
-            'music.mimes' => 'File must be an audio of farmat: mpga,wav.',
+            'music.mimes' => 'File must be an audio of farmat: mp3,wav.',
             'description.required' => 'Description is required.',
             'price.required' => 'Price is required.',
             'price.between' => 'Price must between $10 and $100.',
