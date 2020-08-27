@@ -127,7 +127,7 @@
                                     @endif
 
                                     <input class="form-control require" name="music" id="music" type="file" required
-                                        accept="video/*" required="" />
+                                        accept="music/*" required="" />
 
                                 </div>
                             </div>
