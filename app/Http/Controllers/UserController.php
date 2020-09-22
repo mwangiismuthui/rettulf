@@ -63,7 +63,7 @@ class UserController extends Controller
 
         $input = $request->all();
         // dd($input);
-        // $input['password'] = 
+        // $input['password'] =
 
 
         // $user = User::create($input);
@@ -132,10 +132,10 @@ class UserController extends Controller
 
         $input = $request->all();
         // dd($request->input('roles'));
-        if(!empty($input['password'])){ 
+        if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{
-            $input = array_except($input,array('password'));    
+            $input = array_except($input,array('password'));
         }
 
 

@@ -33,6 +33,7 @@ Route::get('/top-artists', 'FrontendController@topArtists')->name('topArtists');
 Route::post('/musicpath', 'MusicController@musicpath')->name('musicpath');
 Route::get('/search/music/{search_category}', 'FrontendController@searchMusic')->name('searchMusic');
 Route::get('/search-results/{id}', 'FrontendController@searchResults')->name('searchResults');
+Route::post('/subscribe-newsletter', 'FrontendController@SubscribeNewsLetter')->name('SubscribeNewsLetter');
 
 Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('/emailverified', 'RegisterController@sendWelcomeEmail')->name('sendWelcomeEmail');
@@ -42,6 +43,7 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     });
 
     Route::get('/download-music/{id}', 'FrontendController@buymusic')->name('buymusic');
+    Route::get('/select-payment-method/{music_id}', 'FrontendController@selectPaymentMethod')->name('selectPaymentMethod');
 
     Route::get('/edit-profile', 'FrontendController@editProfile')->name('editProfile');
     Route::post('/update-profile', 'FrontendController@updateProfile')->name('updateProfile');
@@ -124,6 +126,11 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('payout/{id}', 'PaymentController@payout')->name('createPayment');
     Route::get('cancel_payment', 'PaymentController@cancel_payment')->name('cancel_payment');
 
+    /*flutterwave*/
+    Route::get('flutter-wave-init-payment/{id}', 'FlutterWavePaymentController@initFlutterwavePayments')->name('initFlutterwavePayments');
+    Route::get('flutter-wave-callback/{id}', 'FlutterWavePaymentController@executepaymentResults')->name('executepaymentResults');
+
+
     // ..................Slider..............................//
     Route::get('/slider/index', 'SliderController@index')->name('slider.index');
     Route::post('/slider/store', 'SliderController@store')->name('slider.store');
@@ -147,6 +154,11 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::post('/sitesettings/update/{id}', 'AdminController@siteSettingsUpdate')->name('siteSettingsUpdate');
     Route::get('/artist/activation', 'AdminController@activation')->name('activation');
     Route::put('/feature/change/status', 'AdminController@makeFeatured')->name('makeFeatured');
+    Route::get('/footer/settings', 'AdminController@footerSettingsIndex')->name('footerSettingsIndex');
+    Route::post('/footer/settings/store', 'AdminController@footerSettingsStore')->name('footerSettingsStore');
+    Route::get('/footer/settings/edit/{id}', 'AdminController@footerSettingsEdit')->name('footerSettingsEdit');
+    Route::post('/footer/settings/update/{id}', 'AdminController@footerSettingsUpdate')->name('footerSettingsUpdate');
+    Route::delete('/footer/settings/delete', 'AdminController@footerSettingsDelete')->name('footerSettingsDelete');
 
 
     // ..................SEO..............................//

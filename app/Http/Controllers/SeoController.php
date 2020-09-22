@@ -37,7 +37,7 @@ class SeoController extends Controller
                 ->make(true);
         }
 
-        return view('admin.seo.index',compact('products'));
+        return view('admin.seo.index');
     }
 
     /**
@@ -52,9 +52,9 @@ class SeoController extends Controller
     public function edit(Request $request,$id)
     {
         $seos =Seo::where('id',$id)->get();
-      
-        
-        
+
+
+
 
         return view ('admin.seo.edit',compact('seos'));
     }
@@ -97,15 +97,15 @@ class SeoController extends Controller
                 'error'=>False,
                 'message'=>'Seo Added Successfully',
             ],Response::HTTP_OK);
-        
-          
+
+
         }
     }
 
 
 
     public function update(Request $request,$id){
-      
+
         $rules = [
             // 'meta_description' => 'required',
             // 'meta_keyword' => 'required',
@@ -124,7 +124,7 @@ class SeoController extends Controller
             ],Response::HTTP_OK);
         }
 
-     
+
         Seo::where('id',$id)->update([
            'page_title' => $request->page_title,
            'seo_title' => $request->seo_title,
@@ -136,7 +136,7 @@ class SeoController extends Controller
             'success'=>True,
             'message'=>'Seo Updated Succesfully',
         ],Response::HTTP_OK);;
-    
+
      }
 
 
@@ -164,6 +164,6 @@ class SeoController extends Controller
             ],Response::HTTP_OK);
         }
         }
-    
-    }   
+
+    }
 }

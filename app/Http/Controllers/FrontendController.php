@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankOfNigeria;
 use App\Genre;
 use App\Location;
 use App\Music;
@@ -17,6 +18,7 @@ use App\Jobs\BulkEmailSender;
 use Carbon\Carbon;
 use Validator;
 use Illuminate\Support\Facades\Hash;
+use Newsletter;
 
 class FrontendController extends Controller
 {
@@ -128,11 +130,11 @@ class FrontendController extends Controller
             }
             return collect($partition);
         } else {
-           return [];   
+           return [];
         }
 
 
-       
+
     }
 
 
@@ -152,21 +154,21 @@ class FrontendController extends Controller
 
         if (sizeOf($genre_music) == 1 ) {
             $musicsplit =  $genre_music->split(2);
-            $musicsplit[1] = []; 
+            $musicsplit[1] = [];
         } elseif(sizeOf($genre_music) == 0){
             $musicsplit[0] = [];
             $musicsplit[1] = [];
         }else{
             $musicsplit =  $genre_music->split(2);
         }
-        // $count = count($genre_music); 
-        // $half = $count/2; 
+        // $count = count($genre_music);
+        // $half = $count/2;
         // $musicsplit = $genre_music->chunk(1);
-       
+
         // $music2 =  $genre_music->skip($half);
         // return $music1;
-        
-        
+
+
         return view('frontend.genres', compact('musicsplit', 'genre','seo'));
     }
     public function singleArtist($id)
@@ -204,7 +206,7 @@ class FrontendController extends Controller
         $pending_withdrawals = Withdrawal::where('user_id', $user_id)
             ->where('status',0)
             ->sum('amount');
-      
+
                     // return $pending_withdrawals;
 
         $published_music_count = Music::where('user_id', $user_id)->where('status',1)->count();
@@ -266,7 +268,7 @@ class FrontendController extends Controller
         $seo = Seo::where('seos.page_title', 'like', 'mostDownloadedSongs')->first();
         if (sizeOf($musics) == 1 ) {
             $musicsplit =  $musics->split(2);
-            $musicsplit[1] = []; 
+            $musicsplit[1] = [];
         } elseif(sizeOf($musics) == 0){
             $musicsplit[0] = [];
             $musicsplit[1] = [];
@@ -284,7 +286,7 @@ class FrontendController extends Controller
         // return $seo;
         if (sizeOf($musics) == 1 ) {
             $musicsplit =  $musics->split(2);
-            $musicsplit[1] = []; 
+            $musicsplit[1] = [];
         } elseif(sizeOf($musics) == 0){
             $musicsplit[0] = [];
             $musicsplit[1] = [];
@@ -305,7 +307,7 @@ class FrontendController extends Controller
         // dd($musics);
         if (sizeOf($musics) == 1 ) {
             $musicsplit =  $musics->split(2);
-            $musicsplit[1] = []; 
+            $musicsplit[1] = [];
         } elseif(sizeOf($musics) == 0){
             $musicsplit[0] = [];
             $musicsplit[1] = [];
@@ -327,7 +329,7 @@ class FrontendController extends Controller
         // dd($musics);
         if (sizeOf($musics) == 1 ) {
             $musicsplit =  $musics->split(2);
-            $musicsplit[1] = []; 
+            $musicsplit[1] = [];
         } elseif(sizeOf($musics) == 0){
             $musicsplit[0] = [];
             $musicsplit[1] = [];
@@ -348,7 +350,7 @@ class FrontendController extends Controller
             ->orderBy('views', 'desc')->get();
             if (sizeOf($musics) == 1 ) {
                 $musicsplit =  $musics->split(2);
-                $musicsplit[1] = []; 
+                $musicsplit[1] = [];
             } elseif(sizeOf($musics) == 0){
                 $musicsplit[0] = [];
                 $musicsplit[1] = [];
@@ -370,7 +372,7 @@ class FrontendController extends Controller
         // dd($musics);
         if (sizeOf($musics) == 1 ) {
             $musicsplit =  $musics->split(2);
-            $musicsplit[1] = []; 
+            $musicsplit[1] = [];
         } elseif(sizeOf($musics) == 0){
             $musicsplit[0] = [];
             $musicsplit[1] = [];
@@ -385,7 +387,8 @@ class FrontendController extends Controller
     {
         $artist = Auth::user();
         $locations = Location::all();
-        return view('frontend.updateProfile',compact('artist','locations'));
+        $banks = BankOfNigeria::all();
+        return view('frontend.updateProfile',compact('artist','locations','banks'));
     }
 
     public function updateProfile(Request $request)
@@ -409,7 +412,9 @@ class FrontendController extends Controller
         $user->username = $request->username;
         $user->about = $request->about;
         $user->paypal_email = $request->paypal_email;
-        if(!empty($request->password)){ 
+        $user->account_number = $request->bank_account;
+        $user->bank_name = $request->bank_name;
+        if(!empty($request->password)){
             $user->password = Hash::make($request->password);
         }
 
@@ -483,12 +488,12 @@ class FrontendController extends Controller
 
         $data = array(
             'subject' =>"Your Music Has been Downloaded",
-            
+
         );
         $user_id =  Music::where('id', $id)->pluck('user_id')->first();
 
         $recipient_emails=User::where('id',$user_id)->pluck('email')->first();
-       
+
         BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));
         $music_id = $id;
 
@@ -521,10 +526,44 @@ class FrontendController extends Controller
             $seo = Seo::where('seos.page_title', 'like', 'singleProducer')->first();
             return view('frontend.artist_single', compact('user_music', 'user','seo'));
         }
-        
-       
-        
-        
+
+
+
+
+    }
+
+    public function SubscribeNewsLetter(Request $request){
+        $rules = [
+            'user_email' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
+
+        ];
+        $messages = [
+            'user_email.required' => 'Email is required.',
+            'fname.required' => 'First name is required.',
+            'lname.required' => 'Last name is required.',
+        ];
+        $error = Validator::make($request->all(), $rules, $messages);
+
+        if ($error->fails()) {
+            return response([
+                'errors' =>  $error->errors()->all(),
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        }
+
+
+        if ( ! Newsletter::isSubscribed($request->user_email) ) {
+//            Newsletter::subscribe($request->user_email);
+            Newsletter::subscribePending($request->user_email, ['FNAME'=>$request->fname, 'LNAME'=>$request->lname]);
+            return response([
+                'success' => 'Subscription is successful, check your email to confirm',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        }else{
+            return response([
+                'warning' => 'You are already Subscribed',
+            ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+        }
     }
 
     public function searchMusic(Request $request, $search_category)
@@ -558,8 +597,8 @@ class FrontendController extends Controller
                 ->where('status',1)
                 ->limit(15)
                 ->get();
-            }            
-            
+            }
+
         } else {
             if ($search_category == 'all') {
                 $data1 = Music::orderby('title', 'asc')
@@ -590,7 +629,7 @@ class FrontendController extends Controller
                 ->limit(15)
                 ->get();
             }
-            
+
         }
         $response = [];
         foreach ($musics as $music) {
@@ -602,6 +641,10 @@ class FrontendController extends Controller
         return response($response, \Symfony\Component\HttpFoundation\Response::HTTP_OK);
     }
 
+    public function selectPaymentMethod($music_id){
+        $music = Music::find($music_id);
+        return view('frontend.paymentmethod',compact('music'));
+    }
     public function generateUniqueFileName($image, $destinationPath)
     {
         $initial = "ProfilePics ";

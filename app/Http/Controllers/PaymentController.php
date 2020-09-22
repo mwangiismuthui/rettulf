@@ -37,45 +37,45 @@ use Carbon\Carbon;
 class PaymentController extends Controller
 {
 
-    public function upload_payment(Request $request,$id)
+    public function upload_payment(Request $request, $id)
     {
 
-         $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
-         $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
+        $paypal_client_id = SiteSetting::pluck('paypal_client_id')->first();
+        $paypal_secret = SiteSetting::pluck('paypal_secret')->first();
         $previousUrl = url()->previous();
         $exacturl = substr($previousUrl, 24);
         // return $exacturl;
         // https://justerudite.com/
         // // $user_id = request()->ip();
         $music_amount = Music::where('id', $id)->pluck('price')->first();
-        $total = (int) $music_amount;
+        $total = (int)$music_amount;
         $is_paid = Music::where('id', $id)->pluck('is_paid')->first();
-        if ($total == 0 && $is_paid ==1 ) {
+        if ($total == 0 && $is_paid == 1) {
             $request->session()->put('music_id', $id);
             return redirect()->route('downloadMusic');
         } else {
             # code...
-      
+
             $apiContext = new \PayPal\Rest\ApiContext(
                 new \PayPal\Auth\OAuthTokenCredential(
                     $paypal_client_id, // ClientID
                     $paypal_secret // ClientSecret
                 )
             );
-  $apiContext->setConfig(
-            array(
-                'mode' => 'LIVE',
-                'log.LogEnabled' => true,
-                'log.FileName' => '../PayPal.log',
-                'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
-            )
-        );
+            $apiContext->setConfig(
+                array(
+                    'mode' => 'LIVE',
+                    'log.LogEnabled' => true,
+                    'log.FileName' => '../PayPal.log',
+                    'log.LogLevel' => 'INFO', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
+                )
+            );
             $payer = new Payer();
             $payer->setPaymentMethod("paypal");
             if ($exacturl == "mymusic") {
 
                 $upload_payment = UploadFee::orderBy('created_at', 'DESC')->pluck('amount')->first();
-                $upload_payment_amount = (int) $upload_payment;
+                $upload_payment_amount = (int)$upload_payment;
                 $temporary_trans = new TemporaryTransaction();
                 $temporary_trans->user_id = Auth::user()->id;
                 $temporary_trans->music_id = $id;
@@ -134,7 +134,6 @@ class PaymentController extends Controller
             }
 
 
-
             $transaction = new Transaction();
             $transaction->setAmount($amount)
                 ->setItemList($itemList)
@@ -173,31 +172,31 @@ class PaymentController extends Controller
             ->orderBy('created_at', 'DESC')
             ->pluck('music_id')
             ->first();
-            // dd($music_id);
+        // dd($music_id);
         $exacturl = TemporaryTransaction::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->pluck('exacturl')
             ->first();
-            // dd($exacturl);
+        // dd($exacturl);
 
         $upload_payment_amount = TemporaryTransaction::where('user_id', $user_id)
             ->orderBy('created_at', 'DESC')
             ->pluck('amount')
             ->first();
-            // dd($upload_payment_amount);
+        // dd($upload_payment_amount);
 
         session()->put('music_id', $music_id);
         $music_amount = Music::where('id', $music_id)->pluck('price')->first();
-        $total = (int) $music_amount;
+        $total = (int)$music_amount;
 
-      
+
         $apiContext = new \PayPal\Rest\ApiContext(
             new \PayPal\Auth\OAuthTokenCredential(
                 $paypal_client_id, // ClientID
                 $paypal_secret // ClientSecret
             )
         );
-          $apiContext->setConfig(
+        $apiContext->setConfig(
             array(
                 'mode' => 'LIVE',
                 'log.LogEnabled' => true,
@@ -237,7 +236,6 @@ class PaymentController extends Controller
         }
 
 
-
         $execution->addTransaction($transaction);
 
         $result = $payment->execute($execution, $apiContext);
@@ -259,6 +257,7 @@ class PaymentController extends Controller
             return redirect()->route('downloadedMusic')->with('success', 'Music purchased succesfully!Find it here to download');
         }
     }
+
     public function uploadedMusic($music_id, $payment_id, $PayerID)
     {
 
@@ -274,6 +273,7 @@ class PaymentController extends Controller
         $payment->user_id = $user_id;
         $payment->save();
     }
+
     public function downloadedMusic($music_id, $payment_id, $PayerID)
     {
 
@@ -328,7 +328,6 @@ class PaymentController extends Controller
         $environment = new SandboxEnvironment($clientId, $clientSecret);
         $client = new PayPalHttpClient($environment);
         $request = new PayoutsPostRequest();
-
 
 
         $data = array(

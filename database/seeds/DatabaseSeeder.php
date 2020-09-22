@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
         $this->call(SeoSeeder::class);
         $this->call(LocationSeeder::class);
-        // $this->call(PermissionTableSeeder::class);
+        $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(GenreSeeder::class);
+        $this->call(BanksOfNigeriaSeeder::class);
     }
 }

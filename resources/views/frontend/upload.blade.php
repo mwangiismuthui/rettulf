@@ -215,10 +215,10 @@
 		} );
 @endif
     $(document).ready(function() {
-            $('.genre').select2();           
-            $('.key').select2(); 
+            $('.genre').select2();
+            $('.key').select2();
 
-            
+
     });
 
     $("#music_add").on("submit", function (event) {
@@ -272,7 +272,7 @@
                                 });
                         }
                         html += "</div></div>";
-                        
+
 
                 }
                 if (data.warning) {
@@ -307,7 +307,8 @@
                      $("#form_result").html(html);
                     setTimeout(function () {
                         $("#form_result").html("");
-                    }, 6000);
+                        window.location.href = '/mymusic';
+                    }, 3000);
 
 
             },

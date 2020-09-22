@@ -94,6 +94,7 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Spatie\\Permission\\' => 18,
+            'Spatie\\Newsletter\\' => 18,
             'Sample\\' => 7,
         ),
         'R' => 
@@ -107,6 +108,7 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
@@ -134,6 +136,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
         ),
+        'K' => 
+        array (
+            'KingFlamez\\Rave\\' => 16,
+        ),
         'I' => 
         array (
             'Illuminate\\Foundation\\Auth\\' => 27,
@@ -160,6 +166,7 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         ),
         'D' => 
         array (
+            'DrewM\\MailChimp\\' => 16,
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
@@ -322,6 +329,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-permission/src',
         ),
+        'Spatie\\Newsletter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-newsletter/src',
+        ),
         'Sample\\' => 
         array (
             0 => __DIR__ . '/..' . '/paypal/paypal-payouts-sdk/samples',
@@ -349,6 +360,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (
@@ -406,6 +421,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'KingFlamez\\Rave\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kingflamez/laravelrave/src',
+        ),
         'Illuminate\\Foundation\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/ui/auth-backend',
@@ -454,6 +473,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
+        'DrewM\\MailChimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/drewm/mailchimp-api/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -501,6 +524,13 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
     );
 
     public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'Unirest\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/mashape/unirest-php/src',
+            ),
+        ),
         'P' => 
         array (
             'PayPal' => 
@@ -533,10 +563,13 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'AMFStream' => __DIR__ . '/..' . '/james-heinrich/getid3/getid3/module.audio-video.flv.php',
         'AVCSequenceParameterSetReader' => __DIR__ . '/..' . '/james-heinrich/getid3/getid3/module.audio-video.flv.php',
         'App\\Balance' => __DIR__ . '/../..' . '/app/Balance.php',
+        'App\\BankOfNigeria' => __DIR__ . '/../..' . '/app/BankOfNigeria.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Commision' => __DIR__ . '/../..' . '/app/Commision.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\FlutterWavePayment' => __DIR__ . '/../..' . '/app/FlutterWavePayment.php',
+        'App\\FooterSetting' => __DIR__ . '/../..' . '/app/FooterSetting.php',
         'App\\Genre' => __DIR__ . '/../..' . '/app/Genre.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -550,6 +583,8 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'App\\Http\\Controllers\\CommisionController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommisionController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmailController.php',
+        'App\\Http\\Controllers\\FlutterWavePaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/FlutterWavePaymentController.php',
+        'App\\Http\\Controllers\\FooterSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/FooterSettingController.php',
         'App\\Http\\Controllers\\FrontendController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontendController.php',
         'App\\Http\\Controllers\\GenreController' => __DIR__ . '/../..' . '/app/Http/Controllers/GenreController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -599,6 +634,7 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'App\\Withdrawal' => __DIR__ . '/../..' . '/app/Withdrawal.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
+        'BanksOfNigeriaSeeder' => __DIR__ . '/../..' . '/database/seeds/BanksOfNigeriaSeeder.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -802,6 +838,9 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'Dotenv\\Store\\StoreBuilder' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Store/StoreBuilder.php',
         'Dotenv\\Store\\StoreInterface' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Store/StoreInterface.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'DrewM\\MailChimp\\Batch' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/Batch.php',
+        'DrewM\\MailChimp\\MailChimp' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/MailChimp.php',
+        'DrewM\\MailChimp\\Webhook' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/Webhook.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',
@@ -1448,6 +1487,7 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'GenreSeeder' => __DIR__ . '/../..' . '/database/seeds/GenreSeeder.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
+        'GuzzleHttp\\ClientTrait' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientTrait.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
         'GuzzleHttp\\Cookie\\CookieJarInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJarInterface.php',
         'GuzzleHttp\\Cookie\\FileCookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/FileCookieJar.php',
@@ -1459,7 +1499,6 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'GuzzleHttp\\Exception\\GuzzleException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/GuzzleException.php',
         'GuzzleHttp\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/InvalidArgumentException.php',
         'GuzzleHttp\\Exception\\RequestException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/RequestException.php',
-        'GuzzleHttp\\Exception\\SeekException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/SeekException.php',
         'GuzzleHttp\\Exception\\ServerException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/ServerException.php',
         'GuzzleHttp\\Exception\\TooManyRedirectsException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/TooManyRedirectsException.php',
         'GuzzleHttp\\Exception\\TransferException' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Exception/TransferException.php',
@@ -1515,7 +1554,6 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'GuzzleHttp\\RequestOptions' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RequestOptions.php',
         'GuzzleHttp\\RetryMiddleware' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
         'GuzzleHttp\\TransferStats' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/TransferStats.php',
-        'GuzzleHttp\\UriTemplate' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/UriTemplate.php',
         'GuzzleHttp\\Utils' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Utils.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
@@ -2473,6 +2511,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'Image_XMP' => __DIR__ . '/..' . '/james-heinrich/getid3/getid3/module.tag.xmp.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'KingFlamez\\Rave\\Facades\\Rave' => __DIR__ . '/..' . '/kingflamez/laravelrave/src/Facades/Rave.php',
+        'KingFlamez\\Rave\\Rave' => __DIR__ . '/..' . '/kingflamez/laravelrave/src/Rave.php',
+        'KingFlamez\\Rave\\RaveEventHandlerInterface' => __DIR__ . '/..' . '/kingflamez/laravelrave/src/RaveEventHandlerInterface.php',
+        'KingFlamez\\Rave\\RaveServiceProvider' => __DIR__ . '/..' . '/kingflamez/laravelrave/src/RaveServiceProvider.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -3964,6 +4006,10 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'Psr\\EventDispatcher\\EventDispatcherInterface' => __DIR__ . '/..' . '/psr/event-dispatcher/src/EventDispatcherInterface.php',
         'Psr\\EventDispatcher\\ListenerProviderInterface' => __DIR__ . '/..' . '/psr/event-dispatcher/src/ListenerProviderInterface.php',
         'Psr\\EventDispatcher\\StoppableEventInterface' => __DIR__ . '/..' . '/psr/event-dispatcher/src/StoppableEventInterface.php',
+        'Psr\\Http\\Client\\ClientExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientExceptionInterface.php',
+        'Psr\\Http\\Client\\ClientInterface' => __DIR__ . '/..' . '/psr/http-client/src/ClientInterface.php',
+        'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
+        'Psr\\Http\\Client\\RequestExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/RequestExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
@@ -4376,6 +4422,13 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SeoSeeder' => __DIR__ . '/../..' . '/database/seeds/SeoSeeder.php',
+        'Spatie\\Newsletter\\Exceptions\\InvalidNewsletterList' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/Exceptions/InvalidNewsletterList.php',
+        'Spatie\\Newsletter\\Newsletter' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/Newsletter.php',
+        'Spatie\\Newsletter\\NewsletterFacade' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterFacade.php',
+        'Spatie\\Newsletter\\NewsletterList' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterList.php',
+        'Spatie\\Newsletter\\NewsletterListCollection' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterListCollection.php',
+        'Spatie\\Newsletter\\NewsletterServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterServiceProvider.php',
+        'Spatie\\Newsletter\\NullDriver' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NullDriver.php',
         'Spatie\\Permission\\Commands\\CacheReset' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Commands/CacheReset.php',
         'Spatie\\Permission\\Commands\\CreatePermission' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Commands/CreatePermission.php',
         'Spatie\\Permission\\Commands\\CreateRole' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Commands/CreateRole.php',
@@ -5127,6 +5180,11 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'Unirest\\Exception' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Exception.php',
+        'Unirest\\Method' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Method.php',
+        'Unirest\\Request' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Request.php',
+        'Unirest\\Request\\Body' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Request/Body.php',
+        'Unirest\\Response' => __DIR__ . '/..' . '/mashape/unirest-php/src/Unirest/Response.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',

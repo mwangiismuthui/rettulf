@@ -2,6 +2,7 @@
 
 namespace App\Http\View\Composers;
 
+use App\FooterSetting;
 use Illuminate\View\View;
 use App\SiteSetting;
 use App\Seo;
@@ -34,16 +35,18 @@ class SidenavComposer
         $footer_text = SiteSetting::pluck('footer_text')->first();
         $favicon = SiteSetting::pluck('favicon')->first();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
+        $footersettings = FooterSetting::first();
 
-     
-       
+
+
       $data = [
         'logopath' => $logopath,
         'footer_text' => $footer_text,
         'loading_icon' => $loading_icon,
         'favicon' => $favicon,
         'seo' => $seo,
-       
+        'footersettings' => $footersettings,
+
       ];
         $view->with($data);
     }
