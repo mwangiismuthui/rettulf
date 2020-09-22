@@ -641,9 +641,10 @@ class FrontendController extends Controller
         return response($response, \Symfony\Component\HttpFoundation\Response::HTTP_OK);
     }
 
-    public function selectPaymentMethod($music_id){
+    public function selectPaymentMethod($music_id, Request $request){
+        $source = $request->source;
         $music = Music::find($music_id);
-        return view('frontend.paymentmethod',compact('music'));
+        return view('frontend.paymentmethod',compact('music','source'));
     }
     public function generateUniqueFileName($image, $destinationPath)
     {

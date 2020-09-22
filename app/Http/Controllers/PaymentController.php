@@ -254,7 +254,7 @@ class PaymentController extends Controller
             $request->session()->forget('amount');
             $request->session()->forget('exacturl');
             $request->session()->forget('music_id');
-            return redirect()->route('downloadedMusic')->with('success', 'Music purchased succesfully!Find it here to download');
+            return redirect()->route('downloadedMusic')->with('success', 'Music purchased successfully.');
         }
     }
 
@@ -286,7 +286,7 @@ class PaymentController extends Controller
         $user_id = Auth::user()->id;
         // dd($music_id);
         Music::where('id', $music_id)->update([
-            'is_paid' => 1,
+            'is_paid' => 1, //todo
             'downloads' => $new_downloads,
         ]);
         $payment = new PaypalPayment();

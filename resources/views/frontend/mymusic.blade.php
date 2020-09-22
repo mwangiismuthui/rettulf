@@ -119,6 +119,11 @@
                         <div class="m24_heading_wrapper m24_cover text-center">
 
                             <h1>Your Song List</h1>
+                            @if(session()->has('success'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('success') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-12">
@@ -166,11 +171,11 @@
                                         @role('Producer')
                                         @if ($music->is_paid==0)
                                             <li class="text-center">
-                                                <a href="{{route('selectPaymentMethod',$music->id)}}">Click to Pay</a>
+                                                <a href="{{route('selectPaymentMethod',$music->id.'?source=upload')}}">Click to Pay</a>
                                             </li>
                                         @else
 
-                                            <li><a><label class="badge badge-success">Paid</label></a></li>
+                                            <li class="text-center"><a><label class="badge badge-success text-center">Paid</label></a></li>
                                         @endif
                                         @else
                                             @endrole
@@ -214,6 +219,20 @@
             </div>
 
             @endforeach
+            @if (Session::has('success'))
+                <script type="text/javascript">
+                    $(document).ready(function () {
+
+                        Lobibox.notify("success", {
+                            pauseDelayOnHover: true,
+                            continueDelayOnInactiveTab: false,
+                            position: "top right",
+                            icon: "fa fa-times-circle",
+                            msg: "{{ session()->get('success') }}",
+                        });
+                    });
+                </script>
+            @endif
             <script>
                 $(document).ready(function () {
                     $(".alert").delay(5000).slideUp(300);

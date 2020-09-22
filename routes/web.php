@@ -127,8 +127,10 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('cancel_payment', 'PaymentController@cancel_payment')->name('cancel_payment');
 
     /*flutterwave*/
-    Route::get('flutter-wave-init-payment/{id}', 'FlutterWavePaymentController@initFlutterwavePayments')->name('initFlutterwavePayments');
-    Route::get('flutter-wave-callback/{id}', 'FlutterWavePaymentController@executepaymentResults')->name('executepaymentResults');
+    Route::get('flutter-wave-init-payment/{id}', 'FlutterWavePaymentController@beatFlutterWavePayment')->name('beatFlutterWavePayment');
+    Route::get('flutter-wave-init-payment2/{id}', 'FlutterWavePaymentController@musicBuyFlutterWavePayment')->name('musicBuyFlutterWavePayment');
+    Route::get('flutter-wave-callback/{id}', 'FlutterWavePaymentController@beatUploadPaymentExecute')->name('beatUploadPaymentExecute');
+    Route::get('flutter-wave-callback2/{id}', 'FlutterWavePaymentController@musicBuyPaymentExecute')->name('musicBuyPaymentExecute');
 
 
     // ..................Slider..............................//
@@ -222,9 +224,6 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::post('/seo/update/{id}', 'SeoController@update')->name('seo.update');
     Route::delete('/seo/destroy/', 'SeoController@destroy')->name('seo.destroy');
     Route::delete('/seo/photo/destroy/', 'SeoController@photoDestroy')->name('seo.photo.destroy');
-
-
-    Route::get('/home', 'HomeController@index')->name('home');
 
 
 
