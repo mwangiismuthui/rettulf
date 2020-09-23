@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BankOfNigeria;
+use App\Download;
 use App\Genre;
 use App\Location;
 use App\Music;
@@ -438,19 +439,15 @@ class FrontendController extends Controller
 
 
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function downloadedMusic()
     {
         $seo = Seo::where('seos.page_title', 'like', 'downloadedMusic')->first();
 
-        $downloaded_musics = PaypalPayment::join('music', 'music.id', '=', 'paypal_payments.music_id')->where('paypal_payments.user_id', Auth::user()->id)
-            ->join('users', 'users.id', '=', 'music.user_id')->where('paypal_payments.user_id', Auth::user()->id)
-            ->orderBy('paypal_payments.created_at', 'DESC')
+//        $downloaded_musics = PaypalPayment::join('music', 'music.id', '=', 'paypal_payments.music_id')->where('paypal_payments.user_id', Auth::user()->id)
+        $downloaded_musics = Download::join('music', 'music.id', '=', 'downloads.music_id')->where('downloads.user_id', Auth::user()->id)
+            ->join('users', 'users.id', '=', 'music.user_id')->where('downloads.user_id', Auth::user()->id)
+            ->orderBy('downloads.created_at', 'DESC')
             ->select([
                 'users.name as artistname',
                 'music.id as music_id',
@@ -465,10 +462,11 @@ class FrontendController extends Controller
         // return $downloaded_musics;
         return view('frontend.download', compact('downloaded_musics', 'seo'));
     }
-    public function downloadMusic(Request $request)
+
+    public function downloadMusic(Request $request, $music_id)
     {
 
-        $music_id = session()->get('music_id');
+//        $music_id = session()->get('music_id');
 
         $music_path =  Music::where('id', $music_id)->pluck('music')->first();
         $music_title =  Music::where('id', $music_id)->pluck('title')->first();
@@ -644,7 +642,14 @@ class FrontendController extends Controller
     public function selectPaymentMethod($music_id, Request $request){
         $source = $request->source;
         $music = Music::find($music_id);
-        return view('frontend.paymentmethod',compact('music','source'));
+        if ($music){
+            $music_type = $music->type;
+            return view('frontend.paymentmethod',compact('music','source'));
+        }else{
+            $music = null;
+            return view('frontend.paymentmethod',compact('music','source'));
+        }
+
     }
     public function generateUniqueFileName($image, $destinationPath)
     {

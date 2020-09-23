@@ -93,11 +93,16 @@ class AdminController extends Controller
                         </div>';
                     }
                 })->addColumn('is_paid', function ($data) {
-                    if ($data->is_paid == '0') {
-                        return '<a class="btn btn-outline-warning btn-round waves-effect waves-light view" id="' . $data->id . '">Unpaid<i class="fa fa-times-circle-o"></i></a>';
-                    } elseif ($data->is_paid == '1') {
+                    if ($data->type == 'beats') {
+                        if ($data->is_paid == '0') {
+                            return '<a class="btn btn-outline-warning btn-round waves-effect waves-light" id="' . $data->id . '">Unpaid<i class="fa fa-times-circle-o"></i></a>';
+                        } elseif ($data->is_paid == '1') {
 
-                        return '<a class="btn btn-outline-success btn-round waves-effect waves-light view" id="' . $data->id . '">Paid<i class="fa fa-times-circle-o"></i></a>';
+                            return '<a class="btn btn-outline-success btn-round waves-effect waves-light" id="' . $data->id . '">Paid<i class="fa fa-times-circle-o"></i></a>';
+                        }
+                    }else{
+                        return '<a class="btn btn-outline-info btn-round waves-effect waves-light" id="' . $data->id . '">Free<i class="fa fa-times-circle-o"></i></a>';
+
                     }
                 })->addColumn('contact', function ($data) {
                     return '<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="mailto:' . $data->user->email . '" ><i class="ti-email"></i></a> &nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="tel:' . $data->phone . '" ><i class="fa fa-phone"></i></a>';

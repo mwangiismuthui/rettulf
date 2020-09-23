@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Balance;
 use App\Commision;
+use App\Download;
 use App\Music;
 use Illuminate\Http\Request;
 use PayPal\Api\Amount;
@@ -265,6 +266,11 @@ class PaymentController extends Controller
         Music::where('id', $music_id)->update([
             'is_paid' => 1,
         ]);
+        $downloads = new Download();
+        $downloads->music_id = $music_id;
+        $downloads->user_id = $user_id;
+        $downloads->save();
+
         $payment = new PaypalPayment();
         $payment->paypal_id = $payment_id;
         $payment->payer_id = $PayerID;
@@ -289,6 +295,11 @@ class PaymentController extends Controller
             'is_paid' => 1, //todo
             'downloads' => $new_downloads,
         ]);
+        $downloads = new Download();
+        $downloads->music_id = $music_id;
+        $downloads->user_id = $user_id;
+        $downloads->save();
+
         $payment = new PaypalPayment();
         $payment->paypal_id = $payment_id;
         $payment->payer_id = $PayerID;

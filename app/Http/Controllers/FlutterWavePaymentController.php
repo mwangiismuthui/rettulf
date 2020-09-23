@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Balance;
 use App\Commision;
+use App\Download;
 use App\FlutterWavePayment;
 use App\Http\Controllers\Controller;
 use App\Music;
@@ -104,6 +105,10 @@ class FlutterWavePaymentController extends Controller
             Music::where('id', $music_id)->update([
                 'is_paid' => 1,
             ]);
+            $downloads = new Download();
+            $downloads->music_id = $music_id;
+            $downloads->user_id = $user_id;
+            $downloads->save();
 
            $flutterWave =  new FlutterWavePayment();
             $flutterWave->transaction_id = $results['data']['id'];
@@ -198,7 +203,6 @@ class FlutterWavePaymentController extends Controller
 
         $curl = curl_init();
 
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/$transaction_id/verify",
             CURLOPT_RETURNTRANSFER => true,
@@ -218,12 +222,16 @@ class FlutterWavePaymentController extends Controller
 
         curl_close($curl);
         $results =  json_decode($response,true);
-        return $transaction_id;
+//        return $response;
         if ($results['status'] == 'success'){
             $user_id = Auth::user()->id;
             Music::where('id', $music_id)->update([
                 'downloads' => $new_downloads,
             ]);
+            $downloads = new Download();
+            $downloads->music_id = $music_id;
+            $downloads->user_id = $user_id;
+            $downloads->save();
 
             $flutterWave =  new FlutterWavePayment();
             $flutterWave->transaction_id = $results['data']['id'];

@@ -567,6 +567,7 @@ class ComposerStaticInit8a850afa3084d7250c314d8a51abf2c9
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Commision' => __DIR__ . '/../..' . '/app/Commision.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Download' => __DIR__ . '/../..' . '/app/Download.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\FlutterWavePayment' => __DIR__ . '/../..' . '/app/FlutterWavePayment.php',
         'App\\FooterSetting' => __DIR__ . '/../..' . '/app/FooterSetting.php',

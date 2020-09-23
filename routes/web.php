@@ -49,7 +49,7 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::post('/update-profile', 'FrontendController@updateProfile')->name('updateProfile');
     Route::get('/mymusic', 'FrontendController@myMusic')->name('myMusic');
     Route::get('/downloadedMusic', 'FrontendController@downloadedMusic')->name('downloadedMusic');
-    Route::get('/downloadMusic', 'FrontendController@downloadMusic')->name('downloadMusic');
+    Route::get('/downloadMusic/{id}', 'FrontendController@downloadMusic')->name('downloadMusic');
     Route::get('/downloadPurchasedMusic/{id}', 'FrontendController@downloadPurchasedMusic')->name('downloadPurchasedMusic');
 
 
@@ -129,8 +129,8 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     /*flutterwave*/
     Route::get('flutter-wave-init-payment/{id}', 'FlutterWavePaymentController@beatFlutterWavePayment')->name('beatFlutterWavePayment');
     Route::get('flutter-wave-init-payment2/{id}', 'FlutterWavePaymentController@musicBuyFlutterWavePayment')->name('musicBuyFlutterWavePayment');
-    Route::get('flutter-wave-callback/{id}', 'FlutterWavePaymentController@beatUploadPaymentExecute')->name('beatUploadPaymentExecute');
-    Route::get('flutter-wave-callback2/{id}', 'FlutterWavePaymentController@musicBuyPaymentExecute')->name('musicBuyPaymentExecute');
+    Route::get('flutter-wave-callback-beats/{id}', 'FlutterWavePaymentController@beatUploadPaymentExecute')->name('beatUploadPaymentExecute');
+    Route::get('flutter-wave-callback-music/{id}', 'FlutterWavePaymentController@musicBuyPaymentExecute')->name('musicBuyPaymentExecute');
 
 
     // ..................Slider..............................//

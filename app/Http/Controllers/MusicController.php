@@ -91,8 +91,10 @@ class MusicController extends Controller
         $user = Auth::user();
         if ($user->hasRole('Producer')) {
             $type = "beats";
+            $price = $request->price;
         } elseif ($user->hasRole('Artist')) {
             $type = "music";
+            $price = 0;
         } else {
             $type = '';
         }
@@ -106,7 +108,7 @@ class MusicController extends Controller
         $music->type = $type;
         $music->tempo_of_beat = $request->tempo;
         $music->description = $request->description;
-        $music->price = $request->price;
+        $music->price = $price;
 
 
         if ($request->hasFile('music')) {

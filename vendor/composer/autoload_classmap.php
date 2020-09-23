@@ -14,6 +14,7 @@ return array(
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Commision' => $baseDir . '/app/Commision.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Download' => $baseDir . '/app/Download.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\FlutterWavePayment' => $baseDir . '/app/FlutterWavePayment.php',
     'App\\FooterSetting' => $baseDir . '/app/FooterSetting.php',
