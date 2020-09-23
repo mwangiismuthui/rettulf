@@ -88,18 +88,19 @@
                 </div>
             </div>
         </div>
-        @if (Session::has('success'))
-            <script type="text/javascript">
-                $(document).ready(function () {
+    </div>
+    @if (Session::has('success'))
+        <script type="text/javascript">
+            $(document).ready(function () {
 
-                    Lobibox.notify("success", {
-                        pauseDelayOnHover: true,
-                        continueDelayOnInactiveTab: false,
-                        position: "top right",
-                        icon: "fa fa-times-circle",
-                        msg: "{{ session()->get('success') }}",
-                    });
+                Lobibox.notify("success", {
+                    pauseDelayOnHover: true,
+                    continueDelayOnInactiveTab: false,
+                    position: "top right",
+                    icon: "fa fa-times-circle",
+                    msg: "{{ session()->get('success') }}",
                 });
-            </script>
+            });
+        </script>
     @endif
 @endsection

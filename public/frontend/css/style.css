@@ -4482,6 +4482,9 @@ body.off-canvas-overlay-on {
 	background:#fff;
 	padding-top:80px;
 }
+.artist_wrapper_content{
+    margin-bottom: 25px;
+}
 .artist_wrapper_content .img-responsive{
 	float:left;
 	width:130px;
