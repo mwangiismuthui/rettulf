@@ -18,7 +18,6 @@ class CreateSiteSettingsTable extends Migration
             $table->string('logo')->nullable();
             $table->string('loading_icon')->nullable();
             $table->string('favicon')->nullable();
-            $table->longText('footer_text')->nullable();
             $table->longText('bank_details')->nullable();
             $table->longText('paypal_client_id')->nullable();
             $table->longText('paypal_secret')->nullable();

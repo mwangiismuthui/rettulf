@@ -271,6 +271,17 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('/allWithdrawalRequests', 'WithdrawalController@allWithdrawalRequests')->name('allWithdrawalRequests');
 
     Route::get('/music-show/{id}', 'AdminController@Musicshow')->name('Musicshow');
+
+    // ..................Apis keys Configuration..............................//
+    Route::get('/flutter-wave/config/', 'FlutterWaveAPIController@index')->name('flutterWaveConfigIndex');
+    Route::post('/flutter-wave/config/store', 'FlutterWaveAPIController@store')->name('flutterWaveConfigStore');
+    Route::get('/flutter-wave/config/edit/{id}', 'FlutterWaveAPIController@edit')->name('flutterWaveConfigEdit');
+    Route::post('/flutter-wave/config/update/{id}', 'FlutterWaveAPIController@update')->name('flutterWaveConfigUpdate');
+    Route::get('/mail-chip/config/', 'MailChipAPIController@index')->name('mailChipConfigIndex');
+    Route::post('/mail-chip/config/store', 'MailChipAPIController@store')->name('mailChipConfigStore');
+    Route::get('/mail-chip/config/edit/{id}', 'MailChipAPIController@edit')->name('mailChipConfigEdit');
+    Route::post('/mail-chip/config/update/{id}', 'MailChipAPIController@update')->name('mailChipConfigUpdate');
+
 });
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('config:cache');

@@ -32,7 +32,6 @@ class SidenavComposer
     {
         $logopath = SiteSetting::pluck('logo')->first();
         $loading_icon = SiteSetting::pluck('loading_icon')->first();
-        $footer_text = SiteSetting::pluck('footer_text')->first();
         $favicon = SiteSetting::pluck('favicon')->first();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
         $footersettings = FooterSetting::first();
@@ -41,7 +40,6 @@ class SidenavComposer
 
       $data = [
         'logopath' => $logopath,
-        'footer_text' => $footer_text,
         'loading_icon' => $loading_icon,
         'favicon' => $favicon,
         'seo' => $seo,

@@ -247,7 +247,6 @@ class AdminController extends Controller
         $sitesettings->logo = $logoname;
         $sitesettings->loading_icon = $loading_iconname;
         $sitesettings->favicon = $faviconname;
-        $sitesettings->footer_text = $request->footer_text;
         $sitesettings->bank_details = $request->bank_details;
         $sitesettings->paypal_client_id = $request->client_id;
         $sitesettings->paypal_secret = $request->paypal_secret;
@@ -335,7 +334,6 @@ class AdminController extends Controller
             'logo' => $filename,
             'loading_icon' => $loading_iconname,
             'favicon' => $faviconname,
-            'footer_text' => $request->footer_text,
             'bank_details' => $request->bank_details,
             'paypal_client_id' => $request->client_id,
             'paypal_secret' => $request->paypal_secret,
@@ -374,7 +372,7 @@ class AdminController extends Controller
             return Datatables::of($footerSettings)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    return '<a class="btn btn-outline-danger btn-round waves-effect waves-light name="delete" id="' . $data->id . '" onclick="footerSettingsDelete(\'' . $data->id . '\')"><i class="icon-trash"></i>Delete</a>&nbsp;&nbsp;<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('footerSettingsEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
+                    return '<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('footerSettingsEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
                 })
 
                 ->rawColumns(['action'])
@@ -391,6 +389,7 @@ class AdminController extends Controller
             'phone' => 'required',
             'email' => 'required',
             'contact' => 'required',
+            'footer_text' => 'required',
 //            'twitter' => 'required',
 //            'facebook' => 'required',
 //            'instagram' => 'required',
@@ -415,6 +414,7 @@ class AdminController extends Controller
         $footerSettings->facebook = $request->facebook;
         $footerSettings->instagram = $request->instagram;
         $footerSettings->linkedin = $request->linkedin;
+        $footerSettings->footer_text = $request->footer_text;
 
         if ($footerSettings->save()){
             return response([
@@ -447,6 +447,7 @@ class AdminController extends Controller
             'phone' => 'required',
             'email' => 'required',
             'contact' => 'required',
+            'footer_text' => 'required',
 //            'twitter' => 'required',
 //            'facebook' => 'required',
 //            'instagram' => 'required',
@@ -471,6 +472,7 @@ class AdminController extends Controller
         $footerSettings->facebook = $request->facebook;
         $footerSettings->instagram = $request->instagram;
         $footerSettings->linkedin = $request->linkedin;
+        $footerSettings->footer_text = $request->footer_text;
 
 
         if ($footerSettings->update()){

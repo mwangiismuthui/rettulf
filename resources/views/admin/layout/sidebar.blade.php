@@ -108,9 +108,22 @@
             <li class="{{ Route::currentRouteNamed('footerSettingsIndex') ? 'active ' : '' }}">
                 <a href="{{route('footerSettingsIndex')}}" class="waves-effect">
                     <i class="ti-settings"></i>
-                    <span>Sub footer  settings</span>
+                    <span>Footer  settings</span>
                 </a>
 
+            </li>
+            <li class="{{ Route::currentRouteNamed('users.index') ? 'active ' : '' }}">
+                <a href="javaScript:void();" class="waves-effect">
+                    <i class="icon-user"></i>
+                    <span>API Keys Config</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                        <li class="{{ Route::currentRouteNamed('mailChipConfigIndex') ? 'active ' : '' }}"><a
+                                href="{{route('mailChipConfigIndex')}}"><i class="fa fa-circle-o"></i>MailChip APIs</a></li>
+
+                    <li class="{{ Route::currentRouteNamed('flutterWaveConfigIndex') ? 'active ' : '' }}"><a
+                            href="{{route('flutterWaveConfigIndex')}}"><i class="fa fa-circle-o"></i>FlutterWave APIs</a></li>
+                </ul>
             </li>
         @endcan
         @can('manage-seo')

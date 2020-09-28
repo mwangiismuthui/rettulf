@@ -38,6 +38,7 @@
                                     <th>Facebook link</th>
                                     <th>Instagram link</th>
                                     <th>Linkedin link</th>
+                                    <th>Footer Copyright Text</th>
 
                                     </thead>
                                     <tbody>
@@ -59,7 +60,7 @@
         <div class="modal-dialog  modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"> Configure Footer text</h5>
+                    <h5 class="modal-title"> Configure Footer items</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -108,6 +109,10 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="footer_text">Footer Copyright Text</label>
+                            <input type="text" name="footer_text" id="footer_text" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary shadow-primary btn-round px-5"><i
                                     class="icon-checkbox3"></i> Save</button>
                         </div>
@@ -137,6 +142,7 @@
                 {data: 'facebook', name: 'facebook'},
                 {data: 'instagram', name: 'instagram'},
                 {data: 'linkedin', name: 'linkedin'},
+                {data: 'footer_text', name: 'footer_text'},
             ],
 
 

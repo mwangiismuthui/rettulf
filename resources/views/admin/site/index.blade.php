@@ -25,28 +25,26 @@
                         <div class="table-responsive">
                             <table id="siteSettings_table" class="table table-bordered ">
                                 <thead>
-                               
+
                                     <th>Action</th>
                                     <th>Logo</th>
                                     <th>Loading Icon</th>
                                     <th>Favicon</th>
-                                    <th>Footer Text</th>
                                     <th>Bank details</th>
                                     <th>Paypal Client Id </th>
                                     <th>Paypal Client Secret</th>
                                     <th>Beat Playtime</th>
-                                
+
                                 </thead>
                                  <tbody>
-                                    
-                                </tbody> 
+
+                                </tbody>
                                 <tfoot>
-                                
+
                                     <th>Action</th>
                                     <th>Logo</th>
                                     <th>Loading Icon</th>
                                     <th>Favicon</th>
-                                    <th>Footer Text</th>
                                     <th>Bank details</th>
                                     <th>Paypal Client Id </th>
                                     <th>Paypal Client Secret</th>
@@ -94,10 +92,6 @@
                         <input type="file" name="favicon" id="" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="title">Footer text</label>
-                        <input type="text" name="footer_text" id="" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="title">Paypal Client Id</label>
                         <input type="text" name="client_id" id="" class="form-control">
                     </div>
@@ -109,17 +103,17 @@
                         <label for="title">Beat Playtime in seconds</label>
                         <input type="number" name="beatplaytime" id="" class="form-control">
                     </div>
-                 
+
                     <div class="form-group">
                         <label for="description">Bank Details</label>
                         <textarea name="bank_details" id="summernoteEditor"  cols="10" rows="3" class="form-control form-control-rounded">
 
                         </textarea>
                     </div>
-                  
-                  
-                  
-                 
+
+
+
+
 
 
                     <div class="form-group">
@@ -128,7 +122,7 @@
                     </div>
                 </form>
             </div>
-  
+
         </div>
     </div>
 </div>
@@ -139,7 +133,7 @@
 
         var table = $('#siteSettings_table').DataTable({
         processing: true,
-        serverSide: true,    
+        serverSide: true,
         ajax: "{{ route('siteSettingsIndex')}}",
         columns:[
 
@@ -153,13 +147,12 @@
         {data:'favicon',name:'favicon',
                       render: function(data, type, full, meta){
                       return "<img src={{ URL::to('') }}/Favicon/"+data+ " width='70' class='img-thumbnail' />" ; },orderable: false},
-        {data: 'footer_text', name: 'footer_text'},
         {data: 'bank_details', name: 'bank_details'},
         {data: 'paypal_client_id', name: 'paypal_client_id'},
         {data: 'paypal_secret', name: 'paypal_secret'},
         {data: 'beat_time', name: 'beat_time'},
         ],
-       
+
 
         });
 
@@ -202,7 +195,7 @@
        });  } else {
     txt = "You pressed Cancel!";
   }
-    
+
     }
 
 
@@ -257,12 +250,12 @@ console.log(data);
             // },
         });
     });
-    
+
      $(document).ready(function(){
         $(".alert").delay(5000).slideUp(300);
       });
 
-   
+
 </script>
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Balance;
 use App\Commision;
 use App\Download;
+use App\FlutterWaveAPI;
 use App\FlutterWavePayment;
 use App\Http\Controllers\Controller;
 use App\Music;
@@ -26,6 +27,7 @@ class FlutterWavePaymentController extends Controller
         $total = (int)$music_amount;
         $refnumber = (string) Str::orderedUuid();
         $is_paid = Music::where('id', $music_id)->pluck('is_paid')->first();
+        $flutterWaveConfig = FlutterWaveAPI::first();
         if ($total == 0 && $is_paid == 1) {
             return redirect()->route('downloadMusic');
         } else {
@@ -51,7 +53,7 @@ class FlutterWavePaymentController extends Controller
             $headers = [
                 'Content-Type' => 'application/json',
                 'Accept' => ' application/json',
-                'Authorization' => 'Bearer FLWSECK_TEST-e3a76b5651f8958c76cf5bbb439b534e-X',
+                'Authorization' => 'Bearer '.$flutterWaveConfig->secret_key,
             ];
 
             $response = Http::withHeaders($headers)->post('https://api.flutterwave.com/v3/payments', $requestParamsArray);
@@ -79,7 +81,7 @@ class FlutterWavePaymentController extends Controller
         $tx_ref = $request->tx_ref;
         $status = $request->status;
         $curl = curl_init();
-
+        $flutterWaveConfig = FlutterWaveAPI::first();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/$transaction_id/verify",
@@ -92,7 +94,7 @@ class FlutterWavePaymentController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/json",
-                "Authorization: Bearer FLWSECK_TEST-e3a76b5651f8958c76cf5bbb439b534e-X"
+                "Authorization: Bearer ".$flutterWaveConfig->secret_key,
             ),
         ));
 
@@ -144,6 +146,7 @@ class FlutterWavePaymentController extends Controller
         $total = (int)$music_amount;
         $refnumber = (string) Str::orderedUuid();
         $is_paid = Music::where('id', $music_id)->pluck('is_paid')->first();
+        $flutterWaveConfig = FlutterWaveAPI::first();
         if ($total == 0) {
             return redirect()->route('downloadPurchasedMusic');
         } else {
@@ -169,7 +172,7 @@ class FlutterWavePaymentController extends Controller
             $headers = [
                 'Content-Type' => 'application/json',
                 'Accept' => ' application/json',
-                'Authorization' => 'Bearer FLWSECK_TEST-e3a76b5651f8958c76cf5bbb439b534e-X',
+                'Authorization' => 'Bearer '.$flutterWaveConfig->secret_key,
             ];
 
             $response = Http::withHeaders($headers)->post('https://api.flutterwave.com/v3/payments', $requestParamsArray);
@@ -200,7 +203,7 @@ class FlutterWavePaymentController extends Controller
         $user_id = Music::where('id', $music_id)->pluck('user_id')->first();
         $downloads = Music::where('id', $music_id)->pluck('downloads')->first();
         $new_downloads = $downloads + 1;
-
+        $flutterWaveConfig = FlutterWaveAPI::first();
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -214,7 +217,7 @@ class FlutterWavePaymentController extends Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/json",
-                "Authorization: Bearer FLWSECK_TEST-e3a76b5651f8958c76cf5bbb439b534e-X"
+                "Authorization: 'Bearer ".$flutterWaveConfig->secret_key,
             ),
         ));
 

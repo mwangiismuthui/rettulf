@@ -21,10 +21,6 @@
         <input type="file" name="favicon" id="" class="form-control">
     </div>
     <div class="form-group">
-        <label for="title">Footer text</label>
-        <input type="text" name="footer_text" id="" class="form-control" value="{{$sitesetting->footer_text}}">
-    </div>
-    <div class="form-group">
         <label for="title">Paypal Client Id</label>
     <input type="text" name="client_id" id="" class="form-control" value="{{$sitesetting->paypal_client_id}}">
     </div>
@@ -36,17 +32,17 @@
         <label for="title">Beat Playtime in seconds</label>
         <input type="number" name="beatplaytime" id="" class="form-control" value="{{$sitesetting->beat_time}}">
     </div>
- 
+
     <div class="form-group">
         <label for="description">Bank Details</label>
         <textarea name="bank_details" id="summernoteEditor"  cols="10" rows="3" class="form-control form-control-rounded">
 {{$sitesetting->bank_details}}
         </textarea>
     </div>
-  
-  
-  
- 
+
+
+
+
 
 
     <div class="form-group">
@@ -150,7 +146,7 @@ error:function(){
 
 }
         });
-        
+
     }
 </script>
 @endsection

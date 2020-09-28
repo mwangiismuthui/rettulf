@@ -11,6 +11,9 @@ class FooterSetting extends Model
     /**
      * @var mixed
      */
-    private $about, $email, $phone,$contact,$twitter,$facebook,$instagram,$linkedin;
+    private $about, $email, $phone,$contact,$twitter,$facebook,$instagram,$linkedin,$footer_text;
+    /**
+     * @var mixed
+     */
 
 }

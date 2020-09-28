@@ -23,6 +23,7 @@ class CreateFooterSettingsTable extends Migration
             $table->longText('twitter')->nullable();
             $table->longText('instagram')->nullable();
             $table->longText('linkedin')->nullable();
+            $table->longText('footer_text')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
