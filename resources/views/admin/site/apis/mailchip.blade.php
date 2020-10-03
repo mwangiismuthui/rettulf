@@ -67,11 +67,13 @@
                     <form id="mailChipConfig" method="POST" >
                         @csrf
                         <div class="form-group">
-                            <label for="api_key">API Key</label>
+                            <label for="api_key"><strong>API Key</strong> (The API key of a MailChimp account. You can find yours at
+                                https://us10.admin.mailchimp.com/account/api-key-popup/.)</label>
                             <input type="text" name="api_key" id="api_key" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="list_id">List ID </label>
+                            <label for="list_id"><strong>List ID</strong> (A MailChimp list id. Check the MailChimp docs if you don't know
+                                how to get this value:http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id.)</label>
                             <input type="text" name="list_id" id="list_id" class="form-control" required>
                         </div>
                         <div class="form-group">

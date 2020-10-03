@@ -68,6 +68,15 @@
                                                 src="{{asset("frontend/images/flutter-logo.png")}}"></a>
                                     @endif
                                 </div>
+                                <div class="method flutter-wave">
+                                    @if($source == "buy")
+                                        <a href="{{route('musicBuyPayStackPayment',$music->id)}}"> <img
+                                                src="{{asset("frontend/images/Paystack-Nigeria.png")}}"></a>
+                                    @elseif($source == 'upload')
+                                        <a href="{{route('beatUploadPayStackPayment',$music->id)}}"> <img
+                                                src="{{asset("frontend/images/Paystack-Nigeria.png")}}"></a>
+                                    @endif
+                                </div>
                             </div>
 
                         </div>

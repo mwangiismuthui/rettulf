@@ -107,10 +107,7 @@ class FlutterWavePaymentController extends Controller
             Music::where('id', $music_id)->update([
                 'is_paid' => 1,
             ]);
-            $downloads = new Download();
-            $downloads->music_id = $music_id;
-            $downloads->user_id = $user_id;
-            $downloads->save();
+
 
            $flutterWave =  new FlutterWavePayment();
             $flutterWave->transaction_id = $results['data']['id'];

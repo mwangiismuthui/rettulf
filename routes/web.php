@@ -132,6 +132,12 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('flutter-wave-callback-beats/{id}', 'FlutterWavePaymentController@beatUploadPaymentExecute')->name('beatUploadPaymentExecute');
     Route::get('flutter-wave-callback-music/{id}', 'FlutterWavePaymentController@musicBuyPaymentExecute')->name('musicBuyPaymentExecute');
 
+    /*paystack*/
+    Route::get('pay-stack-init-payment/{id}', 'PayStackPaymentController@beatUploadPayStackPayment')->name('beatUploadPayStackPayment');
+    Route::get('pay-stack-init-payment2/{id}', 'PayStackPaymentController@musicBuyPayStackPayment')->name('musicBuyPayStackPayment');
+    Route::get('pay-stack-callback-beats', 'PayStackPaymentController@beatUploadPayStackExecute')->name('beatUploadPayStackExecute');
+    Route::get('pay-stack-callback-music/{id}', 'PayStackPaymentController@musicBuyPayStackExecute')->name('musicBuyPayStackExecute');
+
 
     // ..................Slider..............................//
     Route::get('/slider/index', 'SliderController@index')->name('slider.index');
