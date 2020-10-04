@@ -19,24 +19,34 @@ use Illuminate\Support\Str;
 
 class PayStackPaymentController extends Controller
 {
-    public function beatUploadPayStackPayment(Request $request, $music_id)
+    public function initPayStackPayment(Request $request, $music_id)
     {
         $user = Auth::user();
         $logopath = SiteSetting::pluck('logo')->first();
         $music_amount = Music::where('id', $music_id)->pluck('price')->first();
+        $music_type = Music::where('id', $music_id)->pluck('type')->first();
         $total = (int)$music_amount;
         $refnumber = (string)Str::orderedUuid();
         $is_paid = Music::where('id', $music_id)->pluck('is_paid')->first();
         if ($total == 0 && $is_paid == 1) {
             return redirect()->route('downloadMusic');
         } else {
-
-
             $url = "https://api.paystack.co/transaction/initialize";
-            $metadata = [
-                'music_id' => $music_id,
-                'isUpload' => 1
-            ];
+            if ($request->source == 'buy'){
+                $metadata = [
+                    'music_id' => $music_id,
+                    'isUpload' =>  0
+                ];
+            }else if ($request->source == 'upload'){
+                $metadata = [
+                    'music_id' => $music_id,
+                    'isUpload' =>  1
+                ];
+            }else{
+                return Redirect::back()->withErrors(['error'=> 'Incorrect url, Please try again later.']);
+
+            }
+
             $fields = [
                 'email' => "customer@email.com",
                 'amount' => "20000",
@@ -46,7 +56,6 @@ class PayStackPaymentController extends Controller
             $fields_string = http_build_query($fields);
             //open connection
             $ch = curl_init();
-
             //set the url, number of POST vars, POST data
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, true);
@@ -72,7 +81,7 @@ class PayStackPaymentController extends Controller
     }
 
 
-    function beatUploadPayStackExecute(Request $request)
+    function PayStackExecute(Request $request)
     {
 
         $transaction_id = $request->transaction_id;
@@ -124,7 +133,7 @@ class PayStackPaymentController extends Controller
 //                return $results;
                     return redirect()->route('myMusic')->with('success', 'Beat upload payment made successfully.');
 
-                }else{
+                }else if ($results['data']['metadata']['isUpload'] == 0){
                     $downloads = Music::where('id', $results['data']['metadata']['music_id'])->pluck('downloads')->first();
                     $new_downloads = $downloads + 1;
                     $user_id = Auth::user()->id;
@@ -164,6 +173,8 @@ class PayStackPaymentController extends Controller
                     $commission->save();
                     return redirect()->route('downloadedMusic')->with('success', 'Music payment made successfully.');
 
+                }else{
+                    return redirect()->route('selectPaymentMethod',$results['data']['metadata']['music_id'].'?source=buy')->with('error', 'An error occurred.');
                 }
 
 

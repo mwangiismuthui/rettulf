@@ -70,10 +70,13 @@
                                 </div>
                                 <div class="method flutter-wave">
                                     @if($source == "buy")
-                                        <a href="{{route('musicBuyPayStackPayment',$music->id)}}"> <img
+                                        <a href="{{route('initPayStackPayment',$music->id.'?source=buy')}}"> <img
                                                 src="{{asset("frontend/images/Paystack-Nigeria.png")}}"></a>
                                     @elseif($source == 'upload')
-                                        <a href="{{route('beatUploadPayStackPayment',$music->id)}}"> <img
+                                        <a href="{{route('initPayStackPayment',$music->id.'?source=upload')}}"> <img
+                                                src="{{asset("frontend/images/Paystack-Nigeria.png")}}"></a>
+                                    @else
+                                        <a href="{{route('initPayStackPayment',$music->id.'?source=404')}}"> <img
                                                 src="{{asset("frontend/images/Paystack-Nigeria.png")}}"></a>
                                     @endif
                                 </div>

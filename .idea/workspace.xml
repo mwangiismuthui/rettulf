@@ -20,24 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d96cd57-924f-4e61-9fbd-78bd57c5039a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PayStackAPIController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PayStackPaymentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/PayStackAPI.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/PayStackPayment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_165638_create_pay_stack_payments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_170831_create_pay_stack_a_p_i_s_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/images/Paystack-Nigeria.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FlutterWavePaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FlutterWavePaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchip.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchip.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchipEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchipEdit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontendController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayStackPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayStackPaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/buymusic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/buymusic.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/paymentmethod.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/paymentmethod.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +210,7 @@
       <workItem from="1601188456822" duration="596000" />
       <workItem from="1601229054969" duration="46000" />
       <workItem from="1601237929690" duration="9456000" />
-      <workItem from="1601743892563" duration="8852000" />
+      <workItem from="1601743892563" duration="17157000" />
     </task>
     <servers />
   </component>
@@ -248,10 +237,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="574" y="237" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.870@0.0.1600.870" timestamp="1600068914806" />
-    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601751898877">
+    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601814789756">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1601751898877" />
+    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1601814789756" />
     <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1601229105129">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -272,10 +261,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="507" y="168" width="585" height="534" key="find.popup/0.0.1600.870@0.0.1600.870" timestamp="1601280868532" />
-    <state x="456" y="200" key="run.anything.popup" timestamp="1601746972975">
+    <state x="456" y="200" key="run.anything.popup" timestamp="1601817532128">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="456" y="200" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1601746972975" />
+    <state x="456" y="200" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1601817532128" />
     <state x="463" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1601746512407">
       <screen x="0" y="0" width="1600" height="870" />
     </state>

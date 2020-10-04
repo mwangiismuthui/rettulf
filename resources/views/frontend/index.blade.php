@@ -15,7 +15,7 @@
         @endforeach
 	</div></div>
 	<div class="ws_shadow"></div>
-	</div>	
+	</div>
 </div>
 
 
@@ -294,7 +294,7 @@
                             </div>
                              @if ($music->price<= 0)
                             <div class="top_list_tract_time">
-                                
+
                                 <p style="color:#FD7444;">Free</p>
                             </div>
                             @else

@@ -52,29 +52,27 @@
                                 @else
                                     <div class="artist_btn m24_cover">
                                         <div class="lang_apply_btn">
-                                            <a id="{{$music->id}}"><i class="flaticon-play-button"
-                                                                      id="{{$music->id}}"></i>play</a>
+                                            <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>Preview</a>
+                                            @if (Auth::check())
+                                                @if ($music->price == 0 )
+
+
+                                                    <a href="{{route('downloadMusic',$music->id)}}"><i
+                                                            class="flaticon-download">&nbsp; Download</i>
+                                                    </a>
+
+                                                @else
+                                                        <a href="{{route('selectPaymentMethod',$music->id.'?source=buy')}}">
+                                                            <i class="flaticon-play-button"></i>Buy for ${{number_format($music->price,2)}}</a>
+{{--                                                    <label style="padding: 15px 30px; margin-top:15px;display:inline-block;">Click to Pay ${{number_format($music->price,2)}} with--}}
+{{--                                                        <a href="{{route('selectPaymentMethod',$music->id.'?source=buy')}}"> <span class="paypal-logo">--}}
+{{--                                                         <i>Pay</i><i>Pal</i>--}}
+{{--                                                       </span></a>--}}
+{{--                                                    </label>--}}
+
+                                                @endif
                                         </div>
                                     </div>
-                                    <br>
-                                    <br>
-
-                                    @if (Auth::check())
-                                        @if ($music->price == 0)
-
-
-                                            <a href="{{route('downloadMusic',$music->id)}}"><i
-                                                    class="flaticon-download">&nbsp; Download</i>
-                                            </a>
-
-                                        @else
-                                            <label style="padding: 15px 30px; margin-top:15px;display:inline-block;">Click to Pay ${{number_format($music->price,2)}} with
-                                                   <a href="{{route('selectPaymentMethod',$music->id.'?source=buy')}}"> <span class="paypal-logo">
-                                                         <i>Pay</i><i>Pal</i>
-                                                       </span></a>
-                                            </label>
-
-                                        @endif
 
 
                                     @endif
