@@ -10,6 +10,7 @@ use App\FlutterWavePayment;
 use App\Http\Controllers\Controller;
 use App\Music;
 use App\SiteSetting;
+use App\UploadFee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -23,7 +24,7 @@ class FlutterWavePaymentController extends Controller
     {
         $user = Auth::user();
         $logopath = SiteSetting::pluck('logo')->first();
-        $music_amount = Music::where('id', $music_id)->pluck('price')->first();
+        $music_amount = UploadFee::pluck('amount')->first();
         $total = (int)$music_amount;
         $refnumber = (string) Str::orderedUuid();
         $is_paid = Music::where('id', $music_id)->pluck('is_paid')->first();

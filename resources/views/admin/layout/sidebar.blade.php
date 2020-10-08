@@ -123,6 +123,8 @@
 
                     <li class="{{ Route::currentRouteNamed('flutterWaveConfigIndex') ? 'active ' : '' }}"><a
                             href="{{route('flutterWaveConfigIndex')}}"><i class="fa fa-circle-o"></i>FlutterWave APIs</a></li>
+                    <li class="{{ Route::currentRouteNamed('payStackConfigIndex') ? 'active ' : '' }}"><a
+                            href="{{route('payStackConfigIndex')}}"><i class="fa fa-circle-o"></i>PayStack APIs</a></li>
                 </ul>
             </li>
         @endcan

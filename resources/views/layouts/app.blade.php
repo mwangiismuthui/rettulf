@@ -69,289 +69,216 @@ if (!isset($seo)) {
 
 @include('layouts.footer')
 <!-- playllist wrapper start -->
-    <div class="adonis-player-wrap">
-        <div id="adonis_jp_container" class="master-container-holder" role="application" aria-label="media player">
-            <div id="adonis_jplayer_main" class="jp-jplayer"></div>
-            <div class="adonis-player-horizontal">
-                <div class="master-container-fluid">
-                    <div class="row adonis-player">
-                        <div class="col-sm-4 col-lg-4 col-xl-3 col-4">
-                            <div class="media current-item">
-                                <div class="song-poster">
-                                </div>
-                                <div class="des">
-                                    <div class="jp-title" aria-label="title">&nbsp;</div>
-                                    <div class="artist-name"></div>
-                                </div>
-                            </div>
-                            {{-- <div class="jp-details">
-                                <div class="jp-title" aria-label="title">&nbsp;</div>
-                            </div> --}}
-                        </div>
-                        <div class="col-sm-4 col-lg-4 col-xl-6 col-4 resp">
-                            <div class="player-controls">
-                                <div class="control-primary">
-                                    <a class="jp-play" role="button" tabindex="0">
-                                            <span class="adonis-icon icon-play icon-3x"><svg version="1.1"
-                                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                                             viewBox="0 0 29 32">
-                                                    <path
-                                                        d="M27.703 14.461l-24.945-14.187c-0.272-0.174-0.604-0.278-0.96-0.278-0.993 0-1.798 0.805-1.798 1.798 0 0.001 0 0.002 0 0.004v-0 28.434c0.004 0.982 0.801 1.776 1.783 1.776 0.338 0 0.653-0.094 0.922-0.257l-0.008 0.004c1.524-0.869 23.65-13.44 25.006-14.217 0.549-0.303 0.914-0.878 0.914-1.539s-0.366-1.236-0.905-1.534l-0.009-0.005z">
-                                                    </path>
-                                                </svg></span>
-                                        <span class="adonis-icon icon-pause icon-3x"><svg version="1.1"
-                                                                                          xmlns="http://www.w3.org/2000/svg"
-                                                                                          viewBox="0 0 29 32">
-                                                    <path
-                                                        d="M19.2 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">
-                                                    </path>
-                                                    <path
-                                                        d="M1.6 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">
-                                                    </path>
-                                                </svg></span></a>
+    {{--    <div class="adonis-player-wrap">--}}
+    {{--        <div id="adonis_jp_container" class="master-container-holder" role="application" aria-label="media player">--}}
+    {{--            <div id="adonis_jplayer_main" class="jp-jplayer"></div>--}}
+    {{--            <div class="adonis-player-horizontal">--}}
+    {{--                <div class="master-container-fluid">--}}
+    {{--                    <div class="row adonis-player">--}}
+    {{--                        <div class="col-sm-4 col-lg-4 col-xl-3 col-4">--}}
+    {{--                            <div class="media current-item">--}}
+    {{--                                <div class="song-poster">--}}
+    {{--                                </div>--}}
+    {{--                                <div class="des">--}}
+    {{--                                    <div class="jp-title" aria-label="title">&nbsp;</div>--}}
+    {{--                                    <div class="artist-name"></div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                            --}}{{-- <div class="jp-details">--}}
+    {{--                                <div class="jp-title" aria-label="title">&nbsp;</div>--}}
+    {{--                            </div> --}}
+    {{--                        </div>--}}
+    {{--                        <div class="col-sm-4 col-lg-4 col-xl-6 col-4 resp">--}}
+    {{--                            <div class="player-controls">--}}
+    {{--                                <div class="control-primary">--}}
+    {{--                                    <a class="jp-play" role="button" tabindex="0">--}}
+    {{--                                            <span class="adonis-icon icon-play icon-3x"><svg version="1.1"--}}
+    {{--                                                                                             xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                                                                                             viewBox="0 0 29 32">--}}
+    {{--                                                    <path--}}
+    {{--                                                        d="M27.703 14.461l-24.945-14.187c-0.272-0.174-0.604-0.278-0.96-0.278-0.993 0-1.798 0.805-1.798 1.798 0 0.001 0 0.002 0 0.004v-0 28.434c0.004 0.982 0.801 1.776 1.783 1.776 0.338 0 0.653-0.094 0.922-0.257l-0.008 0.004c1.524-0.869 23.65-13.44 25.006-14.217 0.549-0.303 0.914-0.878 0.914-1.539s-0.366-1.236-0.905-1.534l-0.009-0.005z">--}}
+    {{--                                                    </path>--}}
+    {{--                                                </svg></span>--}}
+    {{--                                        <span class="adonis-icon icon-pause icon-3x"><svg version="1.1"--}}
+    {{--                                                                                          xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                                                                                          viewBox="0 0 29 32">--}}
+    {{--                                                    <path--}}
+    {{--                                                        d="M19.2 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">--}}
+    {{--                                                    </path>--}}
+    {{--                                                    <path--}}
+    {{--                                                        d="M1.6 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">--}}
+    {{--                                                    </path>--}}
+    {{--                                                </svg></span></a>--}}
 
-                                </div>
+    {{--                                </div>--}}
 
-                            </div>
-                        </div>
-                        <div class="col-sm-4 col-lg-4 col-xl-3 col-4">
-                            <div class="jp_controls_wrapper">
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                        <div class="col-sm-4 col-lg-4 col-xl-3 col-4">--}}
+    {{--                            <div class="jp_controls_wrapper">--}}
 
-                                <div class="jp_adoins_wrapper"><a class="toggle-off-canvas"
-                                                                  data-target="#adonis-playlist" role="button"
-                                                                  tabindex="0"><span
-                                            class="adonis-icon icon-4x"><svg version="1.1"
-                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                             viewBox="0 0 59 32">
-                                                    <path
-                                                        d="M16 4.571h41.143c1.262 0 2.286-1.023 2.286-2.286s-1.023-2.286-2.286-2.286v0h-41.143c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286v0zM2.286 0c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286c1.262 0 2.286-1.023 2.286-2.286v0c0-1.262-1.023-2.286-2.286-2.286v0zM57.143 13.714h-41.143c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286v0h41.143c1.262 0 2.286-1.023 2.286-2.286s-1.023-2.286-2.286-2.286v0zM2.286 13.714c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286c1.262 0 2.286-1.023 2.286-2.286v0c0-1.262-1.023-2.286-2.286-2.286v0zM57.143 27.429h-41.143c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286v0h41.143c1.262 0 2.286-1.023 2.286-2.286s-1.023-2.286-2.286-2.286v0zM2.286 27.429c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286c1.262 0 2.286-1.023 2.286-2.286v0c0-1.262-1.023-2.286-2.286-2.286v0z">
-                                                    </path>
-                                                </svg></span></a></div>
+    {{--                                <div class="jp_adoins_wrapper"><a class="toggle-off-canvas"--}}
+    {{--                                                                  data-target="#adonis-playlist" role="button"--}}
+    {{--                                                                  tabindex="0"><span--}}
+    {{--                                            class="adonis-icon icon-4x"><svg version="1.1"--}}
+    {{--                                                                             xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                                                                             viewBox="0 0 59 32">--}}
+    {{--                                                    <path--}}
+    {{--                                                        d="M16 4.571h41.143c1.262 0 2.286-1.023 2.286-2.286s-1.023-2.286-2.286-2.286v0h-41.143c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286v0zM2.286 0c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286c1.262 0 2.286-1.023 2.286-2.286v0c0-1.262-1.023-2.286-2.286-2.286v0zM57.143 13.714h-41.143c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286v0h41.143c1.262 0 2.286-1.023 2.286-2.286s-1.023-2.286-2.286-2.286v0zM2.286 13.714c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286c1.262 0 2.286-1.023 2.286-2.286v0c0-1.262-1.023-2.286-2.286-2.286v0zM57.143 27.429h-41.143c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286v0h41.143c1.262 0 2.286-1.023 2.286-2.286s-1.023-2.286-2.286-2.286v0zM2.286 27.429c-1.262 0-2.286 1.023-2.286 2.286s1.023 2.286 2.286 2.286c1.262 0 2.286-1.023 2.286-2.286v0c0-1.262-1.023-2.286-2.286-2.286v0z">--}}
+    {{--                                                    </path>--}}
+    {{--                                                </svg></span></a></div>--}}
 
-                                <div class="jp_current_time_wrapepr d-none d-lg-block">
-                                    <div class="jp-current-time" role="timer" aria-label="time"></div>
-                                    <div class="jp-duration" role="timer" aria-label="duration"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--./ container-fluid-->
+    {{--                                <div class="jp_current_time_wrapepr d-none d-lg-block">--}}
+    {{--                                    <div class="jp-current-time" role="timer" aria-label="time"></div>--}}
+    {{--                                    <div class="jp-duration" role="timer" aria-label="duration"></div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <!--./ container-fluid-->--}}
 
-            </div>
+    {{--            </div>--}}
 
-            <div id="adonis-playlist" class="adonis-playlist off-canvas off-canvas-right">
-                <div class="adonis-playlist-player adonis-player player-bg-yellow">
-                    <a class="close-offcanvas" data-target="#adonis-playlist" href="#"><span
-                            class="adonis-icon icon-3x"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                             viewBox="0 0 24 24">
-                                    <path
-                                        d="M13.4 12l5.3-5.3c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-5.3 5.3-5.3-5.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5.3 5.3-5.3 5.3c-0.4 0.4-0.4 1 0 1.4 0.2 0.2 0.4 0.3 0.7 0.3s0.5-0.1 0.7-0.3l5.3-5.3 5.3 5.3c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.4 0.4-1 0-1.4l-5.3-5.3z">
-                                    </path>
-                                </svg></span>
-                    </a>
-                    <div class="blurred-bg-wrap">
-                        <div class="blurred-bg"></div>
-                    </div>
-                    <div class="media current-item">
-                        <div class="song-poster">
-                        </div>
-                        <div class="player-details col-8">
-                            <h3 class="jp-title"></h3>
-                            <p class="artist-name"></p>
+    {{--            <div id="adonis-playlist" class="adonis-playlist off-canvas off-canvas-right">--}}
+    {{--                <div class="adonis-playlist-player adonis-player player-bg-yellow">--}}
+    {{--                    <a class="close-offcanvas" data-target="#adonis-playlist" href="#"><span--}}
+    {{--                            class="adonis-icon icon-3x"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                                                             viewBox="0 0 24 24">--}}
+    {{--                                    <path--}}
+    {{--                                        d="M13.4 12l5.3-5.3c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-5.3 5.3-5.3-5.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5.3 5.3-5.3 5.3c-0.4 0.4-0.4 1 0 1.4 0.2 0.2 0.4 0.3 0.7 0.3s0.5-0.1 0.7-0.3l5.3-5.3 5.3 5.3c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.4 0.4-1 0-1.4l-5.3-5.3z">--}}
+    {{--                                    </path>--}}
+    {{--                                </svg></span>--}}
+    {{--                    </a>--}}
+    {{--                    <div class="blurred-bg-wrap">--}}
+    {{--                        <div class="blurred-bg"></div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="media current-item">--}}
+    {{--                        <div class="song-poster">--}}
+    {{--                        </div>--}}
+    {{--                        <div class="player-details col-8">--}}
+    {{--                            <h3 class="jp-title"></h3>--}}
+    {{--                            <p class="artist-name"></p>--}}
 
-                        </div>
-                    </div>
-                    <div class="media controls jp_media_playlist">
-                        <div class="playlist-player-control align-items-center col-4">
-                            <a class="jp-play fs-4" role="button" tabindex="0">
-                                    <span class="adonis-icon icon-play icon-2x"><svg version="1.1"
-                                                                                     xmlns="http://www.w3.org/2000/svg"
-                                                                                     viewBox="0 0 29 32">
-                                            <path
-                                                d="M27.703 14.461l-24.945-14.187c-0.272-0.174-0.604-0.278-0.96-0.278-0.993 0-1.798 0.805-1.798 1.798 0 0.001 0 0.002 0 0.004v-0 28.434c0.004 0.982 0.801 1.776 1.783 1.776 0.338 0 0.653-0.094 0.922-0.257l-0.008 0.004c1.524-0.869 23.65-13.44 25.006-14.217 0.549-0.303 0.914-0.878 0.914-1.539s-0.366-1.236-0.905-1.534l-0.009-0.005z">
-                                            </path>
-                                        </svg></span>
-                                <span class="adonis-icon icon-pause icon-2x"><svg version="1.1"
-                                                                                  xmlns="http://www.w3.org/2000/svg"
-                                                                                  viewBox="0 0 29 32">
-                                            <path
-                                                d="M19.2 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">
-                                            </path>
-                                            <path
-                                                d="M1.6 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">
-                                            </path>
-                                        </svg></span>
-                            </a>
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="media controls jp_media_playlist">--}}
+    {{--                        <div class="playlist-player-control align-items-center col-4">--}}
+    {{--                            <a class="jp-play fs-4" role="button" tabindex="0">--}}
+    {{--                                    <span class="adonis-icon icon-play icon-2x"><svg version="1.1"--}}
+    {{--                                                                                     xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                                                                                     viewBox="0 0 29 32">--}}
+    {{--                                            <path--}}
+    {{--                                                d="M27.703 14.461l-24.945-14.187c-0.272-0.174-0.604-0.278-0.96-0.278-0.993 0-1.798 0.805-1.798 1.798 0 0.001 0 0.002 0 0.004v-0 28.434c0.004 0.982 0.801 1.776 1.783 1.776 0.338 0 0.653-0.094 0.922-0.257l-0.008 0.004c1.524-0.869 23.65-13.44 25.006-14.217 0.549-0.303 0.914-0.878 0.914-1.539s-0.366-1.236-0.905-1.534l-0.009-0.005z">--}}
+    {{--                                            </path>--}}
+    {{--                                        </svg></span>--}}
+    {{--                                <span class="adonis-icon icon-pause icon-2x"><svg version="1.1"--}}
+    {{--                                                                                  xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                                                                                  viewBox="0 0 29 32">--}}
+    {{--                                            <path--}}
+    {{--                                                d="M19.2 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">--}}
+    {{--                                            </path>--}}
+    {{--                                            <path--}}
+    {{--                                                d="M1.6 0h8c0.884 0 1.6 0.716 1.6 1.6v28.8c0 0.884-0.716 1.6-1.6 1.6h-8c-0.884 0-1.6-0.716-1.6-1.6v-28.8c0-0.884 0.716-1.6 1.6-1.6z">--}}
+    {{--                                            </path>--}}
+    {{--                                        </svg></span>--}}
+    {{--                            </a>--}}
 
-                        </div>
-                        {{-- <div class="col-8">
-                            <div class="jp-current-time jp-time" role="timer" aria-label="time"></div>
-                            <div class="jp-progress jp_progress2">
-                                <div class="jp-seek-bar">
-                                    <div class="jp-play-bar"></div>
-                                </div>
-                            </div>
-                            <div class="jp-duration" role="timer" aria-label="duration"></div>
-                        </div> --}}
-                    </div>
-                </div>
-                <div class="jp-playlist scroll-y">
-                    {{-- <ul>
-                        <li>&nbsp;</li>
-                    </ul> --}}
-                    <h5>Lyrics</h5>
-                    <p class="song-lyrics">No lyrics</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--                        </div>--}}
+    {{--                        --}}{{-- <div class="col-8">--}}
+    {{--                            <div class="jp-current-time jp-time" role="timer" aria-label="time"></div>--}}
+    {{--                            <div class="jp-progress jp_progress2">--}}
+    {{--                                <div class="jp-seek-bar">--}}
+    {{--                                    <div class="jp-play-bar"></div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                            <div class="jp-duration" role="timer" aria-label="duration"></div>--}}
+    {{--                        </div> --}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="jp-playlist scroll-y">--}}
+    {{--                    --}}{{-- <ul>--}}
+    {{--                        <li>&nbsp;</li>--}}
+    {{--                    </ul> --}}
+    {{--                    <h5>Lyrics</h5>--}}
+    {{--                    <p class="song-lyrics">No lyrics</p>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+    @include('layouts.adonisplayer')
     {{-- slider new js --}}
 </div>
-    <script type="text/javascript" src="/frontend/engine1/wowslider.js"></script>
-    <script type="text/javascript" src="/frontend/engine1/script.js"></script>
-    <!-- playlist wrapper end -->
-    <!--custom js files-->
+<script type="text/javascript" src="/frontend/engine1/wowslider.js"></script>
+<script type="text/javascript" src="/frontend/engine1/script.js"></script>
+<!-- playlist wrapper end -->
+<!--custom js files-->
 
 
-    <script src="/frontend/js/modernizr.js"></script>
-    <script src="/frontend/js/plugin.js"></script>
-    <script src="/frontend/js/jquery.nice-select.min.js"></script>
-    <script src="/frontend/js/jquery.inview.min.js"></script>
-    <script src="/frontend/js/jquery.magnific-popup.js"></script>
-    <script src="/frontend/js/swiper.min.js"></script>
-    <script src="/frontend/js/comboTreePlugin.js"></script>
-    {{-- <script src="/frontend/js/mp3/jquery.jplayer.min.js"></script> --}}
-    {{-- <script src="/frontend/js/mp3/jplayer.playlist.js"></script> --}}
-    <script src="/frontend/js/owl.carousel.js"></script>
-    {{-- <script src="/frontend/js/mp3/player.js"></script> --}}
-    <script src="/frontend/js/custom.js"></script>
-    <!-- custom js-->
+<script src="/frontend/js/modernizr.js"></script>
+<script src="/frontend/js/plugin.js"></script>
+<script src="/frontend/js/jquery.nice-select.min.js"></script>
+<script src="/frontend/js/jquery.inview.min.js"></script>
+<script src="/frontend/js/jquery.magnific-popup.js"></script>
+<script src="/frontend/js/swiper.min.js"></script>
+<script src="/frontend/js/comboTreePlugin.js"></script>
+<script src="/frontend/js/owl.carousel.js"></script>
+<script src="/frontend/js/custom.js"></script>
 
-    <!--Data Tables js-->
-    <script src="/frontend/plugin/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/jszip.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/pdfmake.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/vfs_fonts.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.html5.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.print.min.js"></script>
-    <script src="/frontend/plugin/bootstrap-datatable/js/buttons.colVis.min.js"></script>
-    <!--notification js -->
-    <script src="/backend/assets/plugins/notifications/js/lobibox.min.js"></script>
-    <script src="/backend/assets/plugins/notifications/js/notifications.min.js"></script>
-    <script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
+<script src="/frontend/js/mp3/player.js"></script>
+<script src="/frontend/js/mp3/jquery.jplayer.min.js"></script>
+<script src="/frontend/js/mp3/jplayer.playlist.js"></script>
+<!-- custom js-->
 
-    <script>
-        $(document).ready(function () {
-            $(".alert").delay(5000).slideUp(300);
+<!--Data Tables js-->
+<script src="/frontend/plugin/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/jszip.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/pdfmake.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/vfs_fonts.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/buttons.html5.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/buttons.print.min.js"></script>
+<script src="/frontend/plugin/bootstrap-datatable/js/buttons.colVis.min.js"></script>
+<!--notification js -->
+<script src="/backend/assets/plugins/notifications/js/lobibox.min.js"></script>
+<script src="/backend/assets/plugins/notifications/js/notifications.min.js"></script>
+<script src="/backend/assets/plugins/notifications/js/notification-custom-script.js"></script>
+
+<script>
+    var musicId;
+    $(document).ready(function (a) {
+        $(".alert").delay(5000).slideUp(300);
+
+
+        (adonisAllPlaylists[0] = []);
+
+
+        a(window).imagesLoaded(function () {
+            adonisPlayer.init();
+
+        });
+
+        $("#" + adonisPlayerID).bind(a.jPlayer.event.pause + ".jp-repeat", function (t) {
+            void 0 !== currentPlaylistId && a("[data-album-id='" + currentPlaylistId + "']").removeClass("jp-playing");
+            // alert( musicId);
+            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-pause playing-state').addClass('flaticon-play-button paused-state');
+        });
+        $("#" + adonisPlayerID).bind(a.jPlayer.event.play + ".jp-repeat", function (t) {
+            $(".tranding_play_icon i").removeClass('flaticon-pause playing-state').addClass('flaticon-play-button init-play');
+            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button init-play').addClass('flaticon-pause playing-state');
+            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button paused-state').addClass('flaticon-pause playing-state');
         });
 
 
-        var currentAudio = null;
-        var previousAudio = null;
-        var music_type;
-        var new_beat_time;
-        var audio;
-        var musicId;
-        $(document).keydown(function (e) {
-            var unicode = e.charCode ? e.charCode : e.keyCode;
+    });
 
-            // right arrow
-            if (unicode == 39) {
-                audio.currentTime += 5;
-                // back arrow
-            } else if (unicode == 37) {
-                audio.currentTime -= 5;
-                // spacebar
-            } else if (unicode == 32) {
-                if (audio.paused) {
-                    audio.play();
-                    $(".icon-play").hide();
-                    $(".icon-pause").show();
-                    $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');
-                } else {
-                    audio.pause()
-                    $(".icon-play").show();
-                    $(".icon-pause").hide();
-                    $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-pause').addClass('flaticon-play-button');
-                }
-            }
-        });
-
-        //..................................
-        $(document).ready(function () {
-
-            var full_music_path;
-            var sb = {
-                song: null,
-                init: function () {
-                    if (music_type == 'music') {
-                        if (audio != null) {
-                            audio.pause();
-                            sb.song = new Audio(full_music_path);
-                            audio = sb.song;
-                            sb.play();
-
-                        } else {
-                            sb.song = new Audio(full_music_path);
-                            audio = sb.song;
-                            sb.play();
-                            $(".icon-play").hide();
-                            $(".icon-pause").show();
-
-                            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');
-
-                        }
-                    } else if (music_type == 'beats') {
-
-                        if (audio != null) {
-                            audio.pause();
-                            sb.song = new Audio(full_music_path);
-                            audio = sb.song;
-                            sb.play();
-                            setTimeout(function () {
-                                audio.pause();
-                            }, new_beat_time);
-                        } else {
-                            sb.song = new Audio(full_music_path);
-                            audio = sb.song;
-                            sb.play();
-                            $(".icon-play").hide();
-                            $(".icon-pause").show();
-                            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');
-                            setTimeout(function () {
-                                audio.pause();
-                            }, new_beat_time);
-                        }
-                    }
-
-                },
-                play: function (e) {
-                    sb.song.play();
-                }
-            };
-            $('.jp-play').on('click', function () {
-                if (audio.paused) {
-                    audio.play();
-                    $(".icon-play").hide();
-                    $(".icon-pause").show();
-                    $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');
-                } else {
-                    audio.pause()
-                    $(".icon-play").show();
-                    $(".icon-pause").hide();
-                    $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-pause').addClass('flaticon-play-button');
-                }
-            });
-
-            $('.flaticon-play-button').on('click', function () {
-                previousAudio = currentAudio;
-
-                var id = $(this).attr('id');
-                musicId = id;
-
+    $(document).on('click', '.tranding_play_icon .init-play', function(){
+            // alert($(this).attr('class'));
+            var instance = $(this).attr('class');
+            var id = $(this).attr('id');
+            musicId = id;
+            if (instance == 'flaticon-play-button init-play'){
                 $.ajax({
                     method: "POST",
                     url: '/musicpath',
@@ -361,10 +288,7 @@ if (!isset($seo)) {
 
                     },
                     success: function (data) {
-                        $(".tranding_play_icon i").removeClass('flaticon-pause').addClass('flaticon-play-button');
-                        $(".icon-play").hide();
-                        $(".icon-pause").show();
-                        $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');
+
                         var cover_art_path = '/uploadedCoverArts/';
                         var cover_art = data.coverart;
                         var music = data.music_path;
@@ -376,35 +300,47 @@ if (!isset($seo)) {
                         full_music_path = path + '' + music;
                         var full_covertart_path = cover_art_path + '' + cover_art;
                         var img;
-                        img = jQuery('<img class="box-rounded-sm"  alt=""> ');
-                        img.attr('src', full_covertart_path);
-                        $('.song-poster').empty();
-                        $('.song-poster').append(img);
+                        // img = jQuery('<img class="box-rounded-sm"  alt=""> ');
+                        // img.attr('src', full_covertart_path);
+                        // $('.song-poster').empty();
+                        // $('.song-poster').append(img);
                         $('.artist-name').empty();
-                        $('.jp-title').empty();
-                        $('.jp-title').append(data.title);
+                        // $('.jp-title').empty();
+                        // $('.jp-title').append(data.title);
+
+                        var newitem = {
+                            id: musicId,
+                            title: data.title,
+                            artist: data.artist,
+                            mp3: full_music_path,
+                            poster: full_covertart_path
+                        };
+                        var index = adonisAllPlaylists[0].findIndex(x => x.id===newitem.id)
+                        // alert(musicId);
+                        if (index == -1) {
+
+                            // Element was not found, add it.
+                            adonisAllPlaylists[0].push(newitem);//determiner
+                            adonisPlaylist.add(newitem);
+                            adonisPlaylist.play(index);
+                            // alert('after play');
+                        } else {
+                            // Element was found, remove it.
+                            // adonisAllPlaylists[0].splice(found, 1);
+                            adonisPlaylist.play(index);
+
+                        }
+
+
+                        // alert(adonisAllPlaylists[0].length);
+                        // alert(adonisAllPlaylists[0].length - 1);
+                        // alert(JSON.stringify(adonisAllPlaylists[0].slice(-1)));
+
                         if (data.music_type == 'beats') {
                             $('.artist-name').append('<a href="/single/producer/' + data.artist_id + '">' + data.artist + '</a>');
                         } else {
                             $('.artist-name').append('<a href="/single/artist/' + data.artist_id + '">' + data.artist + '</a>');
                         }
-                        if (data.lyrics != null) {
-                            $('.song-lyrics').empty();
-                            $('.song-lyrics').append(data.lyrics);
-                        } else {
-                            $('.song-lyrics').empty();
-                            $('.song-lyrics').append('No Lyrics');
-                        }
-
-                        sb.init();
-
-
-                        // audio= new Audio(full_music_path);
-                        // if (!audio.paused) {
-                        //      audio.pause();
-                        // }else if (audio.paused) {
-                        //      audio.play();
-                        // }
 
 
                     },
@@ -413,11 +349,192 @@ if (!isset($seo)) {
                     }
 
                 });
-            });
+            }else{
+                adonisPlaylist.pause();
+            }
+
 
         });
 
-    </script>
+    $(document).on('click', '.tranding_play_icon .paused-state', function(){
+        // alert(musicId+"play");
+        adonisPlaylist.play();
+    });
+
+    $(document).on('click', '.tranding_play_icon .playing-state', function(){
+        // alert(musicId+"play");
+        adonisPlaylist.pause();
+    });
+
+
+
+
+
+
+
+
+    // var currentAudio = null;
+    // var previousAudio = null;
+    // var music_type;
+    // var new_beat_time;
+    // var audio;
+    // var musicId;
+    // $(document).keydown(function (e) {
+    //     var unicode = e.charCode ? e.charCode : e.keyCode;
+    //
+    //     // if (unicode == 32) {
+    //     //     if ($.jPlayer.i) {
+    //     //         $.jPlayer.pause();
+    //     //         // $(".icon-play").hide();
+    //     //         // $(".icon-pause").show();
+    //     //         $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');
+    //     //     } else {
+    //     //         $.jPlayer.play();
+    //     //         $(".icon-play").show();
+    //     //         $(".icon-pause").hide();
+    //     //         $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-pause').addClass('flaticon-play-button');
+    //     //     }
+    //     // }
+    // });
+
+    //..................................
+    {{--$(document).ready(function () {--}}
+
+    {{--    var full_music_path;--}}
+    {{--    var sb = {--}}
+    {{--        song: null,--}}
+    {{--        init: function () {--}}
+    {{--            if (music_type == 'music') {--}}
+    {{--                if (audio != null) {--}}
+    {{--                    audio.pause();--}}
+    {{--                    sb.song = new Audio(full_music_path);--}}
+    {{--                    audio = sb.song;--}}
+    {{--                    sb.play();--}}
+
+    {{--                } else {--}}
+    {{--                    sb.song = new Audio(full_music_path);--}}
+    {{--                    audio = sb.song;--}}
+    {{--                    sb.play();--}}
+    {{--                    $(".icon-play").hide();--}}
+    {{--                    $(".icon-pause").show();--}}
+
+    {{--                    $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');--}}
+
+    {{--                }--}}
+    {{--            } else if (music_type == 'beats') {--}}
+
+    {{--                if (audio != null) {--}}
+    {{--                    audio.pause();--}}
+    {{--                    sb.song = new Audio(full_music_path);--}}
+    {{--                    audio = sb.song;--}}
+    {{--                    sb.play();--}}
+    {{--                    setTimeout(function () {--}}
+    {{--                        audio.pause();--}}
+    {{--                    }, new_beat_time);--}}
+    {{--                } else {--}}
+    {{--                    sb.song = new Audio(full_music_path);--}}
+    {{--                    audio = sb.song;--}}
+    {{--                    sb.play();--}}
+    {{--                    $(".icon-play").hide();--}}
+    {{--                    $(".icon-pause").show();--}}
+    {{--                    $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');--}}
+    {{--                    setTimeout(function () {--}}
+    {{--                        audio.pause();--}}
+    {{--                    }, new_beat_time);--}}
+    {{--                }--}}
+    {{--            }--}}
+
+    {{--        },--}}
+    {{--        play: function (e) {--}}
+    {{--            sb.song.play();--}}
+    {{--        }--}}
+    {{--    };--}}
+    {{--    $('.jp-play').on('click', function () {--}}
+    {{--        if (audio.paused) {--}}
+    {{--            audio.play();--}}
+    {{--            $(".icon-play").hide();--}}
+    {{--            $(".icon-pause").show();--}}
+    {{--            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');--}}
+    {{--        } else {--}}
+    {{--            audio.pause()--}}
+    {{--            $(".icon-play").show();--}}
+    {{--            $(".icon-pause").hide();--}}
+    {{--            $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-pause').addClass('flaticon-play-button');--}}
+    {{--        }--}}
+    {{--    });--}}
+
+    {{--    $('.flaticon-play-button').on('click', function () {--}}
+    {{--        previousAudio = currentAudio;--}}
+
+    {{--        var id = $(this).attr('id');--}}
+    {{--        musicId = id;--}}
+
+    {{--        $.ajax({--}}
+    {{--            method: "POST",--}}
+    {{--            url: '/musicpath',--}}
+    {{--            data: {--}}
+    {{--                id: id,--}}
+    {{--                _token: '{{ csrf_token() }}'--}}
+
+    {{--            },--}}
+    {{--            success: function (data) {--}}
+    {{--                $(".tranding_play_icon i").removeClass('flaticon-pause').addClass('flaticon-play-button');--}}
+    {{--                $(".icon-play").hide();--}}
+    {{--                $(".icon-pause").show();--}}
+    {{--                $(".tranding_play_icon  #" + musicId + " i").removeClass('flaticon-play-button').addClass('flaticon-pause');--}}
+    {{--                var cover_art_path = '/uploadedCoverArts/';--}}
+    {{--                var cover_art = data.coverart;--}}
+    {{--                var music = data.music_path;--}}
+    {{--                //  console.log(data.music_type);--}}
+    {{--                music_type = data.music_type;--}}
+    {{--                var beat_time = data.beat_time;--}}
+    {{--                new_beat_time = beat_time * 1000;--}}
+    {{--                var path = '/uploadedFiles/';--}}
+    {{--                full_music_path = path + '' + music;--}}
+    {{--                var full_covertart_path = cover_art_path + '' + cover_art;--}}
+    {{--                var img;--}}
+    {{--                img = jQuery('<img class="box-rounded-sm"  alt=""> ');--}}
+    {{--                img.attr('src', full_covertart_path);--}}
+    {{--                $('.song-poster').empty();--}}
+    {{--                $('.song-poster').append(img);--}}
+    {{--                $('.artist-name').empty();--}}
+    {{--                $('.jp-title').empty();--}}
+    {{--                $('.jp-title').append(data.title);--}}
+    {{--                if (data.music_type == 'beats') {--}}
+    {{--                    $('.artist-name').append('<a href="/single/producer/' + data.artist_id + '">' + data.artist + '</a>');--}}
+    {{--                } else {--}}
+    {{--                    $('.artist-name').append('<a href="/single/artist/' + data.artist_id + '">' + data.artist + '</a>');--}}
+    {{--                }--}}
+    {{--                if (data.lyrics != null) {--}}
+    {{--                    $('.song-lyrics').empty();--}}
+    {{--                    $('.song-lyrics').append(data.lyrics);--}}
+    {{--                } else {--}}
+    {{--                    $('.song-lyrics').empty();--}}
+    {{--                    $('.song-lyrics').append('No Lyrics');--}}
+    {{--                }--}}
+
+    {{--                sb.init();--}}
+
+
+    {{--                // audio= new Audio(full_music_path);--}}
+    {{--                // if (!audio.paused) {--}}
+    {{--                //      audio.pause();--}}
+    {{--                // }else if (audio.paused) {--}}
+    {{--                //      audio.play();--}}
+    {{--                // }--}}
+
+
+    {{--            },--}}
+    {{--            error: function (data) {--}}
+
+    {{--            }--}}
+
+    {{--        });--}}
+    {{--    });--}}
+
+    {{--});--}}
+
+</script>
 </body>
 
 </html>

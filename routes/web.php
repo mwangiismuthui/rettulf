@@ -281,6 +281,12 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::post('/flutter-wave/config/store', 'FlutterWaveAPIController@store')->name('flutterWaveConfigStore');
     Route::get('/flutter-wave/config/edit/{id}', 'FlutterWaveAPIController@edit')->name('flutterWaveConfigEdit');
     Route::post('/flutter-wave/config/update/{id}', 'FlutterWaveAPIController@update')->name('flutterWaveConfigUpdate');
+
+    Route::get('/pay-stack/config/', 'PayStackAPIController@index')->name('payStackConfigIndex');
+    Route::post('/pay-stack/config/store', 'PayStackAPIController@store')->name('payStackConfigStore');
+    Route::get('/pay-stack/config/edit/{id}', 'PayStackAPIController@edit')->name('payStackConfigEdit');
+    Route::post('/pay-stack/config/update/{id}', 'PayStackAPIController@update')->name('payStackConfigUpdate');
+
     Route::get('/mail-chip/config/', 'MailChipAPIController@index')->name('mailChipConfigIndex');
     Route::post('/mail-chip/config/store', 'MailChipAPIController@store')->name('mailChipConfigStore');
     Route::get('/mail-chip/config/edit/{id}', 'MailChipAPIController@edit')->name('mailChipConfigEdit');

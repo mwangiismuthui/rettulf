@@ -16,7 +16,7 @@ jQuery(document).ready(function (a) {
         }
         (adonisPlaylist = new adonisJPlayerPlaylist(
             { jPlayer: "#" + adonisPlayerID, cssSelectorAncestor: "#" + adonisPlayerContainer },
-            [{ title: "Cro Magnon Man", artist: "The Stark Palace 2{#link2}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-4.jpg" }],
+            // [{ title: "Counting Stars", artist: "One Republic{#link6}", mp3: "./frontend/js/mp3/OneRepublic - Counting Stars (Official Music Video) ( 256kbps cbr ).mp3", poster: "./frontend/js/mp3/browse/browse-overview-4.jpg"  }],
             { playlistOptions: { enableRemoveControls: !0 }, swfPath: "/js", supplied: "oga, mp3", useStateClassSkin: !0, autoBlur: !1, smoothPlayBar: !1, keyEnabled: !1, audioFullScreen: !0, display: !1, autoPlay: !1 }
         )),
             a("#" + adonisPlayerID).bind(a.jPlayer.event.loadeddata, function (e) {
@@ -156,33 +156,26 @@ jQuery(document).ready(function (a) {
                         adonisPlaylist.add(a);
                     });
             });
-    }),
-        (adonisAllPlaylists[0] = [
-            { title: "Gimme Some Courage", artist: "Gunnar Olsen{#link7}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-3.jpg" },
-            { title: "Detour Some", artist: "Gunnar Olsen{#link6}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-4.jpg" },
-            { title: "Do It Right", artist: "Jingle Punks{#link5}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-1.jpg" },
-            { title: "You're A Mean", artist: "The Stark Palace{#link4}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-6.jpg" },
-            { title: "may i right", artist: "Gunnar Olsen{#link3}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-6.jpg" },
-            { title: "old man song", artist: "Ava Cornish{#link2}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-5.jpg" },
-            { title: "bin tere sanam", artist: "Walking Promises{#link1}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-5.jpg" },
-        ]),
-        (adonisAllPlaylists[1] = [
-            { title: "Cro Magnon Man", artist: "The Stark Palace 2{#link7}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-4.jpg" },
-            { title: "Gimme Some Courage", artist: "The Stark Palace 3{#link9}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-4.jpg" },
-            { title: "You're A Mean One, Mr. Grinch", artist: "The Stark Palace{#link8}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-3.jpg" },
-            { title: "Cro Magnon Man", artist: "The Stark Palace 2{#link4}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-4.jpg" },
-            { title: "Cro Magnon Man 3", artist: "The Stark Palace 3{#link3}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-6.jpg" },
-            { title: "Cro Magnon Man 3", artist: "The Stark Palace 3{#link2}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-1.jpg" },
-            { title: "Until I Met You", artist: "Ava Cornish{#link1}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/playlist-6.jpg" },
-            { title: "Cro Magnon Man", artist: "The Stark Palace 2{#link5}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-5.jpg" },
-            { title: "Walking Promises", artist: "The Stark Palace 3{#link6}", mp3: "./js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./js/mp3/browse/browse-overview-4.jpg" },
-        ]),
-        a(window).imagesLoaded(function () {
-            setTimeout(function () {
-                adonisPlayer.init();
-            }, 100),
-                setTimeout(function () {
-                    adonisPlaylist.setPlaylist(adonisAllPlaylists[0]);
-                }, 5e3);
-        });
+    })
+        // (adonisAllPlaylists[0] = [
+        //     { title: "Intentions", artist: "Justin Bieber{#link7}", mp3: "./frontend/js/mp3/Justin Bieber - Intentions (Official Video (Short Version)) ft. Quavo ( 256kbps cbr ).mp3", poster: "./frontend/js/mp3/browse/playlist-3.jpg" },
+        //     { title: "Counting Stars", artist: "One Republic{#link6}", mp3: "./frontend/js/mp3/OneRepublic - Counting Stars (Official Music Video) ( 256kbps cbr ).mp3", poster: "./frontend/js/mp3/browse/browse-overview-4.jpg" },
+        //
+        // ]),
+        // (adonisAllPlaylists[1] = [
+        //     { title: "Cro Magnon Man", artist: "The Stark Palace 2{#link7}", mp3: "./frontend/js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./frontend/js/mp3/browse/browse-overview-4.jpg" },
+        //     { title: "Gimme Some Courage", artist: "The Stark Palace 3{#link9}", mp3: "./frontend/js/mp3/Post Malone - Rockstar ft. 21 Savage (1).mp3", poster: "./frontend/js/mp3/browse/browse-overview-4.jpg" },
+        //
+        // ]),
+
+    // a(window).imagesLoaded(function () {
+    //     setTimeout(function () {
+    //         adonisPlayer.init();
+    //     }, 100),
+    //         setTimeout(function () {
+    //             adonisPlaylist.setPlaylist(adonisAllPlaylists[0]);
+    //         }, 5e3);
+    //
+    // });
+
 });

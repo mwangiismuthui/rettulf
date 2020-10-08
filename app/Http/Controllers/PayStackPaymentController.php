@@ -11,6 +11,7 @@ use App\Music;
 use App\PayStackPayment;
 use App\Http\Controllers\Controller;
 use App\SiteSetting;
+use App\UploadFee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -23,33 +24,35 @@ class PayStackPaymentController extends Controller
     {
         $user = Auth::user();
         $logopath = SiteSetting::pluck('logo')->first();
-        $music_amount = Music::where('id', $music_id)->pluck('price')->first();
         $music_type = Music::where('id', $music_id)->pluck('type')->first();
-        $total = (int)$music_amount;
         $refnumber = (string)Str::orderedUuid();
         $is_paid = Music::where('id', $music_id)->pluck('is_paid')->first();
+
+        $url = "https://api.paystack.co/transaction/initialize";
+        if ($request->source == 'buy') {
+            $music_amount = UploadFee::pluck('amount')->first();
+            $metadata = [
+                'music_id' => $music_id,
+                'isUpload' => 0
+            ];
+        } else if ($request->source == 'upload') {
+            $music_amount = UploadFee::pluck('amount')->first();
+
+            $metadata = [
+                'music_id' => $music_id,
+                'isUpload' => 1
+            ];
+        } else {
+            return Redirect::back()->withErrors(['error' => 'Incorrect url, Please try again later.']);
+
+        }
+        $total = (int)$music_amount;
         if ($total == 0 && $is_paid == 1) {
             return redirect()->route('downloadMusic');
         } else {
-            $url = "https://api.paystack.co/transaction/initialize";
-            if ($request->source == 'buy'){
-                $metadata = [
-                    'music_id' => $music_id,
-                    'isUpload' =>  0
-                ];
-            }else if ($request->source == 'upload'){
-                $metadata = [
-                    'music_id' => $music_id,
-                    'isUpload' =>  1
-                ];
-            }else{
-                return Redirect::back()->withErrors(['error'=> 'Incorrect url, Please try again later.']);
-
-            }
-
             $fields = [
                 'email' => "customer@email.com",
-                'amount' => "20000",
+                'amount' => $total* 100,
                 'reference' => $refnumber,
                 'metadata' => json_encode($metadata)
             ];
@@ -114,26 +117,26 @@ class PayStackPaymentController extends Controller
 
             $results = json_decode($response, true);
             if ($results['status'] == 'success') {
-                if ($results['data']['metadata']['isUpload'] == 1){
+                if ($results['data']['metadata']['isUpload'] == 1) {
                     $user_id = Auth::user()->id;
                     Music::where('id', $results['data']['metadata']['music_id'])->update([
                         'is_paid' => 1,
                     ]);
 
 
-                    $paystackpayment =  new PayStackPayment();
-                    $paystackpayment->music_id =  $results['data']['metadata']['music_id'];
-                    $paystackpayment->user_id =  Auth::user()->id;
-                    $paystackpayment->currency =  $results['data']['currency'];
-                    $paystackpayment->ip_address =  $results['data']['ip_address'];
-                    $paystackpayment->card_type =  $results['data']['authorization']['card_type'];
-                    $paystackpayment->bank =  $results['data']['authorization']['bank'];
+                    $paystackpayment = new PayStackPayment();
+                    $paystackpayment->music_id = $results['data']['metadata']['music_id'];
+                    $paystackpayment->user_id = Auth::user()->id;
+                    $paystackpayment->currency = $results['data']['currency'];
+                    $paystackpayment->ip_address = $results['data']['ip_address'];
+                    $paystackpayment->card_type = $results['data']['authorization']['card_type'];
+                    $paystackpayment->bank = $results['data']['authorization']['bank'];
 //
                     $paystackpayment->save();
 //                return $results;
                     return redirect()->route('myMusic')->with('success', 'Beat upload payment made successfully.');
 
-                }else if ($results['data']['metadata']['isUpload'] == 0){
+                } else if ($results['data']['metadata']['isUpload'] == 0) {
                     $downloads = Music::where('id', $results['data']['metadata']['music_id'])->pluck('downloads')->first();
                     $new_downloads = $downloads + 1;
                     $user_id = Auth::user()->id;
@@ -146,13 +149,13 @@ class PayStackPaymentController extends Controller
                     $downloads->user_id = $user_id;
                     $downloads->save();
 
-                    $paystackpayment =  new PayStackPayment();
-                    $paystackpayment->music_id =  $results['data']['metadata']['music_id'];
-                    $paystackpayment->user_id =  Auth::user()->id;
-                    $paystackpayment->currency =  $results['data']['currency'];
-                    $paystackpayment->ip_address =  $results['data']['ip_address'];
-                    $paystackpayment->card_type =  $results['data']['authorization']['card_type'];
-                    $paystackpayment->bank =  $results['data']['authorization']['bank'];
+                    $paystackpayment = new PayStackPayment();
+                    $paystackpayment->music_id = $results['data']['metadata']['music_id'];
+                    $paystackpayment->user_id = Auth::user()->id;
+                    $paystackpayment->currency = $results['data']['currency'];
+                    $paystackpayment->ip_address = $results['data']['ip_address'];
+                    $paystackpayment->card_type = $results['data']['authorization']['card_type'];
+                    $paystackpayment->bank = $results['data']['authorization']['bank'];
 //
                     $paystackpayment->save();
 
@@ -173,15 +176,14 @@ class PayStackPaymentController extends Controller
                     $commission->save();
                     return redirect()->route('downloadedMusic')->with('success', 'Music payment made successfully.');
 
-                }else{
-                    return redirect()->route('selectPaymentMethod',$results['data']['metadata']['music_id'].'?source=buy')->with('error', 'An error occurred.');
+                } else {
+                    return redirect()->route('selectPaymentMethod', $results['data']['metadata']['music_id'] . '?source=buy')->with('error', 'An error occurred.');
                 }
 
 
             }
         }
     }
-
 
 
 }

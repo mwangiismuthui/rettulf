@@ -15,7 +15,7 @@ class CreateUploadFeesTable extends Migration
     {
         Schema::create('upload_fees', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->double('amount');
+            $table->double('amount')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
