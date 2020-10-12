@@ -3,6 +3,7 @@
 namespace App\Http\View\Composers;
 
 use App\FooterSetting;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use App\SiteSetting;
 use App\Seo;
@@ -35,6 +36,11 @@ class SidenavComposer
         $favicon = SiteSetting::pluck('favicon')->first();
         $seo = Seo::where('seos.page_title', 'like', 'Homepage')->first();
         $footersettings = FooterSetting::first();
+        $playlist = Session::get('playlist');
+        $beat_time = SiteSetting::pluck('beat_time')->first();
+        if ($beat_time <= 0){
+            $beat_time = 5;
+        }
 
 
 
@@ -44,6 +50,8 @@ class SidenavComposer
         'favicon' => $favicon,
         'seo' => $seo,
         'footersettings' => $footersettings,
+        'playlist' => $playlist,
+        'beat_time' => $beat_time,
 
       ];
         $view->with($data);

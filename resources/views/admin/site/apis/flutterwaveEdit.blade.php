@@ -9,6 +9,11 @@
                         <div class="card-header"> FlutterWave Edit API
                         </div>
                         <div class="card-body">
+                            <div id="overlay" style="display:none;" class="loadingOverlay">
+                                <div class="spinner"></div>
+                                <br />
+                                Saving...
+                            </div>
                             <form id="mailChipConfig" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="flutterWave_id" id="flutterWave_id"

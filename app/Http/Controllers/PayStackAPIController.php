@@ -23,7 +23,7 @@ class PayStackAPIController extends Controller
             return Datatables::of($paystackAPI)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    return '<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('paystackConfigEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
+                    return '<a class="btn btn-outline-warning btn-round waves-effect waves-light name="edit" href="' . route('payStackConfigEdit', $data->id) . '" id="' . $data->id . '" ><i class="ti-pencil"></i>Edit</a>';
                 })
 
                 ->rawColumns(['action'])
@@ -46,7 +46,6 @@ class PayStackAPIController extends Controller
         $paystackAPI = new PayStackAPI();
         $paystackAPI->public_key = $request->public_key;
         $paystackAPI->secret_key = $request->secret_key;
-        $paystackAPI->encryption_key = $request->encryption_key;
         if($paystackAPI->save()){
             return response([
                 'success' => True,
@@ -71,7 +70,7 @@ class PayStackAPIController extends Controller
     public function edit($id)
     {
         $paystackAPI = PayStackAPI::find($id);
-        return view('admin.site.apis.paystackEdit', compact('paystack'));
+        return view('admin.site.apis.paystackEdit', compact('paystackAPI'));
     }
 
     /**
@@ -81,9 +80,9 @@ class PayStackAPIController extends Controller
      * @param  \App\PayStackAPI  $payStackAPI
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $paystackAPI = PayStackAPI::find($id);
+        $paystackAPI = PayStackAPI::find($request->id);
         if($paystackAPI->update($request->all())){
             return response([
                 'success' => True,

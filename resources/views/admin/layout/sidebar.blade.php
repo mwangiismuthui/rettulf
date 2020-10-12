@@ -87,32 +87,63 @@
             </li>
         @endcan
         @can('manage-emails')
-
-            <li class="{{ Route::currentRouteNamed('bulkEmails') ? 'active ' : '' }}">
-                <a href="{{route('bulkEmails')}}" class="waves-effect">
-                    <i class="ti-email"></i>
-                    <span>Bulk Emails</span>
+            <li class="{{ Route::currentRouteNamed('bulkEmails') ? 'active ' : (Route::currentRouteNamed('bulkEmails') ? 'active ' : '')  }}">
+                <a href="javaScript:void();" class="waves-effect">
+                    <i class="icon-user"></i>
+                    <span>Emails</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="sidebar-submenu">
+                    <li class="{{ Route::currentRouteNamed('bulkEmails') ? 'active ' : '' }}">
+                        <a href="{{route('bulkEmails')}}">
+                            <i class="ti-pencil"></i>
+                            <span>Send Bulk Emails</span>
+                        </a>
+                    <li class="{{ Route::currentRouteNamed('emailMessageIndex') ? 'active ' : '' }}">
+                        <a href="{{route('emailMessageIndex')}}">
+                            <i class="ti-email"></i>
+                            <span>Email Messages</span>
+                        </a>
 
+                    </li>
+                </ul>
             </li>
+
+
         @endcan
         @can('manage-seo')
-
-            <li class="{{ Route::currentRouteNamed('siteSettingsIndex') ? 'active ' : '' }}">
-                <a href="{{route('siteSettingsIndex')}}" class="waves-effect">
-                    <i class="ti-settings"></i>
-                    <span>Site Management</span>
+            <li class="{{ Route::currentRouteNamed('siteSettingsIndex') ? 'active ' : (Route::currentRouteNamed('footerSettingsIndex') ? 'active ' : (Route::currentRouteNamed('seo.index') ? 'active ' : '')) }}">
+                <a href="javaScript:void();" class="waves-effect">
+                    <i class="icon-user"></i>
+                    <span>Site Management</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="sidebar-submenu">
+                    <li class="{{ Route::currentRouteNamed('siteSettingsIndex') ? 'active ' : '' }}">
+                        <a href="{{route('siteSettingsIndex')}}">
+                            <i class="ti-settings"></i>
+                            <span>Site Management</span>
+                        </a>
 
-            </li>
-            <li class="{{ Route::currentRouteNamed('footerSettingsIndex') ? 'active ' : '' }}">
-                <a href="{{route('footerSettingsIndex')}}" class="waves-effect">
-                    <i class="ti-settings"></i>
-                    <span>Footer  settings</span>
-                </a>
+                    </li>
+                    <li class="{{ Route::currentRouteNamed('footerSettingsIndex') ? 'active ' : '' }}">
+                        <a href="{{route('footerSettingsIndex')}}">
+                            <i class="ti-settings"></i>
+                            <span>Footer  settings</span>
+                        </a>
 
+                    </li>
+                    <li class="{{ Route::currentRouteNamed('seo.index') ? 'active ' : '' }}">
+                        <a href="{{route('seo.index')}}">
+                            <i class="ti-search"></i>
+                            <span>SEO Management</span>
+                        </a>
+
+                    </li>
+                </ul>
             </li>
-            <li class="{{ Route::currentRouteNamed('users.index') ? 'active ' : '' }}">
+
+
+
+            <li class="{{ Route::currentRouteNamed('mailChipConfigIndex') ? 'active ' : (Route::currentRouteNamed('flutterWaveConfigIndex') ? 'active ' : (Route::currentRouteNamed('payStackConfigIndex') ? 'active ' : '')) }}">
                 <a href="javaScript:void();" class="waves-effect">
                     <i class="icon-user"></i>
                     <span>API Keys Config</span> <i class="fa fa-angle-left pull-right"></i>
@@ -126,16 +157,6 @@
                     <li class="{{ Route::currentRouteNamed('payStackConfigIndex') ? 'active ' : '' }}"><a
                             href="{{route('payStackConfigIndex')}}"><i class="fa fa-circle-o"></i>PayStack APIs</a></li>
                 </ul>
-            </li>
-        @endcan
-        @can('manage-seo')
-
-            <li class="{{ Route::currentRouteNamed('seo.index') ? 'active ' : '' }}">
-                <a href="{{route('seo.index')}}" class="waves-effect">
-                    <i class="ti-search"></i>
-                    <span>SEO Management</span>
-                </a>
-
             </li>
         @endcan
 

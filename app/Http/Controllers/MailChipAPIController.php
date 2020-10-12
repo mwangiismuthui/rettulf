@@ -44,20 +44,20 @@ class MailChipAPIController extends Controller
     public
     function store(Request $request)
     {
-        $mailchip = new MailChipAPI();
-        $mailchip->api_key = $request->api_key;
-        $mailchip->list_id = $request->list_id;
-        if ($mailchip->save()) {
-            $this->setEnv('MAILCHIMP_APIKEY', $mailchip->api_key);
-            $this->setEnv('MAILCHIMP_LIST_ID', $mailchip->list_id);
+        $mailchimp = new MailChipAPI();
+        $mailchimp->api_key = $request->api_key;
+        $mailchimp->list_id = $request->list_id;
+        if ($mailchimp->save()) {
+            $this->setEnv('MAILCHIMP_APIKEY', $mailchimp->api_key);
+            $this->setEnv('MAILCHIMP_LIST_ID', $mailchimp->list_id);
             return response([
                 'success' => True,
-                'message' => 'MailChip Configuration saved.',
+                'message' => 'MailChimp Configuration saved.',
             ], Response::HTTP_OK);
         } else {
             return response([
                 'success' => false,
-                'message' => 'MailChip Configuration not saved.',
+                'message' => 'MailChimp Configuration not saved.',
             ], Response::HTTP_OK);
         }
     }
@@ -72,8 +72,8 @@ class MailChipAPIController extends Controller
     public
     function edit(MailChipAPI $mailChipAPI, $id)
     {
-        $mailChipAPI = MailChipAPI::find($id);
-        return view('admin.site.apis.mailchipEdit', compact('mailChipAPI'));
+        $mailChimpAPI = MailChipAPI::find($id);
+        return view('admin.site.apis.mailchipEdit', compact('mailChimpAPI'));
     }
 
     /**
@@ -96,12 +96,12 @@ class MailChipAPIController extends Controller
 
             return response([
             'success' => True,
-                'message' => 'MailChip Configuration updated.',
+                'message' => 'MailChimp Configuration updated.',
             ], Response::HTTP_OK);
         } else {
             return response([
                 'success' => false,
-                'message' => 'MailChip Configuration not updated.',
+                'message' => 'MailChimp Configuration not updated.',
             ], Response::HTTP_OK);
         }
     }

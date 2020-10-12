@@ -103,4 +103,19 @@
             });
         </script>
     @endif
+    @if (Session::has('error'))
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                Lobibox.notify("error", {
+                    pauseDelayOnHover: true,
+                    continueDelayOnInactiveTab: false,
+                    position: "top right",
+                    icon: "fa fa-times-circle",
+                    msg: "{{ session()->get('error') }}",
+                });
+            });
+        </script>
+    @endif
+
 @endsection

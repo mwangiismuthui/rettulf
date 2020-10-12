@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!--inner Title Start -->
-    <div class="indx_title_main_wrapper">
+    <div class="indx_title_main_wrapper" xmlns="http://www.w3.org/1999/html">
         <div class="title_img_overlay"></div>
         <div class="container">
             <div class="row">
@@ -21,93 +21,50 @@
         </div>
     </div>
     <!-- inner Title End -->
-    <!-- artist single wrapper start -->
-    <div class="artist_wrapper m24_cover">
+
+
+    <div class="pricing_wrapper2 m24_cover">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="artist_wrapper_content m24_cover">
-                        <img class="img-responsive" src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
-                             alt="{{$music->title}}" style="">
-                        <div class="artist_wrapper_text">
-                            <div class="artist_wrapper_left">
-                                <h1>{{$music->title}}</h1>
-                                <p>By: {{$music->user->name}}</p>
+                <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12  mx-auto">
+                    <div class="m24_heading_wrapper m24_cover text-center">
 
-                                <p>{{$music->description}}</p>
-                                @if ($music->type =='music')
-                                    <div class="artist_btn m24_cover">
-                                        <div class="lang_apply_btn">
-                                            <a id="{{$music->id}}"><i class="flaticon-play-button"
-                                                                      id="{{$music->id}}"></i>play</a>
-                                            @if (Auth::check())
-                                                <a href="{{route('downloadMusic',$music->id)}}"><i
-                                                        class="flaticon-play-button"></i>
-                                                    Download</a>
-                                            @endif
+                        <h1>{{$music->title}}</h1>
 
-
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="artist_btn m24_cover">
-                                        <div class="lang_apply_btn">
-                                            <a id="{{$music->id}}"><i class="flaticon-play-button" id="{{$music->id}}"></i>Preview</a>
-                                            @if (Auth::check())
-                                                @if ($music->price == 0 )
-
-
-                                                    <a href="{{route('downloadMusic',$music->id)}}"><i
-                                                            class="flaticon-download">&nbsp; Download</i>
-                                                    </a>
-
-                                                @else
-                                                        <a href="{{route('selectPaymentMethod',$music->id.'?source=buy')}}">
-                                                            <i class="flaticon-play-button"></i>Buy for ${{number_format($music->price,2)}}</a>
-{{--                                                    <label style="padding: 15px 30px; margin-top:15px;display:inline-block;">Click to Pay ${{number_format($music->price,2)}} with--}}
-{{--                                                        <a href="{{route('selectPaymentMethod',$music->id.'?source=buy')}}"> <span class="paypal-logo">--}}
-{{--                                                         <i>Pay</i><i>Pal</i>--}}
-{{--                                                       </span></a>--}}
-{{--                                                    </label>--}}
-
-                                                @endif
-                                        </div>
-                                    </div>
-
-
-                                    @endif
-                                @endif
-
-                            </div>
-                            <div class="artist_list_icon">
-                                <div class="m24_tranding_more_icon">
-                                    <i class="flaticon-menu"></i>
-                                </div>
-                                <ul class="tranding_more_option">
-                                    <li><a
-                                            href="whatsapp://send/?text=Check out this music by {{$music->user->name}} on Music%20{{{route('buymusic',$music->id)}}}"><span
-                                                class="opt_icon"><i class="flaticon-share"></i></span>Whatsapp</a>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.facebook.com/sharer/sharer.php?u={{route('buymusic',$music->id)}}&quote=Check out this music by {{$music->user->name}} on Music"
-                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                                           target="_blank" title="Share on Facebook"><span class="opt_icon"><i
-                                                    class="flaticon-share"></i></span>FaceBook</a>
-
-                                    </li>
-                                    <li>
-                                        <a href="http://twitter.com/share?url={{route('buymusic',$music->id)}}&text=Check out this music by {{$music->user->name}} on Music  &hashtags=music"
-                                           target="_blank"><span class="opt_icon"><i
-                                                    class="flaticon-share"></i></span>Twitter</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>By: {{$music->user->name}}</p>
                     </div>
                 </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mx-auto">
+                    <div class="pricing_box_wrapper2 m24_cover">
+                        <div class="pricing_heading_wrapper m24_cover">
+                            <img class="img-responsive" src="{{url('/uploadedCoverArts').'/'.$music->cover_art }}"
+                                 alt="{{$music->title}}" style="width: 130px;height: 130px;border-radius: 50%">
+                        </div>
+                        <div class="ui_pricing_five_wrapper">
+                            <h3>Buy for
+                                <br><span>${{number_format($music->price,2)}}</span></h3>
+                        </div>
+                        <div class="pricing_five_list_wrapper m24_cover">
+                            <p><span>Description:</span></p>
+                            <p><span>{{$music->description}}</span></p>
+                        </div>
+                        @if (Auth::check())
+                            @if ($music->price == 0 )
+                                <div class="ui_pricing_five_btn_wrapper m24_cover">
+                                    <a href="{{route('downloadMusic',$music->id)}}">Download Now</a>
+                                </div>
+                            @else
+                                <div class="ui_pricing_five_btn_wrapper m24_cover">
+                                    <a href="{{route('selectPaymentMethod',$music->id.'?source=buy')}}">Purchase Now</a>
+                                </div>
+                            @endif
+                        @endif
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <!-- artist single wrapper end -->
 
 @endsection

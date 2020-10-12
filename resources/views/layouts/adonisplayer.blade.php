@@ -11,7 +11,7 @@
                             </div>
                             <div class="des">
                                 <div class="jp-title" aria-label="title">&nbsp;</div>
-                                <div class="artist-name"><a href="#"></a></div>
+                                <div class="artist-name"><a ></a></div>
                             </div>
                             <div class="des_option_wrapper">
                                 <div class="m24_tranding_more_icon">

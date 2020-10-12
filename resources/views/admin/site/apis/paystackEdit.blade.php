@@ -9,25 +9,30 @@
                         <div class="card-header"> paysStack Edit API
                         </div>
                         <div class="card-body">
+                            <div id="overlay" style="display:none;" class="loadingOverlay">
+                                <div class="spinner"></div>
+                                <br />
+                                Saving...
+                            </div>
                             <form id="mailChipConfig" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="paysStack_id" id="paysStack_id"
-                                       value="{{$paysStack->id}}">
+                                <input type="hidden" name="id" id="paysStack_id"
+                                       value="{{$paystackAPI->id}}">
 
                                 <div class="form-group">
                                     <label for="api_key">Public Key</label>
                                     <input type="text" name="public_key" id="api_key" class="form-control"
-                                           value="{{$paysStack->public_key}}" required>
+                                           value="{{$paystackAPI->public_key}}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="secret_key">Secret Key </label>
                                     <input type="text" name="secret_key" id="secret_key" class="form-control"
-                                           value="{{$paysStack->secret_key}}" required>
+                                           value="{{$paystackAPI->secret_key}}" required>
                                 </div>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary shadow-primary btn-round px-5"><i
-                                            class="icon-checkbox3"></i> Save
+                                            class="icon-checkbox3"></i> Update
                                     </button>
                                 </div>
                             </form>
@@ -46,7 +51,7 @@
 
                 $(".loadingOverlay").fadeIn();
                 $.ajax({
-                    url: "/pay-stack/config/update/" + paysStack_id,
+                    url: "/pay-stack/config/update",
                     method: "post",
                     data: new FormData(this),
                     contentType: false,

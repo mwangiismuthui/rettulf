@@ -9,6 +9,7 @@ use App\Music;
 use App\Seo;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\Response;
 use Validator;
@@ -45,13 +46,13 @@ class MusicController extends Controller
         $genres = Genre::all();
         $keys = Key::all();
         $categories = Category::all();
-        return view('frontend.upload', compact('genres', 'keys', 'categories','seo'));
+        return view('frontend.upload', compact('genres', 'keys', 'categories', 'seo'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -85,7 +86,7 @@ class MusicController extends Controller
 
         if ($error->fails()) {
             return response([
-                'errors' =>  $error->errors()->all(),
+                'errors' => $error->errors()->all(),
             ], Response::HTTP_OK);
         }
         $user = Auth::user();
@@ -116,7 +117,7 @@ class MusicController extends Controller
             $musicfile = $request->file('music');
             $filename = $this->generateUniqueFileName($musicfile, $fileDestination);
             $music->music = $filename;
-            $rawfile = $this->analyzeFile(public_path() . $fileDestination .'/'. $filename);
+            $rawfile = $this->analyzeFile(public_path() . $fileDestination . '/' . $filename);
             $music->duration = $rawfile['playtime_string'];
             $music->size = $rawfile['filesize'];
 
@@ -129,12 +130,12 @@ class MusicController extends Controller
             $music->cover_art = $filename;
         }
 
-        if($request->lyrics != ''){
+        if ($request->lyrics != '') {
             $music->lyrics = $request->lyrics;
         }
         if ($music->save()) {
             return response([
-                'success' =>  'Files uploaded successfully',
+                'success' => 'Files uploaded successfully',
             ], Response::HTTP_OK);
         } else {
 
@@ -149,7 +150,7 @@ class MusicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Music  $music
+     * @param \App\Music $music
      * @return \Illuminate\Http\Response
      */
     public function show(Music $music)
@@ -159,7 +160,7 @@ class MusicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Music  $music
+     * @param \App\Music $music
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -170,19 +171,19 @@ class MusicController extends Controller
         $keys = Key::all();
         $categories = Category::all();
         $music = Music::find($id);
-        return view('frontend.musicedit', compact('music','genres','keys','categories','seo'));
+        return view('frontend.musicedit', compact('music', 'genres', 'keys', 'categories', 'seo'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Music  $music
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Music $music
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $music_id)
     {
-        $music= Music::find($music_id);
+        $music = Music::find($music_id);
 
         $music->genre_id = $request->genre_id;
         $music->key_id = $request->key_id;
@@ -199,12 +200,12 @@ class MusicController extends Controller
             $music->cover_art = $filename;
         }
 
-        if($request->lyrics != ''){
+        if ($request->lyrics != '') {
             $music->lyrics = $request->lyrics;
         }
         if ($music->save()) {
             return response([
-                'success' =>  'Files Updated successfully',
+                'success' => 'Files Updated successfully',
             ], Response::HTTP_OK);
         } else {
 
@@ -218,7 +219,7 @@ class MusicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Music  $music
+     * @param \App\Music $music
      * @return \Illuminate\Http\Response
      */
     public function destroy(Music $music)
@@ -234,7 +235,7 @@ class MusicController extends Controller
             $music->cover_art = null;
             $music->update();
             return response([
-                'success' =>  "music cover Deleted Successfully!",
+                'success' => "music cover Deleted Successfully!",
             ], Response::HTTP_OK);
         } else {
             return response([
@@ -246,37 +247,59 @@ class MusicController extends Controller
     public function musicpath(Request $request)
     {
         if ($request->ajax()) {
-            $beat_time = SiteSetting::pluck('beat_time')->first();
-            // dd($beat_time);
-        $music_id = $request->id;
-        $musics = Music::where('id',$music_id)->get();
-        foreach ($musics as $music) {
-          $music_path = $music->music;
-          $coverart = $music->cover_art;
-          $artist = $music->user->name;
-          $title = $music->title;
-          $lyrics = $music->lyrics;
-          $music_type = $music->type;
-          $artist_id = $music->user->id;
-        }
-        $views = Music::where('id', $music_id)->pluck('views')->first();
-        $new_views = $views + 1;
-        Music::where('id', $music_id)->update([
 
-            'views' => $new_views,
-        ]);
-        $music = [
-            'music_path'=>$music_path,
-            'coverart'=>$coverart,
-            'artist'=>$artist,
-            'title'=>$title,
-            'lyrics'=>$lyrics,
-            'beat_time'=>$beat_time,
-            'music_type'=>$music_type,
-            'artist_id'=>$artist_id,
-        ];
+            $music_id = $request->id;
+            $musics = Music::where('id', $music_id)->get();
+            foreach ($musics as $music) {
+                $music_path = $music->music;
+                $coverart = $music->cover_art;
+                $artist = $music->user->name;
+                $title = $music->title;
+                $lyrics = $music->lyrics;
+                $music_type = $music->type;
+                $artist_id = $music->user->id;
+            }
+            $views = Music::where('id', $music_id)->pluck('views')->first();
+            $new_views = $views + 1;
+            Music::where('id', $music_id)->update([
 
-        return $music;
+                'views' => $new_views,
+            ]);
+            $music = [
+                'music_path' => $music_path,
+                'coverart' => $coverart,
+                'artist' => $artist,
+                'title' => $title,
+                'lyrics' => $lyrics,
+                'music_type' => $music_type,
+                'artist_id' => $artist_id,
+            ];
+            if ($music_type == 'beats') {
+                $link = '/single/producer/' . $artist_id . '';
+            } else {
+                $link = '/single/artist/' . $artist_id . '';
+            }
+            $adonisAllPlaylists = [
+                'id' => $music_id,
+                'music_type' => $music_type,
+                'title' => $title,
+                'artist' => $artist.'{'.$link.'}',
+                'mp3' => '/uploadedFiles/' . $music_path,
+                'poster' => '/uploadedCoverArts/' . $coverart
+            ];
+//            session()->forget('playlist');
+//            session()->flush();
+            if (Session::has('playlist')) {
+//                $playlist = Session::get('playlist');
+
+                Session::push('playlist', $adonisAllPlaylists);
+            } else {
+                Session::put('playlist', []);
+                Session::push('playlist', $adonisAllPlaylists);
+            }
+
+
+            return $music;
         }
 
     }
@@ -294,14 +317,13 @@ class MusicController extends Controller
     public function generateUniqueFileName($image, $destinationPath)
     {
         $initial = "musicfile_";
-        $name = $initial  . bin2hex(random_bytes(8)) . '.' . $image->getClientOriginalExtension();
+        $name = $initial . bin2hex(random_bytes(8)) . '.' . $image->getClientOriginalExtension();
         if ($image->move(public_path() . $destinationPath, $name)) {
             return $name;
         } else {
             return null;
         }
     }
-
 
 
     public function analyzeFile($full_video_path)

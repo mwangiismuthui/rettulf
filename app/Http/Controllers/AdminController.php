@@ -145,9 +145,13 @@ class AdminController extends Controller
         $clients = $request->clients;
         $subject = $request->subject;
         $themessage = $request->message;
+
         $data = array(
-            'subject' => $subject,
-            'themessage' => $themessage,
+            'identifier' =>'BULK-MESSAGES',
+            'subject' =>$subject,
+            'from_email' =>'noreply@justerudite.com',
+            'company_name' =>config('app.name'),
+            'message' =>$themessage,
 
         );
 
@@ -172,7 +176,7 @@ class AdminController extends Controller
         }
 
 
-        BulkEmailSender::dispatch($recipient_emails, $data)->delay(Carbon::now()->addMinutes(5));
+        BulkEmailSender::dispatch($recipient_emails, $data)->delay(Carbon::now()->addSeconds(5));
 
         //  dispatch($job);
 

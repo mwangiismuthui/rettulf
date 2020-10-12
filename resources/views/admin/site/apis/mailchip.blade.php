@@ -21,7 +21,7 @@
                             @if($isSet > 0)
                             @else
                                 <a href="#" class="btn btn-info btn-round waves-effect waves-light m-1" data-toggle="modal"
-                                   data-target="#mailChipConfigModal">Configure footer text</a>
+                                   data-target="#mailChipConfigModal">Configure Mailchimp API </a>
                             @endif
                         </div>
                         <div class="card-body">
@@ -53,7 +53,7 @@
         <div class="modal-dialog  modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"> Configure MailChip</h5>
+                    <h5 class="modal-title"> Configure MailChimp</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -68,7 +68,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="api_key"><strong>API Key</strong> (The API key of a MailChimp account. You can find yours at
-                                https://us10.admin.mailchimp.com/account/api-key-popup/.)</label>
+                                https://us10.admin.mailchimp.com/.)</label>
                             <input type="text" name="api_key" id="api_key" class="form-control" required>
                         </div>
                         <div class="form-group">

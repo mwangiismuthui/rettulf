@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Balance;
 use App\Commision;
 use App\Download;
+use App\EmailMessage;
 use App\Music;
 use Illuminate\Http\Request;
 use PayPal\Api\Amount;
@@ -307,10 +308,17 @@ class PaymentController extends Controller
             $earnings = 0.8 * $music_amount;
             $balance = Balance::where('user_id', $user_id)->pluck('balance')->first();
             $newbalance = $balance + $earnings;
-            Balance::where('user_id', $user_id)->update([
-                'balance' => $newbalance
-            ]);
-
+            $status = Balance::where('user_id', $user_id)->count();
+            if ($status > 0){
+                Balance::where('user_id', $user_id)->update([
+                    'balance' => $newbalance
+                ]);
+            }else{
+                $newBalance = new Balance();
+                $newBalance->user_id = $user_id;
+                $newBalance->balance = $earnings;
+                $newBalance->save();
+            }
             $commission = new Commision();
             $commission->buyer_id = Auth::user()->id;
             $commission->seller_id = $user_id;
@@ -337,8 +345,13 @@ class PaymentController extends Controller
         $request = new PayoutsPostRequest();
 
 
+        $emailMessage = EmailMessage::where('identifier','PAYMENT-SENT')->firt();
         $data = array(
-            'subject' => "Payment Sent",
+            'identifier' =>$emailMessage->identifier,
+            'subject' =>$emailMessage->subject,
+            'from_email' =>$emailMessage->from_email,
+            'company_name' =>$emailMessage->company_name,
+            'message' =>$emailMessage->message,
 
         );
         $recipient_emails = User::where('id', $user_id)->pluck('email')->first();

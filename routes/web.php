@@ -35,6 +35,7 @@ Route::get('/search/music/{search_category}', 'FrontendController@searchMusic')-
 Route::get('/search-results/{id}', 'FrontendController@searchResults')->name('searchResults');
 Route::post('/subscribe-newsletter', 'FrontendController@SubscribeNewsLetter')->name('SubscribeNewsLetter');
 
+
 Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('/emailverified', 'RegisterController@sendWelcomeEmail')->name('sendWelcomeEmail');
 
@@ -285,12 +286,17 @@ Route::group(['middleware' => 'verified', 'auth'], function () {
     Route::get('/pay-stack/config/', 'PayStackAPIController@index')->name('payStackConfigIndex');
     Route::post('/pay-stack/config/store', 'PayStackAPIController@store')->name('payStackConfigStore');
     Route::get('/pay-stack/config/edit/{id}', 'PayStackAPIController@edit')->name('payStackConfigEdit');
-    Route::post('/pay-stack/config/update/{id}', 'PayStackAPIController@update')->name('payStackConfigUpdate');
+    Route::post('/pay-stack/config/update', 'PayStackAPIController@update')->name('payStackConfigUpdate');
 
     Route::get('/mail-chip/config/', 'MailChipAPIController@index')->name('mailChipConfigIndex');
     Route::post('/mail-chip/config/store', 'MailChipAPIController@store')->name('mailChipConfigStore');
     Route::get('/mail-chip/config/edit/{id}', 'MailChipAPIController@edit')->name('mailChipConfigEdit');
     Route::post('/mail-chip/config/update/{id}', 'MailChipAPIController@update')->name('mailChipConfigUpdate');
+
+    Route::get('/email-message/config/', 'EmailMessageController@index')->name('emailMessageIndex');
+    Route::post('/email-message/config/store', 'EmailMessageController@store')->name('emailMessageStore');
+    Route::get('/email-message/config/edit/{id}', 'EmailMessageController@edit')->name('emailMessageEdit');
+    Route::post('/email-message/config/update', 'EmailMessageController@update')->name('emailMessageUpdate');
 
 });
 Route::get('/clear-cache', function () {

@@ -20,26 +20,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d96cd57-924f-4e61-9fbd-78bd57c5039a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/EmailMessage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmailMessageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_11_203642_create_email_messages_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/images/dot-nav-horizontal.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/frontend/js/mp3/Justin Bieber - Intentions (Official Video (Short Version)) ft. Quavo ( 256kbps cbr ).mp3" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/frontend/js/mp3/OneRepublic - Counting Stars (Official Music Video) ( 256kbps cbr ).mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/mp3/browse/browse-overview-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/mp3/browse/playlist-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/paystack.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/paystackEdit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/adonisplayer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/music_list_item.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/js/pagenav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/emails/messages/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/emails/messages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PayPal.log" beforeDir="false" afterPath="$PROJECT_DIR$/PayPal.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FlutterWavePaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FlutterWavePaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontendController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MailChipAPIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MailChipAPIController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MusicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MusicController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayStackAPIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayStackAPIController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayStackPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayStackPaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_27_111821_create_upload_fees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_27_111821_create_upload_fees_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WithdrawalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WithdrawalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/View/Composers/SidenavComposer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/View/Composers/SidenavComposer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/BulkEmailSender.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/BulkEmailSender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PayStackAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PayStackAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/backend/assets/plugins/notifications/js/lobibox.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/assets/plugins/notifications/js/lobibox.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/backend/assets/plugins/notifications/js/notifications.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/backend/assets/plugins/notifications/js/notifications.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/css/dark_theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/dark_theme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/images/Paystack-Nigeria.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/images/Paystack-Nigeria.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/images/flutter-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/images/flutter-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/images/paypal-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/images/paypal-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/js/comboTreePlugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/comboTreePlugin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/js/modernizr.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/modernizr.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/js/mp3/jplayer.playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/mp3/jplayer.playlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/js/mp3/jquery.jplayer.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/mp3/jquery.jplayer.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/js/mp3/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/js/mp3/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/flutterwaveEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/flutterwaveEdit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchip.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchip.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchipEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/mailchipEdit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/paystack.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/paystack.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/site/apis/paystackEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/site/apis/paystackEdit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bulkEmail/boughtSongs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bulkEmail/boughtSongs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bulkEmail/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bulkEmail/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bulkEmail/paymentSent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bulkEmail/paymentSent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bulkEmail/succesfullDownload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bulkEmail/succesfullDownload.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bulkEmail/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bulkEmail/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bulkEmail/withdraw.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bulkEmail/withdraw.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/buymusic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/buymusic.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/download.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/download.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/genres.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/genres.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/musicshop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/musicshop.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/mymusic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/mymusic.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/paymentmethod.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/paymentmethod.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adonisplayer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adonisplayer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/music_list_item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/music_list_item.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +92,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,6 +230,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -188,14 +239,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Xerxers\Documents\laravelProjects\production\music\public\frontend\js\mp3" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Xerxers\Documents\laravelProjects\production\music\public\frontend\js\mp3" />
       <recent name="C:\Users\Xerxers\Documents\laravelProjects\production\music\public\frontend\images" />
       <recent name="C:\Users\Xerxers\Documents\laravelProjects\production\music\resources\views\admin\site\footer" />
       <recent name="C:\Users\Xerxers\Documents\laravelProjects\production\music" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Xerxers\Documents\laravelProjects\production\music\public\frontend\js\mp3" />
     </key>
   </component>
   <component name="RunManager">
@@ -229,7 +280,9 @@
       <workItem from="1601237929690" duration="9456000" />
       <workItem from="1601743892563" duration="17945000" />
       <workItem from="1601974039205" duration="2620000" />
-      <workItem from="1602086113911" duration="51005000" />
+      <workItem from="1602086113911" duration="75999000" />
+      <workItem from="1602266824766" duration="607000" />
+      <workItem from="1602415794352" duration="45856000" />
     </task>
     <servers />
   </component>
@@ -256,18 +309,22 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="574" y="237" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.870@0.0.1600.870" timestamp="1600068914806" />
-    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601975753828">
+    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602454513658">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1601975753828" />
+    <state x="530" y="190" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1602454513658" />
     <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1601978879897">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1601978879897" />
-    <state x="634" y="358" key="NewPhpFileDialog" timestamp="1602150085035">
+    <state x="459" y="157" key="NewPhpClassDialog" timestamp="1602423584387">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="634" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1602150085035" />
+    <state x="459" y="157" key="NewPhpClassDialog/0.0.1600.870@0.0.1600.870" timestamp="1602423584387" />
+    <state x="634" y="358" key="NewPhpFileDialog" timestamp="1602450871333">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="634" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1602450871333" />
     <state width="561" height="446" key="SwitcherDM" timestamp="1601145502266">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -280,18 +337,22 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="0" y="0" width="1573" height="857" key="dock-window-1/0.0.1600.870@0.0.1600.870" timestamp="1600812199173" />
-    <state x="507" y="168" width="585" height="534" key="find.popup" timestamp="1602188216803">
+    <state x="882" y="192" width="663" height="596" key="find.popup" timestamp="1602454506213">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="507" y="168" width="585" height="534" key="find.popup/0.0.1600.870@0.0.1600.870" timestamp="1602188216803" />
-    <state x="456" y="200" key="run.anything.popup" timestamp="1602192814131">
+    <state x="882" y="192" width="663" height="596" key="find.popup/0.0.1600.870@0.0.1600.870" timestamp="1602454506213" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1602235504641">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="456" y="200" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1602192814131" />
-    <state x="463" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1602159299995">
+    <state width="600" height="428" key="javadoc.popup/0.0.1600.870@0.0.1600.870" timestamp="1602235504641" />
+    <state x="456" y="200" key="run.anything.popup" timestamp="1602488642059">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="463" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1600.870@0.0.1600.870" timestamp="1602159299995" />
+    <state x="456" y="200" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1602488642059" />
+    <state x="463" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1602492523304">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="463" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1600.870@0.0.1600.870" timestamp="1602492523304" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -303,19 +364,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layouts/app.blade.php</url>
-          <line>247</line>
+          <line>251</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layouts/music_list_item.blade.php</url>
-          <line>36</line>
+          <line>46</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/frontend/js/mp3/jplayer.playlist.js</url>
-          <line>282</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php</url>
+          <line>143</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

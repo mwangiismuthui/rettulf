@@ -32,7 +32,6 @@
                                     <th>Action</th>
                                     <th>Public Key</th>
                                     <th>Secret Key</th>
-                                    <th>Encryption Key</th>
 
                                     </thead>
                                     <tbody>
@@ -54,7 +53,7 @@
         <div class="modal-dialog  modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"> Configure paystack Payments</h5>
+                    <h5 class="modal-title"> Configure PayStack Payments</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -100,7 +99,6 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false},
                 {data: 'public_key', name: 'public_key'},
                 {data: 'secret_key', name: 'secret_key'},
-                {data: 'encryption_key', name: 'encryption_key'},
             ],
 
 
@@ -142,23 +140,21 @@
                             icon: "fa fa-check-circle", //path to image
                             msg: data.message,
                         });
-                        $('#paystackConfigModal').modal('hide');
-                        $('#paystackConfigTable').DataTable().ajax.reload();
 
                     }
 
 
                 },
-                // error: function () {
-                // Lobibox.notify("error", {
-                //     pauseDelayOnHover: true,
-                //     continueDelayOnInactiveTab: false,
-                //     position: "top right",
-                //     icon: "fa fa-times-circle",
-                //     msg: "Something went wrong!Please try again",
-                // });
-                // console.log("error");
-                // },
+                error: function () {
+                Lobibox.notify("error", {
+                    pauseDelayOnHover: true,
+                    continueDelayOnInactiveTab: false,
+                    position: "top right",
+                    icon: "fa fa-times-circle",
+                    msg: "Something went wrong!Please try again",
+                });
+                console.log("error");
+                },
             });
         });
 

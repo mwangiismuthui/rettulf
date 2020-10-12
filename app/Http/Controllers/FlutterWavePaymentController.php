@@ -192,7 +192,7 @@ class FlutterWavePaymentController extends Controller
         }
     }
 
-    function MusicBuyPaymentExecute(Request  $request,$music_id){
+    function musicBuyPaymentExecute(Request  $request,$music_id){
 
         $transaction_id = $request->transaction_id;
         $tx_ref = $request->tx_ref;
@@ -204,73 +204,102 @@ class FlutterWavePaymentController extends Controller
         $flutterWaveConfig = FlutterWaveAPI::first();
         $curl = curl_init();
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/$transaction_id/verify",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json",
-                "Authorization: 'Bearer ".$flutterWaveConfig->secret_key,
-            ),
-        ));
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => ' application/json',
+            'Authorization' => 'Bearer '.$flutterWaveConfig->secret_key,
+        ];
 
-        $response = curl_exec($curl);
+        $response = Http::withHeaders($headers)->get('https://api.flutterwave.com/v3/transactions/'.$transaction_id.'/verify');
 
-        curl_close($curl);
-        $results =  json_decode($response,true);
-//        return $response;
-        if ($results['status'] == 'success'){
-            $user_id = Auth::user()->id;
-            Music::where('id', $music_id)->update([
-                'downloads' => $new_downloads,
-            ]);
-            $downloads = new Download();
-            $downloads->music_id = $music_id;
-            $downloads->user_id = $user_id;
-            $downloads->save();
 
-            $flutterWave =  new FlutterWavePayment();
-            $flutterWave->transaction_id = $results['data']['id'];
-            $flutterWave->tx_ref = $results['data']['tx_ref'];
-            $flutterWave->flw_ref = $results['data']['flw_ref'];
-            $flutterWave->amount = $results['data']['amount'];
-            $flutterWave->currency = $results['data']['currency'];
-            $flutterWave->charged_amount = $results['data']['charged_amount'];
-            $flutterWave->app_fee = $results['data']['app_fee'];
-            $flutterWave->merchant_fee = $results['data']['merchant_fee'];
-            $flutterWave->processor_response = $results['data']['processor_response'];
-            $flutterWave->auth_model = $results['data']['auth_model'];
-            $flutterWave->payment_created_at = $results['data']['created_at'];
-            $flutterWave->account_id = $results['data']['account_id'];
-            $flutterWave->amount_settled = $results['data']['amount_settled'];
+//        curl_setopt_array($curl, array(
+//            CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/$transaction_id/verify",
+//            CURLOPT_RETURNTRANSFER => true,
+//            CURLOPT_ENCODING => "",
+//            CURLOPT_MAXREDIRS => 10,
+//            CURLOPT_TIMEOUT => 0,
+//            CURLOPT_FOLLOWLOCATION => true,
+//            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//            CURLOPT_CUSTOMREQUEST => "GET",
+//            CURLOPT_HTTPHEADER => array(
+//                "Content-Type: application/json",
+//                "Authorization: 'Bearer ".$flutterWaveConfig->secret_key,
+//            ),
+//        ));
+//
+//        $response = curl_exec($curl);
+//
+//        curl_close($curl);
+        if($response->successful()){
+            $results = json_decode($response->body(), true);
 
-            $flutterWave->music_id = $music_id;
-            $flutterWave->payment_type = 'downloadedMusic';
-            $flutterWave->user_id = $user_id;
-
-            if($flutterWave->save()){
-                $commissionearned = 0.2 * $music_amount;
-                $earnings = 0.8 * $music_amount;
-                $balance = Balance::where('user_id', $user_id)->pluck('balance')->first();
-                $newbalance = $balance + $earnings;
-                Balance::where('user_id', $user_id)->update([
-                    'balance' => $newbalance
+//            return $response;
+            if ($results['status'] == 'success'){
+                $user_id = Auth::user()->id;
+                Music::where('id', $music_id)->update([
+                    'downloads' => $new_downloads,
                 ]);
+                $downloads = new Download();
+                $downloads->music_id = $music_id;
+                $downloads->user_id = $user_id;
+                $downloads->save();
 
-                $commission = new Commision();
-                $commission->buyer_id = Auth::user()->id;
-                $commission->seller_id = $user_id;
-                $commission->music_id = $music_id;
-                $commission->amount = $commissionearned;
-                $commission->save();
-                return redirect()->route('downloadedMusic')->with('success', 'Music payment made successfully.');
+                $flutterWave =  new FlutterWavePayment();
+                $flutterWave->transaction_id = $results['data']['id'];
+                $flutterWave->tx_ref = $results['data']['tx_ref'];
+                $flutterWave->flw_ref = $results['data']['flw_ref'];
+                $flutterWave->amount = $results['data']['amount'];
+                $flutterWave->currency = $results['data']['currency'];
+                $flutterWave->charged_amount = $results['data']['charged_amount'];
+                $flutterWave->app_fee = $results['data']['app_fee'];
+                $flutterWave->merchant_fee = $results['data']['merchant_fee'];
+                $flutterWave->processor_response = $results['data']['processor_response'];
+                $flutterWave->auth_model = $results['data']['auth_model'];
+                $flutterWave->payment_created_at = $results['data']['created_at'];
+                $flutterWave->account_id = $results['data']['account_id'];
+                $flutterWave->amount_settled = $results['data']['amount_settled'];
+
+                $flutterWave->music_id = $music_id;
+                $flutterWave->payment_type = 'downloadedMusic';
+                $flutterWave->user_id = $user_id;
+
+                if($flutterWave->save()){
+                    $commissionearned = 0.2 * $music_amount;
+                    $earnings = 0.8 * $music_amount;
+                    $balance = Balance::where('user_id', $user_id)->pluck('balance')->first();
+                    $newbalance = $balance + $earnings;
+                    $status = Balance::where('user_id', $user_id)->count();
+                    if ($status > 0){
+                        Balance::where('user_id', $user_id)->update([
+                            'balance' => $newbalance
+                        ]);
+                    }else{
+                        $newBalance = new Balance();
+                        $newBalance->user_id = $user_id;
+                        $newBalance->balance = $earnings;
+                        $newBalance->save();
+                    }
+
+
+                    $commission = new Commision();
+                    $commission->buyer_id = Auth::user()->id;
+                    $commission->seller_id = $user_id;
+                    $commission->music_id = $music_id;
+                    $commission->amount = $commissionearned;
+                    $commission->save();
+                    return redirect()->route('downloadedMusic')->with('success', 'Music payment made successfully.');
+                }
+
+
+            }else{
+                return redirect()->route('downloadedMusic')->with(['error'=> 'Something bad happened, Please try again later.']);
+
             }
 
+
+        }else{
+            return redirect()->route('downloadedMusic')->withErrors(['error'=> 'Something bad happened, Please try again later.']);
 
         }
     }

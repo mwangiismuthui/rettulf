@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Balance;
+use App\EmailMessage;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -113,7 +114,7 @@ class RegisterController extends Controller
         $request->validate($rules,$credentials);
 
 
-        
+
         $imgdestination = '/ProfilePics';
         $gallerarray = [];
         // return $request->hasfile('profile_photo');
@@ -140,15 +141,15 @@ class RegisterController extends Controller
                 'model_type' => 'App\User',
                 'model_id' => $user->id,
             ]);
-            
+
             $balances = new Balance();
             $balances->user_id = $user_id;
             $balances->save();
 
             Auth::login($user, true);
-            
+
             $user = Auth::user();
-          
+
             if ($user->hasRole('Super-Admin')) {
 
                 // dd($user);
@@ -172,9 +173,14 @@ class RegisterController extends Controller
     }
     public function sendWelcomeEmail()
     {
+        $emailMessage = EmailMessage::where('identifier','WELCOME-MESSAGE')->firt();
         $data = array(
-            'subject' =>"Welcome to our Music Application",
-            
+            'identifier' =>$emailMessage->identifier,
+            'subject' =>$emailMessage->subject,
+            'from_email' =>$emailMessage->from_email,
+            'company_name' =>$emailMessage->company_name,
+            'message' =>$emailMessage->message,
+
         );
         $recipient_emails=Auth::user()->email;
         BulkEmailSender::dispatch($recipient_emails,$data)->delay(Carbon::now()->addSeconds(5));

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\BankOfNigeria;
 use App\Download;
+use App\EmailMessage;
 use App\Genre;
 use App\Location;
+use App\MailChipAPI;
 use App\Music;
 use App\PaypalPayment;
 use App\User;
@@ -245,7 +247,7 @@ class FrontendController extends Controller
     {
         $isBought = Download::where('user_id', Auth::user()->id)->where('music_id', $id)->count();
         if ($isBought > 0) {
-           return redirect()->route('downloadedMusic');
+            return redirect()->route('downloadedMusic');
         } else {
             $music = Music::find($id);
             $seo = Seo::where('seos.page_title', 'like', 'buymusic')->first();
@@ -495,8 +497,13 @@ class FrontendController extends Controller
     {
 
 
+        $emailMessage = EmailMessage::where('identifier','MUSIC-DOWNLOADED')->firt();
         $data = array(
-            'subject' => "Your Music Has been Downloaded",
+            'identifier' =>$emailMessage->identifier,
+            'subject' =>$emailMessage->subject,
+            'from_email' =>$emailMessage->from_email,
+            'company_name' =>$emailMessage->company_name,
+            'message' =>$emailMessage->message,
 
         );
         $user_id = Music::where('id', $id)->pluck('user_id')->first();
@@ -559,13 +566,36 @@ class FrontendController extends Controller
                 'errors' => $error->errors()->all(),
             ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
         }
+        $mailchimp = MailChipAPI::first();
+
+
+        $data = array(
+            'apikey'        => $mailchimp->api_key,
+            'email_address' => $request->user_email,
+            'status'        => 'subscribed',
+            'merge_fields'  => ['FNAME' => $request->fname, 'LNAME' => $request->lname]
+        );
+
 
 
         if (!Newsletter::isSubscribed($request->user_email)) {
-//            Newsletter::subscribe($request->user_email);
-            Newsletter::subscribePending($request->user_email, ['FNAME' => $request->fname, 'LNAME' => $request->lname]);
+//            Newsletter::subscribePending($request->user_email);
+//            Newsletter::subscribe($request->user_email, ['FNAME' => $request->fname, 'LNAME' => $request->lname]);
+            Newsletter::addTags(['website'], $request->user_email);
+            $mch_api = curl_init(); // initialize cURL connection
+
+            curl_setopt($mch_api, CURLOPT_URL, 'https://' . substr($mailchimp->api_key,strpos($mailchimp->api_key,'-')+1) . '.api.mailchimp.com/3.0/lists/' . $mailchimp->list_id . '/members/' . md5(strtolower($data['email_address'])));
+            curl_setopt($mch_api, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic '.base64_encode( 'user:'.$mailchimp->api_key )));
+            curl_setopt($mch_api, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+            curl_setopt($mch_api, CURLOPT_RETURNTRANSFER, true); // return the API response
+            curl_setopt($mch_api, CURLOPT_CUSTOMREQUEST, 'PUT'); // method PUT
+            curl_setopt($mch_api, CURLOPT_TIMEOUT, 10);
+            curl_setopt($mch_api, CURLOPT_POST, true);
+            curl_setopt($mch_api, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($mch_api, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
+            $result = curl_exec($mch_api);
             return response([
-                'success' => 'Subscription is successful, check your email to confirm',
+                'success' => 'Thanks for subscribing.',
             ], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
         } else {
             return response([
@@ -651,14 +681,25 @@ class FrontendController extends Controller
 
     public function selectPaymentMethod($music_id, Request $request)
     {
-        $source = $request->source;
-        $music = Music::find($music_id);
-        if ($music) {
-            $music_type = $music->type;
-            return view('frontend.paymentmethod', compact('music', 'source'));
+        $isBought = Download::where('user_id', Auth::user()->id)->where('music_id', $music_id)->count();
+        $isBeat = Music::find($music_id);
+        if ($isBeat->type == 'beats' && $request->source == 'upload'){
+            if ($isBeat->is_paid == 1){
+                return Redirect::route('myMusic');
+            }
+        }
+        if ($isBought > 0) {
+            return redirect()->route('downloadedMusic');
         } else {
-            $music = null;
-            return view('frontend.paymentmethod', compact('music', 'source'));
+            $source = $request->source;
+            $music = Music::find($music_id);
+            if ($music) {
+                $music_type = $music->type;
+                return view('frontend.paymentmethod', compact('music', 'source'));
+            } else {
+                $music = null;
+                return view('frontend.paymentmethod', compact('music', 'source'));
+            }
         }
 
     }

@@ -8,6 +8,7 @@ use App\Download;
 use App\FlutterWaveAPI;
 use App\FlutterWavePayment;
 use App\Music;
+use App\PayStackAPI;
 use App\PayStackPayment;
 use App\Http\Controllers\Controller;
 use App\SiteSetting;
@@ -27,10 +28,10 @@ class PayStackPaymentController extends Controller
         $music_type = Music::where('id', $music_id)->pluck('type')->first();
         $refnumber = (string)Str::orderedUuid();
         $is_paid = Music::where('id', $music_id)->pluck('is_paid')->first();
-
+        $payStackAPi = PayStackAPI::first();
         $url = "https://api.paystack.co/transaction/initialize";
         if ($request->source == 'buy') {
-            $music_amount = UploadFee::pluck('amount')->first();
+            $music_amount = Music::where('id', $music_id)->pluck('price')->first();
             $metadata = [
                 'music_id' => $music_id,
                 'isUpload' => 0
@@ -64,7 +65,7 @@ class PayStackPaymentController extends Controller
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                "Authorization: Bearer sk_test_b065cb156baa04c338379f0e615ed292c3f4488c",
+                "Authorization: Bearer ".$payStackAPi->secret_key,
                 "Cache-Control: no-cache",
             ));
 
@@ -91,6 +92,7 @@ class PayStackPaymentController extends Controller
         $tx_ref = $request->tx_ref;
         $status = $request->status;
         $curl = curl_init();
+        $payStackAPi = PayStackAPI::first();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.paystack.co/transaction/verify/" . $request->reference,
@@ -101,7 +103,7 @@ class PayStackPaymentController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "Authorization: Bearer sk_test_b065cb156baa04c338379f0e615ed292c3f4488c",
+                "Authorization: Bearer ".$payStackAPi->secret_key,
                 "Cache-Control: no-cache",
             ),
         ));
@@ -164,10 +166,17 @@ class PayStackPaymentController extends Controller
                     $earnings = 0.8 * $music_amount;
                     $balance = Balance::where('user_id', $user_id)->pluck('balance')->first();
                     $newbalance = $balance + $earnings;
-                    Balance::where('user_id', $user_id)->update([
-                        'balance' => $newbalance
-                    ]);
-
+                    $status = Balance::where('user_id', $user_id)->count();
+                    if ($status > 0){
+                        Balance::where('user_id', $user_id)->update([
+                            'balance' => $newbalance
+                        ]);
+                    }else{
+                        $newBalance = new Balance();
+                        $newBalance->user_id = $user_id;
+                        $newBalance->balance = $earnings;
+                        $newBalance->save();
+                    }
                     $commission = new Commision();
                     $commission->buyer_id = Auth::user()->id;
                     $commission->seller_id = Auth::user()->id;

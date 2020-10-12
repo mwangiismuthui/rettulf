@@ -1,33 +1,27 @@
-/*-------------------------------------  
-	Template: Music
-	Author : Webstrot
-	Copyright © 2019-20	
----------------------------------------*/
-//----- custom js  code --------//
 ! function($) {
     "use strict";
     var tpj = jQuery,
         revapi24;
-		
-		// Preloader //
-    jQuery(window).on("load", function() {
-            jQuery("#status").fadeOut(), jQuery("#preloader").delay(350).fadeOut("slow")
-        }),
 
- /*--- Responsive Menu Start ----*/		
-		$("#toggle").on("click", function() {
+    // Preloader //
+    jQuery(window).on("load", function() {
+        jQuery("#status").fadeOut(), jQuery("#preloader").delay(350).fadeOut("slow")
+    }),
+
+        /*--- Responsive Menu Start ----*/
+        $("#toggle").on("click", function() {
             $("#sidebar").width(), 0 == $("#sidebar").offset().left ? $("#sidebar").animate({
                 left: -500
             }, "slow") : $("#sidebar").animate({
                 left: "0"
             }, "slow")
         }), $("#toggle_close").on("click", function() {
-            $("#sidebar").width(), 0 == $("#sidebar").offset().left ? $("#sidebar").animate({
-                left: -500
-            }, "slow") : $("#sidebar").animate({
-                left: "0"
-            }, "slow")
-        }),
+        $("#sidebar").width(), 0 == $("#sidebar").offset().left ? $("#sidebar").animate({
+            left: -500
+        }, "slow") : $("#sidebar").animate({
+            left: "0"
+        }, "slow")
+    }),
         function(e) {
             e(document).ready(function() {
                 e("#cssmenu li.active").addClass("open").children("ul").show(), e("#cssmenu li.has-sub>a").on("click", function() {
@@ -37,11 +31,11 @@
                 })
             })
         }(jQuery), $("#toggle").on("click", function() {
-            this.classList.toggle("change"), $(".ss_menu").slideToggle()
-        }), 
-		
-		// Main Slider Animation //
-		jQuery(document).ready(function($) {
+        this.classList.toggle("change"), $(".ss_menu").slideToggle()
+    }),
+
+        // Main Slider Animation //
+        jQuery(document).ready(function($) {
             ! function(e) {
                 function t(t) {
                     t.each(function() {
@@ -62,194 +56,194 @@
             }), $(document).on("click", function(e) {
                 e.target.closest("#search_open") || $("#search_open").slideUp()
             }),
-			
+
 //----- Magnific popup-video -------//
 
-			$(".test-popup-link").magnificPopup({
-                type: "iframe",
-                iframe: {
-                    markup: '<div class="mfp-iframe-scaler"><div class="mfp-close"></div><iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe><div class="mfp-title">Some caption</div></div>',
-                    patterns: {
-                        youtube: {
-                            index: "youtube.com/",
-                            id: "v=",
-                            src: "https://www.youtube.com/embed/ryzOXAO0Ss0"
+                $(".test-popup-link").magnificPopup({
+                    type: "iframe",
+                    iframe: {
+                        markup: '<div class="mfp-iframe-scaler"><div class="mfp-close"></div><iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe><div class="mfp-title">Some caption</div></div>',
+                        patterns: {
+                            youtube: {
+                                index: "youtube.com/",
+                                id: "v=",
+                                src: "https://www.youtube.com/embed/ryzOXAO0Ss0"
+                            }
                         }
                     }
-                }
-            }),
+                }),
 
-			//----------- treanding wrapper slider js -------------//
-			$(document).ready(function() {
-                $(".treanding_song_slider .owl-carousel").owlCarousel({
-                    loop: !0,
-                    margin: 15,
-                    autoplay: !1,
-                    smartSpeed: 1200,
-                    responsiveClass: !0,
-                    navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: !0
-                        },
-                        600: {
-                            items: 3,
-                            nav: !0
-                        },
-                        1000: {
-                            items: 5,
-                            nav: !0,
-                            loop: !0,
-                            margin: 20
+                //----------- treanding wrapper slider js -------------//
+                $(document).ready(function() {
+                    $(".treanding_song_slider .owl-carousel").owlCarousel({
+                        loop: !0,
+                        margin: 15,
+                        autoplay: !1,
+                        smartSpeed: 1200,
+                        responsiveClass: !0,
+                        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: !0
+                            },
+                            600: {
+                                items: 3,
+                                nav: !0
+                            },
+                            1000: {
+                                items: 5,
+                                nav: !0,
+                                loop: !0,
+                                margin: 20
+                            }
                         }
-                    }
-                })
-            }),
+                    })
+                }),
 
 //----------- treanding wrapper slider js -------------//
-			$(document).ready(function() {
-                $(".index4_treanding_new_slider .owl-carousel").owlCarousel({
-                    loop: !0,
-                    margin: 15,
-                    autoplay: !1,
-                    smartSpeed: 1200,
-                    responsiveClass: !0,
-                    navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: !0
-                        },
-                        600: {
-                            items: 3,
-                            nav: !0
-                        },
-                        1000: {
-                            items: 4,
-                            nav: !0,
-                            loop: !0,
-                            margin: 20
+                $(document).ready(function() {
+                    $(".index4_treanding_new_slider .owl-carousel").owlCarousel({
+                        loop: !0,
+                        margin: 15,
+                        autoplay: !1,
+                        smartSpeed: 1200,
+                        responsiveClass: !0,
+                        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: !0
+                            },
+                            600: {
+                                items: 3,
+                                nav: !0
+                            },
+                            1000: {
+                                items: 4,
+                                nav: !0,
+                                loop: !0,
+                                margin: 20
+                            }
                         }
-                    }
-                })
-            }),
+                    })
+                }),
 
 //----------- event wrapper slider js -------------//
-			$(document).ready(function() {
-                $(".event_slider_wrappeer .owl-carousel").owlCarousel({
-                    loop: !0,
-                    margin: 15,
-                    autoplay: !0,
-                    smartSpeed: 1200,
-                    responsiveClass: !0,
-                    navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: !0
-                        },
-                        600: {
-                            items: 2,
-                            nav: !0
-                        },
-                        1000: {
-                            items: 3,
-                            nav: !0,
-                            loop: !0,
-                            margin: 20
+                $(document).ready(function() {
+                    $(".event_slider_wrappeer .owl-carousel").owlCarousel({
+                        loop: !0,
+                        margin: 15,
+                        autoplay: !0,
+                        smartSpeed: 1200,
+                        responsiveClass: !0,
+                        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: !0
+                            },
+                            600: {
+                                items: 2,
+                                nav: !0
+                            },
+                            1000: {
+                                items: 3,
+                                nav: !0,
+                                loop: !0,
+                                margin: 20
+                            }
                         }
-                    }
-                })
-            }),
+                    })
+                }),
 
 //----------- featured wrapper slider js -------------//
-			$(document).ready(function() {
-                $(".featured_song_slider .owl-carousel").owlCarousel({
-                    loop: !0,
-                    margin: 15,
-                    autoplay: !0,
-                    smartSpeed: 1200,
-                    responsiveClass: !0,
-                    navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: !0
-                        },
-                        600: {
-                            items: 1,
-                            nav: !0
-                        },
-                        1000: {
-                            items: 1,
-                            nav: !0,
-                            loop: !0,
-                            margin: 20
+                $(document).ready(function() {
+                    $(".featured_song_slider .owl-carousel").owlCarousel({
+                        loop: !0,
+                        margin: 15,
+                        autoplay: !0,
+                        smartSpeed: 1200,
+                        responsiveClass: !0,
+                        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: !0
+                            },
+                            600: {
+                                items: 1,
+                                nav: !0
+                            },
+                            1000: {
+                                items: 1,
+                                nav: !0,
+                                loop: !0,
+                                margin: 20
+                            }
                         }
-                    }
-                })
-            }), 
-			
-			 /*--- partner js code Start ----*/	
-			$(document).ready(function() {
-                $(".partner_slider_wraper .owl-carousel").owlCarousel({
-                    loop: !0,
-                    margin: 10,
-                    autoplay: !0,
-                    responsiveClass: !0,
-                    smartSpeed: 1200,
-                    navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: !0
-                        },
-                        500: {
-                            items: 3,
-                            nav: !0
-                        },
-                        700: {
-                            items: 4,
-                            nav: !0
-                        },
-                        1000: {
-                            items: 5,
-                            nav: !0,
-                            loop: !0,
-                            margin: 20
+                    })
+                }),
+
+                /*--- partner js code Start ----*/
+                $(document).ready(function() {
+                    $(".partner_slider_wraper .owl-carousel").owlCarousel({
+                        loop: !0,
+                        margin: 10,
+                        autoplay: !0,
+                        responsiveClass: !0,
+                        smartSpeed: 1200,
+                        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: !0
+                            },
+                            500: {
+                                items: 3,
+                                nav: !0
+                            },
+                            700: {
+                                items: 4,
+                                nav: !0
+                            },
+                            1000: {
+                                items: 5,
+                                nav: !0,
+                                loop: !0,
+                                margin: 20
+                            }
                         }
-                    }
-                })
-            }), 
-			
-			 /*--- event slider js  ----*/	
-			$(document).ready(function() {
-                $(".event_single_slider .owl-carousel").owlCarousel({
-                    loop: !0,
-                    margin: 10,
-                    autoplay: !0,
-                    responsiveClass: !0,
-                    smartSpeed: 1200,
-                    navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
-                    responsive: {
-                        0: {
-                            items: 1,
-                            nav: !0
-                        },
-                        600: {
-                            items: 1,
-                            nav: !0
-                        },
-                        1000: {
-                            items: 1,
-                            nav: !0,
-                            loop: !0,
-                            margin: 20
+                    })
+                }),
+
+                /*--- event slider js  ----*/
+                $(document).ready(function() {
+                    $(".event_single_slider .owl-carousel").owlCarousel({
+                        loop: !0,
+                        margin: 10,
+                        autoplay: !0,
+                        responsiveClass: !0,
+                        smartSpeed: 1200,
+                        navText: ['<i class="flaticon-left-arrow"></i>', '<i class="flaticon-right-arrow"></i>'],
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: !0
+                            },
+                            600: {
+                                items: 1,
+                                nav: !0
+                            },
+                            1000: {
+                                items: 1,
+                                nav: !0,
+                                loop: !0,
+                                margin: 20
+                            }
                         }
-                    }
-                })
-            }), $(document).ready(function() {
+                    })
+                }), $(document).ready(function() {
                 $(".m24_tranding_more_icon").on("click", function(e) {
                     if (e.preventDefault(), e.stopImmediatePropagation(), void 0 !== $(this).attr("data-other")) var t = $(this).parent().parent();
                     else t = $(this).parent();
@@ -268,8 +262,8 @@
                     prevEl: ".swiper-button-prev"
                 }
             });
-			
-			 /*--- magnific popup Start ----*/	
+
+            /*--- magnific popup Start ----*/
             $(".test-popup-link").magnificPopup({
                 type: "iframe",
                 iframe: {
@@ -283,8 +277,8 @@
                     }
                 }
             });
-			
-			 /*--- multiple choice Start ----*/	
+
+            /*--- multiple choice Start ----*/
             var SampleJSONData2 = [{
                     id: 17,
                     title: "1.  Tujhe Kitna Chahne Lage "
@@ -367,8 +361,8 @@
                 }), check
             }
             // jQuery(document).ready(function(e) {
-               
-               
+
+
             //     comboTree2 = e("#justAnotherInputBox").comboTree({
             //         source: SampleJSONData2,
             //         isMultiple: !1
@@ -376,10 +370,10 @@
             //         source: SampleJSONData1,
             //         isMultiple: !0
             //     })
-            // }), 
-			
-			 /*--- contact form Start ----*/		
-			$(".submitForm").on("click", function() {
+            // }),
+
+            /*--- contact form Start ----*/
+            $(".submitForm").on("click", function() {
                 var e = $(this),
                     t = e.closest("form"),
                     a = t.find(".response");

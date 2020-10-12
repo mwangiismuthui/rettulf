@@ -1,333 +1,383 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!--[if !mso]><!-->
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<!--<![endif]-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title></title>
-<style type="text/css">
-* {
-	-webkit-font-smoothing: antialiased;
-}
-body {
-	Margin: 0;
-	padding: 0;
-	min-width: 100%;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	mso-line-height-rule: exactly;
-}
-table {
-	border-spacing: 0;
-	color: #333333;
-	font-family: Arial, sans-serif;
-}
-img {
-	border: 0;
-}
-.wrapper {
-	width: 100%;
-	table-layout: fixed;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-}
-.webkit {
-	max-width: 600px;
-}
-.outer {
-	Margin: 0 auto;
-	width: 100%;
-	max-width: 600px;
-}
-.full-width-image img {
-	width: 100%;
-	max-width: 600px;
-	height: auto;
-}
-.inner {
-	padding: 10px;
-}
-p {
-	Margin: 0;
-	padding-bottom: 10px;
-}
-.h1 {
-	font-size: 21px;
-	font-weight: bold;
-	Margin-top: 15px;
-	Margin-bottom: 5px;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-.h2 {
-	font-size: 18px;
-	font-weight: bold;
-	Margin-top: 10px;
-	Margin-bottom: 5px;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-.one-column .contents {
-	text-align: left;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-.one-column p {
-	font-size: 14px;
-	Margin-bottom: 10px;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-.two-column {
-	text-align: center;
-	font-size: 0;
-}
-.two-column .column {
-	width: 100%;
-	max-width: 300px;
-	display: inline-block;
-	vertical-align: top;
-}
-.contents {
-	width: 100%;
-}
-.two-column .contents {
-	font-size: 14px;
-	text-align: left;
-}
-.two-column img {
-	width: 100%;
-	max-width: 280px;
-	height: auto;
-}
-.two-column .text {
-	padding-top: 10px;
-}
-.three-column {
-	text-align: center;
-	font-size: 0;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-.three-column .column {
-	width: 100%;
-	max-width: 200px;
-	display: inline-block;
-	vertical-align: top;
-}
-.three-column .contents {
-	font-size: 14px;
-	text-align: center;
-}
-.three-column img {
-	width: 100%;
-	max-width: 180px;
-	height: auto;
-}
-.three-column .text {
-	padding-top: 10px;
-}
-.img-align-vertical img {
-	display: inline-block;
-	vertical-align: middle;
-}
-@media only screen and (max-device-width: 480px) {
-table[class=hide], img[class=hide], td[class=hide] {
-	display: none !important;
-}
-.contents1 {
-	width: 100%;
-}
-.contents1 {
-	width: 100%;
-}
-</style>
-<!--[if (gte mso 9)|(IE)]>
-	<style type="text/css">
-		table {border-collapse: collapse !important;}
-	</style>
-	<![endif]-->
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400,500,600,700" rel="stylesheet">
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            background: #f1f1f1;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        *[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links *,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+    </style>
+
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+        .primary{
+            background: #17bebb;
+        }
+        .bg_white{
+            background: #ffffff;
+        }
+        .bg_light{
+            background: #f7fafa;
+        }
+        .bg_black{
+            background: #000000;
+        }
+        .bg_dark{
+            background: rgba(0,0,0,.8);
+        }
+        .email-section{
+            padding:2.5em;
+        }
+
+        /*BUTTON*/
+        .btn{
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        .btn.btn-primary{
+            border-radius: 5px;
+            background: #17bebb;
+            color: #ffffff;
+        }
+        .btn.btn-white{
+            border-radius: 5px;
+            background: #ffffff;
+            color: #000000;
+        }
+        .btn.btn-white-outline{
+            border-radius: 5px;
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+        .btn.btn-black-outline{
+            border-radius: 0px;
+            background: transparent;
+            border: 2px solid #000;
+            color: #000;
+            font-weight: 700;
+        }
+        .btn-custom{
+            color: rgba(0,0,0,.3);
+            text-decoration: underline;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'Work Sans', sans-serif;
+            color: #000000;
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        body{
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(0,0,0,.4);
+        }
+
+        a{
+            color: #17bebb;
+        }
+
+        table{
+        }
+        /*LOGO*/
+
+        .logo h1{
+            margin: 0;
+        }
+        .logo h1 a{
+            color: #17bebb;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        /*HERO*/
+        .hero{
+            position: relative;
+            z-index: 0;
+        }
+
+        .hero .text{
+            color: rgba(0,0,0,.3);
+        }
+        .hero .text h2{
+            color: #000;
+            font-size: 34px;
+            margin-bottom: 15px;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+        .hero .text h3{
+            font-size: 24px;
+            font-weight: 200;
+        }
+        .hero .text h2 span{
+            font-weight: 600;
+            color: #000;
+        }
+
+
+        /*PRODUCT*/
+        .product-entry{
+            display: block;
+            position: relative;
+            float: left;
+            padding-top: 20px;
+        }
+        .product-entry .text{
+            width: calc(100% - 125px);
+            padding-left: 20px;
+        }
+        .product-entry .text h3{
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .product-entry .text p{
+            margin-top: 0;
+        }
+        .product-entry img, .product-entry .text{
+            float: left;
+        }
+
+        ul.social{
+            padding: 0;
+        }
+        ul.social li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        /*FOOTER*/
+
+        .footer{
+            border-top: 1px solid rgba(0,0,0,.05);
+            color: rgba(0,0,0,.5);
+        }
+        .footer .heading{
+            color: #000;
+            font-size: 20px;
+        }
+        .footer ul{
+            margin: 0;
+            padding: 0;
+        }
+        .footer ul li{
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        .footer ul li a{
+            color: rgba(0,0,0,1);
+        }
+
+
+        @media screen and (max-width: 500px) {
+
+
+        }
+
+
+    </style>
+
+
 </head>
 
-<body style="Margin:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;min-width:100%;background-color:#f3f2f0;">
-<center class="wrapper" style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#f3f2f0;">
-  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f3f2f0;" bgcolor="#f3f2f0;">
-    <tr>
-      <td width="100%"><div class="webkit" style="max-width:600px;Margin:0 auto;"> 
-          
-          <!--[if (gte mso 9)|(IE)]>
-
-						<table width="600" align="center" cellpadding="0" cellspacing="0" border="0" style="border-spacing:0" >
-							<tr>
-								<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-								<![endif]--> 
-          
-          <!-- ======= start main body ======= -->
-          <table class="outer" align="center" cellpadding="0" cellspacing="0" border="0" style="border-spacing:0;Margin:0 auto;width:100%;max-width:600px;">
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
+<center style="width: 100%; background-color: #f1f1f1;">
+    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+    </div>
+    <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+        <!-- BEGIN BODY -->
+        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
             <tr>
-              <td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><!-- ======= start header ======= -->
-                
-                <table border="0" width="100%" cellpadding="0" cellspacing="0"  >
-                  <tr>
-                    <td><table style="width:100%;" cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
-                          <tr>
-                            <td align="center"><center>
-                                <table border="0" align="center" width="100%" cellpadding="0" cellspacing="0" style="Margin: 0 auto;">
-                                  <tbody>
-                                    <tr>
-                                      <td class="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" bgcolor="#FFFFFF"><!-- ======= start header ======= -->
-                                        
-                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#f3f2f0">
-                                          <tr>
-                                            <td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:left;font-size:0;" ><!--[if (gte mso 9)|(IE)]>
-													<table width="100%" style="border-spacing:0" >
-													<tr>
-													<td width="20%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:30px;" >
-													<![endif]-->
-                                              
-                                              <div class="column" style="width:100%;max-width:80px;display:inline-block;vertical-align:top;">
-                                                <table class="contents" style="border-spacing:0; width:100%"  >
-                                                  <tr>
-                                                    <td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:5px;" align="left"><a href="#" target="_blank"></a></td>
-                                                  </tr>
-                                                </table>
-                                              </div>
-                                              
-                                              <!--[if (gte mso 9)|(IE)]>
-													</td><td width="80%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-													<![endif]-->
-                                              
-                                              <div class="column" style="width:100%;max-width:518px;display:inline-block;vertical-align:top;">
-                                                <table width="100%" style="border-spacing:0" cellpadding="0" cellspacing="0" border="0" >
-                                                  <tr>
-                                                    <td class="inner" style="padding-top:0px;padding-bottom:10px; padding-right:10px;padding-left:10px;"><table class="contents" style="border-spacing:0; width:100%" cellpadding="0" cellspacing="0" border="0">
-                                                        <tr>
-                                                          <td align="left" valign="top">&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                
-                                                        </tr>
-                                                      </table></td>
-                                                  </tr>
-                                                </table>
-                                              </div>
-                                              
-                                              <!--[if (gte mso 9)|(IE)]>
-													</td>
-													</tr>
-													</table>
-													<![endif]--></td>
-                                          </tr>
-                                          <tr>
-                                            <td>&nbsp;</td>
-                                          </tr>
-                                        </table></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </center></td>
-                          </tr>
-                        </tbody>
-                      </table></td>
-                  </tr>
-                </table>
-                
-                <!-- ======= end header ======= --> 
-                
-                <!-- ======= start hero image ======= --><!-- ======= end hero image ======= --> 
-                
-                <!-- ======= start hero article ======= -->
-                
-                <table class="one-column" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0; border-left:1px solid #e8e7e5; border-right:1px solid #e8e7e5; border-bottom:1px solid #e8e7e5; border-top:1px solid #e8e7e5" bgcolor="#FFFFFF">
+                <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="logo" style="text-align: left;">
+                                <h1><a href="{{route('index')}}">{{$data['company_name']}}</a></h1>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr><!-- end tr -->
+            <tr>
+                <td valign="middle" class="hero bg_white" style="padding: 2em 0 2em 0;">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td style="padding: 0 2.5em; text-align: left;">
+                                <div class="text">
+                                    <h2>{{$data['subject']}}</h2>
+                                    <h3>{{$data['message']}}</h3>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr><!-- end tr -->
+            <!-- 1 Column Text + Button : END -->
+        </table>
+        {{--        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">--}}
+        {{--            <tr>--}}
+        {{--                <td valign="middle" class="bg_light footer email-section">--}}
+        {{--                    <table>--}}
+        {{--                        <tr>--}}
+        {{--                            <td valign="top" width="33.333%" style="padding-top: 20px;">--}}
+        {{--                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">--}}
+        {{--                                    <tr>--}}
+        {{--                                        <td style="text-align: left; padding-right: 10px;">--}}
+        {{--                                            <h3 class="heading">About</h3>--}}
+        {{--                                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>--}}
+        {{--                                        </td>--}}
+        {{--                                    </tr>--}}
+        {{--                                </table>--}}
+        {{--                            </td>--}}
+        {{--                            <td valign="top" width="33.333%" style="padding-top: 20px;">--}}
+        {{--                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">--}}
+        {{--                                    <tr>--}}
+        {{--                                        <td style="text-align: left; padding-left: 5px; padding-right: 5px;">--}}
+        {{--                                            <h3 class="heading">Contact Info</h3>--}}
+        {{--                                            <ul>--}}
+        {{--                                                <li><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>--}}
+        {{--                                                <li><span class="text">+2 392 3929 210</span></a></li>--}}
+        {{--                                            </ul>--}}
+        {{--                                        </td>--}}
+        {{--                                    </tr>--}}
+        {{--                                </table>--}}
+        {{--                            </td>--}}
+        {{--                            <td valign="top" width="33.333%" style="padding-top: 20px;">--}}
+        {{--                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">--}}
+        {{--                                    <tr>--}}
+        {{--                                        <td style="text-align: left; padding-left: 10px;">--}}
+        {{--                                            <h3 class="heading">Useful Links</h3>--}}
+        {{--                                            <ul>--}}
+        {{--                                                <li><a href="#">Home</a></li>--}}
+        {{--                                                <li><a href="#">Account</a></li>--}}
+        {{--                                                <li><a href="#">Wishlist</a></li>--}}
+        {{--                                                <li><a href="#">Order</a></li>--}}
+        {{--                                            </ul>--}}
+        {{--                                        </td>--}}
+        {{--                                    </tr>--}}
+        {{--                                </table>--}}
+        {{--                            </td>--}}
+        {{--                        </tr>--}}
+        {{--                    </table>--}}
+        {{--                </td>--}}
+        {{--            </tr><!-- end: tr -->--}}
+        {{--            --}}
+        {{--        </table>--}}
 
-                   
-                  <tr>
-                    <td align="left" style="padding:50px 50px 50px 50px"><p style="color:#262626; font-size:24px; text-align:left; font-family: Verdana, Geneva, sans-serif"><strong></strong>,</p>
-                      <p style="color:#000000; font-size:16px; text-align:left; font-family: Verdana, Geneva, sans-serif; line-height:22px ">
-                        <p>Withdrawal recieved</p>
-                
-                      <table border="0" align="left" cellpadding="0" cellspacing="0" style="Margin:0 auto;">
-                        <tbody>
-                          <tr>
-                            <td align="center"><table border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;">
-                                <tr>
-                                  <!-- <td width="250" height="60" align="center" bgcolor="#1f3ca6" style="-moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px;"><a href="#" style="width:250; display:block; text-decoration:none; border:0; text-align:center; font-weight:bold;font-size:18px; font-family: Arial, sans-serif; color: #ffffff" class="button_link">Call to Action<img src="https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/images/582dc751-b0fc-4769-ad74-35932c7594dd.png" width="32" height="17" style="padding-top:5px" alt="call-to-action" border="0"/></a></td> -->
-                                </tr>
-                              </table></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-                
-                <!-- ======= end hero article ======= --> 
-                
-                <!-- ======= start footer ======= -->
-                
-                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                  <tr>
-                    <td height="30">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;"><!--[if (gte mso 9)|(IE)]>
-													<table width="100%" style="border-spacing:0" >
-													<tr>
-													<td width="60%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" >
-													<![endif]-->
-                      
-                      <div class="column" style="width:100%;max-width:350px;display:inline-block;vertical-align:top;">
-                        <table class="contents" style="border-spacing:0; width:100%">
-                          <tr>
-                            <td width="39%" align="right" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><a href="#" target="_blank"></a></td>
-                            <td width="61%" align="left" valign="middle" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;"><p style="color:#787777; font-size:13px; text-align:left; font-family: Verdana, Geneva, sans-serif"> MusicApp&copy; 2020<br />
-                                </td>
-                          </tr>
-                        </table>
-                      </div>
-                      
-                      <!--[if (gte mso 9)|(IE)]>
-													</td><td width="40%" valign="top" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" > 								<![endif]-->
-                      
-                      <div class="column" style="width:100%;max-width:248px;display:inline-block;vertical-align:top;">
-                        <table width="100%" style="border-spacing:0">
-                          <tr>
-                            <td class="inner" style="padding-top:0px;padding-bottom:10px; padding-right:10px;padding-left:10px;"><table class="contents" style="border-spacing:0; width:100%">
-                                <tr>
-                                  <td width="32%" align="center" valign="top" style="padding-top:10px"><table width="150" border="0" cellspacing="0" cellpadding="0">
-                                      <tr>
-                                        <td width="33" align="center"><a href="facebook.com" target="_blank"><img src="https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/images/1f9161ee-46b5-4bdf-86db-9e32d4b98336.jpg" alt="facebook" width="36" height="36" border="0" style="border-width:0; max-width:36px;height:auto; display:block; max-height:36px"/></a></td>
-                                        <td width="34" align="center"><a href="twitter.com" target="_blank"><img src="https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/images/4e449140-ec71-4978-97bf-8e0f15b5ff23.jpg" alt="twitter" width="36" height="36" border="0" style="border-width:0; max-width:36px;height:auto; display:block; max-height:36px"/></a></td>
-                                        <td width="33" align="center"><a href="linkedin.com" target="_blank"><img src="https://gallery.mailchimp.com/fdcaf86ecc5056741eb5cbc18/images/d21cca91-335e-4fa4-9313-b0ea37e0452b.jpg" alt="linkedin" width="36" height="36" border="0" style="border-width:0; max-width:36px;height:auto; display:block; max-height:36px"/></a></td>
-                                      </tr>
-                                    </table></td>
-                                </tr>
-                              </table></td>
-                          </tr>
-                        </table>
-                      </div>
-                      
-                      <!--[if (gte mso 9)|(IE)]> 	</td> 											</tr> </table> 									<![endif]--></td>
-                  </tr>
-                  <tr>
-                    <td height="30">&nbsp;</td>
-                  </tr>
-                </table>
-                
-                <!-- ======= end footer ======= --></td>
-            </tr>
-          </table>
-          <!--[if (gte mso 9)|(IE)]>
-					</td>
-				</tr>
-			</table>
-			<![endif]--> 
-        </div></td>
-    </tr>
-  </table>
+    </div>
 </center>
 </body>
 </html>

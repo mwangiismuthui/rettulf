@@ -22,6 +22,16 @@
             </div>
 
         </div>
+        @if ($music->price<= 0)
+            <div class="top_list_tract_time">
+
+                <p style="color:#FD7444;">Free</p>
+            </div>
+        @else
+            <div class="top_list_tract_time">
+                <p style="color:#FD7444;">${{$music->price}}</p>
+            </div>
+        @endif
         <div class="top_list_tract_time">
             <p>{{$music->duration}}</p>
         </div>

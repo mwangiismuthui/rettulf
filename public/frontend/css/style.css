@@ -3320,6 +3320,7 @@ body.off-canvas-overlay-on {
 }
 .adonis-player-wrap .jp-play-bar,
 .adonis-playlist-player .jp-play-bar {
+    display: none;
     transition-duration: 0s !important;
     overflow: visible !important;
     position: absolute;
@@ -4217,7 +4218,7 @@ body.off-canvas-overlay-on {
     position: relative;
 }
 .dot-horizontal-icon {
-    background: url(../../../../../iconicthemes.net/adonis/assets/images/svg/dot-nav-horizontal.svg) 100% no-repeat;
+    background: url(/frontend/assets/images/svg/dot-nav-horizontal.svg) 100% no-repeat;
     width: 26px;
     height: 20px;
     display: inline-block;
@@ -7188,4 +7189,40 @@ span.ovrly_text2 {
 }
 .main_nav_ul li a{
 	font-size: small;
+}
+
+#overlay {
+    background: #ffffff;
+    color: #666666;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    float: left;
+    text-align: center;
+    padding-top: 25%;
+    opacity: .80;
+    position: absolute;
+}
+
+.spinner {
+    margin: 0 auto;
+    height: 64px;
+    width: 64px;
+    animation: rotate 0.8s infinite linear;
+    border: 5px solid firebrick;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

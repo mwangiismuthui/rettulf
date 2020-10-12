@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\SendEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -36,53 +37,56 @@ class BulkEmailSender implements ShouldQueue
     public function handle()
     {
         $subject = $this->data['subject'];
+        $identifier = $this->data['identifier'];
+        $from_email = $this->data['from_email'];
+        $company_name = $this->data['company_name'];
+        $message = $this->data['message'];
 
-        if ($subject=="Payment Sent") {
+        if ($identifier=="PAYMENT-SENT") {
             $email = $this->recipient_emails;
             // dd($email);
-            Mail::send('bulkEmail.paymentSent', $this->data, function ($message) use ($email) {
-                $message->from('noreply@justerudite.com', 'Music App');
-            
+            Mail::send('bulkEmail.paymentSent', $this->data, function ($message) use ($company_name, $from_email, $email) {
+                $message->from($from_email, $company_name);
+
                 $message->to($email)->subject($this->data['subject']);;
             });
         }
-        elseif($subject=="Withdrawal Request Recieved"){
+        elseif($identifier=="WITHDRAW-REQUEST"){
             $email = $this->recipient_emails;
-            Mail::send('bulkEmail.withdraw', $this->data, function ($message) use ($email) {
-                $message->from('noreply@justerudite.com', 'Music App');
-            
+            Mail::send('bulkEmail.withdraw', $this->data, function ($message) use ($company_name, $from_email, $email) {
+                $message->from($from_email, $company_name);
+
                 $message->to($email)->subject($this->data['subject']);;
             });
         }
-        elseif($subject=="Your Music Has been Downloaded"){
+        elseif($identifier=="MUSIC-DOWNLOADED"){
             $email = $this->recipient_emails;
             Mail::send('bulkEmail.succesfullDownload
-            ', $this->data, function ($message) use ($email) {
-                $message->from('noreply@justerudite.com', 'Music App');
-            
+            ', $this->data, function ($message) use  ($company_name, $from_email, $email) {
+                $message->from($from_email, $company_name);
+
                 $message->to($email)->subject($this->data['subject']);;
             });
         }
-        elseif($subject=="Welcome to our Music Application"){
+        elseif($identifier=="WELCOME-MESSAGE"){
             $email = $this->recipient_emails;
-            Mail::send('bulkEmail.welcome', $this->data, function ($message) use ($email) {
-                $message->from('noreply@justerudite.com', 'Music App');
-            
+            Mail::send('bulkEmail.welcome', $this->data, function ($message) use ($company_name, $from_email, $email) {
+                $message->from($from_email, $company_name);
+
                 $message->to($email)->subject($this->data['subject']);;
             });
         }
         else{
         foreach ($this->recipient_emails as $email) {
-                
-                    Mail::send('bulkEmail.email', $this->data, function ($message) use ($email) {
-                        $message->from('noreply@justerudite.com', 'Music App');
-                    
+                    Mail::send('bulkEmail.email', $this->data, function ($message) use ($from_email, $company_name, $email) {
+                        $message->from($from_email, $company_name);
+
                         $message->to($email)->subject($this->data['subject']);;
                     });
                 }
         }
 
-        
-       
+
+
     }
 }

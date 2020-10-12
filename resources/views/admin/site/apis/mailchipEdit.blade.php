@@ -9,21 +9,26 @@
                         <div class="card-header"> MailChip Edit API
                         </div>
                         <div class="card-body">
+                            <div id="overlay" style="display:none;" class="loadingOverlay">
+                                <div class="spinner"></div>
+                                <br />
+                                Saving...
+                            </div>
                             <form id="mailChipConfig" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="mailChip_id" id="mailChip_id" value="{{$mailChipAPI->id}}">
+                                <input type="hidden" name="mailChip_id" id="mailChip_id" value="{{$mailChimpAPI->id}}">
 
                                 <div class="form-group">
                                     <label for="api_key"><strong>API Key</strong> (The API key of a MailChimp account. You can find yours at
-                                        https://us10.admin.mailchimp.com/account/api-key-popup/.)</label>
+                                        https://us10.admin.mailchimp.com/.)</label>
                                     <input type="text" name="api_key" id="api_key" class="form-control"
-                                           value="{{$mailChipAPI->api_key}}" required>
+                                           value="{{$mailChimpAPI->api_key}}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="list_id"><strong>List ID</strong> (A MailChimp list id. Check the MailChimp docs if you don't know
                                         how to get this value:http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id.)</label>
                                     <input type="text" name="list_id" id="list_id" class="form-control"
-                                           value="{{$mailChipAPI->list_id}}" required>
+                                           value="{{$mailChimpAPI->list_id}}" required>
                                 </div>
 
                                 <div class="form-group">

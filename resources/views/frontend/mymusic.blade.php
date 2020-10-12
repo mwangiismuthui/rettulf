@@ -80,13 +80,13 @@
                             </ul>
                             @if ($balance>=100)
                                 <div class="cancel_wrapper renew_btn">
-                                    <a id="withrawbutton"><i
+                                    <a href="" id="withrawbutton"><i
                                             class="flaticon-play-button"></i>Withdraw</a>
                                     <form id="withdrawaAmount">
                                         @csrf
                                         <br>
-                                        <input type="number" name="amount" id=""
-                                               placeholder="Enter amount you wish to Withdraw" class="form-control">
+                                        <input type="number" name="amount" id="" min="100"
+                                               placeholder="Enter amount you wish to Withdraw" class="form-control" required>
                                         <input type="hidden" name="artist_id" value="{{$artist->id}}" id="artist_id">
                                         <br>
                                         <div class="lang_apply_btn">
@@ -237,7 +237,8 @@
                 $(document).ready(function () {
                     $(".alert").delay(5000).slideUp(300);
                     $('#withdrawaAmount').hide();
-                    $('#withrawbutton').on('click', function () {
+                    $('#withrawbutton').on('click', function (event) {
+                        event.preventDefault();
                         $('#withdrawaAmount').show();
                     });
 
